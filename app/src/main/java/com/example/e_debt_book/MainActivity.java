@@ -1,19 +1,16 @@
 package com.example.e_debt_book;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,11 +22,13 @@ public class MainActivity extends AppCompatActivity {
 
     ////Main screen costumer login attribute
     private ConstraintLayout costumerLogin;
-
+    private Button costumerBackButton;
+    private Button costumertSignUpButton;
 
 
     ////Main screen Market login attribute
     private ConstraintLayout marketLogin;
+    private Button MarketBackButton;
 
 
 
@@ -53,11 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
         ////Main screen costumer login attribute
         costumerLogin = findViewById(R.id.costumerLogin);
+        costumerBackButton = findViewById(R.id.costumerBackButton);
+        costumertSignUpButton = findViewById(R.id.costumertSignUpButton);
 
 
         ////Main screen Market login attribute
         costumerLogin = findViewById(R.id.costumerLogin);
         marketLogin = findViewById(R.id.marketLogin);
+        MarketBackButton = findViewById(R.id.MarketBackButton);
+
+
 
         mainCostumertButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +77,30 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mainChoice.setVisibility(View.GONE);
                 marketLogin.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        MarketBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                marketLogin.setVisibility(View.GONE);
+                mainChoice.setVisibility(View.VISIBLE);
+            }
+        });
+
+        costumerBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                costumerLogin.setVisibility(View.GONE);
+                mainChoice.setVisibility(View.VISIBLE);
+            }
+        });
+
+        costumertSignUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),CostumerRegister.class));
             }
         });
 /*

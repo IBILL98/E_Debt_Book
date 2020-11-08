@@ -12,7 +12,7 @@
         android:id="@+id/marketLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="gone"
         tools:layout_editor_absoluteX="-62dp"
         tools:layout_editor_absoluteY="-97dp">
 
@@ -25,6 +25,7 @@
             android:layout_marginRight="56dp"
             android:background="#005B9F"
             android:text="@string/sign_up"
+            android:textAllCaps="false"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginwindow" />
@@ -38,6 +39,7 @@
             android:layout_marginTop="36dp"
             android:background="#005B9F"
             android:text="@string/back"
+            android:textAllCaps="false"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginwindow" />
@@ -108,8 +110,8 @@
             <EditText
                 android:id="@+id/marketLoginPhone"
                 style="cent"
-                android:layout_width="250dp"
-                android:layout_height="55dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:background="#F3F3F3"
                 android:ems="10"
@@ -117,14 +119,16 @@
                 android:hint="Phone"
                 android:inputType="number"
                 android:textColorHint="@android:color/black"
+                android:textSize="20dp"
+                android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/view1"
                 app:layout_constraintTop_toBottomOf="@+id/imageView1" />
 
             <EditText
                 android:id="@+id/marketLoginPassword"
-                android:layout_width="250dp"
-                android:layout_height="55dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
                 android:background="#F3F3F3"
                 android:ems="10"
@@ -132,6 +136,8 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:textColorHint="@android:color/black"
+                android:textSize="20dp"
+                android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/marketLoginPhone" />
@@ -142,7 +148,8 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="36dp"
                 android:background="#005B9F"
-                android:text="login"
+                android:text="Login"
+                android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
@@ -183,13 +190,10 @@
         android:id="@+id/mainChoice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/mainChoicewindow"
@@ -198,6 +202,7 @@
             android:layout_marginTop="24dp"
             android:background="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.581"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -230,6 +235,7 @@
                 android:background="#005B9F"
                 android:text="Costumer"
                 android:textColor="@android:color/white"
+                android:textStyle="normal|bold|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mainMarketButton" />
@@ -242,6 +248,7 @@
                 android:background="#005B9F"
                 android:text="Market"
                 android:textColor="@android:color/white"
+                android:textStyle="normal|bold|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -277,7 +284,7 @@
                 tools:layout_editor_absoluteY="162dp" />
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar3"
+                android:id="@+id/toolbar77"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#005B9F"
@@ -287,7 +294,7 @@
                 tools:layout_editor_absoluteX="0dp" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView"
                 android:layout_width="74dp"
                 android:layout_height="73dp"
                 android:layout_marginTop="28dp"
@@ -298,34 +305,34 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <View
-                android:id="@+id/view10"
+                android:id="@+id/view77"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:background="#5EB8FF"
-                app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
+                app:layout_constraintBottom_toBottomOf="@+id/toolbar77"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.048"
-                app:layout_constraintStart_toStartOf="@+id/toolbar3"
+                app:layout_constraintStart_toStartOf="@+id/toolbar77"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.523" />
 
             <View
-                android:id="@+id/view11"
+                android:id="@+id/view2"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:background="#5EB8FF"
-                app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
-                app:layout_constraintEnd_toEndOf="@+id/toolbar3"
+                app:layout_constraintBottom_toBottomOf="@+id/toolbar77"
+                app:layout_constraintEnd_toEndOf="@+id/toolbar77"
                 app:layout_constraintHorizontal_bias="0.951"
-                app:layout_constraintStart_toStartOf="@+id/toolbar3"
+                app:layout_constraintStart_toStartOf="@+id/toolbar77"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.523" />
 
             <EditText
                 android:id="@+id/costumerLoginPhone"
                 style="cent"
-                android:layout_width="250dp"
-                android:layout_height="55dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:background="#F3F3F3"
                 android:ems="10"
@@ -333,14 +340,16 @@
                 android:hint="Phone"
                 android:inputType="number"
                 android:textColorHint="@android:color/black"
+                android:textSize="20dp"
+                android:textStyle="normal|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/view3"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <EditText
                 android:id="@+id/costumerLoginPassword"
-                android:layout_width="250dp"
-                android:layout_height="55dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
                 android:background="#F3F3F3"
                 android:ems="10"
@@ -348,6 +357,8 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:textColorHint="@android:color/black"
+                android:textSize="20dp"
+                android:textStyle="normal|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/costumerLoginPhone" />
@@ -358,7 +369,8 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="36dp"
                 android:background="#005B9F"
-                android:text="login"
+                android:text="Login"
+                android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
@@ -376,6 +388,7 @@
             android:layout_marginRight="56dp"
             android:background="#005B9F"
             android:text="Sign Up"
+            android:textAllCaps="false"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginwindow3" />
@@ -389,6 +402,7 @@
             android:layout_marginTop="36dp"
             android:background="#005B9F"
             android:text="Back"
+            android:textAllCaps="false"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginwindow3" />
