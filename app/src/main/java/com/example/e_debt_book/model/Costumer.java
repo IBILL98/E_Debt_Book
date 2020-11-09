@@ -2,11 +2,12 @@ package com.example.e_debt_book.model;
 
 public class Costumer {
 
-    String name ;
-    String lastname;
-    String password;
-    int phone;
-    String email;
+    private String name ;
+    private String lastname;
+    private String phone;
+    private String email;
+    private int status = 0;
+
 
     public Costumer() {
     }
@@ -15,15 +16,14 @@ public class Costumer {
         this.email = email;
     }
 
-    public Costumer(String name, String lastname, String password, int phone, String email) {
+    public Costumer(String name, String lastname, String email, int status) {
         this.name = name;
         this.lastname = lastname;
-        this.password = password;
-        this.phone = phone;
         this.email = email;
+        this.status = status;
     }
 
-    public Costumer(int phone) {
+    public Costumer(String phone,int status) {
         this.phone = phone;
     }
 
@@ -43,19 +43,11 @@ public class Costumer {
         this.lastname = lastname;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -65,5 +57,13 @@ public class Costumer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public  void setStatus(int status) {
+        this.status = status;
     }
 }

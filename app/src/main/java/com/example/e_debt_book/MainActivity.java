@@ -5,8 +5,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private ConstraintLayout costumerLogin;
     private Button costumerBackButton;
     private Button costumertSignUpButton;
+    private EditText costumerLoginEmail;
+    private EditText costumerLoginPassword;
 
 
     ////Main screen Market login attribute
@@ -54,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         costumerLogin = findViewById(R.id.costumerLogin);
         costumerBackButton = findViewById(R.id.costumerBackButton);
         costumertSignUpButton = findViewById(R.id.costumertSignUpButton);
+        costumerLoginEmail = findViewById(R.id.costumerLoginEmail);
+        costumerLoginPassword = findViewById(R.id.costumerLoginPassword);
 
 
         ////Main screen Market login attribute
@@ -103,6 +109,29 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),CostumerRegister.class));
             }
         });
+
+        costumerLogin.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                String email = costumerLoginEmail.getText().toString().trim();
+                String password = costumerLoginPassword.getText().toString().trim();
+                if(TextUtils.isEmpty(email)){
+                    costumerLoginEmail.setError("Email is Required.");
+                    return;
+                }
+                if(TextUtils.isEmpty(password)){
+                    costumerLoginPassword.setError("Password is Required.");
+                    return;
+                }
+                if(password.length() < 7){
+                    costumerLoginPassword.setError("Password must be at least 8 characters");
+                    return;
+                }
+            }
+        });
+
+
 /*
         firebaseDatabase = FirebaseDatabase.getInstance();
         mRootRef = FirebaseDatabase.getInstance().getReference();
