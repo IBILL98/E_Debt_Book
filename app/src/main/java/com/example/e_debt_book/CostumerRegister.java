@@ -114,7 +114,7 @@ public class CostumerRegister extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Toast.makeText(CostumerRegister.this, "User Created ..", Toast.LENGTH_SHORT).show();
 
-                            startActivity(new Intent(getApplicationContext(),NumberVerification.class));
+                            startActivity(new Intent(getApplicationContext(),NumberVerification.class).putExtra("phone",phone));
 
                         }else{
                             Toast.makeText(CostumerRegister.this, "Error !! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

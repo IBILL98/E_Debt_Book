@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -100,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 costumerLogin.setVisibility(View.GONE);
                 mainChoice.setVisibility(View.VISIBLE);
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                finish();
             }
         });
 
@@ -111,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         costumerLogin.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 String email = costumerLoginEmail.getText().toString().trim();

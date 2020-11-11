@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -37,11 +39,16 @@ public class NumberVerification extends AppCompatActivity {
     private String mVerificationId;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
 
+    //String phone = "+905342604688";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_verification);
+
+        String phone = "+9" + getIntent().getStringExtra("phone");
 
 
         //// Number verification attributes
@@ -53,7 +60,7 @@ public class NumberVerification extends AppCompatActivity {
         sendCodeButton = findViewById(R.id.sendCodeButton);
 
         mAuth = FirebaseAuth.getInstance();
-        mAuth.setLanguageCode("tr");
+        mAuth.useAppLanguage();
 
 
 
@@ -93,8 +100,8 @@ public class NumberVerification extends AppCompatActivity {
                 //sendCodeButton.setVisibility(View.GONE);
                 PhoneAuthOptions options =
                         PhoneAuthOptions.newBuilder(mAuth)
-                                .setPhoneNumber("+905526262622")       // Phone number to verify
-                                .setTimeout(10L, TimeUnit.SECONDS) // Timeout and unit
+                                .setPhoneNumber(phone)       // Phone number to verify
+                                .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
                                 .setActivity(NumberVerification.this)                 // Activity (for callback binding)
                                 .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
                                 .build();
@@ -102,10 +109,13 @@ public class NumberVerification extends AppCompatActivity {
             }
         });
 
+
+
         callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                 signInWithPhoneAuthCredential(phoneAuthCredential);
+
             }
 
             @Override
@@ -125,6 +135,31 @@ public class NumberVerification extends AppCompatActivity {
 
     }
 
+
+    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+
+//                            FirebaseUser user = task.getResult().getUser();Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
+
+                            // ...
+                        } else {
+                            // Sign in failed, display a message and update the UI
+                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                                // The verification code entered was invalid
+
+                                String message = task.getException().toString();
+                                Toast.makeText(NumberVerification.this, "Error : " + message, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+    }
+
+/*
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -139,5 +174,5 @@ public class NumberVerification extends AppCompatActivity {
                         }
                     }
                 });
-    }
+    }*/
 }
