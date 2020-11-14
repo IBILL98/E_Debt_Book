@@ -39,9 +39,6 @@ public class NumberVerification extends AppCompatActivity {
     private String mVerificationId;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
 
-    //String phone = "+905342604688";
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +58,6 @@ public class NumberVerification extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mAuth.useAppLanguage();
-
-
-
-
-
 
 
         verificationButtom.setOnClickListener(new View.OnClickListener() {
