@@ -13,4 +13,9 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="number_verification_enter_your_number_text_view">Enter your verification code please</string>
+    <string name="number_verification_send_code_button">Send Code</string>
+    <string name="number_verification_verify_button">Verify</string>
+    <string name="number_verification_later_button">Later</string>
+    <string name="number_verification_hint_code_textview">Code</string>
 </resources>

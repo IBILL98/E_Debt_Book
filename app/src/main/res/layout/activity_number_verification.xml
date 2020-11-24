@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/lol"
     tools:context=".NumberVerification">
+    <!--Koro took every viewable String here to .valuse/strings-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/numberVerificiation"
@@ -49,7 +50,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
-
+            <!-- Image issue!!!!!  -->
             <View
                 android:id="@+id/view99"
                 android:layout_width="35dp"
@@ -81,7 +82,7 @@
                 android:layout_marginTop="40dp"
                 android:background="#F3F3F3"
                 android:ems="10"
-                android:hint="Code"
+                android:hint="@string/number_verification_hint_code_textview"
                 android:inputType="textPersonName"
                 android:paddingLeft="8dp"
                 android:paddingTop="1dp"
@@ -102,7 +103,7 @@
                 android:layout_marginLeft="36dp"
                 android:layout_marginTop="32dp"
                 android:background="#005B9F"
-                android:text="Later"
+                android:text="@string/number_verification_later_button"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textStyle="normal|bold|italic"
@@ -117,11 +118,13 @@
                 android:layout_marginEnd="36dp"
                 android:layout_marginRight="36dp"
                 android:background="#005B9F"
-                android:text="Verify"
+                android:text="@string/number_verification_verify_button"
+
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sendCodeButton" />
+
 
             <TextView
                 android:id="@+id/textView"
@@ -129,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:fontFamily="@font/merienda"
-                android:text="Entere your verification code please"
+                android:text="@string/number_verification_enter_your_number_text_view"
                 android:textAllCaps="false"
                 android:textColor="#005B9F"
                 android:textSize="18sp"
@@ -157,7 +160,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="32dp"
                 android:background="#005B9F"
-                android:text="Send Code"
+                android:text="@string/number_verification_send_code_button"
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
