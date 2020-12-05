@@ -102,7 +102,7 @@ public class CostumerRegister extends AppCompatActivity {
 
 
                 ////Creating the Costumer
-                DatabaseReference conditionRef = mRootRef.child("Costumers");
+                conditionRef = mRootRef.child("Costumers");
                 Costumer cos = new Costumer(costumerRegisterName.getText().toString(),
                                             costumerRegisterLastName.getText().toString(),
                                             costumerRegisterEmail.getText().toString(),0);

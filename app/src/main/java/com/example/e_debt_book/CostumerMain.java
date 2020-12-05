@@ -4,10 +4,14 @@ package com.example.e_debt_book;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -19,12 +23,13 @@ import androidx.appcompat.widget.Toolbar;
 
 public class CostumerMain extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
+    TextView costumer_name;
     private AppBarConfiguration mAppBarConfiguration;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_costumer_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -48,6 +53,32 @@ public class CostumerMain extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+
+        //////Check the User availability
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        //////Channging The Name of the User in the Navigation View
+        View header = navigationView.getHeaderView(0);
+        costumer_name = header.findViewById(R.id.nav_header_title_costumer_name);
+        System.out.println("///////////////////////////");
+        //costumer_name.setText("Costumer Name");
+        System.out.println(costumer_name.getText());
+        System.out.println("///////////////////////////");
+
+        /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+            String uid = user.getUid();
+            System.out.println("///////////////////////");
+            System.out.println(uid);
+        }*/
+
+
     }
 
     @Override
@@ -63,4 +94,6 @@ public class CostumerMain extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }

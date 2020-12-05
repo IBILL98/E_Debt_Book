@@ -108,7 +108,7 @@
                 app:layout_constraintVertical_bias="0.523" />
 
             <EditText
-                android:id="@+id/marketLoginPhone"
+                android:id="@+id/marketLoginEmail"
                 style="cent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="Phone"
-                android:inputType="number"
+                android:inputType="textEmailAddress"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal"
@@ -140,7 +140,7 @@
                 android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/marketLoginPhone" />
+                app:layout_constraintTop_toBottomOf="@+id/marketLoginEmail" />
 
             <Button
                 android:id="@+id/marketLoginButton"
@@ -331,8 +331,8 @@
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Phone"
-                android:inputType="number"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal|italic"
