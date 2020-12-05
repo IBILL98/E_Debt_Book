@@ -79,7 +79,8 @@ public class NumberVerification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(),CostumerMain.class));
                 finish();
             }
         });
@@ -136,6 +137,9 @@ public class NumberVerification extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             FirebaseUser user = task.getResult().getUser();Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
+
+                            //startActivity(new Intent(getApplicationContext(),CostumerMain.class));
+
 
                             // ...
                         } else {
