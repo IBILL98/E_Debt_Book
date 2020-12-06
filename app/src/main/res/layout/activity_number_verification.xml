@@ -142,12 +142,12 @@
 
             <ProgressBar
                 android:id="@+id/verificationProgressBar"
-                style="?android:attr/progressBarStyle"
+                style="@style/Widget.AppCompat.ProgressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
-                android:background="#005B9F"
                 android:indeterminateBehavior="repeat"
+                android:indeterminateTint="#005B9F"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"

@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public class NumberVerification extends AppCompatActivity {
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
     private String mVerificationId;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
+    private ProgressBar verificationProgressBar;
 
 
     @Override
@@ -44,7 +46,7 @@ public class NumberVerification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_verification);
 
-        String phone = "+9" + getIntent().getStringExtra("phone");
+        String phone = "+90" + getIntent().getStringExtra("phone");
 
 
         //// Number verification attributes
@@ -54,6 +56,7 @@ public class NumberVerification extends AppCompatActivity {
         verificationButtom = findViewById(R.id.verificationButtom);
         numberVerificiation = findViewById(R.id.numberVerificiation);
         sendCodeButton = findViewById(R.id.sendCodeButton);
+        verificationProgressBar = findViewById(R.id.verificationProgressBar);
 
         mAuth = FirebaseAuth.getInstance();
         mAuth.useAppLanguage();
@@ -77,7 +80,6 @@ public class NumberVerification extends AppCompatActivity {
         verificationLaterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
                 //startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 startActivity(new Intent(getApplicationContext(),CostumerMain.class));
                 finish();
@@ -88,8 +90,8 @@ public class NumberVerification extends AppCompatActivity {
         sendCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //sendCodeButton.setVisibility(View.GONE);
+                verificationProgressBar.setVisibility(View.VISIBLE);
+                sendCodeButton.setVisibility(View.GONE);
                 PhoneAuthOptions options =
                         PhoneAuthOptions.newBuilder(mAuth)
                                 .setPhoneNumber(phone)       // Phone number to verify
@@ -121,7 +123,7 @@ public class NumberVerification extends AppCompatActivity {
                 mVerificationId = verificationId;
                 mResendToken = token;
                 Toast.makeText(NumberVerification.this, "Code has been sent ,check your messages please", Toast.LENGTH_SHORT).show();
-
+                verificationProgressBar.setVisibility(View.INVISIBLE);
             }
         };
 
@@ -137,7 +139,7 @@ public class NumberVerification extends AppCompatActivity {
 
                             FirebaseUser user = task.getResult().getUser();Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
 
-                            //startActivity(new Intent(getApplicationContext(),CostumerMain.class));
+                            startActivity(new Intent(getApplicationContext(),CostumerMain.class));
 
 
                             // ...
@@ -154,20 +156,4 @@ public class NumberVerification extends AppCompatActivity {
                 });
     }
 
-/*
-    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
-                            ////change the verification statue in the data base and move to the main screen..
-                        } else {
-                            String message = task.getException().toString();
-                            Toast.makeText(NumberVerification.this, "Error : " + message, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }*/
 }
