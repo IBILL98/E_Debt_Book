@@ -19,10 +19,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
+
 
     ////Main screen Choice attributes
     private ConstraintLayout mainChoice;
@@ -50,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private Button who;
     private String text;
     private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference mRootRef;
-    private DatabaseReference conditionRef;
+    DatabaseReference mRootRef,conditionRef;
 
 
     @Override
@@ -144,11 +150,37 @@ public class MainActivity extends AppCompatActivity {
                     costumerLoginPassword.setError("Password must be at least 7 characters");
                     return;
                 }
+
+                mRootRef = FirebaseDatabase.getInstance().getReference();
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+
+                                    // checking if the Costumer has verified his phone number before
+                                    conditionRef = mRootRef.child("Costumers");
+                                    conditionRef.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            for(DataSnapshot data: dataSnapshot.getChildren()){
+                                                String status = data.child("status").getValue().toString();
+                                                if (status.equals("0")){
+                                                    startActivity(new Intent(getApplicationContext(),NumberVerification.class));
+                                                    finish();
+                                                }
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+
+
+
                                     // Sign in success, update UI with the signed-in user's information
                                     //Log.d(TAG, "signInWithEmail:success");
 
