@@ -166,6 +166,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/verificationNumber" />
 
+            <TextView
+                android:id="@+id/verificationPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/merienda"
+                android:textAllCaps="false"
+                android:textColor="#005B9F"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/verificationNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

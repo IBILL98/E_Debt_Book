@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 public class NumberVerification extends AppCompatActivity {
 
 
-    private TextView textView;
+    private TextView textView,verificationPhone;
     private EditText verificationNumber;
     private Button verificationLaterButton,verificationButtom,sendCodeButton;
     private ConstraintLayout numberVerificiation;
@@ -58,8 +58,12 @@ public class NumberVerification extends AppCompatActivity {
         sendCodeButton = findViewById(R.id.sendCodeButton);
         verificationProgressBar = findViewById(R.id.verificationProgressBar);
 
+        verificationPhone = findViewById(R.id.verificationPhone);
+
         mAuth = FirebaseAuth.getInstance();
         mAuth.useAppLanguage();
+
+        verificationPhone.setText(phone);
 
 
         verificationButtom.setOnClickListener(new View.OnClickListener() {

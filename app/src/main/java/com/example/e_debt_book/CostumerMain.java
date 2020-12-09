@@ -63,10 +63,10 @@ public class CostumerMain extends AppCompatActivity {
         //////Channging The Name of the User in the Navigation View
         View header = navigationView.getHeaderView(0);
         costumer_name = header.findViewById(R.id.nav_header_title_costumer_name);
-        System.out.println("///////////////////////////");
+
         //costumer_name.setText("Costumer Name");
         System.out.println(costumer_name.getText());
-        System.out.println("///////////////////////////");
+
 
         /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {

@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.e_debt_book.model.Costumer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -134,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         costumerLoginButton.setOnClickListener(new View.OnClickListener() {
+            Costumer costumer = new Costumer(costumerLoginEmail.toString());
             @Override
             public void onClick(View v) {
                 String email = costumerLoginEmail.getText().toString().trim();
@@ -160,16 +162,30 @@ public class MainActivity extends AppCompatActivity {
 
                                     // checking if the Costumer has verified his phone number before
                                     conditionRef = mRootRef.child("Costumers");
+
+                                    
                                     conditionRef.addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             for(DataSnapshot data: dataSnapshot.getChildren()){
-                                                String status = data.child("status").getValue().toString();
-                                                if (status.equals("0")){
-                                                    startActivity(new Intent(getApplicationContext(),NumberVerification.class));
-                                                    finish();
-                                                }
+                                                String userId = data.getKey();
+                                                Costumer loginUser = data.getValue(Costumer.class);
+                                                if (loginUser.getEmail().equals(email)){
+                                                    System.out.println("************************************************");
+                                                    System.out.println(loginUser.getLastname());
+                                                    System.out.println(loginUser.getName());
+                                                    System.out.println(loginUser.getStatus());
+                                                    System.out.println(loginUser.getEmail());
+                                                    System.out.println("************************************************");
+                                                    if (loginUser.getStatus() == 0){
+                                                        System.out.println("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
+                                                        System.out.println(userId);
+                                                        System.out.println("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
 
+                                                        startActivity(new Intent(getApplicationContext(),NumberVerification.class).putExtra("phone",userId));
+                                                        finish();
+                                                    }
+                                                }
                                             }
                                         }
 
@@ -184,8 +200,8 @@ public class MainActivity extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     //Log.d(TAG, "signInWithEmail:success");
 
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    updateUI(user);
+                                    //FirebaseUser user = mAuth.getCurrentUser();
+                                    //updateUI(user);
 
                                     startActivity(new Intent(getApplicationContext(),CostumerMain.class));
 
