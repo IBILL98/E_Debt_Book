@@ -117,8 +117,14 @@ public class CostumerRegister extends AppCompatActivity {
 
                             //Adding the costumer to the database
                             conditionRef.child(costumerRegisterPhone.getText().toString()).setValue(cos);
+                            cos.setPhone(costumerRegisterPhone.getText().toString());
 
-                            startActivity(new Intent(getApplicationContext(),NumberVerification.class).putExtra("phone",phone));
+                            Intent i = new Intent(CostumerRegister.this,NumberVerification.class);
+                            Bundle b = new Bundle();
+                            b.putSerializable("Costumer",cos);
+                            i.putExtras(b);
+                            startActivity(i);
+                            finish();
 
                         }else{
                             Toast.makeText(CostumerRegister.this, "Error !! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

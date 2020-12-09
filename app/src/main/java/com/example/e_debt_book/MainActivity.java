@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        final Costumer  loginUser1 = new Costumer();
+
 
         ////Main screen Choice attributes
         mainChoice = findViewById(R.id.mainChoice);
@@ -162,27 +164,25 @@ public class MainActivity extends AppCompatActivity {
 
                                     // checking if the Costumer has verified his phone number before
                                     conditionRef = mRootRef.child("Costumers");
-
-                                    
                                     conditionRef.addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             for(DataSnapshot data: dataSnapshot.getChildren()){
                                                 String userId = data.getKey();
                                                 Costumer loginUser = data.getValue(Costumer.class);
+                                                loginUser.setPhone(userId);
                                                 if (loginUser.getEmail().equals(email)){
-                                                    System.out.println("************************************************");
-                                                    System.out.println(loginUser.getLastname());
-                                                    System.out.println(loginUser.getName());
-                                                    System.out.println(loginUser.getStatus());
-                                                    System.out.println(loginUser.getEmail());
-                                                    System.out.println("************************************************");
+                                                    loginUser1.setEmail(loginUser.getEmail());
+                                                    loginUser1.setPhone(loginUser.getPhone());
+                                                    loginUser1.setLastname(loginUser.getLastname());
+                                                    loginUser1.setName(loginUser.getName());
+                                                    loginUser1.setStatus(loginUser.getStatus());
                                                     if (loginUser.getStatus() == 0){
-                                                        System.out.println("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
-                                                        System.out.println(userId);
-                                                        System.out.println("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
-
-                                                        startActivity(new Intent(getApplicationContext(),NumberVerification.class).putExtra("phone",userId));
+                                                        Intent i = new Intent(MainActivity.this,NumberVerification.class);
+                                                        Bundle b = new Bundle();
+                                                        b.putSerializable("Costumer",loginUser);
+                                                        i.putExtras(b);
+                                                        startActivity(i);
                                                         finish();
                                                     }
                                                 }
@@ -203,8 +203,12 @@ public class MainActivity extends AppCompatActivity {
                                     //FirebaseUser user = mAuth.getCurrentUser();
                                     //updateUI(user);
 
-                                    startActivity(new Intent(getApplicationContext(),CostumerMain.class));
-
+                                    Intent i = new Intent(MainActivity.this,CostumerMain.class);
+                                    Bundle b = new Bundle();
+                                    b.putSerializable("Costumer",loginUser1);
+                                    i.putExtras(b);
+                                    startActivity(i);
+                                    finish();
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     //Log.w(TAG, "signInWithEmail:failure", task.getException());

@@ -1,6 +1,8 @@
 package com.example.e_debt_book.model;
 
-public class Costumer {
+import java.io.Serializable;
+
+public class Costumer implements Serializable {
 
     private String name ;
     private String lastname;
@@ -65,5 +67,9 @@ public class Costumer {
 
     public  void setStatus(int status) {
         this.status = status;
+    }
+
+    public String toString(){
+        return "\n name : " + getName() +  "\n Last Name : " +getLastname() +"\n Phone : " + getPhone() + "\n Email : "+ getEmail()  +"\n Status : " + getStatus();
     }
 }
