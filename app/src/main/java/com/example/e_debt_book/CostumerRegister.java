@@ -74,6 +74,15 @@ public class CostumerRegister extends AppCompatActivity {
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
+        costumerRegisterBackButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                conditionRef = mRootRef.child("Costumers");
+
+
+            }
+        });
         costumerRegisterSignUpButtom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,29 +117,52 @@ public class CostumerRegister extends AppCompatActivity {
                                             costumerRegisterEmail.getText().toString(),0);
                 cos.setPhone(null);
 
-                //Create the login informations
-                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                ///First checking if the Phone number is used
+                conditionRef.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(CostumerRegister.this, "User Created ..", Toast.LENGTH_SHORT).show();
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.getValue() != null) {
+                            //phone exists, show the user that in toast
+                            Toast.makeText(CostumerRegister.this, "This Phone Number is already used", Toast.LENGTH_SHORT).show();
+                            System.out.println("**************************************");
+                        } else {
+                            //phone is available, start the registeration operation
+                            //Create the login informations
+                            fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()){
+                                        Toast.makeText(CostumerRegister.this, "User Created ..", Toast.LENGTH_SHORT).show();
 
-                            //Adding the costumer to the database
-                            conditionRef.child(costumerRegisterPhone.getText().toString()).setValue(cos);
-                            cos.setPhone(costumerRegisterPhone.getText().toString());
+                                        //Adding the costumer to the database
+                                        conditionRef.child(costumerRegisterPhone.getText().toString()).setValue(cos);
+                                        cos.setPhone(costumerRegisterPhone.getText().toString());
 
-                            Intent i = new Intent(CostumerRegister.this,NumberVerification.class);
-                            Bundle b = new Bundle();
-                            b.putSerializable("Costumer",cos);
-                            i.putExtras(b);
-                            startActivity(i);
-                            finish();
+                                        Intent i = new Intent(CostumerRegister.this,NumberVerification.class);
+                                        Bundle b = new Bundle();
+                                        b.putSerializable("Costumer",cos);
+                                        i.putExtras(b);
+                                        startActivity(i);
+                                        finish();
 
-                        }else{
-                            Toast.makeText(CostumerRegister.this, "Error !! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        Toast.makeText(CostumerRegister.this, "Error !! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                            System.out.println("///////////////////////////////////////");
                         }
                     }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+
                 });
+
+
+
             }
 
         });

@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private Button who;
     private String text;
-    private FirebaseDatabase firebaseDatabase;
     DatabaseReference mRootRef,conditionRef;
 
 
