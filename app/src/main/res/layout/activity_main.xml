@@ -13,55 +13,54 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        tools:layout_editor_absoluteX="-62dp"
-        tools:layout_editor_absoluteY="-97dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
 
         <Button
             android:id="@+id/marketSignUpButton"
             android:layout_width="125dp"
             android:layout_height="50dp"
+            android:layout_marginStart="175dp"
+            android:layout_marginLeft="175dp"
             android:layout_marginTop="36dp"
-            android:layout_marginEnd="56dp"
-            android:layout_marginRight="56dp"
             android:background="#005B9F"
             android:text="@string/sign_up"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginwindow" />
 
         <Button
-            android:id="@+id/MarketBackButton"
+            android:id="@+id/marketBackButton"
             android:layout_width="125dp"
             android:layout_height="50dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginLeft="56dp"
             android:layout_marginTop="36dp"
+            android:layout_marginEnd="175dp"
+            android:layout_marginRight="175dp"
             android:background="#005B9F"
             android:text="@string/back"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginwindow" />
+        q
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/loginwindow"
             android:layout_width="372dp"
-            android:layout_height="461dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:background="@android:color/white"
+            android:paddingBottom="20dp"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.581"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <View
-                android:id="@+id/view1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                tools:layout_editor_absoluteX="-16dp"
-                tools:layout_editor_absoluteY="162dp" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -70,18 +69,19 @@
                 android:background="#005B9F"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
-                app:layout_constraintTop_toTopOf="@+id/view1"
-                tools:layout_editor_absoluteX="0dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="74dp"
                 android:layout_height="73dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="35dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/view1"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintTop_toTopOf="@+id/toolbar"
+                tools:srcCompat="@drawable/logo_main" />
 
             <View
                 android:id="@+id/view6"
@@ -108,7 +108,7 @@
                 app:layout_constraintVertical_bias="0.523" />
 
             <EditText
-                android:id="@+id/marketLoginPhone"
+                android:id="@+id/marketLoginEmail"
                 style="cent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,12 +117,13 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="Phone"
-                android:inputType="number"
+                android:inputType="textEmailAddress"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/view1"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView1" />
 
             <EditText
@@ -135,12 +136,13 @@
                 android:gravity="center"
                 android:hint="Password"
                 android:inputType="textPassword"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/marketLoginPhone" />
+                app:layout_constraintTop_toBottomOf="@+id/marketLoginEmail" />
 
             <Button
                 android:id="@+id/marketLoginButton"
@@ -190,7 +192,7 @@
         android:id="@+id/mainChoice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -224,7 +226,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/toolbar1"
-                tools:src="@tools:sample/avatars" />
+                app:srcCompat="@drawable/logo_main" />
 
 
             <Button
@@ -260,9 +262,12 @@
         android:id="@+id/costumerLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/loginwindow3"
@@ -331,8 +336,9 @@
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Phone"
-                android:inputType="number"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal|italic"
@@ -350,6 +356,7 @@
                 android:gravity="center"
                 android:hint="Password"
                 android:inputType="textPassword"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal|italic"

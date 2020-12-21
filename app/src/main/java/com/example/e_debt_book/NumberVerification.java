@@ -6,14 +6,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.media.session.IMediaControllerCallback;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.e_debt_book.model.Costumer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -24,13 +25,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
 public class NumberVerification extends AppCompatActivity {
 
 
-    private TextView textView;
+    private TextView textView,verificationPhone;
     private EditText verificationNumber;
     private Button verificationLaterButton,verificationButtom,sendCodeButton;
     private ConstraintLayout numberVerificiation;
@@ -38,15 +41,23 @@ public class NumberVerification extends AppCompatActivity {
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
     private String mVerificationId;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
+    private ProgressBar verificationProgressBar;
+    DatabaseReference mRootRef,conditionRef;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_verification);
+        mRootRef = FirebaseDatabase.getInstance().getReference();
 
-        String phone = "+9" + getIntent().getStringExtra("phone");
+        conditionRef = mRootRef.child("Costumers");
 
+
+        Costumer costumer = (Costumer) getIntent().getSerializableExtra("Costumer");
+        System.out.println(costumer.toString());
+        String phone = "+90" + costumer.getPhone();
 
         //// Number verification attributes
         textView = findViewById(R.id.textView);
@@ -55,9 +66,14 @@ public class NumberVerification extends AppCompatActivity {
         verificationButtom = findViewById(R.id.verificationButtom);
         numberVerificiation = findViewById(R.id.numberVerificiation);
         sendCodeButton = findViewById(R.id.sendCodeButton);
+        verificationProgressBar = findViewById(R.id.verificationProgressBar);
+
+        verificationPhone = findViewById(R.id.verificationPhone);
 
         mAuth = FirebaseAuth.getInstance();
         mAuth.useAppLanguage();
+
+        verificationPhone.setText(phone);
 
 
         verificationButtom.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +84,7 @@ public class NumberVerification extends AppCompatActivity {
                     Toast.makeText(NumberVerification.this, "Please Entere your code", Toast.LENGTH_SHORT).show();
                 }else {
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, vcode);
-                    signInWithPhoneAuthCredential(credential);
+                    signInWithPhoneAuthCredential(credential ,costumer);
 
                 }
             }
@@ -78,8 +94,8 @@ public class NumberVerification extends AppCompatActivity {
         verificationLaterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(),CostumerMain.class));
                 finish();
             }
         });
@@ -88,8 +104,8 @@ public class NumberVerification extends AppCompatActivity {
         sendCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //sendCodeButton.setVisibility(View.GONE);
+                verificationProgressBar.setVisibility(View.VISIBLE);
+                sendCodeButton.setVisibility(View.GONE);
                 PhoneAuthOptions options =
                         PhoneAuthOptions.newBuilder(mAuth)
                                 .setPhoneNumber(phone)       // Phone number to verify
@@ -106,7 +122,8 @@ public class NumberVerification extends AppCompatActivity {
         callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                signInWithPhoneAuthCredential(phoneAuthCredential);
+
+                signInWithPhoneAuthCredential(phoneAuthCredential ,costumer);
 
             }
 
@@ -121,21 +138,26 @@ public class NumberVerification extends AppCompatActivity {
                 mVerificationId = verificationId;
                 mResendToken = token;
                 Toast.makeText(NumberVerification.this, "Code has been sent ,check your messages please", Toast.LENGTH_SHORT).show();
-
+                verificationProgressBar.setVisibility(View.INVISIBLE);
             }
         };
 
     }
 
 
-    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential,Costumer costumer) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            costumer.setStatus(1);
+                            conditionRef.child(costumer.getPhone()).child("status").setValue(costumer.getStatus());
 
-//                            FirebaseUser user = task.getResult().getUser();Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
+                            FirebaseUser user = task.getResult().getUser();Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
+
+                            startActivity(new Intent(getApplicationContext(),CostumerMain.class));
+
 
                             // ...
                         } else {
@@ -151,20 +173,4 @@ public class NumberVerification extends AppCompatActivity {
                 });
     }
 
-/*
-    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
-                            ////change the verification statue in the data base and move to the main screen..
-                        } else {
-                            String message = task.getException().toString();
-                            Toast.makeText(NumberVerification.this, "Error : " + message, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }*/
 }

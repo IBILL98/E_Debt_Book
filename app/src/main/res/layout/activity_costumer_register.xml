@@ -86,6 +86,7 @@
                 android:paddingTop="1dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="1dp"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal|italic"
@@ -106,6 +107,7 @@
                 android:paddingTop="1dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="1dp"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal|italic"
@@ -126,6 +128,7 @@
                 android:paddingTop="1dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="1dp"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal|italic"
@@ -147,6 +150,7 @@
                 android:paddingTop="1dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="1dp"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal|italic"
@@ -167,6 +171,7 @@
                 android:paddingTop="1dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="1dp"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal|italic"
@@ -209,12 +214,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
-                android:background="#005B9F"
                 android:indeterminateBehavior="repeat"
+                android:indeterminateTint="#005B9F"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/costumerRegisterEmail" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+90"
+                android:textColor="@android:color/black"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/costumerRegisterPhone"
+                app:layout_constraintHorizontal_bias="0.742"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                app:layout_constraintVertical_bias="0.552" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

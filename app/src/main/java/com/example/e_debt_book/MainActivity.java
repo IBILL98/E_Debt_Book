@@ -1,21 +1,36 @@
 package com.example.e_debt_book;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.e_debt_book.model.Costumer;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
+
 
     ////Main screen Choice attributes
     private ConstraintLayout mainChoice;
@@ -27,28 +42,34 @@ public class MainActivity extends AppCompatActivity {
     private ConstraintLayout costumerLogin;
     private Button costumerBackButton;
     private Button costumertSignUpButton;
+    private Button costumerLoginButton;
     private EditText costumerLoginEmail;
     private EditText costumerLoginPassword;
 
 
     ////Main screen Market login attribute
     private ConstraintLayout marketLogin;
-    private Button MarketBackButton;
+    private Button marketBackButton;
+    private Button marketSignUpButton;
 
 
+    private FirebaseAuth mAuth;
 
     private TextView textView;
     private Button who;
     private String text;
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference mRootRef;
-    private DatabaseReference conditionRef;
+    DatabaseReference mRootRef,conditionRef;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        final Costumer  loginUser1 = new Costumer();
+
 
         ////Main screen Choice attributes
         mainChoice = findViewById(R.id.mainChoice);
@@ -58,15 +79,16 @@ public class MainActivity extends AppCompatActivity {
         ////Main screen costumer login attribute
         costumerLogin = findViewById(R.id.costumerLogin);
         costumerBackButton = findViewById(R.id.costumerBackButton);
+        costumerLoginButton = findViewById(R.id.costumerLoginButton);
         costumertSignUpButton = findViewById(R.id.costumertSignUpButton);
         costumerLoginEmail = findViewById(R.id.costumerLoginEmail);
         costumerLoginPassword = findViewById(R.id.costumerLoginPassword);
 
 
         ////Main screen Market login attribute
-        costumerLogin = findViewById(R.id.costumerLogin);
         marketLogin = findViewById(R.id.marketLogin);
-        MarketBackButton = findViewById(R.id.MarketBackButton);
+        marketBackButton = findViewById(R.id.marketBackButton);
+        marketSignUpButton = findViewById(R.id.marketSignUpButton);
 
 
 
@@ -88,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        MarketBackButton.setOnClickListener(new View.OnClickListener() {
+        marketBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 marketLogin.setVisibility(View.GONE);
@@ -114,7 +136,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        costumerLogin.setOnClickListener(new View.OnClickListener() {
+        marketSignUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),MarketRegister.class));
+            }
+        });
+
+
+        costumerLoginButton.setOnClickListener(new View.OnClickListener() {
+            Costumer costumer = new Costumer(costumerLoginEmail.toString());
             @Override
             public void onClick(View v) {
                 String email = costumerLoginEmail.getText().toString().trim();
@@ -127,10 +158,77 @@ public class MainActivity extends AppCompatActivity {
                     costumerLoginPassword.setError("Password is Required.");
                     return;
                 }
-                if(password.length() < 7){
-                    costumerLoginPassword.setError("Password must be at least 8 characters");
+                if(password.length() < 6){
+                    costumerLoginPassword.setError("Password must be at least 7 characters");
                     return;
                 }
+
+                mRootRef = FirebaseDatabase.getInstance().getReference();
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+
+                                    // checking if the Costumer has verified his phone number before
+                                    conditionRef = mRootRef.child("Costumers");
+                                    conditionRef.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            for(DataSnapshot data: dataSnapshot.getChildren()){
+                                                String userId = data.getKey();
+                                                Costumer loginUser = data.getValue(Costumer.class);
+                                                loginUser.setPhone(userId);
+                                                if (loginUser.getEmail().equals(email)){
+                                                    loginUser1.setEmail(loginUser.getEmail());
+                                                    loginUser1.setPhone(loginUser.getPhone());
+                                                    loginUser1.setLastname(loginUser.getLastname());
+                                                    loginUser1.setName(loginUser.getName());
+                                                    loginUser1.setStatus(loginUser.getStatus());
+                                                    if (loginUser.getStatus() == 0){
+                                                        Intent i = new Intent(MainActivity.this,NumberVerification.class);
+                                                        Bundle b = new Bundle();
+                                                        b.putSerializable("Costumer",loginUser);
+                                                        i.putExtras(b);
+                                                        startActivity(i);
+                                                        finish();
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+
+
+
+                                    // Sign in success, update UI with the signed-in user's information
+                                    //Log.d(TAG, "signInWithEmail:success");
+
+                                    //FirebaseUser user = mAuth.getCurrentUser();
+                                    //updateUI(user);
+
+                                    Intent i = new Intent(MainActivity.this,CostumerMain.class);
+                                    Bundle b = new Bundle();
+                                    b.putSerializable("Costumer",loginUser1);
+                                    i.putExtras(b);
+                                    startActivity(i);
+                                    finish();
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    //Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                    Toast.makeText(MainActivity.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                    updateUI(null);
+                                    // ...
+                                }
+
+                                // ...
+                            }
+                        });
             }
         });
 
@@ -165,4 +263,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }*/
+
+
+    //Change UI according to user data.
+    public void updateUI(FirebaseUser account){
+
+        if(account != null){
+            Toast.makeText(this,"U Signed In successfully",Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this,CostumerMain.class));
+
+        }else {
+            Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();
+        }
+
+    }
 }
