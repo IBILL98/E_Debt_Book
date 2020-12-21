@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
     ////Main screen Market login attribute
     private ConstraintLayout marketLogin;
-    private Button MarketBackButton;
+    private Button marketBackButton;
+    private Button marketSignUpButton;
 
 
     private FirebaseAuth mAuth;
@@ -85,9 +86,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         ////Main screen Market login attribute
-        costumerLogin = findViewById(R.id.costumerLogin);
         marketLogin = findViewById(R.id.marketLogin);
-        MarketBackButton = findViewById(R.id.MarketBackButton);
+        marketBackButton = findViewById(R.id.marketBackButton);
+        marketSignUpButton = findViewById(R.id.marketSignUpButton);
 
 
 
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        MarketBackButton.setOnClickListener(new View.OnClickListener() {
+        marketBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 marketLogin.setVisibility(View.GONE);
@@ -134,6 +135,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),CostumerRegister.class));
             }
         });
+
+        marketSignUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),MarketRegister.class));
+            }
+        });
+
 
         costumerLoginButton.setOnClickListener(new View.OnClickListener() {
             Costumer costumer = new Costumer(costumerLoginEmail.toString());

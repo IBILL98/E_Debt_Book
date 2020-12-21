@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <Button
             android:id="@+id/marketSignUpButton"
@@ -35,7 +35,7 @@
             app:layout_constraintTop_toBottomOf="@+id/loginwindow" />
 
         <Button
-            android:id="@+id/MarketBackButton"
+            android:id="@+id/marketBackButton"
             android:layout_width="125dp"
             android:layout_height="50dp"
             android:layout_marginTop="36dp"
@@ -192,7 +192,7 @@
         android:id="@+id/mainChoice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -262,7 +262,7 @@
         android:id="@+id/costumerLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -338,6 +338,7 @@
                 android:gravity="center"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal|italic"
@@ -355,6 +356,7 @@
                 android:gravity="center"
                 android:hint="Password"
                 android:inputType="textPassword"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="normal|italic"

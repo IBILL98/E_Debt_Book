@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@android:color/white"
-            android:paddingBottom="30dp"
+            android:paddingBottom="20dp"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +75,7 @@
                 app:layout_constraintVertical_bias="0.523" />
 
             <EditText
-                android:id="@+id/costumerRegisterName"
+                android:id="@+id/marketRegisterName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -96,14 +96,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView97" />
 
             <EditText
-                android:id="@+id/costumerRegisterLastName"
+                android:id="@+id/marketRegisterEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:hint="Email"
-                android:inputType="textPersonName"
+                android:inputType="textPersonName|textEmailAddress"
                 android:paddingLeft="8dp"
                 android:paddingTop="1dp"
                 android:paddingRight="0dp"
@@ -114,17 +114,17 @@
                 android:textStyle="normal|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterName" />
+                app:layout_constraintTop_toBottomOf="@+id/marketRegisterName" />
 
             <EditText
-                android:id="@+id/costumerRegisterPassword"
+                android:id="@+id/marketRegisterPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:hint="Phone"
-                android:inputType="textPassword"
+                android:inputType="textPassword|phone"
                 android:paddingLeft="8dp"
                 android:paddingTop="1dp"
                 android:paddingRight="0dp"
@@ -136,17 +136,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.49"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterLastName" />
+                app:layout_constraintTop_toBottomOf="@+id/marketRegisterEmail" />
 
             <EditText
-                android:id="@+id/costumerRegisterPhone"
+                android:id="@+id/marketRegisterPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:hint="Password"
-                android:inputType="phone"
+                android:inputType="textPassword|phone"
                 android:paddingLeft="8dp"
                 android:paddingTop="1dp"
                 android:paddingRight="0dp"
@@ -157,10 +157,10 @@
                 android:textStyle="normal|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/marketRegisterPhone" />
 
             <EditText
-                android:id="@+id/costumerRegisterEmail"
+                android:id="@+id/marketRegisterIban"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -178,28 +178,28 @@
                 android:textStyle="normal|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterPhone" />
+                app:layout_constraintTop_toBottomOf="@+id/marketRegisterPassword" />
 
             <Button
-                android:id="@+id/costumerRegisterBackButton"
+                android:id="@+id/marketRegisterBackButton"
                 android:layout_width="125dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:background="#005B9F"
                 android:text="@string/back"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textStyle="normal|bold|italic"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2" />
+                app:layout_constraintTop_toBottomOf="@+id/marketRegisterAdress" />
 
             <Button
-                android:id="@+id/costumerRegisterSignUpButtom"
+                android:id="@+id/marketRegisterSignUpButtom"
                 android:layout_width="125dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="50dp"
                 android:layout_marginRight="50dp"
                 android:background="#005B9F"
@@ -207,10 +207,10 @@
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2" />
+                app:layout_constraintTop_toBottomOf="@+id/marketRegisterAdress" />
 
             <ProgressBar
-                android:id="@+id/costumerRegisterProgressBar"
+                android:id="@+id/marketRegisterProgressBar"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -220,7 +220,7 @@
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2" />
+                app:layout_constraintTop_toBottomOf="@+id/marketRegisterAdress" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -231,22 +231,22 @@
                 android:textColor="@android:color/black"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/costumerRegisterPassword"
+                app:layout_constraintEnd_toStartOf="@+id/marketRegisterPhone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterLastName"
+                app:layout_constraintTop_toBottomOf="@+id/marketRegisterEmail"
                 app:layout_constraintVertical_bias="0.0" />
 
             <EditText
-                android:id="@+id/editTextTextMultiLine2"
+                android:id="@+id/marketRegisterAdress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="80dp"
                 android:layout_marginTop="30dp"
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="Adress"
                 android:inputType="textMultiLine"
+                android:minHeight="80dp"
                 android:paddingLeft="8dp"
                 android:paddingTop="1dp"
                 android:paddingBottom="1dp"
@@ -255,7 +255,7 @@
                 android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/marketRegisterIban" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
