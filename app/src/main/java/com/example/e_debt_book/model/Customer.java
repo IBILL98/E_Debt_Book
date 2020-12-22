@@ -2,7 +2,7 @@ package com.example.e_debt_book.model;
 
 import java.io.Serializable;
 
-public class Costumer implements Serializable {
+public class Customer implements Serializable {
 
     private String name ;
     private String lastname;
@@ -11,21 +11,21 @@ public class Costumer implements Serializable {
     private int status = 0;
 
 
-    public Costumer() {
+    public Customer() {
     }
 
-    public Costumer(String email) {
+    public Customer(String email) {
         this.email = email;
     }
 
-    public Costumer(String name, String lastname, String email, int status) {
+    public Customer(String name, String lastname, String email, int status) {
         this.name = name;
         this.lastname = lastname;
         this.email = email;
         this.status = status;
     }
 
-    public Costumer(String phone,int status) {
+    public Customer(String phone, int status) {
         this.phone = phone;
     }
 

@@ -4,24 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CostumerMain">
+    tools:context=".CustomerMain">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#005B9F"
-            app:popupTheme="@style/AppTheme.AppBarOverlay" />
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="321dp"
+                android:layout_height="match_parent"
+                android:background="#005B9F"
+                app:popupTheme="@style/AppTheme.AppBarOverlay" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#005B9F"
+                app:srcCompat="@drawable/ic_baseline_search_24" />
+        </LinearLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
-        layout="@layout/content_costumer_main"
+        layout="@layout/content_customer_main"
         android:background="@android:color/white" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -30,7 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email"
-        android:contentDescription="@string/emaill" />
+        android:contentDescription="@string/emaill"
+        app:backgroundTint="#005B9F"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

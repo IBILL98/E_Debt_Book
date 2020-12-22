@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.e_debt_book.model.Costumer;
+import com.example.e_debt_book.model.Customer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,18 +24,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-
-public class CostumerRegister extends AppCompatActivity {
+public class CustomerRegister extends AppCompatActivity {
 
     //Sign up attributes
-    EditText costumerRegisterName ,costumerRegisterLastName,costumerRegisterPassword,costumerRegisterPhone,costumerRegisterEmail;
-    Button costumerRegisterBackButton,costumerRegisterSignUpButtom;
-    ProgressBar costumerRegisterProgressBar;
-    ConstraintLayout costumerRegister;
+    EditText customerRegisterName, customerRegisterLastName, customerRegisterPassword, customerRegisterPhone, customerRegisterEmail;
+    Button customerRegisterBackButton, customerRegisterSignUpButtom;
+    ProgressBar customerRegisterProgressBar;
+    ConstraintLayout customerRegister;
 
 
     //Firebase attributes
@@ -43,29 +39,26 @@ public class CostumerRegister extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference mRootRef,conditionRef;
 
-    ArrayList costumersList;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_costumer_register);
+        setContentView(R.layout.activity_customer_register);
 
 
         //Sign up attributes
-        costumerRegisterName = findViewById(R.id.costumerRegisterName);
-        costumerRegisterLastName = findViewById(R.id.costumerRegisterLastName);
-        costumerRegisterPassword = findViewById(R.id.costumerRegisterPassword);
-        costumerRegisterPhone = findViewById(R.id.costumerRegisterPhone);
-        costumerRegisterEmail = findViewById(R.id.costumerRegisterEmail);
-        costumerRegisterBackButton = findViewById(R.id.costumerRegisterBackButton);
-        costumerRegisterSignUpButtom = findViewById(R.id.costumerRegisterSignUpButtom);
-        costumerRegister = findViewById(R.id.costumerRegister);
+        customerRegisterName = findViewById(R.id.customerRegisterName);
+        customerRegisterLastName = findViewById(R.id.customerRegisterLastName);
+        customerRegisterPassword = findViewById(R.id.customerRegisterPassword);
+        customerRegisterPhone = findViewById(R.id.customerRegisterPhone);
+        customerRegisterEmail = findViewById(R.id.customerRegisterEmail);
+        customerRegisterBackButton = findViewById(R.id.customerRegisterBackButton);
+        customerRegisterSignUpButtom = findViewById(R.id.customerRegisterSignUpButtom);
+        customerRegister = findViewById(R.id.customerRegister);
 
         fAuth = FirebaseAuth.getInstance();
 
-        costumerRegisterProgressBar = findViewById(R.id.costumerRegisterProgressBar);
+        customerRegisterProgressBar = findViewById(R.id.customerRegisterProgressBar);
 
         if(fAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
@@ -74,47 +67,48 @@ public class CostumerRegister extends AppCompatActivity {
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
-        costumerRegisterBackButton.setOnClickListener(new View.OnClickListener() {
-
+        customerRegisterBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                conditionRef = mRootRef.child("Costumers");
-
 
             }
         });
-        costumerRegisterSignUpButtom.setOnClickListener(new View.OnClickListener() {
+
+
+        customerRegisterSignUpButtom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = costumerRegisterEmail.getText().toString().trim();
-                String password = costumerRegisterPassword.getText().toString().trim();
-                String phone = costumerRegisterPhone.getText().toString().trim();
+                String email = customerRegisterEmail.getText().toString().trim();
+                String password = customerRegisterPassword.getText().toString().trim();
+                String phone = customerRegisterPhone.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
-                    costumerRegisterEmail.setError("Email is Required.");
+                    customerRegisterEmail.setError("Email is Required.");
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
-                    costumerRegisterPassword.setError("Password is Required.");
+                    customerRegisterPassword.setError("Password is Required.");
                     return;
                 }
                 if(password.length() < 7){
-                    costumerRegisterPassword.setError("Password must be at least 8 characters");
+                    customerRegisterPassword.setError("Password must be at least 8 characters");
                     return;
                 }
                 if(TextUtils.isEmpty(phone)){
-                    costumerRegisterPhone.setError("Please Entere the Phone Number");
+                    customerRegisterPhone.setError("Please Entere the Phone Number");
                     return;
                 }
 
-                costumerRegisterProgressBar.setVisibility(View.VISIBLE);
+                customerRegisterProgressBar.setVisibility(View.VISIBLE);
 
 
-                ////Creating the Costumer
-                conditionRef = mRootRef.child("Costumers");
-                Costumer cos = new Costumer(costumerRegisterName.getText().toString(),
-                                            costumerRegisterLastName.getText().toString(),
-                                            costumerRegisterEmail.getText().toString(),0);
+                ////Creating the Customer
+                conditionRef = mRootRef.child("Customers");
+                Customer cos = new Customer(customerRegisterName.getText().toString(),
+                                            customerRegisterLastName.getText().toString(),
+                                            customerRegisterEmail.getText().toString(),0);
+                //set the phone number as Null cause its already the key of the customer in the database
+                //so we dont wanna add it in the database and make it key and cutomer attribute at the same time
                 cos.setPhone(null);
 
                 ///First checking if the Phone number is used
@@ -123,7 +117,7 @@ public class CostumerRegister extends AppCompatActivity {
                     public void onDataChange(DataSnapshot snapshot) {
                         if (snapshot.getValue() != null) {
                             //phone exists, show the user that in toast
-                            Toast.makeText(CostumerRegister.this, "This Phone Number is already used", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CustomerRegister.this, "This Phone Number is already used", Toast.LENGTH_SHORT).show();
                             System.out.println("**************************************");
                         } else {
                             //phone is available, start the registeration operation
@@ -132,21 +126,21 @@ public class CostumerRegister extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()){
-                                        Toast.makeText(CostumerRegister.this, "User Created ..", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(CustomerRegister.this, "User Created ..", Toast.LENGTH_SHORT).show();
 
-                                        //Adding the costumer to the database
-                                        conditionRef.child(costumerRegisterPhone.getText().toString()).setValue(cos);
-                                        cos.setPhone(costumerRegisterPhone.getText().toString());
+                                        //Adding the customer to the database
+                                        conditionRef.child(customerRegisterPhone.getText().toString()).setValue(cos);
+                                        cos.setPhone(customerRegisterPhone.getText().toString());
 
-                                        Intent i = new Intent(CostumerRegister.this,NumberVerification.class);
+                                        Intent i = new Intent(CustomerRegister.this,NumberVerification.class);
                                         Bundle b = new Bundle();
-                                        b.putSerializable("Costumer",cos);
+                                        b.putSerializable("Customer",cos);
                                         i.putExtras(b);
                                         startActivity(i);
                                         finish();
 
                                     }else{
-                                        Toast.makeText(CostumerRegister.this, "Error !! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(CustomerRegister.this, "Error !! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });

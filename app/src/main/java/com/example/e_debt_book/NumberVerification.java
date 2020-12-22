@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.e_debt_book.model.Costumer;
+import com.example.e_debt_book.model.Customer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -52,12 +52,12 @@ public class NumberVerification extends AppCompatActivity {
         setContentView(R.layout.activity_number_verification);
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
-        conditionRef = mRootRef.child("Costumers");
+        conditionRef = mRootRef.child("Customers");
 
 
-        Costumer costumer = (Costumer) getIntent().getSerializableExtra("Costumer");
-        System.out.println(costumer.toString());
-        String phone = "+90" + costumer.getPhone();
+        Customer customer = (Customer) getIntent().getSerializableExtra("Customer");
+        System.out.println(customer.toString());
+        String phone = "+90" + customer.getPhone();
 
         //// Number verification attributes
         textView = findViewById(R.id.textView);
@@ -84,7 +84,7 @@ public class NumberVerification extends AppCompatActivity {
                     Toast.makeText(NumberVerification.this, "Please Entere your code", Toast.LENGTH_SHORT).show();
                 }else {
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, vcode);
-                    signInWithPhoneAuthCredential(credential ,costumer);
+                    signInWithPhoneAuthCredential(credential , customer);
 
                 }
             }
@@ -95,7 +95,7 @@ public class NumberVerification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                startActivity(new Intent(getApplicationContext(),CostumerMain.class));
+                startActivity(new Intent(getApplicationContext(), CustomerMain.class));
                 finish();
             }
         });
@@ -123,7 +123,7 @@ public class NumberVerification extends AppCompatActivity {
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
-                signInWithPhoneAuthCredential(phoneAuthCredential ,costumer);
+                signInWithPhoneAuthCredential(phoneAuthCredential , customer);
 
             }
 
@@ -145,18 +145,18 @@ public class NumberVerification extends AppCompatActivity {
     }
 
 
-    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential,Costumer costumer) {
+    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential, Customer customer) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            costumer.setStatus(1);
-                            conditionRef.child(costumer.getPhone()).child("status").setValue(costumer.getStatus());
+                            customer.setStatus(1);
+                            conditionRef.child(customer.getPhone()).child("status").setValue(customer.getStatus());
 
                             FirebaseUser user = task.getResult().getUser();Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
 
-                            startActivity(new Intent(getApplicationContext(),CostumerMain.class));
+                            startActivity(new Intent(getApplicationContext(), CustomerMain.class));
 
 
                             // ...

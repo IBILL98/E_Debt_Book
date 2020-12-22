@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/lol"
-    tools:context=".CostumerRegister">
+    tools:context=".CustomerRegister">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/costumerRegister"
+        android:id="@+id/customerRegister"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -74,7 +74,7 @@
                 app:layout_constraintVertical_bias="0.523" />
 
             <EditText
-                android:id="@+id/costumerRegisterName"
+                android:id="@+id/customerRegisterName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -95,7 +95,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView97" />
 
             <EditText
-                android:id="@+id/costumerRegisterLastName"
+                android:id="@+id/customerRegisterLastName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -113,10 +113,10 @@
                 android:textStyle="normal|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterName" />
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterName" />
 
             <EditText
-                android:id="@+id/costumerRegisterPassword"
+                android:id="@+id/customerRegisterPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -135,10 +135,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.49"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterLastName" />
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterLastName" />
 
             <EditText
-                android:id="@+id/costumerRegisterPhone"
+                android:id="@+id/customerRegisterPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -156,10 +156,10 @@
                 android:textStyle="normal|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterPassword" />
 
             <EditText
-                android:id="@+id/costumerRegisterEmail"
+                android:id="@+id/customerRegisterEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -177,10 +177,10 @@
                 android:textStyle="normal|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterPhone" />
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterPhone" />
 
             <Button
-                android:id="@+id/costumerRegisterBackButton"
+                android:id="@+id/customerRegisterBackButton"
                 android:layout_width="125dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="50dp"
@@ -192,10 +192,10 @@
                 android:textColor="@android:color/white"
                 android:textStyle="normal|bold|italic"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterEmail" />
 
             <Button
-                android:id="@+id/costumerRegisterSignUpButtom"
+                android:id="@+id/customerRegisterSignUpButtom"
                 android:layout_width="125dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
@@ -206,10 +206,10 @@
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterEmail" />
 
             <ProgressBar
-                android:id="@+id/costumerRegisterProgressBar"
+                android:id="@+id/customerRegisterProgressBar"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -219,7 +219,7 @@
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerRegisterEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterEmail" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -229,7 +229,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/costumerRegisterPhone"
+                app:layout_constraintEnd_toStartOf="@+id/customerRegisterPhone"
                 app:layout_constraintHorizontal_bias="0.742"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar"

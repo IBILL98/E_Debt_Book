@@ -4,7 +4,6 @@ package com.example.e_debt_book;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,17 +20,17 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class CostumerMain extends AppCompatActivity {
+public class CustomerMain extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    TextView costumer_name;
+    TextView customer_name;
     private AppBarConfiguration mAppBarConfiguration;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_costumer_main);
+        setContentView(R.layout.activity_customer_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -62,10 +61,10 @@ public class CostumerMain extends AppCompatActivity {
 
         //////Channging The Name of the User in the Navigation View
         View header = navigationView.getHeaderView(0);
-        costumer_name = header.findViewById(R.id.nav_header_title_costumer_name);
+        customer_name = header.findViewById(R.id.nav_header_title_customer_name);
 
-        //costumer_name.setText("Costumer Name");
-        System.out.println(costumer_name.getText());
+        //customer_name.setText("Customer Name");
+        System.out.println(customer_name.getText());
 
 
         /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -84,7 +83,7 @@ public class CostumerMain extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.costumer_main, menu);
+        getMenuInflater().inflate(R.menu.customer_main, menu);
         return true;
     }
 

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5EB8FF"
     tools:context=".ui.gallery.GalleryFragment">
 
     <TextView
@@ -16,6 +15,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/merienda"
         android:gravity="center_horizontal"
+        android:text="Gallery"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="20sp"
