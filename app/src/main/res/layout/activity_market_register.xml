@@ -8,11 +8,24 @@
     tools:context=".MarketRegister">
 
     <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        android:background="@android:color/holo_orange_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.164" />
+
+    <Spinner
         android:id="@+id/spinner"
         android:layout_width="418dp"
         android:layout_height="91dp"
         android:background="@android:color/holo_orange_dark"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
@@ -20,16 +33,10 @@
         android:layout_width="match_parent"
         android:layout_height="91dp"
         android:background="@android:color/holo_orange_dark"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="129dp" />
-
-    <Spinner
-        android:id="@+id/spinner4"
-        android:layout_width="match_parent"
-        android:layout_height="91dp"
-        android:background="@android:color/holo_orange_dark"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="500dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.846" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/customerRegister"
@@ -38,7 +45,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/loginwindow3"
@@ -127,7 +135,7 @@
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:hint="Email"
-                android:inputType="textPersonName|textEmailAddress"
+                android:inputType="textEmailAddress"
                 android:paddingLeft="8dp"
                 android:paddingTop="1dp"
                 android:paddingRight="0dp"
@@ -148,7 +156,7 @@
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:hint="Phone"
-                android:inputType="textPassword|phone"
+                android:inputType="phone"
                 android:paddingLeft="8dp"
                 android:paddingTop="1dp"
                 android:paddingRight="0dp"
@@ -170,7 +178,7 @@
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:hint="Password"
-                android:inputType="textPassword|phone"
+                android:inputType="textPassword"
                 android:paddingLeft="8dp"
                 android:paddingTop="1dp"
                 android:paddingRight="0dp"
@@ -191,7 +199,7 @@
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:hint="Iban Number"
-                android:inputType="textPostalAddress"
+                android:inputType="number"
                 android:paddingLeft="8dp"
                 android:paddingTop="1dp"
                 android:paddingRight="0dp"
@@ -238,7 +246,7 @@
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="85dp"
                 android:indeterminateBehavior="repeat"
                 android:indeterminateTint="#005B9F"
                 android:visibility="invisible"

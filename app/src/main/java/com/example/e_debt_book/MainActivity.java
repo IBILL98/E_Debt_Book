@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.e_debt_book.model.Customer;
+import com.example.e_debt_book.model.Market;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -49,7 +50,10 @@ public class MainActivity extends AppCompatActivity {
     private ConstraintLayout marketLogin;
     private Button marketBackButton;
     private Button marketSignUpButton;
-
+    private Button marketLoginButton;
+    private EditText marketLoginEmail;
+    private EditText marketLoginPassword;
+    static int usertype = 0;
 
     private FirebaseAuth mAuth;
 
@@ -66,7 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+
+
         final Customer loginUser1 = new Customer();
+
+        final Market marketlogin = new Market();
 
 
         ////Main screen Choice attributes
@@ -87,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
         marketLogin = findViewById(R.id.marketLogin);
         marketBackButton = findViewById(R.id.marketBackButton);
         marketSignUpButton = findViewById(R.id.marketSignUpButton);
+        marketLoginButton = findViewById(R.id.marketLoginButton);
+        marketLoginEmail = findViewById(R.id.marketLoginEmail);
+        marketLoginPassword = findViewById(R.id.marketLoginPassword);
+
 
 
 
@@ -95,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mainChoice.setVisibility(View.GONE);
                 customerLogin.setVisibility(View.VISIBLE);
+                usertype = 0;
+                System.out.println(usertype);
             }
         });
 
@@ -104,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mainChoice.setVisibility(View.GONE);
                 marketLogin.setVisibility(View.VISIBLE);
+                usertype = 1;
+                System.out.println(usertype);
             }
         });
 
@@ -162,27 +178,27 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 mRootRef = FirebaseDatabase.getInstance().getReference();
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
 
-                                    // checking if the Customer has verified his phone number before
-                                    conditionRef = mRootRef.child("Customers");
-                                    conditionRef.addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            for(DataSnapshot data: dataSnapshot.getChildren()){
-                                                String userId = data.getKey();
-                                                Customer loginUser = data.getValue(Customer.class);
-                                                loginUser.setPhone(userId);
-                                                if (loginUser.getEmail().equals(email)){
-                                                    loginUser1.setEmail(loginUser.getEmail());
-                                                    loginUser1.setPhone(loginUser.getPhone());
-                                                    loginUser1.setLastname(loginUser.getLastname());
-                                                    loginUser1.setName(loginUser.getName());
-                                                    loginUser1.setStatus(loginUser.getStatus());
+                conditionRef = mRootRef.child("Customers");
+                conditionRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for(DataSnapshot data: dataSnapshot.getChildren()){
+                            String userId = data.getKey();
+                            Customer loginUser = data.getValue(Customer.class);
+                            loginUser.setPhone(userId);
+                            if (loginUser.getEmail().equals(email)){
+                                loginUser1.setEmail(loginUser.getEmail());
+                                loginUser1.setPhone(loginUser.getPhone());
+                                loginUser1.setLastname(loginUser.getLastname());
+                                loginUser1.setName(loginUser.getName());
+                                loginUser1.setStatus(loginUser.getStatus());
+                                mAuth.signInWithEmailAndPassword(email, password)
+                                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                if (task.isSuccessful()) {
+                                                    // checking if the Customer has verified his phone number before
                                                     if (loginUser.getStatus() == 0){
                                                         Intent i = new Intent(MainActivity.this,NumberVerification.class);
                                                         Bundle b = new Bundle();
@@ -191,44 +207,134 @@ public class MainActivity extends AppCompatActivity {
                                                         startActivity(i);
                                                         finish();
                                                     }
+
+                                                    // Sign in success, update UI with the signed-in user's information
+                                                    //Log.d(TAG, "signInWithEmail:success");
+
+                                                    //FirebaseUser user = mAuth.getCurrentUser();
+                                                    //updateUI(user);
+
+                                                    Intent i = new Intent(MainActivity.this, CustomerMain.class);
+                                                    Bundle b = new Bundle();
+                                                    b.putSerializable("Customer",loginUser1);
+                                                    i.putExtras(b);
+                                                    startActivity(i);
+                                                    finish();
+                                                } else {
+                                                    // If sign in fails, display a message to the user.
+                                                    //Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                                    Toast.makeText(MainActivity.this, "Authentication failed.",
+                                                            Toast.LENGTH_SHORT).show();
+                                                    updateUI(null);
+                                                    // ...
                                                 }
+
+                                                // ...
                                             }
-                                        }
-
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-
-                                        }
-                                    });
-
-
-
-                                    // Sign in success, update UI with the signed-in user's information
-                                    //Log.d(TAG, "signInWithEmail:success");
-
-                                    //FirebaseUser user = mAuth.getCurrentUser();
-                                    //updateUI(user);
-
-                                    Intent i = new Intent(MainActivity.this, CustomerMain.class);
-                                    Bundle b = new Bundle();
-                                    b.putSerializable("Customer",loginUser1);
-                                    i.putExtras(b);
-                                    startActivity(i);
-                                    finish();
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    //Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    Toast.makeText(MainActivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                    updateUI(null);
-                                    // ...
-                                }
-
-                                // ...
+                                        });
+                            }else {
+                                Toast.makeText(MainActivity.this, "User Not found",Toast.LENGTH_SHORT).show();
                             }
-                        });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
             }
         });
+
+        marketLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = marketLoginEmail.getText().toString().trim();
+                String password = marketLoginPassword.getText().toString().trim();
+                if(TextUtils.isEmpty(email)){
+                    customerLoginEmail.setError("Email is Required.");
+                    return;
+                }
+                if(TextUtils.isEmpty(password)){
+                    customerLoginPassword.setError("Password is Required.");
+                    return;
+                }
+                if(password.length() < 6){
+                    customerLoginPassword.setError("Password must be at least 7 characters");
+                    return;
+                }
+
+                mRootRef = FirebaseDatabase.getInstance().getReference();
+
+                conditionRef = mRootRef.child("Markets");
+                conditionRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for(DataSnapshot data: dataSnapshot.getChildren()){
+                            String userId = data.getKey();
+                            Market loginUser = data.getValue(Market.class);
+                            loginUser.setPhone(userId);
+                            if (loginUser.getEmail().equals(email)){
+                                marketlogin.setEmail(loginUser.getEmail());
+                                marketlogin.setPhone(loginUser.getPhone());
+                                marketlogin.setIban(loginUser.getIban());
+                                marketlogin.setName(loginUser.getName());
+                                marketlogin.setAdress(loginUser.getAdress());
+                                marketlogin.setStatus(loginUser.getStatus());
+                                mAuth.signInWithEmailAndPassword(email, password)
+                                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                if (task.isSuccessful()) {
+                                                    // checking if the Customer has verified his phone number before
+                                                    if (loginUser.getStatus() == 0){
+                                                        Intent i = new Intent(MainActivity.this,NumberVerification.class);
+                                                        Bundle b = new Bundle();
+                                                        b.putSerializable("Market",loginUser);
+                                                        i.putExtras(b);
+                                                        startActivity(i);
+                                                        finish();
+                                                    }
+
+                                                    // Sign in success, update UI with the signed-in user's information
+                                                    //Log.d(TAG, "signInWithEmail:success");
+
+                                                    //FirebaseUser user = mAuth.getCurrentUser();
+                                                    //updateUI(user);
+
+                                                    Intent i = new Intent(MainActivity.this, MarketMain.class);
+                                                    Bundle b = new Bundle();
+                                                    b.putSerializable("Customer",marketlogin);
+                                                    i.putExtras(b);
+                                                    startActivity(i);
+                                                    finish();
+                                                } else {
+                                                    // If sign in fails, display a message to the user.
+                                                    //Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                                    Toast.makeText(MainActivity.this, "Authentication failed.",
+                                                            Toast.LENGTH_SHORT).show();
+                                                    updateUI(null);
+                                                    // ...
+                                                }
+
+                                                // ...
+                                            }
+                                        });
+                            }else {
+                                Toast.makeText(MainActivity.this, "User Not found",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+
 
 
 /*
@@ -261,6 +367,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }*/
+
 
 
     //Change UI according to user data.

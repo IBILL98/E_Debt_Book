@@ -43,6 +43,7 @@ public class MarketRegister extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market_register);
 
+
         marketRegisterName = findViewById(R.id.marketRegisterName);
         marketRegisterEmail = findViewById(R.id.marketRegisterEmail);
         marketRegisterPhone = findViewById(R.id.marketRegisterPhone);
@@ -80,6 +81,8 @@ public class MarketRegister extends AppCompatActivity {
                 String iban = marketRegisterIban.getText().toString().trim();
                 String adress = marketRegisterAdress.getText().toString().trim();
 
+
+                System.out.println(phone);
                 /////Check if the Atrtributes are Empty
                 if(TextUtils.isEmpty(email)){
                     marketRegisterEmail.setError("Email is Required.");
@@ -114,13 +117,10 @@ public class MarketRegister extends AppCompatActivity {
 
                 //Creating the Market
                 conditionRef = mRootRef.child("Markets");
-                Market market = new Market(name,password,phone,email,iban,adress);
-                //set the Email as Null cause its already the key of the market in the database
-                //so we dont wanna add it in the database and make it key and market attribute at the same time
-                market.setEmail(null);
+                Market market = new Market(name,password,phone,email,iban,adress,0);
 
                 ///First checking if the email is used
-                conditionRef.child(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                conditionRef.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         if (snapshot.getValue() != null) {
@@ -136,11 +136,10 @@ public class MarketRegister extends AppCompatActivity {
                                     if (task.isSuccessful()){
                                         Toast.makeText(MarketRegister.this, "User Created ..", Toast.LENGTH_SHORT).show();
 
-                                        //Adding the customer to the database
-                                        conditionRef.child(email).setValue(market);
-                                        market.setEmail(email);
+                                        //Adding the market to the database
+                                        conditionRef.child(phone).setValue(market);
 
-                                        Intent i = new Intent(MarketRegister.this,MarketMain.class);
+                                        Intent i = new Intent(MarketRegister.this,NumberVerification.class);
                                         Bundle b = new Bundle();
                                         b.putSerializable("Market",market);
                                         i.putExtras(b);
@@ -162,13 +161,6 @@ public class MarketRegister extends AppCompatActivity {
                     }
 
                 });
-
-
-
-
-
-
-
             }
         });
 

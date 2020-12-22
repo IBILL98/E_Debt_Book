@@ -12,7 +12,9 @@
         <activity android:name=".MarketMain"></activity>
         <activity android:name=".NumberVerification" />
         <activity android:name=".MarketRegister" />
-        <activity android:name=".CostumerRegister" />
+        <activity android:name=".CustomerRegister" />
+        <activity android:name=".CustomerMain" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

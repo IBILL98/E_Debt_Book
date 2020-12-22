@@ -12,12 +12,12 @@
         android:id="@+id/marketLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
         <Button
             android:id="@+id/marketSignUpButton"
@@ -116,7 +116,7 @@
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Phone"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
@@ -192,7 +192,7 @@
         android:id="@+id/mainChoice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

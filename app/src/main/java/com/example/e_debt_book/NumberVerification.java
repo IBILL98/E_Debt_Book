@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.e_debt_book.model.Customer;
+import com.example.e_debt_book.model.Market;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -52,12 +53,9 @@ public class NumberVerification extends AppCompatActivity {
         setContentView(R.layout.activity_number_verification);
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
-        conditionRef = mRootRef.child("Customers");
 
 
-        Customer customer = (Customer) getIntent().getSerializableExtra("Customer");
-        System.out.println(customer.toString());
-        String phone = "+90" + customer.getPhone();
+
 
         //// Number verification attributes
         textView = findViewById(R.id.textView);
@@ -73,102 +71,198 @@ public class NumberVerification extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mAuth.useAppLanguage();
 
-        verificationPhone.setText(phone);
+        if(MainActivity.usertype==0){
+            conditionRef = mRootRef.child("Customers");
+            Customer customer = (Customer) getIntent().getSerializableExtra("Customer");
+            String phone = "+90" + customer.getPhone();
+            verificationPhone.setText(phone);
 
 
-        verificationButtom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String vcode = verificationNumber.getText().toString();
-                if (TextUtils.isEmpty(vcode)){
-                    Toast.makeText(NumberVerification.this, "Please Entere your code", Toast.LENGTH_SHORT).show();
-                }else {
-                    PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, vcode);
-                    signInWithPhoneAuthCredential(credential , customer);
+            verificationButtom.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String vcode = verificationNumber.getText().toString();
+                    if (TextUtils.isEmpty(vcode)){
+                        Toast.makeText(NumberVerification.this, "Please Entere your code", Toast.LENGTH_SHORT).show();
+                    }else {
+                        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, vcode);
+                        signInWithPhoneAuthCredential(credential , customer,null,0);
+
+                    }
+                }
+            });
+
+
+            verificationLaterButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), CustomerMain.class));
+                    finish();
+                }
+            });
+
+
+            sendCodeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    verificationProgressBar.setVisibility(View.VISIBLE);
+                    sendCodeButton.setVisibility(View.GONE);
+                    PhoneAuthOptions options =
+                            PhoneAuthOptions.newBuilder(mAuth)
+                                    .setPhoneNumber(phone)       // Phone number to verify
+                                    .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
+                                    .setActivity(NumberVerification.this)                 // Activity (for callback binding)
+                                    .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+                                    .build();
+                    PhoneAuthProvider.verifyPhoneNumber(options);
+                }
+            });
+            callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                @Override
+                public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+
+                    signInWithPhoneAuthCredential(phoneAuthCredential , customer,null,0);
 
                 }
-            }
-        });
+
+                @Override
+                public void onVerificationFailed(@NonNull FirebaseException e) {
+                    Toast.makeText(NumberVerification.this, "The Number Couldnt be verified Try again please ..", Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onCodeSent(@NonNull String verificationId,
+                                       @NonNull PhoneAuthProvider.ForceResendingToken token) {
+                    // Save verification ID and resending token so we can use them later
+                    mVerificationId = verificationId;
+                    mResendToken = token;
+                    Toast.makeText(NumberVerification.this, "Code has been sent ,check your messages please", Toast.LENGTH_SHORT).show();
+                    verificationProgressBar.setVisibility(View.INVISIBLE);
+                }
+            };
+
+        }else{
+
+            conditionRef = mRootRef.child("Markets");
+            Market market = (Market) getIntent().getSerializableExtra("Market");
+            String phone = "+90" + market.getPhone();
+            verificationPhone.setText(phone);
 
 
-        verificationLaterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                startActivity(new Intent(getApplicationContext(), CustomerMain.class));
-                finish();
-            }
-        });
+            verificationButtom.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String vcode = verificationNumber.getText().toString();
+                    if (TextUtils.isEmpty(vcode)){
+                        Toast.makeText(NumberVerification.this, "Please Entere your code", Toast.LENGTH_SHORT).show();
+                    }else {
+                        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, vcode);
+                        signInWithPhoneAuthCredential(credential , null,market,1);
+
+                    }
+                }
+            });
 
 
-        sendCodeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                verificationProgressBar.setVisibility(View.VISIBLE);
-                sendCodeButton.setVisibility(View.GONE);
-                PhoneAuthOptions options =
-                        PhoneAuthOptions.newBuilder(mAuth)
-                                .setPhoneNumber(phone)       // Phone number to verify
-                                .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
-                                .setActivity(NumberVerification.this)                 // Activity (for callback binding)
-                                .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
-                                .build();
-                PhoneAuthProvider.verifyPhoneNumber(options);
-            }
-        });
+            verificationLaterButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), MarketMain.class));
+                    finish();
+                }
+            });
 
 
+            sendCodeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    verificationProgressBar.setVisibility(View.VISIBLE);
+                    sendCodeButton.setVisibility(View.GONE);
+                    PhoneAuthOptions options =
+                            PhoneAuthOptions.newBuilder(mAuth)
+                                    .setPhoneNumber(phone)       // Phone number to verify
+                                    .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
+                                    .setActivity(NumberVerification.this)                 // Activity (for callback binding)
+                                    .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+                                    .build();
+                    PhoneAuthProvider.verifyPhoneNumber(options);
+                }
+            });
+            callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                @Override
+                public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
-        callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-            @Override
-            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                    signInWithPhoneAuthCredential(phoneAuthCredential , null,market,1);
 
-                signInWithPhoneAuthCredential(phoneAuthCredential , customer);
+                }
 
-            }
-
-            @Override
-            public void onVerificationFailed(@NonNull FirebaseException e) {
-                Toast.makeText(NumberVerification.this, "The Number Couldnt be verified Try again please ..", Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onCodeSent(@NonNull String verificationId,
-                                   @NonNull PhoneAuthProvider.ForceResendingToken token) {
-                // Save verification ID and resending token so we can use them later
-                mVerificationId = verificationId;
-                mResendToken = token;
-                Toast.makeText(NumberVerification.this, "Code has been sent ,check your messages please", Toast.LENGTH_SHORT).show();
-                verificationProgressBar.setVisibility(View.INVISIBLE);
-            }
-        };
+                @Override
+                public void onVerificationFailed(@NonNull FirebaseException e) {
+                    Toast.makeText(NumberVerification.this, "The Number Couldnt be verified Try again please ..", Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onCodeSent(@NonNull String verificationId,
+                                       @NonNull PhoneAuthProvider.ForceResendingToken token) {
+                    // Save verification ID and resending token so we can use them later
+                    mVerificationId = verificationId;
+                    mResendToken = token;
+                    Toast.makeText(NumberVerification.this, "Code has been sent ,check your messages please", Toast.LENGTH_SHORT).show();
+                    verificationProgressBar.setVisibility(View.INVISIBLE);
+                }
+            };
+        }
 
     }
 
 
-    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential, Customer customer) {
+    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential, Customer customer,Market market,int type) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            customer.setStatus(1);
-                            conditionRef.child(customer.getPhone()).child("status").setValue(customer.getStatus());
+                        if (type == 0){
+                            if (task.isSuccessful()) {
+                                customer.setStatus(1);
+                                conditionRef.child(customer.getPhone()).child("status").setValue(customer.getStatus());
 
-                            FirebaseUser user = task.getResult().getUser();Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
+                                FirebaseUser user = task.getResult().getUser();Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
 
-                            startActivity(new Intent(getApplicationContext(), CustomerMain.class));
+                                startActivity(new Intent(getApplicationContext(), CustomerMain.class));
 
 
-                            // ...
-                        } else {
-                            // Sign in failed, display a message and update the UI
-                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                // The verification code entered was invalid
+                                // ...
+                            } else {
+                                // Sign in failed, display a message and update the UI
+                                if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                                    // The verification code entered was invalid
 
-                                String message = task.getException().toString();
-                                Toast.makeText(NumberVerification.this, "Error : " + message, Toast.LENGTH_SHORT).show();
+                                    String message = task.getException().toString();
+                                    Toast.makeText(NumberVerification.this, "Error : " + message, Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }else{
+                            if (task.isSuccessful()) {
+                                market.setStatus(1);
+                                conditionRef.child(market.getPhone()).child("status").setValue(market.getStatus());
+
+                                FirebaseUser user = task.getResult().getUser();Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
+
+                                startActivity(new Intent(getApplicationContext(), CustomerMain.class));
+
+
+                                // ...
+                            } else {
+                                // Sign in failed, display a message and update the UI
+                                if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                                    // The verification code entered was invalid
+
+                                    String message = task.getException().toString();
+                                    Toast.makeText(NumberVerification.this, "Error : " + message, Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
+
                     }
                 });
     }

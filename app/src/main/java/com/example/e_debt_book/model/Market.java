@@ -10,18 +10,29 @@ public class Market implements Serializable {
     String email;
     String iban;
     String adress;
+    private int status = 0;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public Market() {
     }
 
 
-    public Market(String name, String password, String phone, String email, String iban, String adress) {
+    public Market(String name, String password, String phone, String email, String iban, String adress,int status) {
         this.name = name;
         this.password = password;
         this.phone = phone;
         this.email = email;
         this.iban = iban;
         this.adress = adress;
+        this.status = status;
+
     }
 
     public Market(String email) {
