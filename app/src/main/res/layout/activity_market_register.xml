@@ -7,6 +7,37 @@
     android:background="@drawable/lol"
     tools:context=".MarketRegister">
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="418dp"
+        android:layout_height="91dp"
+        android:background="@android:color/holo_orange_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="418dp"
+        android:layout_height="91dp"
+        android:background="@android:color/holo_orange_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="418dp"
+        android:layout_height="91dp"
+        android:background="@android:color/holo_orange_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="418dp"
+        android:layout_height="91dp"
+        android:background="@android:color/holo_orange_dark"
+        tools:layout_editor_absoluteY="80dp" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/costumerRegister"
         android:layout_width="match_parent"
