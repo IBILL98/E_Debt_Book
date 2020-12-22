@@ -4,162 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".myCustomers">
+    tools:context=".myCustomers"
+    tools:ignore="ExtraText">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/myCustomersMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/lol"
+        android:background="#005B9F"
         android:visibility="visible"
-        tools:context=".MainActivity">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MainActivity" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/loginwindow3"
-            android:layout_width="371dp"
-            android:layout_height="648dp"
-            android:layout_marginTop="24dp"
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
             android:background="@android:color/white"
-            android:paddingBottom="20dp"
-            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar77"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#005B9F"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addNewDebtButton"
+                android:layout_width="62dp"
+                android:layout_height="57dp"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                android:layout_marginBottom="4dp"
+                android:contentDescription="@string/emaill"
+                app:backgroundTint="#005B9F"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:id="@+id/view77"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="#5EB8FF"
-                app:layout_constraintBottom_toBottomOf="@+id/toolbar77"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.048"
-                app:layout_constraintStart_toStartOf="@+id/toolbar77"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.523" />
-
-            <View
-                android:id="@+id/view2"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="#5EB8FF"
-                app:layout_constraintBottom_toBottomOf="@+id/toolbar77"
-                app:layout_constraintEnd_toEndOf="@+id/toolbar77"
-                app:layout_constraintHorizontal_bias="0.951"
-                app:layout_constraintStart_toStartOf="@+id/toolbar77"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.523" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="156dp"
-                android:layout_height="33dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="26dp"
-                android:text="@string/user_infos"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar77" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="143dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/total_debts"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/userInfoDisplay" />
-
-            <TextView
-                android:id="@+id/userInfoDisplay"
-                android:layout_width="316dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-            <TextView
-                android:id="@+id/totalDebtsDisplay"
-                android:layout_width="112dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/userInfoDisplay" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="250dp"
-                android:layout_height="39dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/number_of_customers"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-            <TextView
-                android:id="@+id/noOfCustomersDisplay"
-                android:layout_width="63dp"
-                android:layout_height="34dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/totalDebtsDisplay" />
+                app:srcCompat="@drawable/ic_baseline_add_24"
+                tools:ignore="VectorDrawableCompat" />
 
             <ListView
-                android:id="@+id/listOfDebts"
-                android:layout_width="341dp"
-                android:layout_height="304dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
+                android:id="@+id/debtsList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="70dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="119dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/list_of_debts"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="172dp"
+            android:layout_marginLeft="172dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="181dp"
+            android:layout_marginRight="181dp"
+            android:layout_marginBottom="23dp"
+            android:text="@string/my_customers"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
