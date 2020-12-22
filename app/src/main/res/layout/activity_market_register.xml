@@ -17,29 +17,22 @@
 
     <Spinner
         android:id="@+id/spinner2"
-        android:layout_width="418dp"
+        android:layout_width="match_parent"
         android:layout_height="91dp"
         android:background="@android:color/holo_orange_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="418dp"
-        android:layout_height="91dp"
-        android:background="@android:color/holo_orange_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="129dp" />
 
     <Spinner
         android:id="@+id/spinner4"
-        android:layout_width="418dp"
+        android:layout_width="match_parent"
         android:layout_height="91dp"
         android:background="@android:color/holo_orange_dark"
-        tools:layout_editor_absoluteY="80dp" />
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="500dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/costumerRegister"
+        android:id="@+id/customerRegister"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

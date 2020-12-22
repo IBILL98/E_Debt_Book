@@ -7,20 +7,18 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.e_debt_book.model.Costumer;
+import com.example.e_debt_book.model.Customer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,16 +33,16 @@ public class MainActivity extends AppCompatActivity {
     ////Main screen Choice attributes
     private ConstraintLayout mainChoice;
     private Button mainMarketButton;
-    private Button mainCostumertButton;
+    private Button mainCustomertButton;
 
 
-    ////Main screen costumer login attribute
-    private ConstraintLayout costumerLogin;
-    private Button costumerBackButton;
-    private Button costumertSignUpButton;
-    private Button costumerLoginButton;
-    private EditText costumerLoginEmail;
-    private EditText costumerLoginPassword;
+    ////Main screen customer login attribute
+    private ConstraintLayout customerLogin;
+    private Button customerBackButton;
+    private Button customertSignUpButton;
+    private Button customerLoginButton;
+    private EditText customerLoginEmail;
+    private EditText customerLoginPassword;
 
 
     ////Main screen Market login attribute
@@ -68,21 +66,21 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        final Costumer  loginUser1 = new Costumer();
+        final Customer loginUser1 = new Customer();
 
 
         ////Main screen Choice attributes
         mainChoice = findViewById(R.id.mainChoice);
         mainMarketButton = findViewById(R.id.mainMarketButton);
-        mainCostumertButton = findViewById(R.id.mainCostumertButton);
+        mainCustomertButton = findViewById(R.id.mainCustomertButton);
 
-        ////Main screen costumer login attribute
-        costumerLogin = findViewById(R.id.costumerLogin);
-        costumerBackButton = findViewById(R.id.costumerBackButton);
-        costumerLoginButton = findViewById(R.id.costumerLoginButton);
-        costumertSignUpButton = findViewById(R.id.costumertSignUpButton);
-        costumerLoginEmail = findViewById(R.id.costumerLoginEmail);
-        costumerLoginPassword = findViewById(R.id.costumerLoginPassword);
+        ////Main screen customer login attribute
+        customerLogin = findViewById(R.id.customerLogin);
+        customerBackButton = findViewById(R.id.customerBackButton);
+        customerLoginButton = findViewById(R.id.customerLoginButton);
+        customertSignUpButton = findViewById(R.id.customertSignUpButton);
+        customerLoginEmail = findViewById(R.id.customerLoginEmail);
+        customerLoginPassword = findViewById(R.id.customerLoginPassword);
 
 
         ////Main screen Market login attribute
@@ -92,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        mainCostumertButton.setOnClickListener(new View.OnClickListener() {
+        mainCustomertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mainChoice.setVisibility(View.GONE);
-                costumerLogin.setVisibility(View.VISIBLE);
+                customerLogin.setVisibility(View.VISIBLE);
             }
         });
 
@@ -118,10 +116,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        costumerBackButton.setOnClickListener(new View.OnClickListener() {
+        customerBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                costumerLogin.setVisibility(View.GONE);
+                customerLogin.setVisibility(View.GONE);
                 mainChoice.setVisibility(View.VISIBLE);
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
@@ -129,10 +127,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        costumertSignUpButton.setOnClickListener(new View.OnClickListener() {
+        customertSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),CostumerRegister.class));
+                startActivity(new Intent(getApplicationContext(), CustomerRegister.class));
             }
         });
 
@@ -144,22 +142,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        costumerLoginButton.setOnClickListener(new View.OnClickListener() {
-            Costumer costumer = new Costumer(costumerLoginEmail.toString());
+        customerLoginButton.setOnClickListener(new View.OnClickListener() {
+            Customer customer = new Customer(customerLoginEmail.toString());
             @Override
             public void onClick(View v) {
-                String email = costumerLoginEmail.getText().toString().trim();
-                String password = costumerLoginPassword.getText().toString().trim();
+                String email = customerLoginEmail.getText().toString().trim();
+                String password = customerLoginPassword.getText().toString().trim();
                 if(TextUtils.isEmpty(email)){
-                    costumerLoginEmail.setError("Email is Required.");
+                    customerLoginEmail.setError("Email is Required.");
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
-                    costumerLoginPassword.setError("Password is Required.");
+                    customerLoginPassword.setError("Password is Required.");
                     return;
                 }
                 if(password.length() < 6){
-                    costumerLoginPassword.setError("Password must be at least 7 characters");
+                    customerLoginPassword.setError("Password must be at least 7 characters");
                     return;
                 }
 
@@ -170,14 +168,14 @@ public class MainActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
 
-                                    // checking if the Costumer has verified his phone number before
-                                    conditionRef = mRootRef.child("Costumers");
+                                    // checking if the Customer has verified his phone number before
+                                    conditionRef = mRootRef.child("Customers");
                                     conditionRef.addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             for(DataSnapshot data: dataSnapshot.getChildren()){
                                                 String userId = data.getKey();
-                                                Costumer loginUser = data.getValue(Costumer.class);
+                                                Customer loginUser = data.getValue(Customer.class);
                                                 loginUser.setPhone(userId);
                                                 if (loginUser.getEmail().equals(email)){
                                                     loginUser1.setEmail(loginUser.getEmail());
@@ -188,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                                                     if (loginUser.getStatus() == 0){
                                                         Intent i = new Intent(MainActivity.this,NumberVerification.class);
                                                         Bundle b = new Bundle();
-                                                        b.putSerializable("Costumer",loginUser);
+                                                        b.putSerializable("Customer",loginUser);
                                                         i.putExtras(b);
                                                         startActivity(i);
                                                         finish();
@@ -211,9 +209,9 @@ public class MainActivity extends AppCompatActivity {
                                     //FirebaseUser user = mAuth.getCurrentUser();
                                     //updateUI(user);
 
-                                    Intent i = new Intent(MainActivity.this,CostumerMain.class);
+                                    Intent i = new Intent(MainActivity.this, CustomerMain.class);
                                     Bundle b = new Bundle();
-                                    b.putSerializable("Costumer",loginUser1);
+                                    b.putSerializable("Customer",loginUser1);
                                     i.putExtras(b);
                                     startActivity(i);
                                     finish();
@@ -236,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
 /*
         firebaseDatabase = FirebaseDatabase.getInstance();
         mRootRef = FirebaseDatabase.getInstance().getReference();
-        conditionRef = mRootRef.child("Costumers").child("456165").child("first_name");
+        conditionRef = mRootRef.child("Custumers").child("456165").child("first_name");
         who = (Button)findViewById(R.id.who);
         textView = (TextView)findViewById(R.id.textView);*/
     }
@@ -270,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(account != null){
             Toast.makeText(this,"U Signed In successfully",Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this,CostumerMain.class));
+            startActivity(new Intent(this, CustomerMain.class));
 
         }else {
             Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();

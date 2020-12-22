@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CostumerMain">
+    tools:context=".CustomerMain">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
-        layout="@layout/content_costumer_main"
+        layout="@layout/content_customer_main"
         android:background="@android:color/white" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

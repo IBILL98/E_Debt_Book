@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name=".CostumerMain"
+            android:name=".CustomerMain"
             android:label="@string/title_activity_cotumer_main"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".NumberVerification" />
         <activity android:name=".MarketRegister" />
-        <activity android:name=".CostumerRegister" />
+        <activity android:name=".CustomerRegister" />
         <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -230,12 +230,12 @@
 
 
             <Button
-                android:id="@+id/mainCostumertButton"
+                android:id="@+id/mainCustomertButton"
                 android:layout_width="157dp"
                 android:layout_height="63dp"
                 android:layout_marginTop="44dp"
                 android:background="#005B9F"
-                android:text="Costumer"
+                android:text="Customer"
                 android:textColor="@android:color/white"
                 android:textStyle="normal|bold|italic"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -259,7 +259,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/costumerLogin"
+        android:id="@+id/customerLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
@@ -328,7 +328,7 @@
                 app:layout_constraintVertical_bias="0.523" />
 
             <EditText
-                android:id="@+id/costumerLoginEmail"
+                android:id="@+id/customerLoginEmail"
                 style="cent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -347,7 +347,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <EditText
-                android:id="@+id/costumerLoginPassword"
+                android:id="@+id/customerLoginPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
@@ -362,10 +362,10 @@
                 android:textStyle="normal|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerLoginEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/customerLoginEmail" />
 
             <Button
-                android:id="@+id/costumerLoginButton"
+                android:id="@+id/customerLoginButton"
                 android:layout_width="125dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="36dp"
@@ -376,12 +376,12 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/costumerLoginPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/customerLoginPassword" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/costumertSignUpButton"
+            android:id="@+id/customertSignUpButton"
             android:layout_width="125dp"
             android:layout_height="50dp"
             android:layout_marginStart="175dp"
@@ -396,7 +396,7 @@
             app:layout_constraintTop_toBottomOf="@+id/loginwindow3" />
 
         <Button
-            android:id="@+id/costumerBackButton"
+            android:id="@+id/customerBackButton"
             android:layout_width="125dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"

@@ -25,8 +25,8 @@ public class Market {
         this.adress = adress;
     }
 
-    public Market(String iban) {
-        this.iban = iban;
+    public Market(String email) {
+        this.email = email;
     }
 
     public String getName() {
