@@ -2,7 +2,7 @@
     <string name="app_name">E_Debt_Book</string>
     <string name="sign_up">Sign Up</string>
     <string name="back">Back</string>
-    <string name="title_activity_costumer_main">CostumerMain</string>
+    <string name="title_activity_customer_main">CustomerMain</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -18,7 +18,7 @@
     <string name="number_verification_verify_button">Verify</string>
     <string name="number_verification_later_button">Later</string>
     <string name="number_verification_hint_code_textview">Code</string>
-    <string name="title_activity_cotumer_main">CotumerMain</string>
-    <string name="title_activity_costumer_main2">CostumerMain</string>
+    <string name="title_activity_cotumer_main">CutomerMain</string>
+    <string name="title_activity_customer_main2">CustomerMain</string>
     <string name="emaill">Email icon</string>
 </resources>

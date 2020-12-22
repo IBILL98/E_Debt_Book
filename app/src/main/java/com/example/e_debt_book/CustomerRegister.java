@@ -107,7 +107,8 @@ public class CustomerRegister extends AppCompatActivity {
                 Customer cos = new Customer(customerRegisterName.getText().toString(),
                                             customerRegisterLastName.getText().toString(),
                                             customerRegisterEmail.getText().toString(),0);
-                //set the pone number as Null cause its already the key of the customer in the database
+                //set the phone number as Null cause its already the key of the customer in the database
+                //so we dont wanna add it in the database and make it key and cutomer attribute at the same time
                 cos.setPhone(null);
 
                 ///First checking if the Phone number is used
