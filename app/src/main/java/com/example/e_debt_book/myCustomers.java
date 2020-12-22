@@ -1,10 +1,11 @@
 package com.example.e_debt_book;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -16,7 +17,7 @@ public class myCustomers extends AppCompatActivity {
     ListView listOfDebts;
 
     //Firebase attributes
-    FirebaseAuth fAuth;
+    FirebaseAuth kAuth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference mRootRef,conditionRef;
 
@@ -24,6 +25,14 @@ public class myCustomers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_customers);
+
+        kAuth = FirebaseAuth.getInstance();
+
+        if(kAuth.getCurrentUser() != null){
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            finish();
+        }
+        mRootRef = FirebaseDatabase.getInstance().getReference();
 
     }
 }
