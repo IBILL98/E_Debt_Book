@@ -20,64 +20,39 @@
             android:id="@+id/loginwindow3"
             android:layout_width="372dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:background="@android:color/white"
             android:paddingBottom="20dp"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.589"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="#005B9F"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView97"
-                android:layout_width="74dp"
-                android:layout_height="73dp"
-                android:layout_marginTop="32dp"
-                android:contentDescription="TODO"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
-
             <Button
-                android:id="@+id/marketRegisterBackButton"
+                android:id="@+id/marketeditDoneButton2"
                 android:layout_width="125dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="30dp"
+                android:background="#005B9F"
+                android:text="Done"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                tools:layout_editor_absoluteX="219dp"
+                tools:layout_editor_absoluteY="594dp"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/marketeditBackButton2"
+                android:layout_width="125dp"
+                android:layout_height="50dp"
                 android:background="#005B9F"
                 android:text="@string/back"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textStyle="normal|bold|italic"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editInfoAdress" />
-
-            <Button
-                android:id="@+id/marketRegisterSignUpButtom"
-                android:layout_width="125dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:background="#005B9F"
-                android:text="Done"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editInfoAdress" />
+                tools:layout_editor_absoluteX="51dp"
+                tools:layout_editor_absoluteY="592dp"
+                tools:ignore="MissingConstraints" />
 
             <EditText
                 android:id="@+id/editInfoName"
@@ -206,6 +181,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editInfoIban" />
 
+            <ImageView
+                android:id="@+id/imageView97"
+                android:layout_width="74dp"
+                android:layout_height="73dp"
+                android:layout_marginTop="32dp"
+                android:contentDescription="TODO"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
             <ProgressBar
                 android:id="@+id/editInfoProgressBar"
                 style="?android:attr/progressBarStyle"
@@ -256,6 +242,17 @@
                 app:layout_constraintStart_toStartOf="@+id/toolbar"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.523" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#005B9F"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

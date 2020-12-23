@@ -1,0 +1,806 @@
+Index: app/src/main/res/layout/activity_my_customers.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".myCustomers\">\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/myCustomersMain\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:background=\"@drawable/lol\"\r\n        android:visibility=\"visible\"\r\n        tools:context=\".MainActivity\">\r\n\r\n        <androidx.constraintlayout.widget.ConstraintLayout\r\n            android:id=\"@+id/loginwindow3\"\r\n            android:layout_width=\"371dp\"\r\n            android:layout_height=\"648dp\"\r\n            android:layout_marginTop=\"24dp\"\r\n            android:background=\"@android:color/white\"\r\n            android:paddingBottom=\"20dp\"\r\n            android:visibility=\"visible\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\">\r\n\r\n            <androidx.appcompat.widget.Toolbar\r\n                android:id=\"@+id/toolbar77\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:background=\"#005B9F\"\r\n                android:minHeight=\"?attr/actionBarSize\"\r\n                android:theme=\"?attr/actionBarTheme\"\r\n                app:layout_constraintEnd_toEndOf=\"parent\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n            <View\r\n                android:id=\"@+id/view77\"\r\n                android:layout_width=\"35dp\"\r\n                android:layout_height=\"35dp\"\r\n                android:background=\"#5EB8FF\"\r\n                app:layout_constraintBottom_toBottomOf=\"@+id/toolbar77\"\r\n                app:layout_constraintEnd_toEndOf=\"parent\"\r\n                app:layout_constraintHorizontal_bias=\"0.048\"\r\n                app:layout_constraintStart_toStartOf=\"@+id/toolbar77\"\r\n                app:layout_constraintTop_toTopOf=\"parent\"\r\n                app:layout_constraintVertical_bias=\"0.523\" />\r\n\r\n            <View\r\n                android:id=\"@+id/view2\"\r\n                android:layout_width=\"35dp\"\r\n                android:layout_height=\"35dp\"\r\n                android:background=\"#5EB8FF\"\r\n                app:layout_constraintBottom_toBottomOf=\"@+id/toolbar77\"\r\n                app:layout_constraintEnd_toEndOf=\"@+id/toolbar77\"\r\n                app:layout_constraintHorizontal_bias=\"0.951\"\r\n                app:layout_constraintStart_toStartOf=\"@+id/toolbar77\"\r\n                app:layout_constraintTop_toTopOf=\"parent\"\r\n                app:layout_constraintVertical_bias=\"0.523\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/textView2\"\r\n                android:layout_width=\"156dp\"\r\n                android:layout_height=\"33dp\"\r\n                android:layout_marginStart=\"16dp\"\r\n                android:layout_marginLeft=\"16dp\"\r\n                android:layout_marginTop=\"26dp\"\r\n                android:text=\"@string/user_infos\"\r\n                android:textSize=\"24sp\"\r\n                android:textStyle=\"bold\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toBottomOf=\"@+id/toolbar77\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/textView4\"\r\n                android:layout_width=\"143dp\"\r\n                android:layout_height=\"30dp\"\r\n                android:layout_marginStart=\"16dp\"\r\n                android:layout_marginLeft=\"16dp\"\r\n                android:layout_marginTop=\"16dp\"\r\n                android:text=\"@string/total_debts\"\r\n                android:textSize=\"24sp\"\r\n                android:textStyle=\"bold\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toBottomOf=\"@+id/userInfoDisplay\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/userInfoDisplay\"\r\n                android:layout_width=\"316dp\"\r\n                android:layout_height=\"40dp\"\r\n                android:layout_marginStart=\"16dp\"\r\n                android:layout_marginLeft=\"16dp\"\r\n                android:layout_marginTop=\"16dp\"\r\n                android:textSize=\"18sp\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toBottomOf=\"@+id/textView2\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/totalDebtsDisplay\"\r\n                android:layout_width=\"112dp\"\r\n                android:layout_height=\"30dp\"\r\n                android:layout_marginStart=\"16dp\"\r\n                android:layout_marginLeft=\"16dp\"\r\n                android:layout_marginTop=\"16dp\"\r\n                android:textSize=\"18sp\"\r\n                app:layout_constraintStart_toEndOf=\"@+id/textView4\"\r\n                app:layout_constraintTop_toBottomOf=\"@+id/userInfoDisplay\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/textView6\"\r\n                android:layout_width=\"250dp\"\r\n                android:layout_height=\"39dp\"\r\n                android:layout_marginStart=\"16dp\"\r\n                android:layout_marginLeft=\"16dp\"\r\n                android:layout_marginTop=\"16dp\"\r\n                android:text=\"@string/number_of_customers\"\r\n                android:textSize=\"24sp\"\r\n                android:textStyle=\"bold\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toBottomOf=\"@+id/textView4\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/noOfCustomersDisplay\"\r\n                android:layout_width=\"63dp\"\r\n                android:layout_height=\"34dp\"\r\n                android:layout_marginStart=\"16dp\"\r\n                android:layout_marginLeft=\"16dp\"\r\n                android:layout_marginTop=\"16dp\"\r\n                android:textSize=\"18sp\"\r\n                app:layout_constraintStart_toEndOf=\"@+id/textView6\"\r\n                app:layout_constraintTop_toBottomOf=\"@+id/totalDebtsDisplay\" />\r\n\r\n            <ListView\r\n                android:id=\"@+id/listOfDebts\"\r\n                android:layout_width=\"341dp\"\r\n                android:layout_height=\"304dp\"\r\n                android:layout_marginStart=\"16dp\"\r\n                android:layout_marginLeft=\"16dp\"\r\n                android:layout_marginTop=\"16dp\"\r\n                android:layout_marginEnd=\"16dp\"\r\n                android:layout_marginRight=\"16dp\"\r\n                app:layout_constraintEnd_toEndOf=\"parent\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toBottomOf=\"@+id/textView8\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/textView8\"\r\n                android:layout_width=\"119dp\"\r\n                android:layout_height=\"24dp\"\r\n                android:layout_marginStart=\"16dp\"\r\n                android:layout_marginLeft=\"16dp\"\r\n                android:layout_marginTop=\"16dp\"\r\n                android:text=\"@string/list_of_debts\"\r\n                android:textSize=\"18sp\"\r\n                android:textStyle=\"bold\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toBottomOf=\"@+id/textView6\" />\r\n\r\n        </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_my_customers.xml	(revision 982850929583f0fd8e620599bba95d81554272a8)
++++ app/src/main/res/layout/activity_my_customers.xml	(date 1608661879191)
+@@ -4,7 +4,7 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".myCustomers">
++    tools:context=".MyCustomers">
+ 
+     <androidx.constraintlayout.widget.ConstraintLayout
+         android:id="@+id/myCustomersMain"
+Index: app/src/main/java/com/example/e_debt_book/ui/home1/HomeViewModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/e_debt_book/ui/home1/HomeViewModel.java	(date 1608715835754)
++++ app/src/main/java/com/example/e_debt_book/ui/home1/HomeViewModel.java	(date 1608715835754)
+@@ -0,0 +1,19 @@
++package com.example.e_debt_book.ui.home1;
++
++import androidx.lifecycle.LiveData;
++import androidx.lifecycle.MutableLiveData;
++import androidx.lifecycle.ViewModel;
++
++public class HomeViewModel extends ViewModel {
++
++    private MutableLiveData<String> mText;
++
++    public HomeViewModel() {
++        mText = new MutableLiveData<>();
++        mText.setValue("This is home fragment");
++    }
++
++    public LiveData<String> getText() {
++        return mText;
++    }
++}
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.e_debt_book\">\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\">\r\n        <activity android:name=\".myCustomers\"></activity>\r\n        <activity android:name=\".MarketMain\" />\r\n        <activity android:name=\".NumberVerification\" />\r\n        <activity android:name=\".MarketRegister\" />\r\n        <activity android:name=\".CustomerRegister\" />\r\n        <activity android:name=\".CustomerMain\" />\r\n\r\n        <activity android:name=\".MainActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n\r\n        <meta-data\r\n            android:name=\"preloaded_fonts\"\r\n            android:resource=\"@array/preloaded_fonts\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 982850929583f0fd8e620599bba95d81554272a8)
++++ app/src/main/AndroidManifest.xml	(date 1608715330506)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    package="com.example.e_debt_book">
++    package="com.example.e_debt_book" >
+ 
+     <uses-permission android:name="android.permission.INTERNET" />
+ 
+@@ -10,15 +10,19 @@
+         android:label="@string/app_name"
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+-        android:theme="@style/AppTheme">
+-        <activity android:name=".myCustomers"></activity>
++        android:theme="@style/AppTheme" >
++        <activity
++            android:name=".MyCustomers2"
++            android:label="@string/title_activity_my_customers2"
++            android:theme="@style/AppTheme.NoActionBar" >
++        </activity>
++        <activity android:name=".MyCustomers" />
+         <activity android:name=".MarketMain" />
+         <activity android:name=".NumberVerification" />
+         <activity android:name=".MarketRegister" />
+         <activity android:name=".CustomerRegister" />
+         <activity android:name=".CustomerMain" />
+-
+-        <activity android:name=".MainActivity">
++        <activity android:name=".MainActivity" >
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+ 
+Index: app/src/main/java/com/example/e_debt_book/ui/gallery1/GalleryViewModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/e_debt_book/ui/gallery1/GalleryViewModel.java	(date 1608715835747)
++++ app/src/main/java/com/example/e_debt_book/ui/gallery1/GalleryViewModel.java	(date 1608715835747)
+@@ -0,0 +1,19 @@
++package com.example.e_debt_book.ui.gallery1;
++
++import androidx.lifecycle.LiveData;
++import androidx.lifecycle.MutableLiveData;
++import androidx.lifecycle.ViewModel;
++
++public class GalleryViewModel extends ViewModel {
++
++    private MutableLiveData<String> mText;
++
++    public GalleryViewModel() {
++        mText = new MutableLiveData<>();
++        mText.setValue("This is gallery fragment");
++    }
++
++    public LiveData<String> getText() {
++        return mText;
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/e_debt_book/ui/slideshow1/SlideshowViewModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/e_debt_book/ui/slideshow1/SlideshowViewModel.java	(date 1608715835741)
++++ app/src/main/java/com/example/e_debt_book/ui/slideshow1/SlideshowViewModel.java	(date 1608715835741)
+@@ -0,0 +1,19 @@
++package com.example.e_debt_book.ui.slideshow1;
++
++import androidx.lifecycle.LiveData;
++import androidx.lifecycle.MutableLiveData;
++import androidx.lifecycle.ViewModel;
++
++public class SlideshowViewModel extends ViewModel {
++
++    private MutableLiveData<String> mText;
++
++    public SlideshowViewModel() {
++        mText = new MutableLiveData<>();
++        mText.setValue("This is slideshow fragment");
++    }
++
++    public LiveData<String> getText() {
++        return mText;
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/e_debt_book/ui/slideshow1/SlideshowFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/e_debt_book/ui/slideshow1/SlideshowFragment.java	(date 1608715899532)
++++ app/src/main/java/com/example/e_debt_book/ui/slideshow1/SlideshowFragment.java	(date 1608715899532)
+@@ -0,0 +1,35 @@
++package com.example.e_debt_book.ui.slideshow1;
++
++import android.os.Bundle;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.TextView;
++
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
++import androidx.fragment.app.Fragment;
++import androidx.lifecycle.Observer;
++import androidx.lifecycle.ViewModelProvider;
++
++import com.example.e_debt_book.R;
++
++public class SlideshowFragment extends Fragment {
++
++    private SlideshowViewModel slideshowViewModel;
++
++    public View onCreateView(@NonNull LayoutInflater inflater,
++                             ViewGroup container, Bundle savedInstanceState) {
++        slideshowViewModel =
++                new ViewModelProvider(this).get(SlideshowViewModel.class);
++        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
++        final TextView textView = root.findViewById(R.id.text_slideshow);
++        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
++            @Override
++            public void onChanged(@Nullable String s) {
++                textView.setText(s);
++            }
++        });
++        return root;
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/e_debt_book/MyCustomers2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/e_debt_book/MyCustomers2.java	(date 1608715928361)
++++ app/src/main/java/com/example/e_debt_book/MyCustomers2.java	(date 1608715928361)
+@@ -0,0 +1,63 @@
++package com.example.e_debt_book;
++
++import android.os.Bundle;
++import android.view.Menu;
++import android.view.View;
++
++import androidx.appcompat.app.AppCompatActivity;
++import androidx.appcompat.widget.Toolbar;
++import androidx.drawerlayout.widget.DrawerLayout;
++import androidx.navigation.NavController;
++import androidx.navigation.Navigation;
++import androidx.navigation.ui.AppBarConfiguration;
++import androidx.navigation.ui.NavigationUI;
++
++import com.google.android.material.floatingactionbutton.FloatingActionButton;
++import com.google.android.material.navigation.NavigationView;
++import com.google.android.material.snackbar.Snackbar;
++
++public class MyCustomers2 extends AppCompatActivity {
++
++    private AppBarConfiguration mAppBarConfiguration;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_my_customers2);
++        Toolbar toolbar = findViewById(R.id.toolbar);
++        setSupportActionBar(toolbar);
++        FloatingActionButton fab = findViewById(R.id.fab);
++        fab.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
++                        .setAction("Action", null).show();
++            }
++        });
++        DrawerLayout drawer = findViewById(R.id.drawer_layout);
++        NavigationView navigationView = findViewById(R.id.nav_view);
++        // Passing each menu ID as a set of Ids because each
++        // menu should be considered as top level destinations.
++        mAppBarConfiguration = new AppBarConfiguration.Builder(
++                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
++                .setDrawerLayout(drawer)
++                .build();
++        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
++        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
++        NavigationUI.setupWithNavController(navigationView, navController);
++    }
++
++    @Override
++    public boolean onCreateOptionsMenu(Menu menu) {
++        // Inflate the menu; this adds items to the action bar if it is present.
++        getMenuInflater().inflate(R.menu.my_customers2, menu);
++        return true;
++    }
++
++    @Override
++    public boolean onSupportNavigateUp() {
++        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
++        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
++                || super.onSupportNavigateUp();
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/e_debt_book/ui/gallery1/GalleryFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/e_debt_book/ui/gallery1/GalleryFragment.java	(date 1608715882331)
++++ app/src/main/java/com/example/e_debt_book/ui/gallery1/GalleryFragment.java	(date 1608715882331)
+@@ -0,0 +1,35 @@
++package com.example.e_debt_book.ui.gallery1;
++
++import android.os.Bundle;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.TextView;
++
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
++import androidx.fragment.app.Fragment;
++import androidx.lifecycle.Observer;
++import androidx.lifecycle.ViewModelProvider;
++
++import com.example.e_debt_book.R;
++
++public class GalleryFragment extends Fragment {
++
++    private GalleryViewModel galleryViewModel;
++
++    public View onCreateView(@NonNull LayoutInflater inflater,
++                             ViewGroup container, Bundle savedInstanceState) {
++        galleryViewModel =
++                new ViewModelProvider(this).get(GalleryViewModel.class);
++        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
++        final TextView textView = root.findViewById(R.id.text_gallery);
++        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
++            @Override
++            public void onChanged(@Nullable String s) {
++                textView.setText(s);
++            }
++        });
++        return root;
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/e_debt_book/ui/home1/HomeFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/e_debt_book/ui/home1/HomeFragment.java	(date 1608715864043)
++++ app/src/main/java/com/example/e_debt_book/ui/home1/HomeFragment.java	(date 1608715864043)
+@@ -0,0 +1,34 @@
++package com.example.e_debt_book.ui.home1;
++
++import android.os.Bundle;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.TextView;
++
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
++import androidx.fragment.app.Fragment;
++import androidx.lifecycle.Observer;
++import androidx.lifecycle.ViewModelProvider;
++
++import com.example.e_debt_book.R;
++public class HomeFragment extends Fragment {
++
++    private HomeViewModel homeViewModel;
++
++    public View onCreateView(@NonNull LayoutInflater inflater,
++                             ViewGroup container, Bundle savedInstanceState) {
++        homeViewModel =
++                new ViewModelProvider(this).get(HomeViewModel.class);
++        View root = inflater.inflate(R.layout.fragment_home, container, false);
++        final TextView textView = root.findViewById(R.id.text_home);
++        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
++            @Override
++            public void onChanged(@Nullable String s) {
++                textView.setText(s);
++            }
++        });
++        return root;
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">E_Debt_Book</string>\r\n    <string name=\"sign_up\">Sign Up</string>\r\n    <string name=\"back\">Back</string>\r\n    <string name=\"title_activity_customer_main\">CustomerMain</string>\r\n    <string name=\"navigation_drawer_open\">Open navigation drawer</string>\r\n    <string name=\"navigation_drawer_close\">Close navigation drawer</string>\r\n    <string name=\"nav_header_title\">Android Studio</string>\r\n    <string name=\"nav_header_subtitle\">android.studio@android.com</string>\r\n    <string name=\"nav_header_desc\">Navigation header</string>\r\n    <string name=\"action_settings\">Settings</string>\r\n\r\n    <string name=\"menu_home\">Home</string>\r\n    <string name=\"menu_gallery\">Gallery</string>\r\n    <string name=\"menu_slideshow\">Slideshow</string>\r\n    <string name=\"number_verification_enter_your_number_text_view\">Enter your verification code please</string>\r\n    <string name=\"number_verification_send_code_button\">Send Code</string>\r\n    <string name=\"number_verification_verify_button\">Verify</string>\r\n    <string name=\"number_verification_later_button\">Later</string>\r\n    <string name=\"number_verification_hint_code_textview\">Code</string>\r\n    <string name=\"title_activity_cotumer_main\">CutomerMain</string>\r\n    <string name=\"title_activity_customer_main2\">CustomerMain</string>\r\n    <string name=\"emaill\">Email icon</string>\r\n    <string name=\"user_infos\">User Infos:</string>\r\n    <string name=\"total_debts\">Total Debts:</string>\r\n    <string name=\"number_of_customers\">Number of customers:</string>\r\n    <string name=\"list_of_debts\">List of Debts:</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision 982850929583f0fd8e620599bba95d81554272a8)
++++ app/src/main/res/values/strings.xml	(date 1608715330457)
+@@ -25,4 +25,5 @@
+     <string name="total_debts">Total Debts:</string>
+     <string name="number_of_customers">Number of customers:</string>
+     <string name="list_of_debts">List of Debts:</string>
++    <string name="title_activity_my_customers2">MyCustomers2</string>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/drawable-v21/ic_menu_slideshow1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable-v21/ic_menu_slideshow1.xml	(date 1608715489800)
++++ app/src/main/res/drawable-v21/ic_menu_slideshow1.xml	(date 1608715489800)
+@@ -0,0 +1,9 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="24dp"
++    android:height="24dp"
++    android:viewportWidth="24.0"
++    android:viewportHeight="24.0">
++    <path
++        android:fillColor="#FF000000"
++        android:pathData="M4,6H2v14c0,1.1 0.9,2 2,2h14v-2H4V6zm16,-4H8c-1.1,0 -2,0.9 -2,2v12c0,1.1 0.9,2 2,2h12c1.1,0 2,-0.9 2,-2V4c0,-1.1 -0.9,-2 -2,-2zm-8,12.5v-9l6,4.5 -6,4.5z" />
++</vector>
+Index: app/src/main/res/drawable-v21/ic_menu_camera1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable-v21/ic_menu_camera1.xml	(date 1608715489745)
++++ app/src/main/res/drawable-v21/ic_menu_camera1.xml	(date 1608715489745)
+@@ -0,0 +1,12 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="24dp"
++    android:height="24dp"
++    android:viewportWidth="24.0"
++    android:viewportHeight="24.0">
++    <path
++        android:fillColor="#FF000000"
++        android:pathData="M12,12m-3.2,0a3.2,3.2 0,1 1,6.4 0a3.2,3.2 0,1 1,-6.4 0" />
++    <path
++        android:fillColor="#FF000000"
++        android:pathData="M9,2L7.17,4H4c-1.1,0 -2,0.9 -2,2v12c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2V6c0,-1.1 -0.9,-2 -2,-2h-3.17L15,2H9zm3,15c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5z" />
++</vector>
+Index: app/src/main/res/drawable/ic_launcher_background1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/ic_launcher_background1.xml	(date 1608715488696)
++++ app/src/main/res/drawable/ic_launcher_background1.xml	(date 1608715488696)
+@@ -0,0 +1,170 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="108dp"
++    android:height="108dp"
++    android:viewportWidth="108"
++    android:viewportHeight="108">
++    <path
++        android:fillColor="#3DDC84"
++        android:pathData="M0,0h108v108h-108z" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M9,0L9,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,0L19,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M29,0L29,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M39,0L39,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M49,0L49,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M59,0L59,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M69,0L69,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M79,0L79,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M89,0L89,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M99,0L99,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,9L108,9"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,19L108,19"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,29L108,29"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,39L108,39"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,49L108,49"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,59L108,59"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,69L108,69"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,79L108,79"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,89L108,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,99L108,99"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,29L89,29"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,39L89,39"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,49L89,49"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,59L89,59"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,69L89,69"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,79L89,79"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M29,19L29,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M39,19L39,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M49,19L49,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M59,19L59,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M69,19L69,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M79,19L79,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++</vector>
+Index: app/src/main/res/drawable/side_nav_bar1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/side_nav_bar1.xml	(date 1608715488973)
++++ app/src/main/res/drawable/side_nav_bar1.xml	(date 1608715488973)
+@@ -0,0 +1,9 @@
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="rectangle">
++    <gradient
++        android:angle="135"
++        android:centerColor="#009688"
++        android:endColor="#00695C"
++        android:startColor="#4DB6AC"
++        android:type="linear" />
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/drawable-v21/ic_menu_gallery1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable-v21/ic_menu_gallery1.xml	(date 1608715489768)
++++ app/src/main/res/drawable-v21/ic_menu_gallery1.xml	(date 1608715489768)
+@@ -0,0 +1,9 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="24dp"
++    android:height="24dp"
++    android:viewportWidth="24.0"
++    android:viewportHeight="24.0">
++    <path
++        android:fillColor="#FF000000"
++        android:pathData="M22,16V4c0,-1.1 -0.9,-2 -2,-2H8c-1.1,0 -2,0.9 -2,2v12c0,1.1 0.9,2 2,2h12c1.1,0 2,-0.9 2,-2zm-11,-4l2.03,2.71L16,11l4,5H8l3,-4zM2,6v14c0,1.1 0.9,2 2,2h14v-2H4V6H2z" />
++</vector>
+Index: mylibrary/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mylibrary/src/main/AndroidManifest.xml	(date 1608716418804)
++++ mylibrary/src/main/AndroidManifest.xml	(date 1608716418804)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.example.mylibrary">
++
++</manifest>
+\ No newline at end of file
+Index: mylibrary/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mylibrary/.gitignore	(date 1608716418606)
++++ mylibrary/.gitignore	(date 1608716418606)
+@@ -0,0 +1,1 @@
++/build
+\ No newline at end of file
+Index: mylibrary/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mylibrary/build.gradle	(date 1608716418792)
++++ mylibrary/build.gradle	(date 1608716418792)
+@@ -0,0 +1,38 @@
++plugins {
++    id 'com.android.library'
++}
++
++android {
++    compileSdkVersion 30
++    buildToolsVersion "30.0.2"
++
++    defaultConfig {
++        minSdkVersion 16
++        targetSdkVersion 30
++        versionCode 1
++        versionName "1.0"
++
++        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
++        consumerProguardFiles "consumer-rules.pro"
++    }
++
++    buildTypes {
++        release {
++            minifyEnabled false
++            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
++        }
++    }
++    compileOptions {
++        sourceCompatibility JavaVersion.VERSION_1_8
++        targetCompatibility JavaVersion.VERSION_1_8
++    }
++}
++
++dependencies {
++
++    implementation 'androidx.appcompat:appcompat:1.2.0'
++    implementation 'com.google.android.material:material:1.2.1'
++    testImplementation 'junit:junit:4.+'
++    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
++    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
++}
+\ No newline at end of file
+Index: mylibrary/src/androidTest/java/com/example/mylibrary/ExampleInstrumentedTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mylibrary/src/androidTest/java/com/example/mylibrary/ExampleInstrumentedTest.java	(date 1608716418839)
++++ mylibrary/src/androidTest/java/com/example/mylibrary/ExampleInstrumentedTest.java	(date 1608716418839)
+@@ -0,0 +1,26 @@
++package com.example.mylibrary;
++
++import android.content.Context;
++
++import androidx.test.platform.app.InstrumentationRegistry;
++import androidx.test.ext.junit.runners.AndroidJUnit4;
++
++import org.junit.Test;
++import org.junit.runner.RunWith;
++
++import static org.junit.Assert.*;
++
++/**
++ * Instrumented test, which will execute on an Android device.
++ *
++ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
++ */
++@RunWith(AndroidJUnit4.class)
++public class ExampleInstrumentedTest {
++    @Test
++    public void useAppContext() {
++        // Context of the app under test.
++        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
++        assertEquals("com.example.mylibrary.test", appContext.getPackageName());
++    }
++}
+\ No newline at end of file
+Index: mylibrary/src/test/java/com/example/mylibrary/ExampleUnitTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mylibrary/src/test/java/com/example/mylibrary/ExampleUnitTest.java	(date 1608716418857)
++++ mylibrary/src/test/java/com/example/mylibrary/ExampleUnitTest.java	(date 1608716418857)
+@@ -0,0 +1,17 @@
++package com.example.mylibrary;
++
++import org.junit.Test;
++
++import static org.junit.Assert.*;
++
++/**
++ * Example local unit test, which will execute on the development machine (host).
++ *
++ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
++ */
++public class ExampleUnitTest {
++    @Test
++    public void addition_isCorrect() {
++        assertEquals(4, 2 + 2);
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/e_debt_book/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.e_debt_book;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.constraintlayout.widget.ConstraintLayout;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.text.TextUtils;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.example.e_debt_book.model.Customer;\r\nimport com.example.e_debt_book.model.Market;\r\nimport com.google.android.gms.tasks.OnCompleteListener;\r\nimport com.google.android.gms.tasks.Task;\r\nimport com.google.firebase.auth.AuthResult;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\nimport com.google.firebase.auth.FirebaseUser;\r\nimport com.google.firebase.database.DataSnapshot;\r\nimport com.google.firebase.database.DatabaseError;\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\nimport com.google.firebase.database.ValueEventListener;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    private static final String TAG = \"MainActivity\";\r\n\r\n\r\n    ////Main screen Choice attributes\r\n    private ConstraintLayout mainChoice;\r\n    private Button mainMarketButton;\r\n    private Button mainCustomertButton;\r\n\r\n\r\n    ////Main screen customer login attribute\r\n    private ConstraintLayout customerLogin;\r\n    private Button customerBackButton;\r\n    private Button customertSignUpButton;\r\n    private Button customerLoginButton;\r\n    private EditText customerLoginEmail;\r\n    private EditText customerLoginPassword;\r\n\r\n\r\n    ////Main screen Market login attribute\r\n    private ConstraintLayout marketLogin;\r\n    private Button marketBackButton;\r\n    private Button marketSignUpButton;\r\n    private Button marketLoginButton;\r\n    private EditText marketLoginEmail;\r\n    private EditText marketLoginPassword;\r\n    static int usertype = 0;\r\n\r\n    private FirebaseAuth mAuth;\r\n\r\n    private TextView textView;\r\n    private Button who;\r\n    private String text;\r\n    DatabaseReference mRootRef,conditionRef;\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n\r\n        mAuth = FirebaseAuth.getInstance();\r\n\r\n\r\n\r\n        final Customer loginUser1 = new Customer();\r\n\r\n        final Market marketlogin = new Market();\r\n\r\n\r\n        ////Main screen Choice attributes\r\n        mainChoice = findViewById(R.id.mainChoice);\r\n        mainMarketButton = findViewById(R.id.mainMarketButton);\r\n        mainCustomertButton = findViewById(R.id.mainCustomertButton);\r\n\r\n        ////Main screen customer login attribute\r\n        customerLogin = findViewById(R.id.customerLogin);\r\n        customerBackButton = findViewById(R.id.customerBackButton);\r\n        customerLoginButton = findViewById(R.id.customerLoginButton);\r\n        customertSignUpButton = findViewById(R.id.customertSignUpButton);\r\n        customerLoginEmail = findViewById(R.id.customerLoginEmail);\r\n        customerLoginPassword = findViewById(R.id.customerLoginPassword);\r\n\r\n\r\n        ////Main screen Market login attribute\r\n        marketLogin = findViewById(R.id.marketLogin);\r\n        marketBackButton = findViewById(R.id.marketBackButton);\r\n        marketSignUpButton = findViewById(R.id.marketSignUpButton);\r\n        marketLoginButton = findViewById(R.id.marketLoginButton);\r\n        marketLoginEmail = findViewById(R.id.marketLoginEmail);\r\n        marketLoginPassword = findViewById(R.id.marketLoginPassword);\r\n\r\n\r\n\r\n\r\n        mainCustomertButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                mainChoice.setVisibility(View.GONE);\r\n                customerLogin.setVisibility(View.VISIBLE);\r\n                usertype = 0;\r\n                System.out.println(usertype);\r\n            }\r\n        });\r\n\r\n\r\n        mainMarketButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                mainChoice.setVisibility(View.GONE);\r\n                marketLogin.setVisibility(View.VISIBLE);\r\n                usertype = 1;\r\n                System.out.println(usertype);\r\n            }\r\n        });\r\n\r\n\r\n        marketBackButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                marketLogin.setVisibility(View.GONE);\r\n                mainChoice.setVisibility(View.VISIBLE);\r\n            }\r\n        });\r\n\r\n        customerBackButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                customerLogin.setVisibility(View.GONE);\r\n                mainChoice.setVisibility(View.VISIBLE);\r\n                FirebaseAuth.getInstance().signOut();\r\n                startActivity(new Intent(getApplicationContext(),MainActivity.class));\r\n                finish();\r\n            }\r\n        });\r\n\r\n        customertSignUpButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                startActivity(new Intent(getApplicationContext(), CustomerRegister.class));\r\n            }\r\n        });\r\n\r\n        marketSignUpButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                startActivity(new Intent(getApplicationContext(),MarketRegister.class));\r\n            }\r\n        });\r\n\r\n\r\n        customerLoginButton.setOnClickListener(new View.OnClickListener() {\r\n            Customer customer = new Customer(customerLoginEmail.toString());\r\n            @Override\r\n            public void onClick(View v) {\r\n                String email = customerLoginEmail.getText().toString().trim();\r\n                String password = customerLoginPassword.getText().toString().trim();\r\n                if(TextUtils.isEmpty(email)){\r\n                    customerLoginEmail.setError(\"Email is Required.\");\r\n                    return;\r\n                }\r\n                if(TextUtils.isEmpty(password)){\r\n                    customerLoginPassword.setError(\"Password is Required.\");\r\n                    return;\r\n                }\r\n                if(password.length() < 6){\r\n                    customerLoginPassword.setError(\"Password must be at least 7 characters\");\r\n                    return;\r\n                }\r\n\r\n                mRootRef = FirebaseDatabase.getInstance().getReference();\r\n\r\n                conditionRef = mRootRef.child(\"Customers\");\r\n                conditionRef.addValueEventListener(new ValueEventListener() {\r\n                    @Override\r\n                    public void onDataChange(DataSnapshot dataSnapshot) {\r\n                        for(DataSnapshot data: dataSnapshot.getChildren()){\r\n                            String userId = data.getKey();\r\n                            Customer loginUser = data.getValue(Customer.class);\r\n                            loginUser.setPhone(userId);\r\n                            if (loginUser.getEmail().equals(email)){\r\n                                loginUser1.setEmail(loginUser.getEmail());\r\n                                loginUser1.setPhone(loginUser.getPhone());\r\n                                loginUser1.setLastname(loginUser.getLastname());\r\n                                loginUser1.setName(loginUser.getName());\r\n                                loginUser1.setStatus(loginUser.getStatus());\r\n                                mAuth.signInWithEmailAndPassword(email, password)\r\n                                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {\r\n                                            @Override\r\n                                            public void onComplete(@NonNull Task<AuthResult> task) {\r\n                                                if (task.isSuccessful()) {\r\n                                                    // checking if the Customer has verified his phone number before\r\n                                                    if (loginUser.getStatus() == 0){\r\n                                                        Intent i = new Intent(MainActivity.this,NumberVerification.class);\r\n                                                        Bundle b = new Bundle();\r\n                                                        b.putSerializable(\"Customer\",loginUser);\r\n                                                        i.putExtras(b);\r\n                                                        startActivity(i);\r\n                                                        finish();\r\n                                                    }\r\n\r\n                                                    // Sign in success, update UI with the signed-in user's information\r\n                                                    //Log.d(TAG, \"signInWithEmail:success\");\r\n\r\n                                                    //FirebaseUser user = mAuth.getCurrentUser();\r\n                                                    //updateUI(user);\r\n\r\n                                                    Intent i = new Intent(MainActivity.this, CustomerMain.class);\r\n                                                    Bundle b = new Bundle();\r\n                                                    b.putSerializable(\"Customer\",loginUser1);\r\n                                                    i.putExtras(b);\r\n                                                    startActivity(i);\r\n                                                    finish();\r\n                                                } else {\r\n                                                    // If sign in fails, display a message to the user.\r\n                                                    //Log.w(TAG, \"signInWithEmail:failure\", task.getException());\r\n                                                    Toast.makeText(MainActivity.this, \"Authentication failed.\",\r\n                                                            Toast.LENGTH_SHORT).show();\r\n                                                    updateUI(null);\r\n                                                    // ...\r\n                                                }\r\n\r\n                                                // ...\r\n                                            }\r\n                                        });\r\n                            }else {\r\n                                Toast.makeText(MainActivity.this, \"User Not found\",Toast.LENGTH_SHORT).show();\r\n                            }\r\n                        }\r\n                    }\r\n\r\n                    @Override\r\n                    public void onCancelled(DatabaseError databaseError) {\r\n\r\n                    }\r\n                });\r\n\r\n            }\r\n        });\r\n\r\n        marketLoginButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                String email = marketLoginEmail.getText().toString().trim();\r\n                String password = marketLoginPassword.getText().toString().trim();\r\n                if(TextUtils.isEmpty(email)){\r\n                    customerLoginEmail.setError(\"Email is Required.\");\r\n                    return;\r\n                }\r\n                if(TextUtils.isEmpty(password)){\r\n                    customerLoginPassword.setError(\"Password is Required.\");\r\n                    return;\r\n                }\r\n                if(password.length() < 6){\r\n                    customerLoginPassword.setError(\"Password must be at least 7 characters\");\r\n                    return;\r\n                }\r\n\r\n                mRootRef = FirebaseDatabase.getInstance().getReference();\r\n\r\n                conditionRef = mRootRef.child(\"Markets\");\r\n                conditionRef.addValueEventListener(new ValueEventListener() {\r\n                    @Override\r\n                    public void onDataChange(DataSnapshot dataSnapshot) {\r\n                        for(DataSnapshot data: dataSnapshot.getChildren()){\r\n                            String userId = data.getKey();\r\n                            Market loginUser = data.getValue(Market.class);\r\n                            loginUser.setPhone(userId);\r\n                            if (loginUser.getEmail().equals(email)){\r\n                                marketlogin.setEmail(loginUser.getEmail());\r\n                                marketlogin.setPhone(loginUser.getPhone());\r\n                                marketlogin.setIban(loginUser.getIban());\r\n                                marketlogin.setName(loginUser.getName());\r\n                                marketlogin.setAdress(loginUser.getAdress());\r\n                                marketlogin.setStatus(loginUser.getStatus());\r\n                                mAuth.signInWithEmailAndPassword(email, password)\r\n                                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {\r\n                                            @Override\r\n                                            public void onComplete(@NonNull Task<AuthResult> task) {\r\n                                                if (task.isSuccessful()) {\r\n                                                    // checking if the Customer has verified his phone number before\r\n                                                    if (loginUser.getStatus() == 0){\r\n                                                        Intent i = new Intent(MainActivity.this,NumberVerification.class);\r\n                                                        Bundle b = new Bundle();\r\n                                                        b.putSerializable(\"Market\",loginUser);\r\n                                                        i.putExtras(b);\r\n                                                        startActivity(i);\r\n                                                        finish();\r\n                                                    }\r\n\r\n                                                    // Sign in success, update UI with the signed-in user's information\r\n                                                    //Log.d(TAG, \"signInWithEmail:success\");\r\n\r\n                                                    //FirebaseUser user = mAuth.getCurrentUser();\r\n                                                    //updateUI(user);\r\n\r\n                                                    Intent i = new Intent(MainActivity.this, MarketMain.class);\r\n                                                    Bundle b = new Bundle();\r\n                                                    b.putSerializable(\"Customer\",marketlogin);\r\n                                                    i.putExtras(b);\r\n                                                    startActivity(i);\r\n                                                    finish();\r\n                                                } else {\r\n                                                    // If sign in fails, display a message to the user.\r\n                                                    //Log.w(TAG, \"signInWithEmail:failure\", task.getException());\r\n                                                    Toast.makeText(MainActivity.this, \"Authentication failed.\",\r\n                                                            Toast.LENGTH_SHORT).show();\r\n                                                    updateUI(null);\r\n                                                    // ...\r\n                                                }\r\n\r\n                                                // ...\r\n                                            }\r\n                                        });\r\n                            }else {\r\n                                Toast.makeText(MainActivity.this, \"User Not found\",Toast.LENGTH_SHORT).show();\r\n                            }\r\n                        }\r\n                    }\r\n\r\n                    @Override\r\n                    public void onCancelled(DatabaseError databaseError) {\r\n\r\n                    }\r\n                });\r\n            }\r\n        });\r\n\r\n\r\n\r\n/*\r\n        firebaseDatabase = FirebaseDatabase.getInstance();\r\n        mRootRef = FirebaseDatabase.getInstance().getReference();\r\n        conditionRef = mRootRef.child(\"Custumers\").child(\"456165\").child(\"first_name\");\r\n        who = (Button)findViewById(R.id.who);\r\n        textView = (TextView)findViewById(R.id.textView);*/\r\n    }\r\n/*\r\n    @Override\r\n    protected void onStart() {\r\n        super.onStart();\r\n\r\n        conditionRef.addValueEventListener(new ValueEventListener() {\r\n            @Override\r\n            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {\r\n                text = dataSnapshot.getValue(String.class);\r\n            }\r\n\r\n            @Override\r\n            public void onCancelled(@NonNull DatabaseError databaseError) {\r\n\r\n            }\r\n        });\r\n        who.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                textView.setText(text);\r\n            }\r\n        });\r\n    }*/\r\n\r\n\r\n\r\n    //Change UI according to user data.\r\n    public void updateUI(FirebaseUser account){\r\n\r\n        if(account != null){\r\n            Toast.makeText(this,\"U Signed In successfully\",Toast.LENGTH_LONG).show();\r\n            startActivity(new Intent(this, CustomerMain.class));\r\n\r\n        }else {\r\n            Toast.makeText(this,\"U Didnt signed in\",Toast.LENGTH_LONG).show();\r\n        }\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/e_debt_book/MainActivity.java	(revision 982850929583f0fd8e620599bba95d81554272a8)
++++ app/src/main/java/com/example/e_debt_book/MainActivity.java	(date 1608664042774)
+@@ -232,7 +232,7 @@
+                                                 // ...
+                                             }
+                                         });
+-                            }else {
++                            } else {
+                                 Toast.makeText(MainActivity.this, "User Not found",Toast.LENGTH_SHORT).show();
+                             }
+                         }
+@@ -305,7 +305,7 @@
+ 
+                                                     Intent i = new Intent(MainActivity.this, MarketMain.class);
+                                                     Bundle b = new Bundle();
+-                                                    b.putSerializable("Customer",marketlogin);
++                                                    b.putSerializable("Market",marketlogin);
+                                                     i.putExtras(b);
+                                                     startActivity(i);
+                                                     finish();
+Index: mylibrary/proguard-rules.pro
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mylibrary/proguard-rules.pro	(date 1608716418666)
++++ mylibrary/proguard-rules.pro	(date 1608716418666)
+@@ -0,0 +1,21 @@
++# Add project specific ProGuard rules here.
++# You can control the set of applied configuration files using the
++# proguardFiles setting in build.gradle.
++#
++# For more details, see
++#   http://developer.android.com/guide/developing/tools/proguard.html
++
++# If your project uses WebView with JS, uncomment the following
++# and specify the fully qualified class name to the JavaScript interface
++# class:
++#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
++#   public *;
++#}
++
++# Uncomment this to preserve the line number information for
++# debugging stack traces.
++#-keepattributes SourceFile,LineNumberTable
++
++# If you keep the line number information, uncomment this to
++# hide the original source file name.
++#-renamesourcefileattribute SourceFile
+\ No newline at end of file
+diff --git app/src/main/res/layout/activity_customer_main.xml app/src/main/res/layout/MainCustomer/activity_customer_main.xml
+rename from app/src/main/res/layout/activity_customer_main.xml
+rename to app/src/main/res/layout/MainCustomer/activity_customer_main.xml
+diff --git mylibrary/consumer-rules.pro mylibrary/consumer-rules.pro
+new file mode 100644
