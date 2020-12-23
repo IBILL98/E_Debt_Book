@@ -6,15 +6,15 @@ import java.util.List;
 
 
 public class Debt  implements Serializable {
-    private int customerPhone;
-    private int marketPhone;
+    private String customerPhone;
+    private String marketPhone;
     private String amount;
     private String description;
     private String dateOfLoan;
     private String dueDate;
     public Debt() { }
 
-    public Debt(int customerPhone, int marketPhone, String amount, String description, String dateOfLoan, String dueDate, List<Item> itemList) {
+    public Debt(String customerPhone, String marketPhone, String amount, String description, String dateOfLoan, String dueDate, List<Item> itemList) {
         this.customerPhone = customerPhone;
         this.marketPhone = marketPhone;
         this.amount = amount;
@@ -24,19 +24,19 @@ public class Debt  implements Serializable {
         //this.itemList = itemList;
     }
 
-    public int getCustomerPhone() {
+    public String getCustomerPhone() {
         return customerPhone;
     }
 
-    public void setCustomerPhone(int customerPhone) {
+    public void setCustomerPhone(String customerPhone) {
         this.customerPhone = customerPhone;
     }
 
-    public int getMarketPhone() {
+    public String getMarketPhone() {
         return marketPhone;
     }
 
-    public void setMarketPhone(int marketPhone) {
+    public void setMarketPhone(String marketPhone) {
         this.marketPhone = marketPhone;
     }
 

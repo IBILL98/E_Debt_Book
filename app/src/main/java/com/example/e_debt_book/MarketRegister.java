@@ -38,6 +38,7 @@ public class MarketRegister extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference mRootRef,conditionRef;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +84,7 @@ public class MarketRegister extends AppCompatActivity {
 
 
                 System.out.println(phone);
-                /////Check if the Atrtributes are Empty
+                /////Check if the Attributes are Empty
                 if(TextUtils.isEmpty(email)){
                     marketRegisterEmail.setError("Email is Required.");
                     return;
@@ -97,7 +98,7 @@ public class MarketRegister extends AppCompatActivity {
                     return;
                 }
                 if(TextUtils.isEmpty(adress)){
-                    marketRegisterAdress.setError("Adress is Required.");
+                    marketRegisterAdress.setError("Address is Required.");
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
@@ -109,7 +110,7 @@ public class MarketRegister extends AppCompatActivity {
                     return;
                 }
                 if(TextUtils.isEmpty(phone)){
-                    marketRegisterPhone.setError("Please Entere the Phone Number");
+                    marketRegisterPhone.setError("Please Enter the Phone Number");
                     return;
                 }
 
@@ -128,8 +129,8 @@ public class MarketRegister extends AppCompatActivity {
                             Toast.makeText(MarketRegister.this, "This Phone Number is already used", Toast.LENGTH_SHORT).show();
                             System.out.println("**************************************");
                         } else {
-                            //email is available, start the registeration
-                            //Create the login informations
+                            //email is available, start the registration
+                            //Create the login information
                             fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
