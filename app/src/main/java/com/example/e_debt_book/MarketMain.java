@@ -40,11 +40,16 @@ public class MarketMain extends AppCompatActivity {
         mainMarketeditinfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MarketMain.this,editMarketInfo.class);
+   /*
+                Intent i = new Intent(MarketMain.this, editMarketInfo.class);
                 Bundle b = new Bundle();
                 b.putSerializable("Market",market);
                 i.putExtras(b);
                 startActivity(i);
+                finish();
+*/
+
+                startActivity(new Intent(getApplicationContext(), editMarketInfo.class));
                 finish();
 
             }
