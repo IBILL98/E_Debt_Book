@@ -17,6 +17,7 @@
         <activity android:name=".MarketRegister" />
         <activity android:name=".CustomerRegister" />
         <activity android:name=".CustomerMain" />
+        <activity android:name=".EditMarketInfo" />
 
         <activity android:name=".MainActivity">
             <intent-filter>

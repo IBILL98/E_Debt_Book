@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import com.example.e_debt_book.model.Market;
 
-public class editMarketInfo extends AppCompatActivity {
+public class EditMarketInfo extends AppCompatActivity {
 
     EditText editInfoName , editInfoEmail , editInfoPhone , editInfoPassword, editInfoIban , editInfoAdress;
     Button marketeditBackButton2, marketeditDoneButton2;

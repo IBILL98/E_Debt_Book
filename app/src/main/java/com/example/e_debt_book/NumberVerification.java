@@ -71,6 +71,29 @@ public class NumberVerification extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mAuth.useAppLanguage();
 
+        verificationLaterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(MainActivity.usertype == 0){
+                    Customer customer = (Customer) getIntent().getSerializableExtra("Customer");
+                    Intent i = new Intent(NumberVerification.this, CustomerMain.class);
+                    Bundle b = new Bundle();
+                    b.putSerializable("Customer",customer);
+                    i.putExtras(b);
+                    startActivity(i);
+                    finish();
+                }else{
+                    Market market = (Market) getIntent().getSerializableExtra("Market");
+                    Intent i = new Intent(NumberVerification.this, MarketMain.class);
+                    Bundle b = new Bundle();
+                    b.putSerializable("Market",market);
+                    i.putExtras(b);
+                    startActivity(i);
+                    finish();
+                }
+            }
+        });
+
         if(MainActivity.usertype==0){
             conditionRef = mRootRef.child("Customers");
             Customer customer = (Customer) getIntent().getSerializableExtra("Customer");
@@ -89,16 +112,6 @@ public class NumberVerification extends AppCompatActivity {
                         signInWithPhoneAuthCredential(credential , customer,null,0);
 
                     }
-                }
-            });
-
-
-            verificationLaterButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                    startActivity(new Intent(getApplicationContext(), CustomerMain.class));
-                    finish();
                 }
             });
 
@@ -228,7 +241,12 @@ public class NumberVerification extends AppCompatActivity {
 
                                 FirebaseUser user = task.getResult().getUser();Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
 
-                                startActivity(new Intent(getApplicationContext(), CustomerMain.class));
+                                Intent i = new Intent(NumberVerification.this, CustomerMain.class);
+                                Bundle b = new Bundle();
+                                b.putSerializable("Customer",customer);
+                                i.putExtras(b);
+                                startActivity(i);
+                                finish();
 
 
                                 // ...
@@ -248,8 +266,15 @@ public class NumberVerification extends AppCompatActivity {
 
                                 FirebaseUser user = task.getResult().getUser();Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
 
-                                startActivity(new Intent(getApplicationContext(), CustomerMain.class));
-
+                                Intent i = new Intent(NumberVerification.this, MarketMain.class);
+                                Bundle b = new Bundle();
+                                b.putSerializable("Market",market);
+                                i.putExtras(b);
+                                System.out.println("///////////////////////////////////////////////////////////////////");
+                                System.out.println(market.getAdress()+market.getEmail());
+                                System.out.println("///////////////////////////////////////////////////////////////////");
+                                startActivity(i);
+                                finish();
 
                                 // ...
                             } else {
