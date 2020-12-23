@@ -178,16 +178,6 @@ public class NumberVerification extends AppCompatActivity {
             });
 
 
-            verificationLaterButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                    startActivity(new Intent(getApplicationContext(), MarketMain.class));
-                    finish();
-                }
-            });
-
-
             sendCodeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
