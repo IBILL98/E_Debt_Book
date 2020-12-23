@@ -31,13 +31,6 @@ public class EditMarketInfo extends AppCompatActivity {
         editInfoIban = findViewById(R.id.editInfoIban);
         editInfoAdress = findViewById(R.id.editInfoAdress);
 
-        editInfoName.setText(market.getName());
-        editInfoEmail.setText(market.getEmail());
-        editInfoPhone.setText(market.getPhone());
-        editInfoPassword.setText(market.getPassword());
-        editInfoIban.setText(market.getIban());
-        editInfoAdress.setText(market.getAdress());
-
 
 
 
@@ -46,6 +39,12 @@ public class EditMarketInfo extends AppCompatActivity {
         marketeditBackButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editInfoName.setText(market.getName());
+                editInfoEmail.setText(market.getEmail());
+                editInfoPhone.setText(market.getPhone());
+                editInfoPassword.setText(market.getPassword());
+                editInfoIban.setText(market.getIban());
+                editInfoAdress.setText(market.getAdress());
 
             }
         });

@@ -84,6 +84,7 @@ public class NumberVerification extends AppCompatActivity {
                     finish();
                 }else{
                     Market market = (Market) getIntent().getSerializableExtra("Market");
+                    System.out.println(market.getEmail());
                     Intent i = new Intent(NumberVerification.this, MarketMain.class);
                     Bundle b = new Bundle();
                     b.putSerializable("Market",market);

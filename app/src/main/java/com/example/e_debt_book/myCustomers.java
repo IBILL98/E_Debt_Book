@@ -46,6 +46,7 @@ public class myCustomers extends AppCompatActivity {
             finish();
         }
         mRootRef = FirebaseDatabase.getInstance().getReference();*/
+        /*
         debtsList = findViewById(R.id.debtsList);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Debt");
@@ -77,6 +78,6 @@ public class myCustomers extends AppCompatActivity {
                 //}
             }
         });
-
+*/
     }
 }
