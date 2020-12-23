@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import com.example.e_debt_book.model.Market;
 
-public class editMarketInfo extends AppCompatActivity {
+public class EditMarketInfo extends AppCompatActivity {
 
     EditText editInfoName , editInfoEmail , editInfoPhone , editInfoPassword, editInfoIban , editInfoAdress;
     Button marketeditBackButton2, marketeditDoneButton2;
@@ -31,13 +31,6 @@ public class editMarketInfo extends AppCompatActivity {
         editInfoIban = findViewById(R.id.editInfoIban);
         editInfoAdress = findViewById(R.id.editInfoAdress);
 
-        editInfoName.setText(market.getName());
-        editInfoEmail.setText(market.getEmail());
-        editInfoPhone.setText(market.getPhone());
-        editInfoPassword.setText(market.getPassword());
-        editInfoIban.setText(market.getIban());
-        editInfoAdress.setText(market.getAdress());
-
 
 
 
@@ -46,6 +39,12 @@ public class editMarketInfo extends AppCompatActivity {
         marketeditBackButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editInfoName.setText(market.getName());
+                editInfoEmail.setText(market.getEmail());
+                editInfoPhone.setText(market.getPhone());
+                editInfoPassword.setText(market.getPassword());
+                editInfoIban.setText(market.getIban());
+                editInfoAdress.setText(market.getAdress());
 
             }
         });

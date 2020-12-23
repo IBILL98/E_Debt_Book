@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_debt_book.model.Debt;
-import com.example.e_debt_book.model.Market;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +27,6 @@ public class myCustomers extends AppCompatActivity {
     ListView debtsList;
     Button addNewDebtButton;
     ArrayList<String> list;
-    ArrayList<Debt> debtsArray;
     ArrayAdapter<String> adapter;
     Debt debt;
     //Firebase attributes
@@ -48,14 +46,12 @@ public class myCustomers extends AppCompatActivity {
             finish();
         }
         mRootRef = FirebaseDatabase.getInstance().getReference();*/
+        /*
         debtsList = findViewById(R.id.debtsList);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Debt");
         list = new ArrayList<>();
-        debtsArray = new ArrayList<Debt>();
         debt = new Debt();
-        Market market = (Market) getIntent().getSerializableExtra("Market");
-        String marketPhone = market.getPhone();
         adapter = new ArrayAdapter<String>(this, R.layout.debts_infos_resource, R.id.debtsInfosText, list);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -63,10 +59,7 @@ public class myCustomers extends AppCompatActivity {
                 for (DataSnapshot ds: snapshot.getChildren()){
                     debt = ds.getValue(Debt.class);
                     assert debt != null;
-                    if (debt.getMarketPhone()==marketPhone) {
-                        list.add(debt.getCustomerPhone() + "," + debt.getAmount());
-                        debtsArray.add(debt);
-                    }
+                    //list.add(debt.getCustomerPhone().getName()+" "+debt.getCustomer().getLastname()+","+debt.getAmount());
                 }
                 debtsList.setAdapter(adapter);
             }
@@ -75,16 +68,16 @@ public class myCustomers extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-
         });
         debtsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(view.getContext(), debtsDetails.class);
-                intent.putExtra("market", market);
-                intent.putExtra("debt", debtsArray.get(position));
-                startActivity(intent);
+                //if (position==0) {
+                //    Intent intent = new Intent(view.getContext(), addNewDept.class);
+                //    startActivity(intent);
+                //}
             }
         });
+*/
     }
 }

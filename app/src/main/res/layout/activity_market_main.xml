@@ -8,7 +8,7 @@
     tools:context=".MarketMain">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mainmarketmenu"
+        android:id="@+id/passwordconfirmationmenu"
         android:layout_width="372dp"
         android:layout_height="461dp"
         android:layout_marginTop="24dp"
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
 
         <Button
@@ -50,8 +50,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.805"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/costumerRegisterEmail" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/confirmationMenutextfield"
@@ -96,7 +95,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/passwordconfirmationmenu"
+        android:id="@+id/mainMarketMenu1"
         android:layout_width="372dp"
         android:layout_height="461dp"
         android:layout_marginTop="24dp"
@@ -105,34 +104,7 @@
         app:layout_constraintHorizontal_bias="0.581"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone">
-
-        <Button
-            android:id="@+id/mainMarketeditinfoButton"
-            android:layout_width="157dp"
-            android:layout_height="63dp"
-            android:layout_marginTop="44dp"
-            android:background="#005B9F"
-            android:text="MY CUSTOMERS"
-            android:textColor="@android:color/white"
-            android:textStyle="normal|bold|italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainMarketAddCustomertButton" />
-
-        <Button
-            android:id="@+id/mainMarketmyCostumertButton"
-            android:layout_width="157dp"
-            android:layout_height="63dp"
-            android:layout_marginTop="144dp"
-            android:background="#005B9F"
-            android:text="EDIT MY INFO"
-            android:textColor="@android:color/white"
-            android:textStyle="normal|bold|italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainMarketAddCustomertButton" />
+        tools:visibility="visible">
 
         <Button
             android:id="@+id/mainMarketAddCustomertButton"
@@ -146,6 +118,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <Button
+            android:id="@+id/mainMarketmyCostumertButton"
+            android:layout_width="157dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="44dp"
+            android:background="#005B9F"
+            android:text="MY CUSTOMERS"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainMarketAddCustomertButton" />
+
+        <Button
+            android:id="@+id/mainMarketeditinfoButton"
+            android:layout_width="157dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="44dp"
+            android:background="#005B9F"
+            android:text="EDIT MY INFO"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainMarketmyCostumertButton" />
 
 
         <ImageView

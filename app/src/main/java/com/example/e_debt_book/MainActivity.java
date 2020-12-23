@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private Button marketLoginButton;
     private EditText marketLoginEmail;
     private EditText marketLoginPassword;
-    static int usertype = 0;
+    static int usertype = 1;
 
     private FirebaseAuth mAuth;
 
@@ -206,6 +206,13 @@ public class MainActivity extends AppCompatActivity {
                                                         i.putExtras(b);
                                                         startActivity(i);
                                                         finish();
+                                                    }else{
+                                                        Intent i = new Intent(MainActivity.this, CustomerMain.class);
+                                                        Bundle b = new Bundle();
+                                                        b.putSerializable("Customer",loginUser1);
+                                                        i.putExtras(b);
+                                                        startActivity(i);
+                                                        finish();
                                                     }
 
                                                     // Sign in success, update UI with the signed-in user's information
@@ -214,12 +221,6 @@ public class MainActivity extends AppCompatActivity {
                                                     //FirebaseUser user = mAuth.getCurrentUser();
                                                     //updateUI(user);
 
-                                                    Intent i = new Intent(MainActivity.this, CustomerMain.class);
-                                                    Bundle b = new Bundle();
-                                                    b.putSerializable("Customer",loginUser1);
-                                                    i.putExtras(b);
-                                                    startActivity(i);
-                                                    finish();
                                                 } else {
                                                     // If sign in fails, display a message to the user.
                                                     //Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -281,6 +282,7 @@ public class MainActivity extends AppCompatActivity {
                                 marketlogin.setIban(loginUser.getIban());
                                 marketlogin.setName(loginUser.getName());
                                 marketlogin.setAdress(loginUser.getAdress());
+                                marketlogin.setPassword(loginUser.getPassword());
                                 marketlogin.setStatus(loginUser.getStatus());
                                 mAuth.signInWithEmailAndPassword(email, password)
                                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
@@ -295,6 +297,13 @@ public class MainActivity extends AppCompatActivity {
                                                         i.putExtras(b);
                                                         startActivity(i);
                                                         finish();
+                                                    }else{
+                                                        Intent i = new Intent(MainActivity.this, MarketMain.class);
+                                                        Bundle b = new Bundle();
+                                                        b.putSerializable("Market",marketlogin);
+                                                        i.putExtras(b);
+                                                        startActivity(i);
+                                                        finish();
                                                     }
 
                                                     // Sign in success, update UI with the signed-in user's information
@@ -303,12 +312,7 @@ public class MainActivity extends AppCompatActivity {
                                                     //FirebaseUser user = mAuth.getCurrentUser();
                                                     //updateUI(user);
 
-                                                    Intent i = new Intent(MainActivity.this, MarketMain.class);
-                                                    Bundle b = new Bundle();
-                                                    b.putSerializable("Customer",marketlogin);
-                                                    i.putExtras(b);
-                                                    startActivity(i);
-                                                    finish();
+
                                                 } else {
                                                     // If sign in fails, display a message to the user.
                                                     //Log.w(TAG, "signInWithEmail:failure", task.getException());
