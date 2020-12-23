@@ -6,47 +6,38 @@ import java.util.List;
 
 
 public class Debt  implements Serializable {
-    private Customer customer;
-    private Market market;
+    private int customerPhone;
+    private int marketPhone;
     private String amount;
     private String description;
     private String dateOfLoan;
     private String dueDate;
+    public Debt() { }
 
-    public Debt(Customer customer, Market market, String amount, String description, String dateOfLoan, String dueDate, List<Item> itemList) {
-        this.customer = customer;
-        this.market = market;
+    public Debt(int customerPhone, int marketPhone, String amount, String description, String dateOfLoan, String dueDate, List<Item> itemList) {
+        this.customerPhone = customerPhone;
+        this.marketPhone = marketPhone;
         this.amount = amount;
         this.description = description;
         this.dateOfLoan = dateOfLoan;
         this.dueDate = dueDate;
-        this.itemList = itemList;
+        //this.itemList = itemList;
     }
 
-    private List<Item> itemList = new ArrayList<Item>();
-
-    public List<Item> getItemList() {
-        return itemList;
+    public int getCustomerPhone() {
+        return customerPhone;
     }
 
-    public void setItemList(List<Item> itemList) {
-        this.itemList = itemList;
+    public void setCustomerPhone(int customerPhone) {
+        this.customerPhone = customerPhone;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public int getMarketPhone() {
+        return marketPhone;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Market getMarket() {
-        return market;
-    }
-
-    public void setMarket(Market market) {
-        this.market = market;
+    public void setMarketPhone(int marketPhone) {
+        this.marketPhone = marketPhone;
     }
 
     public String getAmount() {
