@@ -73,12 +73,8 @@ public class EditMarketInfo extends AppCompatActivity {
                 conditionRef = mRootRef.child("Markets");
                 Market market = new Market(name, password, key, email, iban, adress, status);
                 conditionRef.child(key).setValue(market);
-
-
-
-
-
-
+            }
+        });
 
 
         marketeditBackButton2.setOnClickListener(new View.OnClickListener() {
