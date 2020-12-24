@@ -35,6 +35,7 @@ public class Market implements Serializable {
 
     }
 
+
     public Market(String email) {
         this.email = email;
     }

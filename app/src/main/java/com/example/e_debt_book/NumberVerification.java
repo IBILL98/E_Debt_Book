@@ -54,9 +54,6 @@ public class NumberVerification extends AppCompatActivity {
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
 
-
-
-
         //// Number verification attributes
         textView = findViewById(R.id.textView);
         verificationNumber = findViewById(R.id.verificationNumber);
@@ -95,7 +92,7 @@ public class NumberVerification extends AppCompatActivity {
             }
         });
 
-        if(MainActivity.usertype==0){
+        if(MainActivity.usertype == 0){
             conditionRef = mRootRef.child("Customers");
             Customer customer = (Customer) getIntent().getSerializableExtra("Customer");
             String phone = "+90" + customer.getPhone();

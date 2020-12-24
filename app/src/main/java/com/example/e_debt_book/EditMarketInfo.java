@@ -29,7 +29,7 @@ import java.util.Map;
 
 public class EditMarketInfo extends AppCompatActivity {
 
-    EditText editInfoName , editInfoEmail , editInfoPhone , editInfoPassword, editInfoIban , editInfoAdress;
+    EditText editInfoName , editInfoEmail  , editInfoPassword, editInfoIban , editInfoAdress;
     Button marketeditBackButton2, marketeditDoneButton2;
 
 
@@ -50,54 +50,40 @@ public class EditMarketInfo extends AppCompatActivity {
         marketeditDoneButton2 = findViewById(R.id.marketeditDoneButton2);
         editInfoName = findViewById(R.id.editInfoName);
         editInfoEmail = findViewById(R.id.editInfoEmail);
-        editInfoPhone = findViewById(R.id.editInfoPhone);
         editInfoPassword = findViewById(R.id.editInfoPassword);
         editInfoIban = findViewById(R.id.editInfoIban);
         editInfoAdress = findViewById(R.id.editInfoAdress);
 
-
-
-
-
-        editInfoName.setText(market.getName());
-        editInfoEmail.setText(market.getEmail());
-        editInfoPhone.setText(market.getPhone());
-        editInfoPassword.setText(market.getPassword());
-        editInfoIban.setText(market.getIban());
-        editInfoAdress.setText(market.getAdress());
-
+        String key = market.getPhone();
+        int status = market.getStatus();
 
         marketeditDoneButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
-
-
                 String name = editInfoName.getText().toString().trim();
                 String email = editInfoEmail.getText().toString().trim();
-                String phone = editInfoPhone.getText().toString().trim();
                 String password = editInfoPassword.getText().toString().trim();
                 String iban = editInfoIban.getText().toString().trim();
                 String adress = editInfoAdress.getText().toString().trim();
 
 
-                    // every thins down this line is bullshitt..
+                // every thing down this is line, Alhamza is  bullshitt..
+
                 conditionRef = mRootRef.child("Markets");
-                Market market = new Market(name,password,phone,email,iban,adress,0);
-
-                final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference ref = database.getReference("server/saving-data/fireblog");
-
-                DatabaseReference usersRef = ref.child("users");
-
-                Map<String, Market> users = new HashMap<>();
-                users.put("alanisawesome", new Market(name,password,phone,email,iban,adress,0));
-
-                usersRef.setValue(users);
+                Market market = new Market(name, password, key, email, iban, adress, status);
+                conditionRef.child(key).setValue(market);
 
 
 
+
+
+
+
+
+        marketeditBackButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
             }
         });
