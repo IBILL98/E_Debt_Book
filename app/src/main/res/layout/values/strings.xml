@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="customer">Customer:</string>
+    <string name="debts_details">Debts Details</string>
+    <string name="description">Description:</string>
+    <string name="due_date">Due Date:</string>
+    <string name="date_of_loan">Date of loan:</string>
+    <string name="amount">Amount:</string>
+    <string name="edit">Edit</string>
+    <string name="print">Print</string>
+    <string name="delete">Delete</string>
+</resources>
