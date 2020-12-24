@@ -61,6 +61,14 @@ public class MarketMain extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+                Intent i = new Intent(MarketMain.this, MainActivity.class);
+                Bundle b = new Bundle();
+                b.putSerializable("Market",market);
+                i.putExtras(b);
+                startActivity(i);
+                finish();
+
             }
         });
 
