@@ -9,4 +9,7 @@
     <string name="edit">Edit</string>
     <string name="print">Print</string>
     <string name="delete">Delete</string>
+    <string name="products_list">Products List:</string>
+    <string name="add_new_debt">Add New Debt</string>
+    <string name="loan_amount">Loan amount</string>
 </resources>

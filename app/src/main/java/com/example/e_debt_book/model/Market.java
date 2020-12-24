@@ -1,6 +1,7 @@
 package com.example.e_debt_book.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Market implements Serializable {
 
@@ -10,6 +11,7 @@ public class Market implements Serializable {
     String email;
     String iban;
     String adress;
+    ArrayList<Customer> myCustomers;
     private int status = 0;
 
     public int getStatus() {
@@ -33,6 +35,14 @@ public class Market implements Serializable {
         this.adress = adress;
         this.status = status;
 
+    }
+
+    public ArrayList<Customer> getMyCustomers() {
+        return myCustomers;
+    }
+
+    public void setMyCustomers(ArrayList<Customer> myCustomers) {
+        this.myCustomers = myCustomers;
     }
 
     public Market(String email) {
@@ -85,5 +95,8 @@ public class Market implements Serializable {
 
     public void setAdress(String adress) {
         this.adress = adress;
+    }
+    public void addCustomer (Customer customer) {
+        myCustomers.add(customer);
     }
 }

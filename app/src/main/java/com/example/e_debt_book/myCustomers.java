@@ -12,7 +12,9 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Debt;
+import com.example.e_debt_book.model.Market;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,36 +23,34 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class myCustomers extends AppCompatActivity {
-    //sign up attributes
     ListView debtsList;
     Button addNewDebtButton;
     ArrayList<String> list;
     ArrayAdapter<String> adapter;
+    ArrayList<Debt> debtsArray;
     Debt debt;
-    //Firebase attributes
-    /*FirebaseAuth kAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference mRootRef,conditionRef;*/
+    Customer customer;
+
     FirebaseDatabase database;
     DatabaseReference reference;
+    DatabaseReference reference2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_customers);
-        /*kAuth = FirebaseAuth.getInstance();
-        if(kAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            finish();
-        }
-        mRootRef = FirebaseDatabase.getInstance().getReference();*/
         debtsList = findViewById(R.id.debtsList);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Debt");
+        reference2 = database.getReference("Customer");
         list = new ArrayList<>();
         debt = new Debt();
+        customer = new Customer();
+        debtsArray = new ArrayList<>();
+        Market market = (Market) getIntent().getSerializableExtra("Market");
         adapter = new ArrayAdapter<String>(this, R.layout.debts_infos_resource, R.id.debtsInfosText, list);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -58,7 +58,10 @@ public class myCustomers extends AppCompatActivity {
                 for (DataSnapshot ds: snapshot.getChildren()){
                     debt = ds.getValue(Debt.class);
                     assert debt != null;
-                    //list.add(debt.getCustomerPhone().getName()+" "+debt.getCustomer().getLastname()+","+debt.getAmount());
+                    if(debt.getMarketPhone()==market.getPhone()) {
+                        list.add(debt.getCustomerPhone()+ ", " + debt.getAmount());
+                        debtsArray.add(debt);
+                    }
                 }
                 debtsList.setAdapter(adapter);
             }
@@ -71,10 +74,40 @@ public class myCustomers extends AppCompatActivity {
         debtsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //if (position==0) {
-                //    Intent intent = new Intent(view.getContext(), addNewDept.class);
-                //    startActivity(intent);
-                //}
+                int i=position;
+                Debt selectedDebt = debtsArray.get(i);
+                Intent intent = new Intent(myCustomers.this, debtsDetails.class);
+                reference2.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds: snapshot.getChildren()) {
+                            customer = ds.getValue(Customer.class);
+                            assert customer != null;
+                            if (customer.getPhone()==selectedDebt.getCustomerPhone()) {
+                                intent.putExtra("customer", customer);
+                                break;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                intent.putExtra("debt", selectedDebt);
+                intent.putExtra("market", market);
+                startActivity(intent);
+                finish();
+            }
+        });
+        addNewDebtButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(myCustomers.this, addNewDebt.class);
+                intent.putExtra("market", market);
+                startActivity(intent);
+                finish();
             }
         });
     }
