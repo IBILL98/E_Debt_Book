@@ -120,12 +120,12 @@ public class MarketRegister extends AppCompatActivity {
                 conditionRef = mRootRef.child("Markets");
                 Market market = new Market(name,password,phone,email,iban,adress,0);
 
-                ///First checking if the email is used
+                ///First checking if the phone is used
                 conditionRef.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         if (snapshot.getValue() != null) {
-                            //email  exists, show the user that in toast
+                            //phone  exists, show the user that in toast
                             Toast.makeText(MarketRegister.this, "This Phone Number is already used", Toast.LENGTH_SHORT).show();
                             System.out.println("**************************************");
                         } else {
@@ -152,7 +152,6 @@ public class MarketRegister extends AppCompatActivity {
                                     }
                                 }
                             });
-                            System.out.println("///////////////////////////////////////");
                         }
                     }
 
