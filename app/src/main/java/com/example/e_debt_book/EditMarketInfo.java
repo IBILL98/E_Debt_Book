@@ -82,7 +82,7 @@ public class EditMarketInfo extends AppCompatActivity {
                 String adress = editInfoAdress.getText().toString().trim();
 
 
-                    // every thins down this line is bullshitt
+                    // every thins down this line is bullshitt..
                 conditionRef = mRootRef.child("Markets");
                 Market market = new Market(name,password,phone,email,iban,adress,0);
 
