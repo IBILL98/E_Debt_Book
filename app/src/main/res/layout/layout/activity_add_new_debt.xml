@@ -44,7 +44,7 @@
                 android:layout_height="50dp">
                 <TextView
                     android:id="@+id/selectedCustomerField"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:layout_width="360dp"
                     android:layout_height="50dp"/>
 
@@ -58,11 +58,12 @@
                 android:layout_height="30dp"
                 android:textSize="18sp"
                 android:text="@string/loan_amount"
+                android:background="#8ecde8"
                 android:textStyle="bold"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:id="@+id/loanAmountInput"
                 android:autofillHints=""
                 android:inputType="numberDecimal" />
@@ -71,14 +72,123 @@
                 android:layout_height="30dp"
                 android:textSize="18sp"
                 android:text="Description"
+                android:background="#8ecde8"
                 android:textStyle="bold"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="24dp"
+                android:textSize="18dp"
                 android:id="@+id/descriptionInput"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+            >
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="Date of Loan" />
+                <EditText
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:textSize="18dp"
+                    android:id="@+id/dateOfLoanInput"
+                    />
+
+                <ImageButton
+                    android:id="@+id/dateOfLoanSelect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/ic_menu_today" />
 
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:text="Payment Due Date"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                 />
+
+                <EditText
+                    android:layout_width="180sp"
+                    android:layout_height="50dp"
+                    android:id="@+id/dueDateInput"
+                    android:textSize="18dp" />
+                <ImageButton
+                    android:id="@+id/dueDateSelect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/ic_menu_today" />
+
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:text="Products List"
+                android:background="#8ecde8"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+
+                >
+
+                <EditText
+                    android:id="@+id/itemNameInput"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Product Name" />
+                <EditText
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:id="@+id/itemPriceInput"
+                    android:text="Price"
+                    />
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:background="#005B9F"
+                    android:textColor="@android:color/white"
+                    android:text="Add Product"
+                    android:id="@+id/addProductButton"
+                    />
+
+            </LinearLayout>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/productsList"
+
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#f24405"
+                android:textColor="@android:color/white"
+                android:text="Add Debt"
+                android:id="@+id/addDebtButton"
+                />
 
         </LinearLayout>
     </ScrollView>

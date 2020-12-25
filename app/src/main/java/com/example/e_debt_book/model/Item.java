@@ -4,6 +4,9 @@ public class Item {
     private String name;
     private int price;
 
+    public Item() {
+    }
+
     public String getName() {
         return name;
     }
