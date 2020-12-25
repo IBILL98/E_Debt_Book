@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -30,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    Spinner customerSelectSpinner;
+    ImageButton customerSelectButton;
     TextView selectedCustomerField;
     EditText loanAmountInput;
     EditText descriptionInput;
@@ -72,8 +73,8 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
         itemPriceInput = findViewById(R.id.itemPriceInput);
         addProductButton = findViewById(R.id.addProductButton);
         productsList = findViewById(R.id.productsList);
-        customerSelectSpinner = findViewById(R.id.customerSelectSpinner);
-        selectedCustomerField = findViewById(R.id.selectedCustomerField);
+        customerSelectButton = findViewById(R.id.customerSelectButton);
+        selectedCustomerField = findViewById(R.id.selectedCustomerPhone);
         addDebtButton = findViewById(R.id.addDebtButton);
         selectedCustomerField.setText("Select customer");
 
@@ -81,17 +82,20 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
 
         itemList = new ArrayList<>();
         itemListString = new String[100];
-        market = (Market) getIntent().getSerializableExtra("market");
+        market = (Market) getIntent().getSerializableExtra("Market");
         customerList = market.getMyCustomers();
-        for (int i=0;i<customerList.size();i++) {
-            displayCustomerList.add(customerList.get(i).getName()+" "+customerList.get(i).getLastname()+", "+customerList.get(i).getPhone());
+        if (customerList!=null){
+            for (int i=0;i<customerList.size();i++) {
+                displayCustomerList.add(customerList.get(i).getName()+" "+customerList.get(i).getLastname()+", "+customerList.get(i).getPhone());
+            }
         }
+
         //adapter = ArrayAdapter.createFromResource(this,displayCustomerList, android.R.layout.simple_spinner_dropdown_item );
         //Not sure if this code is gonna work
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.layout.simple_spinner_item, displayCustomerList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        customerSelectSpinner.setAdapter(adapter);
-        customerSelectSpinner.setOnItemSelectedListener(this);
+        //customerSelectSpinner.setAdapter(adapter);
+        //customerSelectSpinner.setOnItemSelectedListener(this);
 
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
         builder.setTitleText("Select A Date");

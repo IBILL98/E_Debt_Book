@@ -6,18 +6,19 @@
     android:layout_height="match_parent"
     android:background="@drawable/lol"
     android:visibility="visible"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:visibility="visible">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/marketLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <Button
             android:id="@+id/marketSignUpButton"
@@ -192,7 +193,7 @@
         android:id="@+id/mainChoice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

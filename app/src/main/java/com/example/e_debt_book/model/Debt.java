@@ -13,6 +13,7 @@ public class Debt  implements Serializable {
     private String dateOfLoan;
     private String dueDate;
     List<Item> itemList;
+
     public Debt() { }
 
     public Debt(String customerPhone, String marketPhone, String amount, String description, String dateOfLoan, String dueDate, List<Item> itemList) {
