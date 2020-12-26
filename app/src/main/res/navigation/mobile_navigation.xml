@@ -12,13 +12,13 @@
         tools:layout="@layout/fragment_customer_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_settings"
         android:name="com.example.e_debt_book.ui.customerSettings.SettingCustomerFragment"
         android:label="@string/menu_customer_settings"
         tools:layout="@layout/fragment_customer_setting" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_aboutus"
         android:name="com.example.e_debt_book.ui.aboutus.AboutUsFragment"
         android:label="@string/menu_aboutus"
         tools:layout="@layout/fragment_aboutus" />
