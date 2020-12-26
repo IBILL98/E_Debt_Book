@@ -8,14 +8,14 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.e_debt_book.ui.customerHome.CustomerHomeFragment"
-        android:label="@string/menu_customer_home"
+        android:label="@string/menu_home"
         tools:layout="@layout/fragment_customer_home" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.example.e_debt_book.ui.customerSettings.SettingCustomerFragment"
-        android:label="@string/menu_customer_settings"
-        tools:layout="@layout/fragment_customer_setting" />
+        android:name="com.example.e_debt_book.ui.customerEditprofile.SettingCustomerFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_setting" />
 
     <fragment
         android:id="@+id/nav_aboutus"

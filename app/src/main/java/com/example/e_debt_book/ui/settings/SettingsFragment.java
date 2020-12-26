@@ -1,4 +1,4 @@
-package com.example.e_debt_book.ui.customerSettings;
+package com.example.e_debt_book.ui.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.e_debt_book.R;
 
-public class SettingCustomerFragment extends Fragment {
+public class SettingsFragment extends Fragment {
 
-    private SettingCustomerViewModel settingCustomerViewModel;
+    private SettingsViewModel settingsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        settingCustomerViewModel =
-                new ViewModelProvider(this).get(SettingCustomerViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_customer_setting, container, false);
+        settingsViewModel =
+                new ViewModelProvider(this).get(SettingsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_market_home, container, false);
         final TextView textView = root.findViewById(R.id.text_gallery);
-        settingCustomerViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        settingsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

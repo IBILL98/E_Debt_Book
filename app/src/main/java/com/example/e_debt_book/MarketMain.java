@@ -19,7 +19,7 @@ public class MarketMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_market_main);
+        setContentView(R.layout.activity_market_main1);
 
         mainMarketAddCustomertButton = findViewById(R.id.mainMarketAddCustomertButton);
         mainMarketeditinfoButton = findViewById(R.id.mainMarketeditinfoButton);
