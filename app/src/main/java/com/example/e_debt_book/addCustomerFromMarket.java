@@ -96,32 +96,45 @@ public class addCustomerFromMarket extends AppCompatActivity {
                 //set the phone number as Null cause its already the key of the customer in the database
                 //so we dont wanna add it in the database and make it key and cutomer attribute at the same time
                 cos.setPhone(null);
-                ///First checking if the Phone number is used
+                //check : first, if there's an unregistered customer with the same number,
+                //second, if there's a registered customer with the same number, if not, then create an unregistered customer.
                 conditionRef.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         if (snapshot.getValue() != null) {
-                            //phone exists, show the user that in toast
+                            //phone exists as an unregistered customer! , show the user that in a toast
                             Toast.makeText(addCustomerFromMarket.this, "This Phone Number is already used", Toast.LENGTH_SHORT).show();
-                            System.out.println("**************************************");
+                            System.out.println("phone exists!");
                         } else {
-                            //phone is available, start the registeration operation
-                            //Adding the customer to the database
-                            conditionRef.child(customerRegisterPhonefromMarket.getText().toString()).setValue(cos);
-                            Intent i = new Intent(addCustomerFromMarket.this,MarketMain.class);
-                            Bundle b = new Bundle();
-                            b.putSerializable("Market",market);
-                            i.putExtras(b);
-                            startActivity(i);
-                            finish();
+                            //check if the phone's already used as a customer!
+                            DatabaseReference databaseReference =mRootRef.child("Customers");
+                            databaseReference.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if (snapshot.getValue()!=null){
+                                        //phone exists, show the user that in toast
+                                        Toast.makeText(addCustomerFromMarket.this, "This Phone Number is already used", Toast.LENGTH_SHORT).show();
+                                        System.out.println("phone exists!");
+                                    }
+                                    else{
+                                        //phone is available, start the registeration operation
+                                        //Adding the customer to the database
+                                        conditionRef.child(customerRegisterPhonefromMarket.getText().toString()).setValue(cos);
+                                        Intent i = new Intent(addCustomerFromMarket.this,MarketMain.class);
+                                        Bundle b = new Bundle();
+                                        b.putSerializable("Market",market);
+                                        i.putExtras(b);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {}
+                            });
                         }
                     }
-
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-
+                    public void onCancelled(@NonNull DatabaseError error) {}
                 });
             }
         });

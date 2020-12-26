@@ -181,7 +181,7 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginRight="50dp"
                 android:background="#005B9F"
-                android:text="@string/sign_up"
+                android:text="@string/createCustomerFromMarketSelectDone"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
