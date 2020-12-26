@@ -1,5 +1,6 @@
 package com.example.e_debt_book;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -24,15 +25,19 @@ import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    EditText customerNameInput, customerEmailInput, customerPhoneInput;
     ImageButton customerSelectButton;
-    TextView selectedCustomerField;
+    TextView selectedCustomerPhone;
     EditText loanAmountInput;
     EditText descriptionInput;
     EditText dateOfLoanInput;
@@ -55,7 +60,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
     ArrayList<Customer> customerList;
     ArrayList<String> displayCustomerList;
 
-    DatabaseReference reference;
+    DatabaseReference reference, customerReference;
 
     @SuppressLint("ResourceType")
     @Override
@@ -63,6 +68,9 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_debt);
 
+        customerNameInput = findViewById(R.id.customerNameInput);
+        customerEmailInput = findViewById(R.id.customerEmailInput);
+        customerPhoneInput = findViewById(R.id.customerPhoneInput);
         loanAmountInput = findViewById(R.id.loanAmountInput);
         descriptionInput = findViewById(R.id.descriptionInput);
         dateOfLoanInput = findViewById(R.id.dateOfLoanInput);
@@ -74,21 +82,66 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
         addProductButton = findViewById(R.id.addProductButton);
         productsList = findViewById(R.id.productsList);
         customerSelectButton = findViewById(R.id.customerSelectButton);
-        selectedCustomerField = findViewById(R.id.selectedCustomerPhone);
+        selectedCustomerPhone = findViewById(R.id.selectedCustomerPhone);
         addDebtButton = findViewById(R.id.addDebtButton);
-        selectedCustomerField.setText("Select customer");
+        selectedCustomerPhone.setText("");
 
         reference = FirebaseDatabase.getInstance().getReference("Debts");
+        customerReference = FirebaseDatabase.getInstance().getReference("Customers");
 
         itemList = new ArrayList<>();
-        itemListString = new String[100];
+        //itemListString = new String[100];
         market = (Market) getIntent().getSerializableExtra("Market");
-        customerList = market.getMyCustomers();
-        if (customerList!=null){
+        //customerList = market.getMyCustomers();
+        //if (customerList!=null){
             for (int i=0;i<customerList.size();i++) {
                 displayCustomerList.add(customerList.get(i).getName()+" "+customerList.get(i).getLastname()+", "+customerList.get(i).getPhone());
             }
-        }
+        //}
+
+        customerSelectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phoneNumber = selectedCustomerPhone.getText().toString();
+                if (phoneNumber.length()==11) {
+                    long phone1;
+                    try {
+                        phone1 = Integer.parseInt(phoneNumber);
+                    } catch (NumberFormatException nfe) {
+                        Toast.makeText(addNewDebt.this, "Incorrect phone number format!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    customerReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                selectedCustomer = ds.getValue(Customer.class);
+                                if (selectedCustomer != null) {
+                                    //find in database
+                                    //display
+                                } else {
+                                    Toast.makeText(addNewDebt.this, "User not found!", Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+                }else {
+                    Toast.makeText(addNewDebt.this, "Phone number must consist of 11 digits!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+            }
+        });
 
         //adapter = ArrayAdapter.createFromResource(this,displayCustomerList, android.R.layout.simple_spinner_dropdown_item );
         //Not sure if this code is gonna work

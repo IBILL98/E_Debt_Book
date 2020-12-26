@@ -68,7 +68,9 @@ public class MarketRegister extends AppCompatActivity {
         marketRegisterBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(MarketRegister.this,MainActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 

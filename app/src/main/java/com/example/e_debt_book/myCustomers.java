@@ -81,6 +81,7 @@ public class myCustomers extends AppCompatActivity {
                 int i=position;
                 Debt selectedDebt = debtsArray.get(i);
                 Intent intent = new Intent(myCustomers.this, debtsDetails.class);
+                Bundle bundle = new Bundle();
                 reference2.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -88,7 +89,8 @@ public class myCustomers extends AppCompatActivity {
                             customer = ds.getValue(Customer.class);
                             assert customer != null;
                             if (customer.getPhone() == selectedDebt.getCustomerPhone()) {
-                                intent.putExtra("Customer", customer);
+                                bundle.putSerializable("Customer", customer);
+                                intent.putExtras(bundle);
                                 break;
                             }
                         }
@@ -99,12 +101,12 @@ public class myCustomers extends AppCompatActivity {
 
                     }
                 });
-                Intent s = new Intent(myCustomers.this,debtsDetails.class);
-                Bundle b = new Bundle();
-                b.putSerializable("Market",market);
-                b.putSerializable("Debt",selectedDebt);
-                s.putExtras(b);
-                startActivity(s);
+                //Intent s = new Intent(myCustomers.this,debtsDetails.class);
+                //Bundle b = new Bundle();
+                bundle.putSerializable("Market",market);
+                bundle.putSerializable("Debt",selectedDebt);
+                intent.putExtras(bundle);
+                startActivity(intent);
                 finish();
             }
         });

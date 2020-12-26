@@ -67,30 +67,15 @@ public class EditMarketInfo extends AppCompatActivity {
             }
         });
 
-
         marketeditBackButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-            }
-        });
-
-
-
-        marketeditBackButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-
-
                 Intent i = new Intent(EditMarketInfo.this, MarketMain.class);
                 Bundle b = new Bundle();
                 b.putSerializable("Market",market);
                 i.putExtras(b);
                 startActivity(i);
                 finish();
-
             }
         });
 
