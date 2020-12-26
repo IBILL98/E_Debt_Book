@@ -1,4 +1,4 @@
-package com.example.e_debt_book.ui.slideshow;
+package com.example.e_debt_book.ui.customerSettings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.e_debt_book.R;
 
-public class SlideshowFragment extends Fragment {
+public class SettingCustomerFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private SettingCustomerViewModel settingCustomerViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        settingCustomerViewModel =
+                new ViewModelProvider(this).get(SettingCustomerViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_customer_setting, container, false);
+        final TextView textView = root.findViewById(R.id.text_gallery);
+        settingCustomerViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

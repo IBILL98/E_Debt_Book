@@ -1,4 +1,4 @@
-package com.example.e_debt_book.ui.gallery;
+package com.example.e_debt_book.ui.customerHome;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.e_debt_book.R;
 
-public class GalleryFragment extends Fragment {
+public class CustomerHomeFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private CustomerHomeViewModel customerHomeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        customerHomeViewModel =
+                new ViewModelProvider(this).get(CustomerHomeViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_customer_home, container, false);
+        final TextView textView = root.findViewById(R.id.text_home);
+        customerHomeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
