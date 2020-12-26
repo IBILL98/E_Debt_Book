@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addNewDebt"></activity>
+        <activity android:name=".addCustomerFromMarket"></activity>
+        <activity android:name=".addNewDebt" />
         <activity android:name=".myCustomers" />
         <activity android:name=".MarketMain" />
         <activity android:name=".NumberVerification" />
@@ -19,7 +20,7 @@
         <activity android:name=".CustomerRegister" />
         <activity android:name=".CustomerMain" />
         <activity android:name=".EditMarketInfo" />
-        <activity android:name=".MarketMain1" >
+        <activity android:name=".MarketMain1">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
