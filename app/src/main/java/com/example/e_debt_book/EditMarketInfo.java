@@ -11,6 +11,7 @@ import android.widget.EditText;
 import com.example.e_debt_book.model.Market;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class EditMarketInfo extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class EditMarketInfo extends AppCompatActivity {
 
         Market market = (Market) getIntent().getSerializableExtra("Market");
 
+        mRootRef = FirebaseDatabase.getInstance().getReference();
 
         marketeditBackButton2 = findViewById(R.id.marketeditBackButton2);
         marketeditDoneButton2 = findViewById(R.id.marketeditDoneButton2);
@@ -39,6 +41,12 @@ public class EditMarketInfo extends AppCompatActivity {
 
         String key = market.getPhone();
         int status = market.getStatus();
+
+        editInfoName.setText(market.getName());
+        editInfoEmail.setText(market.getEmail());
+        editInfoPassword.setText(market.getPassword());
+        editInfoIban.setText(market.getIban());
+        editInfoAdress.setText(market.getAdress());
 
         marketeditDoneButton2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +62,8 @@ public class EditMarketInfo extends AppCompatActivity {
                 // every thing down this is line, Alhamza is  bullshitt..
 
                 conditionRef = mRootRef.child("Markets");
-                Market market = new Market(name, password, key, email, iban, adress, status);
-                conditionRef.child(key).setValue(market);
+                Market market1 = new Market(name, password, key, email, iban, adress, status);
+                conditionRef.child(key).setValue(market1);
             }
         });
 
