@@ -1,4 +1,4 @@
-package com.example.e_debt_book.ui.gallery;
+package com.example.e_debt_book.ui.aboutus;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.e_debt_book.R;
 
-public class GalleryFragment extends Fragment {
+public class AboutUsFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private AboutUsViewModel aboutUsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        aboutUsViewModel =
+                new ViewModelProvider(this).get(AboutUsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_aboutus, container, false);
+        final TextView textView = root.findViewById(R.id.text_slideshow);
+        aboutUsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
