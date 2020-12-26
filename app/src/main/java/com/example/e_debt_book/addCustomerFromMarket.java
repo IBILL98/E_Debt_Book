@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.e_debt_book.model.Customer;
+import com.example.e_debt_book.model.Market;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -53,6 +54,8 @@ public class addCustomerFromMarket extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
 
+        Market market = (Market) getIntent().getSerializableExtra("Market");
+
 
         //ask bilal
         mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -62,7 +65,12 @@ public class addCustomerFromMarket extends AppCompatActivity {
         customerRegisterBackButtonfromMarket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(addCustomerFromMarket.this,MarketMain.class);
+                Bundle b = new Bundle();
+                b.putSerializable("Market",market);
+                i.putExtras(b);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -81,7 +89,7 @@ public class addCustomerFromMarket extends AppCompatActivity {
                 }
                 customerRegisterProgressBarfromMarket.setVisibility(View.VISIBLE);
                 ////Creating the Customer
-                conditionRef = mRootRef.child("Customers");
+                conditionRef = mRootRef.child("Unregisterd_Customers");
                 Customer cos = new Customer(customerRegisterNamefromMarket.getText().toString(),
                         customerRegisterLastNamefromMarket.getText().toString(),
                         customerRegisterEmailfromMarket.getText().toString(),0);
@@ -98,31 +106,14 @@ public class addCustomerFromMarket extends AppCompatActivity {
                             System.out.println("**************************************");
                         } else {
                             //phone is available, start the registeration operation
-                            //Create the login informations
-
-                            fAuth.createUserWithEmailAndPassword(email,null).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()){
-                                        Toast.makeText(addCustomerFromMarket.this, "User Created ..", Toast.LENGTH_SHORT).show();
-
-                                        //Adding the customer to the database
-                                        conditionRef.child(customerRegisterPhonefromMarket.getText().toString()).setValue(cos);
-                                        cos.setPhone(customerRegisterPhonefromMarket.getText().toString());
-
-                                        Intent i = new Intent(addCustomerFromMarket.this,NumberVerification.class);
-                                        Bundle b = new Bundle();
-                                        b.putSerializable("Customer",cos);
-                                        i.putExtras(b);
-                                        startActivity(i);
-                                        finish();
-
-                                    }else{
-                                        Toast.makeText(addCustomerFromMarket.this, "Error !! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                            System.out.println("///////////////////////////////////////");
+                            //Adding the customer to the database
+                            conditionRef.child(customerRegisterPhonefromMarket.getText().toString()).setValue(cos);
+                            Intent i = new Intent(addCustomerFromMarket.this,MarketMain.class);
+                            Bundle b = new Bundle();
+                            b.putSerializable("Market",market);
+                            i.putExtras(b);
+                            startActivity(i);
+                            finish();
                         }
                     }
 
