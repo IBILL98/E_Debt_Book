@@ -94,9 +94,9 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
         market = (Market) getIntent().getSerializableExtra("Market");
         //customerList = market.getMyCustomers();
         //if (customerList!=null){
-            for (int i=0;i<customerList.size();i++) {
-                displayCustomerList.add(customerList.get(i).getName()+" "+customerList.get(i).getLastname()+", "+customerList.get(i).getPhone());
-            }
+        //    for (int i=0;i<customerList.size();i++) {
+        //        displayCustomerList.add(customerList.get(i).getName()+" "+customerList.get(i).getLastname()+", "+customerList.get(i).getPhone());
+        //    }
         //}
 
         customerSelectButton.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +179,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
             }
         });
 
-        mAdapter = new ArrayAdapter<String>(addNewDebt.this, android.R.layout.simple_list_item_1, android.R.id.text1, itemListString);
+//        mAdapter = new ArrayAdapter<String>(addNewDebt.this, android.R.layout.simple_list_item_1, android.R.id.text1, itemListString);
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -245,15 +245,25 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
         });
     }
 
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//        String text = parent.getItemAtPosition(position).toString();
+//        selectedCustomer = customerList.get(position);
+//        selectedCustomerField.setText(text);
+//    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-        selectedCustomer = customerList.get(position);
-        selectedCustomerField.setText(text);
+
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 }
