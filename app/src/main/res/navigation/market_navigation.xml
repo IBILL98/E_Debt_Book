@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_market_home">
+
+    <fragment
+        android:id="@+id/nav_market_home"
+        android:name="com.example.e_debt_book.ui.marketHome.MarketHomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_market_home" />
+
+    <fragment
+        android:id="@+id/nav_market_edit_profile"
+        android:name="com.example.e_debt_book.ui.marketEditprofile.MarketEditProfileFragment"
+        android:label="@string/menu_edit_profile"
+        tools:layout="@layout/fragment_customer_editprofile" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.e_debt_book.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_setting" />
+
+    <fragment
+        android:id="@+id/nav_aboutus"
+        android:name="com.example.e_debt_book.ui.aboutUs.AboutUsFragment"
+        android:label="@string/menu_aboutus"
+        tools:layout="@layout/fragment_aboutus" />
+
+    <fragment
+        android:id="@+id/nav_change_language"
+        android:name="com.example.e_debt_book.ui.changeLanguage.ChangeLanguageFragment"
+        android:label="@string/menu_change_language"
+        tools:layout="@layout/fragment_change_language" />
+
+
+</navigation>

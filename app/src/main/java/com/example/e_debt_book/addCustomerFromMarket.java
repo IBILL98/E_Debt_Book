@@ -36,7 +36,6 @@ public class addCustomerFromMarket extends AppCompatActivity {
     //Firebase attributes
     FirebaseAuth fAuth;
     FirebaseDatabase firebaseDatabase;
-    //refrence nodes in the database
     DatabaseReference mRootRef,conditionRef;
 
     @Override
@@ -56,6 +55,9 @@ public class addCustomerFromMarket extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
 
         Market market = (Market) getIntent().getSerializableExtra("Market");
+
+
+        //ask bilal
         mRootRef = FirebaseDatabase.getInstance().getReference();
         // not functional
         customerRegisterProgressBarfromMarket = findViewById(R.id.customerRegisterProgressBarfromMarket);
@@ -86,7 +88,7 @@ public class addCustomerFromMarket extends AppCompatActivity {
                     return;
                 }
                 customerRegisterProgressBarfromMarket.setVisibility(View.VISIBLE);
-                ////Creating Customer
+                ////Creating the Customer
                 conditionRef = mRootRef.child("Unregisterd_Customers");
                 Customer cos = new Customer(customerRegisterNamefromMarket.getText().toString(),
                         customerRegisterLastNamefromMarket.getText().toString(),

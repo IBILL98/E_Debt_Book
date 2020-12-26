@@ -1,16 +1,16 @@
-package com.example.e_debt_book.ui.customerEditprofile;
+package com.example.e_debt_book.ui.changeLanguage;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SettingCustomerViewModel extends ViewModel {
+public class ChangeLanguageViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SettingCustomerViewModel() {
+    public ChangeLanguageViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("This is change language fragment");
     }
 
     public LiveData<String> getText() {

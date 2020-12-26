@@ -1,4 +1,4 @@
-package com.example.e_debt_book.ui.customerEditprofile;
+package com.example.e_debt_book.ui.changeLanguage;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.e_debt_book.R;
 
-public class SettingCustomerFragment extends Fragment {
+public class ChangeLanguageFragment extends Fragment {
 
-    private SettingCustomerViewModel settingCustomerViewModel;
+    private ChangeLanguageViewModel changeLanguageViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        settingCustomerViewModel =
-                new ViewModelProvider(this).get(SettingCustomerViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_setting, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        settingCustomerViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        changeLanguageViewModel =
+                new ViewModelProvider(this).get(ChangeLanguageViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_change_language, container, false);
+        final TextView textView = root.findViewById(R.id.text_home);
+        changeLanguageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

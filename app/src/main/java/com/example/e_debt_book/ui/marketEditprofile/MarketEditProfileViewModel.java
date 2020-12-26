@@ -10,7 +10,7 @@ public class MarketEditProfileViewModel extends ViewModel {
 
     public MarketEditProfileViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("This is Market Edit Profile fragment");
     }
 
     public LiveData<String> getText() {
