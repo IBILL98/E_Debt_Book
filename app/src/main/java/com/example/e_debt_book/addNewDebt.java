@@ -52,15 +52,12 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
     Customer selectedCustomer;
 
     ArrayList<Item> itemList;
-    String[] itemListString;
-    int i=0;
-    ArrayAdapter adapter;
-    ArrayAdapter<String> mAdapter;
     Market market;
-    ArrayList<Customer> customerList;
-    ArrayList<String> displayCustomerList;
 
-    DatabaseReference reference, customerReference;
+    FirebaseDatabase database;
+    ArrayList<String> displayProductsList;
+    ArrayAdapter<String> mAdapter;
+    DatabaseReference reference, customerReference,mReference;
 
     @SuppressLint("ResourceType")
     @Override
@@ -84,71 +81,42 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
         customerSelectButton = findViewById(R.id.customerSelectButton);
         selectedCustomerPhone = findViewById(R.id.selectedCustomerPhone);
         addDebtButton = findViewById(R.id.addDebtButton);
-        selectedCustomerPhone.setText("");
 
-        reference = FirebaseDatabase.getInstance().getReference("Debts");
-        customerReference = FirebaseDatabase.getInstance().getReference("Customers");
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("Debts");
 
-        itemList = new ArrayList<>();
-        //itemListString = new String[100];
         market = (Market) getIntent().getSerializableExtra("Market");
-        //customerList = market.getMyCustomers();
-        //if (customerList!=null){
-        //    for (int i=0;i<customerList.size();i++) {
-        //        displayCustomerList.add(customerList.get(i).getName()+" "+customerList.get(i).getLastname()+", "+customerList.get(i).getPhone());
-        //    }
-        //}
+        customerReference = FirebaseDatabase.getInstance().getReference().child("Customers");
 
         customerSelectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String phoneNumber = selectedCustomerPhone.getText().toString();
                 if (phoneNumber.length()==11) {
-                    long phone1;
-                    try {
-                        phone1 = Integer.parseInt(phoneNumber);
-                    } catch (NumberFormatException nfe) {
-                        Toast.makeText(addNewDebt.this, "Incorrect phone number format!", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    customerReference.addValueEventListener(new ValueEventListener() {
+                    customerReference.child(phoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @SuppressLint("SetTextI18n")
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot ds : snapshot.getChildren()) {
-                                selectedCustomer = ds.getValue(Customer.class);
-                                if (selectedCustomer != null) {
-                                    //find in database
-                                    //display
-                                } else {
-                                    Toast.makeText(addNewDebt.this, "User not found!", Toast.LENGTH_LONG).show();
-                                    return;
-                                }
-
+                            if (snapshot.getValue() != null) {
+                                selectedCustomer = snapshot.getValue(Customer.class);
+                                assert selectedCustomer != null;
+                                customerNameInput.setText(selectedCustomer.getName()+" "+selectedCustomer.getLastname());
+                                customerEmailInput.setText(selectedCustomer.getEmail());
+                                customerPhoneInput.setText(selectedCustomer.getPhone());
+                            } else {
+                                Toast.makeText(addNewDebt.this, "User not found!", Toast.LENGTH_LONG).show();
                             }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
 
                         }
                     });
-
-
                 }else {
                     Toast.makeText(addNewDebt.this, "Phone number must consist of 11 digits!", Toast.LENGTH_SHORT).show();
-                    return;
                 }
-
             }
         });
-
-        //adapter = ArrayAdapter.createFromResource(this,displayCustomerList, android.R.layout.simple_spinner_dropdown_item );
-        //Not sure if this code is gonna work
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.layout.simple_spinner_item, displayCustomerList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //customerSelectSpinner.setAdapter(adapter);
-        //customerSelectSpinner.setOnItemSelectedListener(this);
 
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
         builder.setTitleText("Select A Date");
@@ -178,8 +146,8 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                 dueDateInput.setText(materialDatePicker.getHeaderText());
             }
         });
-
-//        mAdapter = new ArrayAdapter<String>(addNewDebt.this, android.R.layout.simple_list_item_1, android.R.id.text1, itemListString);
+        displayProductsList = new ArrayList<>();
+        mAdapter = new ArrayAdapter<String>(addNewDebt.this, R.layout.debts_infos_resource,R.id.debtsInfosText, displayProductsList);
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -194,8 +162,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                 }
                 Item item = new Item(itemName, itemPrice1);
                 itemList.add(item);
-                itemListString[i+1]=itemName+" "+itemPrice;
-                i++;
+                displayProductsList.add(itemName+" "+itemPrice);
                 productsList.setAdapter(mAdapter);
             }
         });
@@ -232,6 +199,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                 debt.setItemList(finalItemList);
                 debt.setDueDate(dueDate);
                 debt.setDebtID(id);
+                assert id != null;
                 reference.child(id).setValue(debt);
 
                 Intent intent = new Intent(addNewDebt.this,myCustomers.class);
@@ -244,24 +212,14 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
             }
         });
     }
-
-//    @Override
-//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        String text = parent.getItemAtPosition(position).toString();
-//        selectedCustomer = customerList.get(position);
-//        selectedCustomerField.setText(text);
-//    }
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
     }
-
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 

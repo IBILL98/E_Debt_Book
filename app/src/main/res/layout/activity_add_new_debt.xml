@@ -57,14 +57,15 @@
                     android:textColorHint="@android:color/tertiary_text_light"
                     android:textSize="20sp"
                     android:textStyle="normal|italic"
-                    tools:ignore="TextFields" />
+                    tools:ignore="TextFields"
+                    android:autofillHints="" />
 
                 <ImageButton
                     android:id="@+id/customerSelectButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#F3F3F3"
-                    android:contentDescription="TODO"
+                    android:contentDescription="@string/todo"
                     app:srcCompat="@drawable/search_icon" />
             </LinearLayout>
 
@@ -266,6 +267,7 @@
                     android:id="@+id/itemPriceInput"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:gravity="center"
                     android:hint="Price" />
 

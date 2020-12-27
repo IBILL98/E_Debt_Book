@@ -43,18 +43,21 @@ public class myCustomers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_customers);
+
         debtsList = findViewById(R.id.debtsList);
         addNewDebtButton = findViewById(R.id.addNewDebtButton);
+
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Debt");
         reference2 = database.getReference("Customer");
+
         list = new ArrayList<>();
         debt = new Debt();
         customer = new Customer();
         debtsArray = new ArrayList<>();
         Market market = (Market) getIntent().getSerializableExtra("Market");
-        adapter = new ArrayAdapter<String>(this, R.layout.debts_infos_resource, R.id.debtsInfosText, list);
 
+        adapter = new ArrayAdapter<String>(this, R.layout.debts_infos_resource, R.id.debtsInfosText, list);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -68,13 +71,11 @@ public class myCustomers extends AppCompatActivity {
                 }
                 debtsList.setAdapter(adapter);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-
         debtsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -90,19 +91,16 @@ public class myCustomers extends AppCompatActivity {
                             assert customer != null;
                             if (customer.getPhone() == selectedDebt.getCustomerPhone()) {
                                 bundle.putSerializable("Customer", customer);
-                                intent.putExtras(bundle);
+                                //intent.putExtras(bundle);
                                 break;
                             }
                         }
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
-                //Intent s = new Intent(myCustomers.this,debtsDetails.class);
-                //Bundle b = new Bundle();
                 bundle.putSerializable("Market",market);
                 bundle.putSerializable("Debt",selectedDebt);
                 intent.putExtras(bundle);
@@ -110,7 +108,6 @@ public class myCustomers extends AppCompatActivity {
                 finish();
             }
         });
-
         addNewDebtButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

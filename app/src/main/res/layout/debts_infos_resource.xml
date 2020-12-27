@@ -9,9 +9,8 @@
     <TextView
         android:id="@+id/debtsInfosText"
         android:layout_width="match_parent"
-        android:layout_height="95dp"
-        android:text=""
-        android:textSize="24sp"
+        android:layout_height="wrap_content"
+        android:textSize="26dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
