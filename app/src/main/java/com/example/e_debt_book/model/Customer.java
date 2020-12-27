@@ -69,7 +69,20 @@ public class Customer implements Serializable {
         this.status = status;
     }
 
+    public Customer(String name, String lastname, String phone, String email) {
+        this.name = name;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.email = email;
+
+    }
+
+
+
     public String toString(){
         return "\n name : " + getName() +  "\n Last Name : " +getLastname() +"\n Phone : " + getPhone() + "\n Email : "+ getEmail()  +"\n Status : " + getStatus();
     }
+
+
+
 }

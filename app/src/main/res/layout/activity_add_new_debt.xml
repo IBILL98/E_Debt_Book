@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#005B9F"
+    tools:context=".addNewDebt">
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginLeft="176dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="177dp"
+        android:layout_marginRight="177dp"
+        android:text="@string/add_new_debt"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="ExtraText">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <EditText
+                    android:id="@+id/selectedCustomerPhone"
+                    android:layout_width="360dp"
+                    android:layout_height="50dp"
+                    android:background="#F3F3F3"
+                    android:hint="@string/enter_customer_phone_to_search"
+                    android:inputType="number"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/tertiary_text_light"
+                    android:textSize="20sp"
+                    android:textStyle="normal|italic"
+                    tools:ignore="TextFields"
+                    android:autofillHints="" />
+
+                <ImageButton
+                    android:id="@+id/customerSelectButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#F3F3F3"
+                    android:contentDescription="@string/todo"
+                    app:srcCompat="@drawable/search_icon" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingRight="10dp">
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        tools:srcCompat="@drawable/account_icon" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="285dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="Full Name"
+                        android:textColor="@android:color/black" />
+
+                    <EditText
+                        android:id="@+id/customerNameInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:fontFamily="@font/merienda"
+                        android:hint="Name"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+                        android:textColor="@android:color/black" />
+
+                    <EditText
+                        android:id="@+id/customerEmailInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:fontFamily="@font/merienda"
+                        android:hint="Email"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Phone"
+                        android:textColor="@android:color/black" />
+
+                    <EditText
+                        android:id="@+id/customerPhoneInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:fontFamily="@font/merienda"
+                        android:hint="Phone"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#8ecde8"
+                android:paddingLeft="10dp"
+                android:text="@string/loan_amount"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="18sp"
+                android:id="@+id/loanAmountInput"
+                android:autofillHints=""
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#8ecde8"
+                android:paddingLeft="10dp"
+                android:text="Description"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="18dp"
+                android:id="@+id/descriptionInput"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+            >
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="Date of Loan :"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+                <EditText
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:textSize="18dp"
+                    android:id="@+id/dateOfLoanInput"
+                    />
+
+                <ImageButton
+                    android:id="@+id/dateOfLoanSelect"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/ic_menu_today" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="Payment Due Date :"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:layout_width="180sp"
+                    android:layout_height="50dp"
+                    android:id="@+id/dueDateInput"
+                    android:textSize="18dp" />
+
+                <ImageButton
+                    android:id="@+id/dueDateSelect"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/ic_menu_today" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#8ecde8"
+                android:paddingLeft="10dp"
+                android:text="Products List"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+
+                >
+
+                <EditText
+                    android:id="@+id/itemNameInput"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:hint="Product Name" />
+
+                <EditText
+                    android:id="@+id/itemPriceInput"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:gravity="center"
+                    android:hint="Price" />
+
+                <Button
+                    android:id="@+id/addProductButton"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="#005B9F"
+                    android:text="Add Product"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/productsList"
+
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#f24405"
+                android:textColor="@android:color/white"
+                android:text="Add Debt"
+                android:id="@+id/addDebtButton"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

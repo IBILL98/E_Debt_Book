@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/lol"
+    tools:context=".MarketMain">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/passwordconfirmationmenu"
+        android:layout_width="372dp"
+        android:layout_height="461dp"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
+
+
+        <Button
+            android:id="@+id/confirmationMenuBackButton"
+            android:layout_width="125dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:background="#005B9F"
+            android:text="@string/back"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold|italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.198"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.665"
+            tools:ignore="NotSibling" />
+
+        <Button
+            android:id="@+id/confirmationMenuLoginButton"
+            android:layout_width="125dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="124dp"
+            android:background="#005B9F"
+            android:text="LOG IN"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.805"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/confirmationMenutextfield"
+            android:layout_width="275dp"
+            android:layout_height="61dp"
+            android:background="#F3F3F3"
+            android:ems="10"
+            android:hint="   Confirm your Password"
+            android:inputType="textPersonName"
+            android:paddingLeft="8dp"
+            android:paddingTop="1dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="1dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="20dp"
+            android:textStyle="normal|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="169dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="74dp"
+            android:layout_height="73dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar1" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#005B9F"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainMarketMenu1"
+        android:layout_width="372dp"
+        android:layout_height="461dp"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.581"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <Button
+            android:id="@+id/mainMarketAddCustomertButton"
+            android:layout_width="159dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="44dp"
+            android:background="#005B9F"
+            android:text="ADD CUSTOMER"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <Button
+            android:id="@+id/mainMarketmyCustomertButton"
+            android:layout_width="157dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="44dp"
+            android:background="#005B9F"
+            android:text="MY CUSTOMERS"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainMarketAddCustomertButton" />
+
+        <Button
+            android:id="@+id/mainMarketeditinfoButton"
+            android:layout_width="157dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="44dp"
+            android:background="#005B9F"
+            android:text="EDIT MY INFO"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainMarketmyCustomertButton" />
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#005B9F"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar2"
+            app:srcCompat="@drawable/account_icon" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/mainMarketLogoutButton"
+        android:layout_width="157dp"
+        android:layout_height="63dp"
+        android:layout_marginBottom="120dp"
+        android:background="#005B9F"
+        android:text="LOG OUT"
+        android:textColor="@android:color/white"
+        android:textStyle="normal|bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,249 +9,190 @@
     tools:context=".debtsDetails">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
         android:background="@android:color/white"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+
+
+
+        >
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="113dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="282dp"
-            android:layout_marginRight="282dp"
-            android:text="@string/customer"
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Customer:"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            android:background="#8ecde8"
+            />
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
             android:id="@+id/customerInfoDisplay"
-            android:layout_width="380dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
-            android:autofillHints=""
-            android:inputType="text"
-            android:text=""
-            android:textSize="18sp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5"
-            tools:ignore="LabelFor" />
-
+            />
         <TextView
-            android:id="@+id/textView7"
-            android:layout_width="113dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="282dp"
-            android:layout_marginRight="282dp"
-            android:text="@string/amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/customerInfoDisplay" />
-
+            android:background="#8ecde8"
+            android:text="Amount:"
+            />
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
             android:id="@+id/amountDisplay"
-            android:layout_width="380dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:autofillHints=""
-            android:inputType="number"
-            android:text=""
-            android:textSize="18sp"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7"
-            tools:ignore="LabelFor" />
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            >
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Date Of Loan:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:textSize="22dp"
+                android:id="@+id/dateOFLoanDisplay"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Due Date:"
+
+                />
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:id="@+id/dueDateDisplay"
+                android:textSize="22dp"
+
+                />
+            <ImageButton
+                android:id="@+id/changeDueDateButton"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:srcCompat="@android:drawable/ic_menu_today" />
+        </LinearLayout>
         <TextView
-            android:id="@+id/textView8"
-            android:layout_width="115dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="282dp"
-            android:layout_marginRight="282dp"
-            android:text="@string/date_of_loan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/amountDisplay" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="108dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="@string/due_date"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="138dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="257dp"
-            android:layout_marginRight="257dp"
-            android:text="@string/description"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
+            android:background="#8ecde8"
+            android:text="Description:"
+            />
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
             android:id="@+id/descriptionDisplay"
-            android:layout_width="365dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginRight="30dp"
-            android:autofillHints=""
-            android:inputType="text"
-            android:text=""
-            android:textSize="18sp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10"
-            tools:ignore="LabelFor" />
 
-        <Button
-            android:id="@+id/deleteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:background="#005B9F"
-            android:text="@string/delete"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toStartOf="@+id/printButton"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/editButton"
-            app:layout_constraintTop_toBottomOf="@+id/_dynamic" />
-
-        <Button
-            android:id="@+id/editButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
-            android:background="#005B9F"
-            android:text="@string/edit"
-            android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/_dynamic" />
-
-        <Button
-            android:id="@+id/printButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            android:background="#005B9F"
-            android:text="@string/print"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/_dynamic" />
-
+            />
         <TextView
-            android:id="@+id/dateOFLoanDisplay"
-            android:layout_width="150dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="76dp"
-            android:layout_marginLeft="76dp"
-            android:ems="10"
-            android:inputType="date"
-            app:layout_constraintStart_toEndOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/amountDisplay" />
-
-        <EditText
-            android:id="@+id/dueDateDisplay"
-            android:layout_width="150dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="84dp"
-            android:layout_marginLeft="84dp"
-            android:ems="10"
-            android:inputType="date"
-            app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/dateOFLoanDisplay" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="134dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="@string/products_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionDisplay" />
-
+            android:text="Products List:"
+            android:background="#8ecde8"
+            />
         <ListView
-            android:id="@+id/_dynamic"
-            android:layout_width="380dp"
-            android:layout_height="233dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.033"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/productsList"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
 
-        <ImageButton
-            android:id="@+id/changeDueDateButton"
-            android:layout_width="45dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="36dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/dueDateDisplay"
-            app:layout_constraintTop_toBottomOf="@+id/amountDisplay"
-            app:srcCompat="@android:drawable/ic_menu_today" />
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            >
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:id="@+id/editButton"
+                android:text="Edit"
+                android:background="#005B9F"
+                android:textColor="@android:color/white"
+                />
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:id="@+id/deleteButton"
+                android:text="Delete"
+                android:textColor="@android:color/white"
+                android:background="#005B9F"
+                />
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:id="@+id/printButton"
+                android:text="Print"
+                android:textColor="@android:color/white"
+                android:background="#005B9F"
+                />
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView4"
@@ -262,12 +203,10 @@
         android:layout_marginTop="21dp"
         android:layout_marginEnd="177dp"
         android:layout_marginRight="177dp"
-        android:layout_marginBottom="20dp"
         android:text="@string/debts_details"
+        android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

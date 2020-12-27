@@ -3,7 +3,6 @@ package com.example.e_debt_book;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.Menu;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -46,7 +45,7 @@ public class CustomerMain extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_customer_home, R.id.nav_costumer_edit_profile,R.id.nav_settings,R.id.nav_change_language, R.id.nav_aboutus)
                 .setDrawerLayout(drawer)
                 .build();
 
@@ -79,12 +78,12 @@ public class CustomerMain extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.customer_main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.customer_main, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onSupportNavigateUp() {

@@ -12,6 +12,7 @@ public class Market implements Serializable {
     String iban;
     String adress;
     ArrayList<Customer> myCustomers;
+    ArrayList<String> myDebts;
     private int status = 0;
 
     public int getStatus() {

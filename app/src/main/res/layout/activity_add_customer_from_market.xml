@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".addCustomerFromMarket">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/customerRegisterfromMarket"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/lol"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loginwindow3fromMarket"
+            android:layout_width="372dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@android:color/white"
+            android:paddingBottom="30dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#005B9F"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <ImageView
+                android:id="@+id/imageView97fromMarket"
+                android:layout_width="74dp"
+                android:layout_height="73dp"
+                android:layout_marginTop="44dp"
+                android:contentDescription="TODO"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/account_icon" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="#5EB8FF"
+                app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.048"
+                app:layout_constraintStart_toStartOf="@+id/toolbar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.523" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="#5EB8FF"
+                app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+                app:layout_constraintEnd_toEndOf="@+id/toolbar"
+                app:layout_constraintHorizontal_bias="0.951"
+                app:layout_constraintStart_toStartOf="@+id/toolbar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.523" />
+
+            <EditText
+                android:id="@+id/customerRegisterNamefromMarket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="#F3F3F3"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="text"
+                android:paddingLeft="8dp"
+                android:paddingTop="1dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="1dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/black"
+                android:textSize="20dp"
+                android:textStyle="normal|italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView97fromMarket" />
+
+            <EditText
+                android:id="@+id/customerRegisterLastNamefromMarket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="#F3F3F3"
+                android:ems="10"
+                android:hint="Last Name"
+                android:inputType="text"
+                android:paddingLeft="8dp"
+                android:paddingTop="1dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="1dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/black"
+                android:textSize="20dp"
+                android:textStyle="normal|italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterNamefromMarket" />
+
+
+            <EditText
+                android:id="@+id/customerRegisterPhonefromMarket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="#F3F3F3"
+                android:ems="10"
+                android:hint="Phone"
+                android:inputType="phone"
+                android:paddingLeft="8dp"
+                android:paddingTop="1dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="1dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/black"
+                android:textSize="20dp"
+                android:textStyle="normal|italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterLastNamefromMarket" />
+
+            <EditText
+                android:id="@+id/customerRegisterEmailfromMarket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="#F3F3F3"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textPostalAddress"
+                android:paddingLeft="8dp"
+                android:paddingTop="1dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="1dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/black"
+                android:textSize="20dp"
+                android:textStyle="normal|italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterPhonefromMarket" />
+
+            <Button
+                android:id="@+id/customerRegisterBackButtonfromMarket"
+                android:layout_width="125dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="40dp"
+                android:background="#005B9F"
+                android:text="@string/back"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textStyle="normal|bold|italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterEmailfromMarket" />
+
+            <Button
+                android:id="@+id/customerRegisterSignUpButtomfromMarket"
+                android:layout_width="125dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:background="#005B9F"
+                android:text="@string/createCustomerFromMarketSelectDone"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterEmailfromMarket" />
+
+            <ProgressBar
+                android:id="@+id/customerRegisterProgressBarfromMarket"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:indeterminateBehavior="repeat"
+                android:indeterminateTint="#005B9F"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/customerRegisterEmailfromMarket" />
+
+            <TextView
+                android:id="@+id/textView2fromMarket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+90"
+                android:textColor="@android:color/black"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/customerRegisterPhonefromMarket"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                app:layout_constraintVertical_bias="0.486" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

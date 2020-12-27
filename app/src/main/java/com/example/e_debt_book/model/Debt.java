@@ -1,13 +1,11 @@
 package com.example.e_debt_book.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
 public class Debt  implements Serializable {
-    private long debtID;
+    private String debtID;
     private String customerPhone;
     private String marketPhone;
     private String amount;
@@ -15,6 +13,7 @@ public class Debt  implements Serializable {
     private String dateOfLoan;
     private String dueDate;
     List<Item> itemList;
+
     public Debt() { }
 
     public Debt(String customerPhone, String marketPhone, String amount, String description, String dateOfLoan, String dueDate, List<Item> itemList) {
@@ -78,6 +77,10 @@ public class Debt  implements Serializable {
     public List<Item> getItemList() {
         return itemList;
     }
+
+    public void setDebtID(String id) { this.debtID = id; }
+
+    public String getDebtID() {return debtID;}
 
     public void setItemList(List<Item> itemList) {
         this.itemList = itemList;

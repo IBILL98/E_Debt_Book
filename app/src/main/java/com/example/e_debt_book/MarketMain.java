@@ -9,20 +9,21 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.e_debt_book.model.Market;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MarketMain extends AppCompatActivity {
 
-    Button mainMarketAddCustomertButton ,mainMarketeditinfoButton , mainMarketmyCostumertButton ,mainMarketLogoutButton;
+    Button mainMarketAddCustomertButton ,mainMarketeditinfoButton , mainMarketmyCutomertButton,mainMarketLogoutButton;
     ConstraintLayout passwordconfirmationmeny , mainmarketmenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_market_main);
+        setContentView(R.layout.activity_market_main1);
 
         mainMarketAddCustomertButton = findViewById(R.id.mainMarketAddCustomertButton);
         mainMarketeditinfoButton = findViewById(R.id.mainMarketeditinfoButton);
-        mainMarketmyCostumertButton = findViewById(R.id.mainMarketmyCostumertButton);
+        mainMarketmyCutomertButton = findViewById(R.id.mainMarketmyCustomertButton);
         mainMarketLogoutButton = findViewById(R.id.mainMarketLogoutButton);
 
         Market market = (Market) getIntent().getSerializableExtra("Market");
@@ -33,7 +34,12 @@ public class MarketMain extends AppCompatActivity {
         mainMarketAddCustomertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(MarketMain.this,addCustomerFromMarket.class);
+                Bundle b = new Bundle();
+                b.putSerializable("Market",market);
+                i.putExtras(b);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -50,7 +56,7 @@ public class MarketMain extends AppCompatActivity {
             }
         });
 
-        mainMarketmyCostumertButton.setOnClickListener(new View.OnClickListener() {
+        mainMarketmyCutomertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MarketMain.this, myCustomers.class);
@@ -65,15 +71,9 @@ public class MarketMain extends AppCompatActivity {
         mainMarketLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                Intent i = new Intent(MarketMain.this, MainActivity.class);
-                Bundle b = new Bundle();
-                b.putSerializable("Market",market);
-                i.putExtras(b);
-                startActivity(i);
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 finish();
-
             }
         });
 

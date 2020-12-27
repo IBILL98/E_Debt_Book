@@ -233,8 +233,6 @@ public class MainActivity extends AppCompatActivity {
                                                 // ...
                                             }
                                         });
-                            }else {
-                                Toast.makeText(MainActivity.this, "User Not found",Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -325,8 +323,6 @@ public class MainActivity extends AppCompatActivity {
                                                 // ...
                                             }
                                         });
-                            }else {
-                                Toast.makeText(MainActivity.this, "User Not found",Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -339,40 +335,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-/*
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        mRootRef = FirebaseDatabase.getInstance().getReference();
-        conditionRef = mRootRef.child("Custumers").child("456165").child("first_name");
-        who = (Button)findViewById(R.id.who);
-        textView = (TextView)findViewById(R.id.textView);*/
     }
-/*
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        conditionRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                text = dataSnapshot.getValue(String.class);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        who.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView.setText(text);
-            }
-        });
-    }*/
-
-
 
     //Change UI according to user data.
     public void updateUI(FirebaseUser account){
