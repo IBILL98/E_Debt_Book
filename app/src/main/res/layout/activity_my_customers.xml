@@ -7,75 +7,100 @@
     tools:context=".myCustomers"
     tools:ignore="ExtraText">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/myCustomersMain"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#005B9F"
-        android:visibility="visible"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addNewDebtButton"
+        android:layout_width="62dp"
+        android:layout_height="57dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:contentDescription="@string/emaill"
+        app:backgroundTint="#005B9F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".MainActivity" >
+        app:srcCompat="@drawable/add_icon"
+        tools:ignore="VectorDrawableCompat" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
-            android:background="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/addNewDebtButton"
-                android:layout_width="62dp"
-                android:layout_height="57dp"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="@dimen/fab_margin"
-                android:layout_marginBottom="4dp"
-                android:contentDescription="@string/emaill"
-                app:backgroundTint="#005B9F"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/add_icon"
-                tools:ignore="VectorDrawableCompat" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar4"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:title="@string/my_customers"
+                app:titleMarginStart="135dp"
+                app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/myCustomersMain"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:visibility="visible"
+                tools:context=".MainActivity">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:fontFamily="@font/merienda"
+                        android:text="@string/total_lend_amount"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:fontFamily="@font/merienda"
+                        android:text="@string/collected"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:fontFamily="@font/merienda"
+                        android:text="@string/remaining"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ListView
                 android:id="@+id/debtsList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="70dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="wrap_content"
+                android:cacheColorHint="@android:color/black"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp" />
+        </LinearLayout>
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="172dp"
-            android:layout_marginLeft="172dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="181dp"
-            android:layout_marginRight="181dp"
-            android:layout_marginBottom="23dp"
-            android:text="@string/my_customers"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

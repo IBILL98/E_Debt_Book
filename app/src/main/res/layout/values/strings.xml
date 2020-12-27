@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="total_lend_amount">Total Lend Amount</string>
+    <string name="collected">Collected</string>
+    <string name="remaining">Remaining</string>
+</resources>
