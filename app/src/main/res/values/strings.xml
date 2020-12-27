@@ -11,6 +11,10 @@
     <string name="action_settings">Settings</string>
     <string name="enter_customer_phone_to_search">Phone to search</string>
 
+    <string name="total_lend_amount">Total Lend Amount</string>
+    <string name="collected">Collected</string>
+    <string name="remaining">Remaining</string>
+
     <string name="createCustomerFromMarketSelectDone">Done</string>
     <string name="menu_home">Home</string>
     <string name="menu_edit_profile">Edit Profile</string>

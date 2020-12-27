@@ -92,13 +92,14 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
             @Override
             public void onClick(View v) {
                 String phoneNumber = selectedCustomerPhone.getText().toString();
-                if (phoneNumber.length()==11) {
+                if (phoneNumber.length()==10) {
                     customerReference.child(phoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
                         @SuppressLint("SetTextI18n")
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.getValue() != null) {
                                 selectedCustomer = snapshot.getValue(Customer.class);
+                                selectedCustomer.setPhone(snapshot.getKey());
                                 assert selectedCustomer != null;
                                 customerNameInput.setText(selectedCustomer.getName()+" "+selectedCustomer.getLastname());
                                 customerEmailInput.setText(selectedCustomer.getEmail());
@@ -113,7 +114,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                         }
                     });
                 }else {
-                    Toast.makeText(addNewDebt.this, "Phone number must consist of 11 digits!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(addNewDebt.this, "Phone number must consist of 10 digits!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
