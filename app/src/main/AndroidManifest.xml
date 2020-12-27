@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addNewDebt"></activity>
+        <activity android:name=".CostumerDebt"></activity>
+        <activity android:name=".addNewDebt" />
         <activity android:name=".myCustomers" />
         <activity android:name=".MarketMain" />
         <activity android:name=".NumberVerification" />
