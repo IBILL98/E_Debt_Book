@@ -48,6 +48,7 @@ public class myCustomers extends AppCompatActivity {
         addNewDebtButton = findViewById(R.id.addNewDebtButton);
 
         database = FirebaseDatabase.getInstance();
+
         reference = database.getReference("Debt");
         reference2 = database.getReference("Customer");
 

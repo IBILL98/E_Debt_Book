@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
     <string name="enter_customer_phone_to_search">Enter customer phone to search</string>
     <string name="todo">TODO</string>
+=======
+    <string name="total_lend_amount">Total Lend Amount</string>
+    <string name="collected">Collected</string>
+    <string name="remaining">Remaining</string>
+>>>>>>> origin/master
 </resources>
