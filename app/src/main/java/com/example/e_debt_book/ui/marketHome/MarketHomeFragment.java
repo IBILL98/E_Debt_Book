@@ -22,8 +22,8 @@ public class MarketHomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         marketHomeViewModel =
                 new ViewModelProvider(this).get(MarketHomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_change_language, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        View root = inflater.inflate(R.layout.fragment_market_home, container, false);
+        final TextView textView = root.findViewById(R.id.text_gallery);
         marketHomeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

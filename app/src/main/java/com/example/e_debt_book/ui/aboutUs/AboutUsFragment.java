@@ -1,4 +1,4 @@
-package com.example.e_debt_book.ui.aboutus;
+package com.example.e_debt_book.ui.aboutUs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

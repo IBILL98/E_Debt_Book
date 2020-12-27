@@ -1,16 +1,16 @@
-package com.example.e_debt_book.ui.marketHome;
+package com.example.e_debt_book.ui.aboutUs;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class MarketHomeViewModel extends ViewModel {
+public class AboutUsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public MarketHomeViewModel() {
+    public AboutUsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is Market home fragment");
+        mText.setValue("This is about us fragment");
     }
 
     public LiveData<String> getText() {

@@ -147,15 +147,6 @@
             app:layout_constraintTop_toBottomOf="@+id/mainMarketmyCustomertButton" />
 
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="74dp"
-            android:layout_height="73dp"
-            android:layout_marginTop="36dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/toolbar2" />
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar2"
             android:layout_width="match_parent"
@@ -165,6 +156,16 @@
             android:theme="?attr/actionBarTheme"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="0dp" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar2"
+            app:srcCompat="@drawable/account_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button

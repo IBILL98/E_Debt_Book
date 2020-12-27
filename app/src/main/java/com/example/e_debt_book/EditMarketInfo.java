@@ -39,6 +39,7 @@ public class EditMarketInfo extends AppCompatActivity {
         editInfoIban = findViewById(R.id.editInfoIban);
         editInfoAdress = findViewById(R.id.editInfoAdress);
 
+
         String key = market.getPhone();
         int status = market.getStatus();
 
@@ -52,12 +53,12 @@ public class EditMarketInfo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
                 String name = editInfoName.getText().toString().trim();
                 String email = editInfoEmail.getText().toString().trim();
                 String password = editInfoPassword.getText().toString().trim();
                 String iban = editInfoIban.getText().toString().trim();
                 String adress = editInfoAdress.getText().toString().trim();
-
 
                 // every thing down this is line, Alhamza is  bullshitt..
 
