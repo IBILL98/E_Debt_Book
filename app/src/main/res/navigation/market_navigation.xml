@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_market_home" />
 
     <fragment
-        android:id="@+id/nav_market_edit_profile"
-        android:name="com.example.e_debt_book.ui.marketEditprofile.MarketEditProfileFragment"
-        android:label="@string/menu_edit_profile"
+        android:id="@+id/nav_market_profile"
+        android:name="com.example.e_debt_book.ui.marketProfile.MarketProfileFragment"
+        android:label="@string/menu_profile"
         tools:layout="@layout/fragment_customer_editprofile" />
 
     <fragment

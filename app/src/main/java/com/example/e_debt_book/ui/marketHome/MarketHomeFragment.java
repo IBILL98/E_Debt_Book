@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.e_debt_book.R;
@@ -130,5 +131,10 @@ public class MarketHomeFragment extends Fragment {
                 getActivity().finish();
             }
         });
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("My Customers");
     }
 }

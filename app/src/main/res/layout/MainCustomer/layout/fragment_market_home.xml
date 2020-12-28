@@ -30,17 +30,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar4"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:title="@string/my_customers"
-                app:titleMarginStart="135dp"
-                app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/myCustomersMain"
                 android:layout_width="match_parent"

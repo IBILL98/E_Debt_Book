@@ -1,4 +1,4 @@
-package com.example.e_debt_book.ui.customerEditprofile;
+package com.example.e_debt_book.ui.customerProfile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.e_debt_book.R;
 
-public class CustomerEditProfileFragment extends Fragment {
+public class CustomerProfileFragment extends Fragment {
 
-    private CustomerEditProfileViewModel customerEditProfileViewModel;
+    private CustomerProfileViewModel customerProfileViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        customerEditProfileViewModel =
-                new ViewModelProvider(this).get(CustomerEditProfileViewModel.class);
+        customerProfileViewModel =
+                new ViewModelProvider(this).get(CustomerProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_customer_editprofile, container, false);
         final TextView textView = root.findViewById(R.id.text_slideshow);
-        customerEditProfileViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        customerProfileViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
