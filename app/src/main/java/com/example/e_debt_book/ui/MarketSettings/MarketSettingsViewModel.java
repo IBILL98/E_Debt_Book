@@ -1,16 +1,16 @@
-package com.example.e_debt_book.ui.marketEditprofile;
+package com.example.e_debt_book.ui.MarketSettings;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class MarketEditProfileViewModel extends ViewModel {
+public class MarketSettingsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public MarketEditProfileViewModel() {
+    public MarketSettingsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is Market Edit Profile fragment");
+        mText.setValue("This is Settings fragment");
     }
 
     public LiveData<String> getText() {

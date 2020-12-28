@@ -1,0 +1,9 @@
+Index: app/src/main/res/layout/values/strings.xml
+===================================================================
+--- app/src/main/res/layout/values/strings.xml	(revision 606252cf3287cdff210cee39b5107dae80d21a59)
++++ app/src/main/res/layout/values/strings.xml	(revision 606252cf3287cdff210cee39b5107dae80d21a59)
+@@ -1,3 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<resources>
+-</resources>
+\ No newline at end of file

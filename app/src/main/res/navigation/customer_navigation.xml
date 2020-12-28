@@ -12,15 +12,15 @@
         tools:layout="@layout/fragment_customer_home" />
 
     <fragment
-        android:id="@+id/nav_costumer_edit_profile"
-        android:name="com.example.e_debt_book.ui.customerEditprofile.CustomerEditProfileFragment"
-        android:label="@string/menu_edit_profile"
+        android:id="@+id/nav_customer_profile"
+        android:name="com.example.e_debt_book.ui.customerProfile.CustomerProfileFragment"
+        android:label="@string/menu_profile"
         tools:layout="@layout/fragment_customer_editprofile" />
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.example.e_debt_book.ui.settings.SettingsFragment"
+        android:name="com.example.e_debt_book.ui.customerSettings.SettingsFragment"
         android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting_customer" />
 
     <fragment
         android:id="@+id/nav_aboutus"

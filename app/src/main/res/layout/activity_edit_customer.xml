@@ -10,6 +10,7 @@
         android:id="@+id/editCostomerConstraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/lol"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -162,17 +163,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editCostomerPhone" />
 
-            <ImageView
-                android:id="@+id/imageView97"
-                android:layout_width="74dp"
-                android:layout_height="73dp"
-                android:layout_marginTop="32dp"
-                android:contentDescription="TODO"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
-
             <ProgressBar
                 android:id="@+id/customerRegisterProgressBar"
                 style="?android:attr/progressBarStyle"
@@ -233,6 +223,17 @@
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp" />
+
+            <ImageView
+                android:id="@+id/imageView97"
+                android:layout_width="74dp"
+                android:layout_height="73dp"
+                android:layout_marginTop="32dp"
+                android:contentDescription="TODO"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
