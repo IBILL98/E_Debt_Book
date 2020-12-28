@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -32,6 +36,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -50,6 +55,9 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
     ListView productsList;
     Button addDebtButton;
     Customer selectedCustomer;
+
+    DatePickerDialog.OnDateSetListener setListener;
+    DatePickerDialog.OnDateSetListener setListener2;
 
     ArrayList<Item> itemList;
     Market market;
@@ -99,8 +107,8 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.getValue() != null) {
                                 selectedCustomer = snapshot.getValue(Customer.class);
-                                selectedCustomer.setPhone(snapshot.getKey());
                                 assert selectedCustomer != null;
+                                selectedCustomer.setPhone(snapshot.getKey());
                                 customerNameInput.setText(selectedCustomer.getName()+" "+selectedCustomer.getLastname());
                                 customerEmailInput.setText(selectedCustomer.getEmail());
                                 customerPhoneInput.setText(selectedCustomer.getPhone());
@@ -119,36 +127,54 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
             }
         });
 
-        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
-        builder.setTitleText("Select A Date");
-        MaterialDatePicker materialDatePicker = builder.build();
-
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
         dateOfLoanSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                materialDatePicker.show(getSupportFragmentManager(),"Date_Picker");
+                DatePickerDialog datePickerDialog = new DatePickerDialog(addNewDebt.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
             }
         });
-        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+
+        setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onPositiveButtonClick(Object selection) {
-                dateOfLoanInput.setText(materialDatePicker.getHeaderText());
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month+1;
+                String date = dayOfMonth + "/" + month + "/"+ year;
+                dateOfLoanInput.setText(date);
             }
-        });
+        };
+
+        Calendar calendar2 = Calendar.getInstance();
+        final int year2 = calendar.get(Calendar.YEAR);
+        final int month2 = calendar.get(Calendar.MONTH);
+        final int day2 = calendar.get(Calendar.DAY_OF_MONTH);
         dueDateSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                materialDatePicker.show(getSupportFragmentManager(),"Date_Picker");
+                DatePickerDialog datePickerDialog = new DatePickerDialog(addNewDebt.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener2, year2, month2, day2);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
             }
         });
-        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+
+        setListener2 = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onPositiveButtonClick(Object selection) {
-                dueDateInput.setText(materialDatePicker.getHeaderText());
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month+1;
+                String date = dayOfMonth + "/" + month + "/"+ year;
+                dueDateInput.setText(date);
             }
-        });
-        displayProductsList = new ArrayList<>();
-        mAdapter = new ArrayAdapter<String>(addNewDebt.this, R.layout.debts_infos_resource,R.id.debtsInfosText, displayProductsList);
+        };
+
+
+        Item item = new Item();
+        displayProductsList = new ArrayList<String>();
+        mAdapter = new ArrayAdapter<String>(addNewDebt.this, android.R.layout.simple_list_item_1, displayProductsList);
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,10 +187,13 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                     Toast.makeText(addNewDebt.this, "Please enter the price with only integer format!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Item item = new Item(itemName, itemPrice1);
+                item.setName(itemName);
+                item.setPrice(itemPrice1);
+                Toast.makeText(addNewDebt.this, itemName + " " + itemPrice + " is added!",Toast.LENGTH_LONG).show();
                 itemList.add(item);
-                displayProductsList.add(itemName+" "+itemPrice);
+                displayProductsList.add(itemName+", Price: "+itemPrice);
                 productsList.setAdapter(mAdapter);
+
             }
         });
         addDebtButton.setOnClickListener(new View.OnClickListener() {

@@ -49,23 +49,23 @@ public class myCustomers extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
 
-        reference = database.getReference("Debt");
-        reference2 = database.getReference("Customer");
+        reference = database.getReference("Debts");
+        reference2 = database.getReference("Customers");
 
-        list = new ArrayList<>();
+        list = new ArrayList<String>();
         debt = new Debt();
         customer = new Customer();
-        debtsArray = new ArrayList<>();
+        debtsArray = new ArrayList<Debt>();
         Market market = (Market) getIntent().getSerializableExtra("Market");
 
-        adapter = new ArrayAdapter<String>(this, R.layout.debts_infos_resource, R.id.debtsInfosText, list);
+        adapter = new ArrayAdapter<String>(myCustomers.this, android.R.layout.simple_list_item_1, list);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds: snapshot.getChildren()){
                     debt = ds.getValue(Debt.class);
                     assert debt != null;
-                    if(debt.getMarketPhone() == market.getPhone()) {
+                    if(debt.getMarketPhone().equals(market.getPhone())) {
                         list.add(debt.getCustomerPhone()+ ", " + debt.getAmount());
                         debtsArray.add(debt);
                     }
@@ -92,7 +92,6 @@ public class myCustomers extends AppCompatActivity {
                             assert customer != null;
                             if (customer.getPhone() == selectedDebt.getCustomerPhone()) {
                                 bundle.putSerializable("Customer", customer);
-                                //intent.putExtras(bundle);
                                 break;
                             }
                         }
