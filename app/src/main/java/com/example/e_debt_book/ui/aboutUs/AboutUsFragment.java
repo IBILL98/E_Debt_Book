@@ -16,20 +16,18 @@ import com.example.e_debt_book.R;
 
 public class AboutUsFragment extends Fragment {
 
-    private AboutUsViewModel aboutUsViewModel;
+    private AboutUsFragment aboutUsViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        aboutUsViewModel =
-                new ViewModelProvider(this).get(AboutUsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_aboutus, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        aboutUsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_aboutus, container, false);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
     }
 }

@@ -1,4 +1,4 @@
-package com.example.e_debt_book.ui.MarketSettings;
+package com.example.e_debt_book.ui.marketSettings;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

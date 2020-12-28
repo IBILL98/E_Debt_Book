@@ -18,7 +18,7 @@
         tools:layout="@layout/fragment_customer_editprofile" />
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.example.e_debt_book.ui.customerSettings.SettingsFragment"
+        android:name="com.example.e_debt_book.ui.customerSettings.CustomerSettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_setting_customer" />
 
