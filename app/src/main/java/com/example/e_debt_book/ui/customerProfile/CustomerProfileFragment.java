@@ -35,7 +35,6 @@ public class CustomerProfileFragment extends Fragment {
 
         editCostomerEmail = getView().findViewById(R.id.editCostomerEmail);
         editCostomerPhone = getView().findViewById(R.id.editCostomerPhone);
-        editCostomerPassword = getView().findViewById(R.id.editCostomerPassword);
         editCostomerLastName = getView().findViewById(R.id.editCostomerLastName);
         editCostomerName = getView().findViewById(R.id.editCostomerName);
 

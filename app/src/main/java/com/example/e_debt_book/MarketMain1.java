@@ -1,6 +1,7 @@
 package com.example.e_debt_book;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
