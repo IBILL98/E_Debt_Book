@@ -285,6 +285,8 @@
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:divider="@android:color/black"
+                android:dividerHeight="3dp"
                 android:id="@+id/productsList"
 
                 />
@@ -293,7 +295,7 @@
                 android:layout_height="50dp"
                 android:background="#f24405"
                 android:textColor="@android:color/white"
-                android:text="Add Debt"
+                android:text="@string/add_debt"
                 android:id="@+id/addDebtButton"
                 />
 

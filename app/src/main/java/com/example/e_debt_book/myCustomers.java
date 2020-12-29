@@ -58,7 +58,7 @@ public class myCustomers extends AppCompatActivity {
         debtsArray = new ArrayList<Debt>();
         Market market = (Market) getIntent().getSerializableExtra("Market");
 
-        adapter = new ArrayAdapter<String>(myCustomers.this, android.R.layout.simple_list_item_1, list);
+        adapter = new ArrayAdapter<String>(myCustomers.this, R.layout.debts_infos_resource, list);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
