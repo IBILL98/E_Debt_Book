@@ -15,6 +15,8 @@
     <string name="collected">Collected</string>
     <string name="remaining">Remaining</string>
 
+    <string name="change_adress">Change Adress</string>
+
     <string name="createCustomerFromMarketSelectDone">Done</string>
     <string name="menu_home">Home</string>
     <string name="menu_profile">Profile</string>

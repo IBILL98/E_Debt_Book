@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".editCustomer"></activity>
+        <activity android:name=".EditCustomertPhone"></activity>
+        <activity android:name=".EditCustomertPassword" />
+        <activity android:name=".EditMarketPhone" />
+        <activity android:name=".EditMarketPassword" />
+        <activity android:name=".editCustomer" />
         <activity android:name=".addCustomerFromMarket" />
         <activity android:name=".addNewDebt" />
         <activity android:name=".myCustomers" />

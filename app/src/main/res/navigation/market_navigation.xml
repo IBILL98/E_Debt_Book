@@ -15,13 +15,13 @@
         android:id="@+id/nav_market_profile"
         android:name="com.example.e_debt_book.ui.marketProfile.MarketProfileFragment"
         android:label="@string/menu_profile"
-        tools:layout="@layout/fragment_customer_editprofile" />
+        tools:layout="@layout/fragment_market_profile" />
 
     <fragment
-        android:id="@+id/nav_settings"
-        android:name="com.example.e_debt_book.ui.customerSettings.SettingsFragment"
+        android:id="@+id/nav_market_settings"
+        android:name="com.example.e_debt_book.ui.marketSettings.MarketSettingsFragment"
         android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_setting_customer" />
+        tools:layout="@layout/fragment_setting_market" />
 
     <fragment
         android:id="@+id/nav_aboutus"

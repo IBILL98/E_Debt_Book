@@ -196,6 +196,9 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
 
             }
         });
+        if (selectedCustomer!=null){
+
+        }
         addDebtButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
