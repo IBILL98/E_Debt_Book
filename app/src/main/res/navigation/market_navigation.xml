@@ -21,7 +21,14 @@
         android:id="@+id/nav_market_settings"
         android:name="com.example.e_debt_book.ui.MarketSettings.MarketSettingsFragment"
         android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_setting_market" />
+        tools:layout="@layout/fragment_setting_market" >
+        <action
+            android:id="@+id/action_nav_market_settings_to_fragment_change_password3"
+            app:destination="@id/fragment_change_password"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/nav_market_settings" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_aboutus"
@@ -30,10 +37,15 @@
         tools:layout="@layout/fragment_aboutus" />
 
     <fragment
-        android:id="@+id/nav_change_language"
-        android:name="com.example.e_debt_book.ui.changeLanguage.ChangeLanguageFragment"
+        android:id="@+id/fragment_change_password"
+        android:name="com.example.e_debt_book.ui.changePassword.ChangePasswordFragment"
         android:label="@string/menu_change_language"
-        tools:layout="@layout/fragment_change_language" />
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_fragment_change_password_to_nav_market_settings"
+            app:destination="@id/nav_market_settings"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
 
 
 </navigation>

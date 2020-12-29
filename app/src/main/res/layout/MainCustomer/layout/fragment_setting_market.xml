@@ -7,7 +7,7 @@
     tools:context=".ui.MarketSettings.MarketSettingsFragment">
 
 
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -15,154 +15,306 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_margin="0dp"
-                android:fontFamily="@font/merienda"
-                android:paddingStart="40dp"
-                android:paddingLeft="40dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                android:text="@string/action_settings"
-                android:textColor="#03DAC5"
-                android:textSize="22sp" />
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/market_settings_change_name"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/mycolor"
-                android:clickable="true"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textView7"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="56dp"
                     android:layout_margin="0dp"
-                    android:focusable="true"
                     android:fontFamily="@font/merienda"
                     android:paddingStart="40dp"
                     android:paddingLeft="40dp"
-                    android:paddingTop="20dp"
+                    android:paddingTop="10dp"
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="Change Name"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    android:text="@string/action_settings"
+                    android:textColor="#03DAC5"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/market_settings_change_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/mycolor"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="0dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/merienda"
+                        android:paddingStart="40dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:text="Change Name"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/actual_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="0dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/merienda"
+                        android:paddingStart="40dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:text="Actual Name"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/market_settings_change_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/mycolor"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="0dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/merienda"
+                        android:paddingStart="40dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="15dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:text="@string/menu_change_language"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/choosed_language"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="0dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/merienda"
+                        android:paddingStart="40dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:text="@string/english"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/market_settings_change_Adress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/mycolor"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="0dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/merienda"
+                        android:paddingStart="40dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="15dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:text="@string/change_adress"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/actual_adress"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="0dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/merienda"
+                        android:paddingStart="40dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:text="Actual Adress"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/actuall_name"
+                    android:id="@+id/textView5"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="56dp"
                     android:layout_margin="0dp"
-                    android:focusable="true"
                     android:fontFamily="@font/merienda"
                     android:paddingStart="40dp"
                     android:paddingLeft="40dp"
-                    android:paddingTop="5dp"
+                    android:paddingTop="10dp"
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="Actual Name"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:text="Security and Login Information"
+                    android:textColor="#03DAC5"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/market_settings_change_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/mycolor"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="0dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/merienda"
+                        android:paddingStart="40dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:text="Change Email"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/actual_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="0dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/merienda"
+                        android:paddingStart="40dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:text="Actual Email"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/market_settings_change_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/mycolor"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="0dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/merienda"
+                        android:paddingStart="40dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="15dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:text="Change Password"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/actual_language"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="0dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/merienda"
+                        android:paddingStart="40dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:text="@string/english"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/market_settings_change_Phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/mycolor"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="0dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/merienda"
+                        android:paddingStart="40dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="15dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:text="Change Phone"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/actual_Phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_margin="0dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/merienda"
+                        android:paddingStart="40dp"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        android:text="Actual Phone"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
             </LinearLayout>
+        </ScrollView>
 
-            <LinearLayout
-                android:id="@+id/market_settings_change_language"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/mycolor"
-                android:clickable="true"
-                android:orientation="vertical">
+    </FrameLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:layout_margin="0dp"
-                    android:focusable="true"
-                    android:fontFamily="@font/merienda"
-                    android:paddingStart="40dp"
-                    android:paddingLeft="40dp"
-                    android:paddingTop="15dp"
-                    android:paddingEnd="0dp"
-                    android:paddingRight="0dp"
-                    android:paddingBottom="0dp"
-                    android:text="@string/menu_change_language"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/choosed_language"
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:layout_margin="0dp"
-                    android:focusable="true"
-                    android:fontFamily="@font/merienda"
-                    android:paddingStart="40dp"
-                    android:paddingLeft="40dp"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="0dp"
-                    android:paddingRight="0dp"
-                    android:paddingBottom="0dp"
-                    android:text="@string/english"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/market_settings_change_Adress"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/mycolor"
-                android:clickable="true"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:layout_margin="0dp"
-                    android:focusable="true"
-                    android:fontFamily="@font/merienda"
-                    android:paddingStart="40dp"
-                    android:paddingLeft="40dp"
-                    android:paddingTop="15dp"
-                    android:paddingEnd="0dp"
-                    android:paddingRight="0dp"
-                    android:paddingBottom="0dp"
-                    android:text="@string/change_adress"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/actuall_adress"
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:layout_margin="0dp"
-                    android:focusable="true"
-                    android:fontFamily="@font/merienda"
-                    android:paddingStart="40dp"
-                    android:paddingLeft="40dp"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="0dp"
-                    android:paddingRight="0dp"
-                    android:paddingBottom="0dp"
-                    android:text="Actual Adress"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
