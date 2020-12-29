@@ -53,6 +53,9 @@
     <string name="add_new_debt">Add New Debt</string>
     <string name="loan_amount">Loan amount</string>
     <string name="my_customers">My Customers</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
 
 
 </resources>

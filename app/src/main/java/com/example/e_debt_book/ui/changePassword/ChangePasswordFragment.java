@@ -67,7 +67,7 @@ public class ChangePasswordFragment extends Fragment {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                                        fragmentTransaction.replace(R.id.nav_host_market_fragment, new MarketProfileFragment());
+                                        fragmentTransaction.replace(R.id.nav_market_home, new MarketProfileFragment());
                                         fragmentTransaction.commit();
                                         Toast.makeText(getActivity(), "User password updated..",
                                                 Toast.LENGTH_SHORT).show();
