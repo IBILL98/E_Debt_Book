@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.e_debt_book.MainActivity;
 import com.example.e_debt_book.R;
 import com.example.e_debt_book.ui.MarketSettings.MarketSettingsFragment;
+import com.example.e_debt_book.ui.marketHome.MarketHomeFragment;
 import com.example.e_debt_book.ui.marketProfile.MarketProfileFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -67,7 +68,7 @@ public class ChangePasswordFragment extends Fragment {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                                        fragmentTransaction.replace(R.id.nav_market_home, new MarketProfileFragment());
+                                        fragmentTransaction.replace(R.id.nav_host_market_fragment, new MarketSettingsFragment());
                                         fragmentTransaction.commit();
                                         Toast.makeText(getActivity(), "User password updated..",
                                                 Toast.LENGTH_SHORT).show();

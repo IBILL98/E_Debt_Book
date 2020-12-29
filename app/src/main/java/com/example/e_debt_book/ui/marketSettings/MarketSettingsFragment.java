@@ -23,8 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MarketSettingsFragment extends Fragment {
 
-    LinearLayout market_settings_change_language,market_settings_change_Adress,market_settings_change_name,market_settings_change_password;
-    TextView choosed_language,actual_adress,actual_name;
+    LinearLayout market_settings_change_language,market_settings_change_Adress,market_settings_change_name,market_settings_change_password
+            ,market_settings_change_email,market_settings_change_Phone;
+    TextView choosed_language,actual_adress,actual_name,actual_email,actual_Phone;
     DatabaseReference mRootRef,conditionRef;
 
     @Override
@@ -45,12 +46,19 @@ public class MarketSettingsFragment extends Fragment {
         market_settings_change_Adress = getActivity().findViewById(R.id.market_settings_change_Adress);
         market_settings_change_name = getActivity().findViewById(R.id.market_settings_change_name);
         market_settings_change_password = getActivity().findViewById(R.id.market_settings_change_password);
+        market_settings_change_email = getActivity().findViewById(R.id.market_settings_change_email);
+        market_settings_change_Phone = getActivity().findViewById(R.id.market_settings_change_Phone);
+
         choosed_language = getActivity().findViewById(R.id.choosed_language);
         actual_adress = getActivity().findViewById(R.id.actual_adress);
         actual_name = getActivity().findViewById(R.id.actual_name);
+        actual_email = getActivity().findViewById(R.id.actual_email);
+        actual_Phone = getActivity().findViewById(R.id.actual_Phone);
 
         actual_adress.setText(market.getAdress());
         actual_name.setText(market.getName());
+        actual_email.setText(market.getEmail());
+        actual_Phone.setText(market.getEmail());
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -140,7 +148,19 @@ public class MarketSettingsFragment extends Fragment {
         market_settings_change_password.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                DrawerLayout drawer = getActivity().findViewById(R.id.drawer_layout);
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_market_fragment, new ChangePasswordFragment());
+                fragmentTransaction.commit();
+
+            }
+
+        });
+
+
+
+        market_settings_change_email.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_market_fragment, new ChangePasswordFragment());
@@ -150,6 +170,17 @@ public class MarketSettingsFragment extends Fragment {
 
         });
 
+        market_settings_change_password.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_market_fragment, new ChangePasswordFragment());
+                fragmentTransaction.commit();
+
+            }
+
+        });
 
 
     }
