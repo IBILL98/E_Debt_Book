@@ -1,5 +1,6 @@
 package com.example.e_debt_book.ui.changePassword;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.e_debt_book.MainActivity;
 import com.example.e_debt_book.R;
@@ -67,9 +69,7 @@ public class ChangePasswordFragment extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                                        fragmentTransaction.replace(R.id.nav_host_market_fragment, new MarketSettingsFragment());
-                                        fragmentTransaction.commit();
+                                        NavHostFragment.findNavController(ChangePasswordFragment.this).navigate(R.id.action_fragment_change_password_to_nav_market_settings);
                                         Toast.makeText(getActivity(), "User password updated..",
                                                 Toast.LENGTH_SHORT).show();
                                         Log.d(TAG, "User password updated.");
@@ -86,9 +86,8 @@ public class ChangePasswordFragment extends Fragment {
         EditCustomerPassBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_market_fragment, new MarketSettingsFragment());
-                fragmentTransaction.commit();
+                NavHostFragment.findNavController(ChangePasswordFragment.this).navigate(R.id.action_fragment_change_password_to_nav_market_settings);
+
             }
         });
     }

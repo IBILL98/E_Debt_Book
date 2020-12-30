@@ -1,8 +1,10 @@
 package com.example.e_debt_book.ui.MarketSettings;
 
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.e_debt_book.R;
 import com.example.e_debt_book.model.Market;
@@ -23,16 +25,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MarketSettingsFragment extends Fragment {
 
-    LinearLayout market_settings_change_language,market_settings_change_Adress,market_settings_change_name,market_settings_change_password
-            ,market_settings_change_email,market_settings_change_Phone;
-    TextView choosed_language,actual_adress,actual_name,actual_email,actual_Phone;
-    DatabaseReference mRootRef,conditionRef;
+    LinearLayout market_settings_change_language, market_settings_change_Adress, market_settings_change_name, market_settings_change_password, market_settings_change_email, market_settings_change_Phone;
+    TextView choosed_language, actual_adress, actual_name, actual_email, actual_Phone;
+    DatabaseReference mRootRef, conditionRef;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootRef = FirebaseDatabase.getInstance().getReference();
         conditionRef = mRootRef.child("Markets");
-        return inflater.inflate(R.layout.fragment_setting_market, container, false);
+        return inflater.inflate(R.layout.fragment_market_setting, container, false);
     }
 
 
@@ -58,18 +59,18 @@ public class MarketSettingsFragment extends Fragment {
         actual_adress.setText(market.getAdress());
         actual_name.setText(market.getName());
         actual_email.setText(market.getEmail());
-        actual_Phone.setText(market.getEmail());
+        actual_Phone.setText(market.getPhone());
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
         market_settings_change_language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] listitem = new String[]{"English","Arabic"};
+                String[] listitem = new String[]{"English", "Arabic"};
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
-                mbuilder.setSingleChoiceItems(listitem, -1, new DialogInterface.OnClickListener() {
+                mbuilder.setSingleChoiceItems(listitem, 0, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         choosed_language.setText(listitem[i]);
@@ -91,13 +92,22 @@ public class MarketSettingsFragment extends Fragment {
         market_settings_change_Adress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                layoutParams.gravity = Gravity.CENTER;
+                LinearLayout linearLayout = new LinearLayout(getActivity());
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Change Adress");
                 builder.setIcon(R.drawable.place_icon);
                 EditText new_adress = new EditText(getActivity());
                 new_adress.setInputType(InputType.TYPE_CLASS_TEXT);
-                builder.setMessage(" Your Actuall Adress is "+actual_adress.getText()+ "\n\n Please Entre Your New Adress");
-                builder.setView(new_adress);
+                builder.setMessage(" Your Actuall Adress is " + actual_adress.getText() + "\n\n Please Entre Your New Adress");
+                new_adress.setHint("New Adress");
+                builder.setView(linearLayout);
+                new_adress.setLayoutParams(layoutParams);
+                linearLayout.addView(new_adress);
+                linearLayout.setPadding(60, 10, 60, 0);
+
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -120,18 +130,29 @@ public class MarketSettingsFragment extends Fragment {
         market_settings_change_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                layoutParams.gravity = Gravity.CENTER;
+                LinearLayout linearLayout = new LinearLayout(getActivity());
+
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Change Your Market Name");
+                builder.setTitle("Change Name");
                 builder.setIcon(R.drawable.account_icon1);
-                EditText new_name = new EditText(getActivity());
-                new_name.setInputType(InputType.TYPE_CLASS_TEXT);
-                builder.setMessage(" Your Actuall Name is "+actual_name.getText()+ "\n\n Please Entre Your New Name");
-                builder.setView(new_name);
+                EditText new_Name = new EditText(getActivity());
+                new_Name.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setMessage(" Your Actuall Name is " + actual_name.getText() + "\n\n Please Entre Your New Name");
+                new_Name.setHint("New Adress");
+                builder.setView(linearLayout);
+
+                new_Name.setLayoutParams(layoutParams);
+                linearLayout.addView(new_Name);
+                linearLayout.setPadding(60, 10, 60, 0);
+
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        actual_adress.setText(new_name.getText().toString());
-                        market.setName(actual_adress.getText().toString());
+                        actual_name.setText(new_Name.getText().toString());
+                        market.setName(actual_name.getText().toString());
                         conditionRef.child(market.getPhone()).child("name").setValue(market.getName());
                     }
                 });
@@ -145,7 +166,8 @@ public class MarketSettingsFragment extends Fragment {
                 builder.show();
             }
         });
-        market_settings_change_password.setOnClickListener(new View.OnClickListener(){
+
+        market_settings_change_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
@@ -157,8 +179,7 @@ public class MarketSettingsFragment extends Fragment {
         });
 
 
-
-        market_settings_change_email.setOnClickListener(new View.OnClickListener(){
+        market_settings_change_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -170,13 +191,11 @@ public class MarketSettingsFragment extends Fragment {
 
         });
 
-        market_settings_change_password.setOnClickListener(new View.OnClickListener(){
+        market_settings_change_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_market_fragment, new ChangePasswordFragment());
-                fragmentTransaction.commit();
+                NavHostFragment.findNavController(MarketSettingsFragment.this).navigate(R.id.action_nav_market_settings_to_fragment_change_password);
 
             }
 
@@ -185,3 +204,5 @@ public class MarketSettingsFragment extends Fragment {
 
     }
 }
+
+
