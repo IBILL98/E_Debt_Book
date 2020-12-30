@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MarketSettingsFragment"/>
         <activity android:name=".EditCustomertPhone"></activity>
         <activity android:name=".EditCustomertPassword" />
         <activity android:name=".EditMarketPhone" />
