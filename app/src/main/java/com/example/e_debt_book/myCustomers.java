@@ -19,10 +19,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.Integer.parseInt;
 
 public class myCustomers extends AppCompatActivity {
 //    ListView debtsList;
@@ -42,7 +45,8 @@ public class myCustomers extends AppCompatActivity {
     DatabaseReference mRootRef, conditionRef,itemref;
     ListView listView;
     ArrayList<Debt> arrayList = new ArrayList<>();
-    ArrayAdapter<Debt> arrayAdapter ;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,35 +55,36 @@ public class myCustomers extends AppCompatActivity {
         mRootRef = FirebaseDatabase.getInstance().getReference();
         listView = findViewById(R.id.debtsList);
         addNewDebtButton = findViewById(R.id.addNewDebtButton);
-        arrayAdapter = new ArrayAdapter<Debt>(this,android.R.layout.simple_list_item_1,arrayList);
-        listView.setAdapter(arrayAdapter);
+
         Market market = (Market) getIntent().getSerializableExtra("Market");
+
+        ArrayList<String> displayProductsList = new ArrayList<String>();
+        final ArrayAdapter<String>  arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,displayProductsList);
+        listView.setAdapter(arrayAdapter);
+
 
 
         conditionRef = mRootRef.child("Debts");
-        conditionRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        Query query = conditionRef.orderByChild("marketPhone").equalTo(market.getPhone());
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data: snapshot.getChildren()){
                     String debtId = data.getKey();
                     Debt debt = data.getValue(Debt.class);
-                    debt.setDebtID(debtId);
-                    System.out.println("************************************************************************************");
-                    System.out.println(market.getPhone());
-                    System.out.println(debt.getMarketPhone());
-                    if (market.getPhone().equals(debt.getMarketPhone())){
-                        System.out.println("///////////////////////////////////////////////////////////////////////\n///////////////////////////////////////////////////////");
+                    getitems(debtId, new MyCallback() {
+                        @Override
+                        public void onCallback(ArrayList<Item> itemArrayList) {
+                            System.out.println("////////////////////////////////////////////////////////");
+                            System.out.println(itemArrayList.toString());
+                            debt.setItemList(itemArrayList);
+                            debt.setDebtID(debtId);
+                            arrayList.add(debt);
+                            displayProductsList.add(debt.toString());
+                            arrayAdapter.notifyDataSetChanged();
 
-                        System.out.println(debt.getDueDate());
-                        System.out.println(debt.getDescription());
-                        System.out.println(debt.getAmount());
-                        System.out.println(debt.getItemList());
-                        System.out.println(debt.getMarketPhone());
-                        System.out.println("///////////////////////////////////////////////////////////////////////\n///////////////////////////////////////////////////////");
-
-                        arrayList.add(debt);
-                        arrayAdapter.notifyDataSetChanged();
-                    }
+                        }
+                    });
                 }
             }
             @Override
@@ -87,12 +92,6 @@ public class myCustomers extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
 
 //        debtsList = findViewById(R.id.debtsList);
 //        addNewDebtButton = findViewById(R.id.addNewDebtButton);
@@ -170,4 +169,31 @@ public class myCustomers extends AppCompatActivity {
             }
         });
     }
+
+    public ArrayList<Item> getitems(String id,MyCallback myCallback){
+        ArrayList<Item> itemlist = new ArrayList<>();
+        DatabaseReference conditionRefitems = mRootRef.child("Debts").child(id).child("items");
+        conditionRefitems.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data: snapshot.getChildren()){
+                    Item item = data.getValue(Item.class);
+                    Item item1 = new Item(item.getName(),item.getPrice());
+                    itemlist.add(item1);
+                }
+                myCallback.onCallback(itemlist);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return itemlist;
+    }
+
+
+    private interface MyCallback {
+        void onCallback(ArrayList<Item> arrayList);
+    }
+
 }

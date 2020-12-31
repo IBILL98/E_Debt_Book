@@ -70,7 +70,6 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_debt);
 
-
         customerNameInput = findViewById(R.id.customerNameInput);
         customerEmailInput = findViewById(R.id.customerEmailInput);
         customerPhoneInput = findViewById(R.id.customerPhoneInput);
@@ -233,11 +232,18 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                 debt.setAmount(amount);
                 debt.setDateOfLoan(dateOfLoan);
                 debt.setDescription(description);
-                debt.setItemList(finalItemList);
                 debt.setDueDate(dueDate);
                 debt.setDebtID(id);
                 assert id != null;
                 reference.child(id).setValue(debt);
+
+                for (int i=0; i<itemList.size(); i++){
+                    Item item = itemList.get(i);
+                    String itemkey = "item" + i;
+                    DatabaseReference itemsref = reference.child(id).child("items").child(itemkey);
+                    itemsref.setValue(item);
+
+                }
 
                 Intent intent = new Intent(addNewDebt.this,myCustomers.class);
                 Bundle b = new Bundle();
