@@ -85,7 +85,6 @@ public class MarketSettingsFragment extends Fragment {
                 });
                 AlertDialog mdialog = mbuilder.create();
                 mdialog.show();
-
             }
         });
 

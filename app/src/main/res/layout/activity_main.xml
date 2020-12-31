@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -81,7 +82,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/toolbar"
-                tools:srcCompat="@drawable/home_icon" />
+                tools:srcCompat="@drawable/market_icon" />
 
             <View
                 android:id="@+id/view6"
@@ -218,21 +219,22 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp" />
 
+
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="68dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/toolbar1"
                 app:srcCompat="@drawable/logo_main" />
 
-
             <Button
                 android:id="@+id/mainCustomertButton"
-                android:layout_width="157dp"
-                android:layout_height="63dp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
                 android:layout_marginTop="44dp"
                 android:background="#005B9F"
                 android:text="Customer"
@@ -244,8 +246,8 @@
 
             <Button
                 android:id="@+id/mainMarketButton"
-                android:layout_width="159dp"
-                android:layout_height="64dp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
                 android:layout_marginTop="44dp"
                 android:background="#005B9F"
                 android:text="Market"
@@ -293,10 +295,9 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="74dp"
-                android:layout_height="73dp"
-                android:layout_marginTop="44dp"
-                android:contentDescription="TODO"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="60dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/toolbar77"

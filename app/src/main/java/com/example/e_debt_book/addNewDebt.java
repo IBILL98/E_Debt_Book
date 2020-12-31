@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -59,12 +60,8 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
     DatePickerDialog.OnDateSetListener setListener;
     DatePickerDialog.OnDateSetListener setListener2;
 
-    ArrayList<Item> itemList;
-    Market market;
 
     FirebaseDatabase database;
-    ArrayList<String> displayProductsList;
-    ArrayAdapter<String> mAdapter;
     DatabaseReference reference, customerReference,mReference;
 
     @SuppressLint("ResourceType")
@@ -72,6 +69,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_debt);
+
 
         customerNameInput = findViewById(R.id.customerNameInput);
         customerEmailInput = findViewById(R.id.customerEmailInput);
@@ -93,7 +91,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Debts");
 
-        market = (Market) getIntent().getSerializableExtra("Market");
+        Market market = (Market) getIntent().getSerializableExtra("Market");
         customerReference = FirebaseDatabase.getInstance().getReference().child("Customers");
 
         customerSelectButton.setOnClickListener(new View.OnClickListener() {
@@ -172,12 +170,15 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
         };
 
 
-        Item item = new Item();
-        displayProductsList = new ArrayList<String>();
-        mAdapter = new ArrayAdapter<String>(addNewDebt.this, android.R.layout.simple_list_item_1, displayProductsList);
+        ArrayList<String> displayProductsList = new ArrayList<String>();
+        ArrayList<Item> itemList = new ArrayList<>();
+        final ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(addNewDebt.this, android.R.layout.simple_list_item_1, displayProductsList);
+
+        productsList.setAdapter(mAdapter);
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Item item = new Item();
                 String itemName = itemNameInput.getText().toString();
                 String itemPrice = itemPriceInput.getText().toString();
                 int itemPrice1 = 0;
@@ -192,13 +193,16 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                 Toast.makeText(addNewDebt.this, itemName + " " + itemPrice + " is added!",Toast.LENGTH_LONG).show();
                 itemList.add(item);
                 displayProductsList.add(itemName+", Price: "+itemPrice);
-                productsList.setAdapter(mAdapter);
-
+                LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) productsList.getLayoutParams();
+                float old_height = productsList.getHeight();
+                lp.height = (int) (old_height + 140);
+                productsList.setLayoutParams(lp);
+                mAdapter.notifyDataSetChanged();
+                itemNameInput.setText("");
+                itemPriceInput.setText("");
             }
         });
-        if (selectedCustomer!=null){
 
-        }
         addDebtButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

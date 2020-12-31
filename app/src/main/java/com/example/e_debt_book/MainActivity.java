@@ -71,11 +71,6 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-        final Customer loginUser1 = new Customer();
-
-        final Market marketlogin = new Market();
-
-
         ////Main screen Choice attributes
         mainChoice = findViewById(R.id.mainChoice);
         mainMarketButton = findViewById(R.id.mainMarketButton);
@@ -203,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                                     } else {
                                         Intent i = new Intent(MainActivity.this, CustomerMain.class);
                                         Bundle b = new Bundle();
-                                        b.putSerializable("Customer", loginUser1);
+                                        b.putSerializable("Customer", loginUser);
                                         i.putExtras(b);
                                         startActivity(i);
                                         finish();
@@ -304,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
                                             } else {
                                                 Intent i = new Intent(MainActivity.this, MarketMain.class);
                                                 Bundle b = new Bundle();
-                                                b.putSerializable("Market", loginUser1);
+                                                b.putSerializable("Market", loginUser);
                                                 i.putExtras(b);
                                                 startActivity(i);
                                                 finish();
