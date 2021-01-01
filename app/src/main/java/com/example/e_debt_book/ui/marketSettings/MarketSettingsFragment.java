@@ -166,17 +166,6 @@ public class MarketSettingsFragment extends Fragment {
             }
         });
 
-        market_settings_change_password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_market_fragment, new ChangePasswordFragment());
-                fragmentTransaction.commit();
-
-            }
-
-        });
-
 
         market_settings_change_email.setOnClickListener(new View.OnClickListener() {
             @Override

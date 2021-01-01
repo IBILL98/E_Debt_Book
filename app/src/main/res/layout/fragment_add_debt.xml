@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addNewDebt">
+    tools:context=".ui.addDebt.AddDebtFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,20 +21,6 @@
             android:orientation="vertical"
             tools:ignore="ExtraText">
 
-            <TextView
-                android:id="@+id/toolbar_title3"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_gravity="center"
-                android:background="@color/colorPrimary"
-                android:fontFamily="@font/merienda"
-                android:gravity="center"
-                android:text="@string/my_customers"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@android:color/white"
-                android:textSize="21sp"
-                android:textStyle="bold" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
@@ -47,7 +33,9 @@
                     android:background="#F3F3F3"
                     android:hint="@string/enter_customer_phone_to_search"
                     android:inputType="number"
+                    android:paddingLeft="15dp"
                     android:paddingTop="15dp"
+                    android:paddingRight="0dp"
                     android:paddingBottom="15dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@android:color/tertiary_text_light"

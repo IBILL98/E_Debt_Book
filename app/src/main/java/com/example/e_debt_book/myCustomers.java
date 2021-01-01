@@ -165,7 +165,7 @@ public class myCustomers extends AppCompatActivity {
 
     public ArrayList<Item> getitems(String id,MyCallback myCallback){
         ArrayList<Item> itemlist = new ArrayList<>();
-        DatabaseReference conditionRefitems = mRootRef.child("Debts").child(id).child("itemList");
+        DatabaseReference conditionRefitems = mRootRef.child("Debts").child(id).child("items");
         conditionRefitems.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
