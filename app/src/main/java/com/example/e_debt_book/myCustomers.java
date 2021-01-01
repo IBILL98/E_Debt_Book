@@ -3,6 +3,7 @@ package com.example.e_debt_book;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Debt;
 import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
@@ -42,7 +44,7 @@ public class myCustomers extends AppCompatActivity {
 
 
     FloatingActionButton addNewDebtButton;
-    DatabaseReference mRootRef, conditionRef,itemref;
+    DatabaseReference mRootRef, conditionRef;
     ListView listView;
     ArrayList<Debt> arrayList = new ArrayList<>();
 
@@ -75,8 +77,6 @@ public class myCustomers extends AppCompatActivity {
                     getitems(debtId, new MyCallback() {
                         @Override
                         public void onCallback(ArrayList<Item> itemArrayList) {
-                            System.out.println("////////////////////////////////////////////////////////");
-                            System.out.println(itemArrayList.toString());
                             debt.setItemList(itemArrayList);
                             debt.setDebtID(debtId);
                             arrayList.add(debt);
@@ -126,37 +126,30 @@ public class myCustomers extends AppCompatActivity {
 //
 //            }
 //        });
-//        debtsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                int i=position;
-//                Debt selectedDebt = debtsArray.get(i);
-//                Intent intent = new Intent(myCustomers.this, debtsDetails.class);
-//                Bundle bundle = new Bundle();
-//                reference2.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        for (DataSnapshot ds: snapshot.getChildren()) {
-//                            customer = ds.getValue(Customer.class);
-//                            assert customer != null;
-//                            if (customer.getPhone() == selectedDebt.getCustomerPhone()) {
-//                                bundle.putSerializable("Customer", customer);
-//                                break;
-//                            }
-//                        }
-//                    }
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//                bundle.putSerializable("Market",market);
-//                bundle.putSerializable("Debt",selectedDebt);
-//                intent.putExtras(bundle);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int i=position;
+                Debt selectedDebt = arrayList.get(i);
+                Intent intent = new Intent(myCustomers.this, debtsDetails.class);
+                Bundle bundle = new Bundle();
+                getCustomer(selectedDebt, new CustomerCallback() {
+                    @Override
+                    public void customerOnCallback(Customer customer) {
+                        System.out.println("//////////////////////////////////////////////");
+                        bundle.putSerializable("Customer", customer);
+                        bundle.putSerializable("Market",market);
+                        bundle.putSerializable("Debt",selectedDebt);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+            }
+        });
         addNewDebtButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,7 +165,7 @@ public class myCustomers extends AppCompatActivity {
 
     public ArrayList<Item> getitems(String id,MyCallback myCallback){
         ArrayList<Item> itemlist = new ArrayList<>();
-        DatabaseReference conditionRefitems = mRootRef.child("Debts").child(id).child("items");
+        DatabaseReference conditionRefitems = mRootRef.child("Debts").child(id).child("itemList");
         conditionRefitems.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -192,8 +185,41 @@ public class myCustomers extends AppCompatActivity {
     }
 
 
+    public void getCustomer(Debt selectedDebt,CustomerCallback customerCallback) {
+        DatabaseReference customerRef = mRootRef.child("Customers");
+        Customer customer = new Customer();
+        customerRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds: snapshot.getChildren()) {
+                    Customer customer1 = ds.getValue(Customer.class);
+                    String userId = ds.getKey();
+                    customer1.setPhone(userId);
+                    if (customer1.getPhone().equals(selectedDebt.getCustomerPhone())) {
+                        customer.setPhone(customer1.getPhone());
+                        customer.setStatus(customer1.getStatus());
+                        customer.setEmail(customer1.getEmail());
+                        customer.setName(customer1.getName());
+                        customer.setLastname(customer1.getLastname());
+
+                        customerCallback.customerOnCallback(customer);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
     private interface MyCallback {
         void onCallback(ArrayList<Item> arrayList);
+    }
+
+    private interface CustomerCallback {
+        void customerOnCallback(Customer customer);
     }
 
 }

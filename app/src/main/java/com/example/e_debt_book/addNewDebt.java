@@ -8,7 +8,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -20,7 +19,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,8 +26,6 @@ import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Debt;
 import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -146,7 +142,6 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
             }
         };
 
-        Calendar calendar2 = Calendar.getInstance();
         final int year2 = calendar.get(Calendar.YEAR);
         final int month2 = calendar.get(Calendar.MONTH);
         final int day2 = calendar.get(Calendar.DAY_OF_MONTH);

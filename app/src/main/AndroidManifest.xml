@@ -24,7 +24,8 @@
         <activity android:name=".CustomerRegister" />
         <activity android:name=".CustomerMain" />
         <activity android:name=".EditMarketInfo" />
-        <activity android:name=".MarketMain1">
+        <activity android:name=".MarketMain1"/>
+        <activity android:name=".debtsDetails">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

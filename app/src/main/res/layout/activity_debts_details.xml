@@ -1,213 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#005B9F"
     tools:context=".debtsDetails">
 
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
-        android:background="@android:color/white"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-
-
-        >
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Customer:"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:background="#8ecde8"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="22dp"
-            android:id="@+id/customerInfoDisplay"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:background="#8ecde8"
-            android:text="Amount:"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="22dp"
-            android:id="@+id/amountDisplay"
-            />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+
 
             >
 
             <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Date Of Loan:"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                />
+                android:id="@+id/toolbar_title2"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/merienda"
+                android:gravity="center"
+                android:text="@string/debts_details"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@android:color/white"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
             <TextView
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:textSize="22dp"
-                android:id="@+id/dateOFLoanDisplay"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#8ecde8"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="10dp"
+                android:text="@string/customer"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:text="Due Date:"
+                android:textStyle="bold" />
 
-                />
+            <TextView
+                android:id="@+id/customerInfoDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="10dp"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#8ecde8"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="10dp"
+                android:text="@string/amount"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <EditText
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:id="@+id/dueDateDisplay"
-                android:textSize="22dp"
+                android:id="@+id/amountDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/empty_text"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="10dp"
+                android:textSize="22sp" />
 
-                />
-            <ImageButton
-                android:id="@+id/changeDueDateButton"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                app:srcCompat="@android:drawable/ic_menu_today" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/date_of_loan"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dateOFLoanDisplay"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:textSize="22sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="109dp"
+                    android:layout_height="match_parent"
+
+                    android:gravity="center_vertical"
+                    android:text="@string/due_date"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/dueDateDisplay"
+                    android:layout_width="207dp"
+                    android:layout_height="match_parent"
+
+                    android:gravity="center_vertical"
+                    android:hint="@string/empty_text"
+                    android:importantForAutofill="no"
+                    android:inputType="date"
+                    android:textSize="22sp" />
+
+                <ImageButton
+                    android:id="@+id/changeDueDateButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="5"
+                    android:contentDescription="@string/todo"
+                    app:srcCompat="@android:drawable/ic_menu_today" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#8ecde8"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="10dp"
+                android:text="@string/description"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/descriptionDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/empty_text"
+
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="10dp"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#8ecde8"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="10dp"
+                android:text="@string/products_list"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ListView
+                android:id="@+id/productsList"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+            </ListView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingLeft="0dp"
+                android:paddingTop="20dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp">
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+
+                    />
+
+                <Button
+                    android:id="@+id/editButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="#005B9F"
+                    android:text="@string/edit"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+
+                    />
+
+                <Button
+                    android:id="@+id/deleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="#005B9F"
+                    android:text="@string/delete"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+
+                    />
+
+                <Button
+                    android:id="@+id/printButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="#005B9F"
+                    android:text="@string/print"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
         </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:background="#8ecde8"
-            android:text="Description:"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="22dp"
-            android:id="@+id/descriptionDisplay"
+    </ScrollView>
 
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="Products List:"
-            android:background="#8ecde8"
-            />
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/productsList"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            >
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-
-                />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:id="@+id/editButton"
-                android:text="Edit"
-                android:background="#005B9F"
-                android:textColor="@android:color/white"
-                />
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-
-                />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:id="@+id/deleteButton"
-                android:text="Delete"
-                android:textColor="@android:color/white"
-                android:background="#005B9F"
-                />
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-
-                />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:id="@+id/printButton"
-                android:text="Print"
-                android:textColor="@android:color/white"
-                android:background="#005B9F"
-                />
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-
-                />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginLeft="177dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="177dp"
-        android:layout_marginRight="177dp"
-        android:text="@string/debts_details"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
