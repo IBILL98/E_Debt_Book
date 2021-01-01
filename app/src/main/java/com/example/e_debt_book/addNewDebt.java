@@ -188,9 +188,11 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                 itemList.add(item);
                 displayProductsList.add(itemName+", Price: "+itemPrice);
                 LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) productsList.getLayoutParams();
-                float old_height = productsList.getHeight();
-                lp.height = (int) (old_height + 140);
+                int old_height = productsList.getHeight();
+                lp.height =  (old_height + 135);
                 productsList.setLayoutParams(lp);
+                System.out.println("////////////////////////////////////////////////////");
+                System.out.println(productsList.getHeight());
                 mAdapter.notifyDataSetChanged();
                 itemNameInput.setText("");
                 itemPriceInput.setText("");

@@ -290,7 +290,7 @@
             <ListView
                 android:id="@+id/productsList"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="65dp"
                 android:divider="@android:color/black"
                 android:dividerHeight="3dp"
 

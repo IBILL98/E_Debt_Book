@@ -7,17 +7,87 @@
     tools:context=".debtsDetails">
 
 
+    <ListView
+        android:id="@+id/productsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:paddingLeft="0dp"
+        android:paddingTop="20dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productsList">
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+
+            />
+
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#005B9F"
+            android:text="@string/edit"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+
+            />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#005B9F"
+            android:text="@string/delete"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+
+            />
+
+        <Button
+            android:id="@+id/printButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#005B9F"
+            android:text="@string/print"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@android:color/white"
             android:orientation="vertical"
 
@@ -213,69 +283,6 @@
                 android:text="@string/products_list"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
-            <ListView
-                android:id="@+id/productsList"
-                android:layout_width="match_parent"
-                android:layout_height="100dp">
-
-            </ListView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:paddingLeft="0dp"
-                android:paddingTop="20dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp">
-
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-
-                    />
-
-                <Button
-                    android:id="@+id/editButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:background="#005B9F"
-                    android:text="@string/edit"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-
-                    />
-
-                <Button
-                    android:id="@+id/deleteButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:background="#005B9F"
-                    android:text="@string/delete"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-
-                    />
-
-                <Button
-                    android:id="@+id/printButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:background="#005B9F"
-                    android:text="@string/print"
-                    android:textColor="@android:color/white" />
-
-            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
