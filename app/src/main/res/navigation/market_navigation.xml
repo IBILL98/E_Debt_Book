@@ -47,6 +47,12 @@
         tools:layout="@layout/fragment_aboutus" />
 
     <fragment
+        android:id="@+id/nav_add_customer"
+        android:name="com.example.e_debt_book.ui.add_customer.AddCustomerFragment"
+        android:label="@string/add_customer"
+        tools:layout="@layout/fragment_add_customer" />
+
+    <fragment
         android:id="@+id/fragment_change_password"
         android:name="com.example.e_debt_book.ui.changePassword.ChangePasswordFragment"
         android:label="@string/menu_change_language"
