@@ -56,7 +56,7 @@ public class myCustomers extends AppCompatActivity {
         setContentView(R.layout.activity_my_customers);
         mRootRef = FirebaseDatabase.getInstance().getReference();
         listView = findViewById(R.id.debtsList);
-        addNewDebtButton = findViewById(R.id.addNewDebtButton);
+        addNewDebtButton = findViewById(R.id.addNewDebtButton3);
 
         Market market = (Market) getIntent().getSerializableExtra("Market");
 

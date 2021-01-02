@@ -1,5 +1,6 @@
 package com.example.e_debt_book.ui.marketHome;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,10 +9,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -20,7 +20,6 @@ import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Debt;
 import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
-import com.example.e_debt_book.ui.MarketSettings.MarketSettingsFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,6 +40,8 @@ public class MarketHomeFragment extends Fragment {
     DatabaseReference mRootRef, conditionRef;
     ListView listView;
     ArrayList<Debt> arrayList = new ArrayList<>();
+    float totallend;
+    TextView textView2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,14 +55,11 @@ public class MarketHomeFragment extends Fragment {
         //setContentView(R.layout.activity_my_customers);
         mRootRef = FirebaseDatabase.getInstance().getReference();
         listView = getActivity().findViewById(R.id.debtsList);
+        textView2 = getActivity().findViewById(R.id.textView2);
         addNewDebtButton = getActivity().findViewById(R.id.addNewDebtButton2);
-
         Market market = (Market) getActivity().getIntent().getSerializableExtra("Market");
-
-        ArrayList<String> displayProductsList = new ArrayList<String>();
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, displayProductsList);
+        MyAdapter arrayAdapter = new MyAdapter(getActivity(),arrayList);
         listView.setAdapter(arrayAdapter);
-
 
 
         conditionRef = mRootRef.child("Debts");
@@ -72,18 +70,20 @@ public class MarketHomeFragment extends Fragment {
                 for (DataSnapshot data : snapshot.getChildren()) {
                     String debtId = data.getKey();
                     Debt debt = data.getValue(Debt.class);
+                    totallend = Float.parseFloat(debt.getAmount()) + totallend;
                     getitems(debtId, new MyCallback() {
                         @Override
                         public void onCallback(ArrayList<Item> itemArrayList) {
                             debt.setItemList(itemArrayList);
                             debt.setDebtID(debtId);
                             arrayList.add(debt);
-                            displayProductsList.add(debt.toString());
+                            arrayList.add(debt);
                             arrayAdapter.notifyDataSetChanged();
-
                         }
                     });
+
                 }
+                textView2.setText(textView2.getText().toString() + " " + totallend);
             }
 
             @Override
@@ -91,44 +91,6 @@ public class MarketHomeFragment extends Fragment {
 
             }
         });
-
-//        debtsList = findViewById(R.id.debtsList);
-//        addNewDebtButton = findViewById(R.id.addNewDebtButton);
-//
-//        database = FirebaseDatabase.getInstance();
-//
-//        reference = database.getReference("Debts");
-//        reference2 = database.getReference("Customers");
-//
-//        list = new ArrayList<String>();
-//        debt = new Debt();
-//        customer = new Customer();
-//        debtsArray = new ArrayList<Debt>();
-//        Market market = (Market) getIntent().getSerializableExtra("Market");
-//
-//        adapter = new ArrayAdapter<String>(myCustomers.this, R.layout.debts_infos_resource, list);
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot ds: snapshot.getChildren()){
-//                    debt = ds.getValue(Debt.class);
-//                    assert debt != null;
-//                    if(debt.getMarketPhone().equals(market.getPhone())) {
-//                        list.add(debt.getCustomerPhone()+ ", " + debt.getAmount());
-//                        debtsArray.add(debt);
-//                    }
-//                }
-//                debtsList.setAdapter(adapter);
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
-
-
-
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -138,7 +100,8 @@ public class MarketHomeFragment extends Fragment {
                 Debt selectedDebt = arrayList.get(i);
                 Intent intent = getActivity().getIntent();
                 Bundle bundle = new Bundle();
-                getCustomer(selectedDebt, new CustomerCallback() {
+
+                getCustomer(selectedDebt.getCustomerPhone(), new CustomerCallback() {
                     @Override
                     public void customerOnCallback(Customer customer) {
                         bundle.putSerializable("Customer", customer);
@@ -190,7 +153,7 @@ public class MarketHomeFragment extends Fragment {
     }
 
 
-    public void getCustomer(Debt selectedDebt, CustomerCallback customerCallback) {
+    public void getCustomer(String phone, CustomerCallback customerCallback) {
         DatabaseReference customerRef = mRootRef.child("Customers");
         Customer customer = new Customer();
         customerRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -200,7 +163,7 @@ public class MarketHomeFragment extends Fragment {
                     Customer customer1 = ds.getValue(Customer.class);
                     String userId = ds.getKey();
                     customer1.setPhone(userId);
-                    if (customer1.getPhone().equals(selectedDebt.getCustomerPhone())) {
+                    if (customer1.getPhone().equals(phone)) {
                         customer.setPhone(customer1.getPhone());
                         customer.setStatus(customer1.getStatus());
                         customer.setEmail(customer1.getEmail());
@@ -229,4 +192,44 @@ public class MarketHomeFragment extends Fragment {
     }
 
 
+
+    public class MyAdapter extends ArrayAdapter<Debt> {
+
+        public MyAdapter(Context context, ArrayList<Debt> debts){
+            super(context, 0, debts);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            // Get the data item for this position
+            Debt debt = getItem(position);
+            // Check if an existing view is being reused, otherwise inflate the view
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.my_listview, parent, false);
+            }
+            // Lookup view for data population
+            TextView fullname = (TextView) convertView.findViewById(R.id.fullName);
+            TextView amount = (TextView) convertView.findViewById(R.id.amount);
+            TextView phone = (TextView) convertView.findViewById(R.id.phone);
+            TextView date = (TextView) convertView.findViewById(R.id.date);
+            // Populate the data into the template view using the data object
+            phone.setText(debt.getCustomerPhone());
+            amount.setText(debt.getAmount());
+            date.setText(debt.getDateOfLoan());
+            DatabaseReference databaseReferenc = FirebaseDatabase.getInstance().getReference();
+
+            getCustomer(debt.getCustomerPhone(), new CustomerCallback() {
+                @Override
+                public void customerOnCallback(Customer customer) {
+                    fullname.setText(customer.getName() + " " + customer.getLastname());
+                }
+            });
+
+            // Return the completed view to render on screen
+            return convertView;
+        }
+    }
+
+
 }
+
