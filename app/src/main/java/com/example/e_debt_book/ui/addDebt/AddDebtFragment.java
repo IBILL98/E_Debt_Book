@@ -248,7 +248,7 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                 for (int i=0; i<itemList.size(); i++){
                     Item item = itemList.get(i);
                     String itemkey = "item" + i;
-                    DatabaseReference itemsref = reference.child(id).child("items").child(itemkey);
+                    DatabaseReference itemsref = reference.child(id).child("itemList").child(itemkey);
                     itemsref.setValue(item);
 
                 }

@@ -169,7 +169,7 @@ public class MarketHomeFragment extends Fragment {
 
     public ArrayList<Item> getitems(String id, MyCallback myCallback) {
         ArrayList<Item> itemlist = new ArrayList<>();
-        DatabaseReference conditionRefitems = mRootRef.child("Debts").child(id).child("items");
+        DatabaseReference conditionRefitems = mRootRef.child("Debts").child(id).child("itemList");
         conditionRefitems.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

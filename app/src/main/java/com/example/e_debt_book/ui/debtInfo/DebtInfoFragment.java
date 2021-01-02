@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.e_debt_book.R;
 import com.example.e_debt_book.debtsDetails;
@@ -21,6 +22,7 @@ import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Debt;
 import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
+import com.example.e_debt_book.ui.marketHome.MarketHomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -35,7 +37,7 @@ public class DebtInfoFragment extends Fragment {
 
     EditText amountDisplay, descriptionDisplay,dueDateDisplay;
     TextView customerInfoDisplay, dateOFLoanDisplay;
-    Button editButton, deleteButton, printButton;
+    Button editButton, deleteButton, printButton,saveButton;
     ImageButton changeDueDateButton;
     ListView listView;
 
@@ -57,7 +59,11 @@ public class DebtInfoFragment extends Fragment {
         editButton = (Button)getActivity().findViewById(R.id.editButton);
         deleteButton = (Button)getActivity().findViewById(R.id.deleteButton);
         printButton = (Button)getActivity().findViewById(R.id.printButton);
+        saveButton = (Button)getActivity().findViewById(R.id.saveButton);
         listView = (ListView)getActivity().findViewById(R.id.productsList);
+
+        setuneditable();
+
 
         Debt debt = (Debt) getActivity().getIntent().getSerializableExtra("Debt");
         Market market = (Market) getActivity().getIntent().getSerializableExtra("Market") ;
@@ -88,9 +94,15 @@ public class DebtInfoFragment extends Fragment {
         changeDueDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                materialDatePicker.show(getActivity().getSupportFragmentManager(),"Date_Picker");
+                if (saveButton.getVisibility() == View.VISIBLE){
+                    materialDatePicker.show(getActivity().getSupportFragmentManager(),"Date_Picker");
+                }else {
+                    Toast.makeText(getActivity(), "Press on edit Button to enable editing", Toast.LENGTH_LONG).show();
+
+                }
             }
         });
+
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Object selection) {
@@ -101,6 +113,14 @@ public class DebtInfoFragment extends Fragment {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                seteditable();
+            }
+        });
+
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 String debtAmount = amountDisplay.getText().toString();
                 String dueDate = dueDateDisplay.getText().toString();
                 String description = descriptionDisplay.getText().toString();
@@ -108,6 +128,8 @@ public class DebtInfoFragment extends Fragment {
                 debt.setAmount(debtAmount);
                 debt.setDescription(description);
                 reference.child(debt.getDebtID()).setValue(debt);
+                Toast.makeText(getActivity(), "Debt has been Updated", Toast.LENGTH_LONG).show();
+                setuneditable();
             }
         });
         deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +140,7 @@ public class DebtInfoFragment extends Fragment {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getActivity(), "Debt removed successfully!", Toast.LENGTH_LONG).show();
+                            NavHostFragment.findNavController(DebtInfoFragment.this).navigate(R.id.action_debt_info_to_nav_market_home);
                         }
                     }
                 });
@@ -129,5 +152,36 @@ public class DebtInfoFragment extends Fragment {
 
 
     }
+
+
+    public void seteditable(){
+        printButton.setVisibility(View.GONE);
+        saveButton.setVisibility(View.VISIBLE);
+        amountDisplay.setClickable(true);
+        amountDisplay.setFocusable(true);
+        amountDisplay.setFocusableInTouchMode(true);
+        dueDateDisplay.setClickable(true);
+        dueDateDisplay.setFocusable(true);
+        dueDateDisplay.setFocusableInTouchMode(true);
+        descriptionDisplay.setClickable(true);
+        descriptionDisplay.setFocusable(true);
+        descriptionDisplay.setFocusableInTouchMode(true);
+    }
+
+    public void setuneditable(){
+        saveButton.setVisibility(View.GONE);
+        printButton.setVisibility(View.VISIBLE);
+        amountDisplay.setClickable(false);
+        amountDisplay.setFocusable(false);
+        amountDisplay.setFocusableInTouchMode(false);
+        dueDateDisplay.setClickable(false);
+        dueDateDisplay.setFocusable(false);
+        dueDateDisplay.setFocusableInTouchMode(false);
+        descriptionDisplay.setClickable(false);
+        descriptionDisplay.setFocusable(false);
+        descriptionDisplay.setFocusableInTouchMode(false);
+    }
+
+
 
 }

@@ -67,6 +67,7 @@
     <string name="phone">Phone</string>
     <string name="email">Email</string>
     <string name="payment_due_date">Payment Due Date :</string>
+    <string name="save">Save</string>
 
 
 </resources>

@@ -33,6 +33,7 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="10dp"
                 android:text="@string/customer"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -46,6 +47,7 @@
                 android:paddingEnd="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="10dp"
+                android:textColor="@android:color/holo_red_dark"
                 android:textSize="22sp" />
 
             <TextView
@@ -59,6 +61,7 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="10dp"
                 android:text="@string/amount"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -75,6 +78,7 @@
                 android:paddingEnd="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="10dp"
+                android:textColor="@android:color/holo_red_dark"
                 android:textSize="22sp" />
 
             <LinearLayout
@@ -85,22 +89,26 @@
                 android:paddingLeft="15dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="10dp"
-                android:paddingRight="10dp">
+                android:paddingRight="10dp"
+                android:paddingBottom="0dp">
 
                 <TextView
                     android:id="@+id/textView16"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="56dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="@string/date_of_loan"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/dateOFLoanDisplay"
                     android:layout_width="200dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="56dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/holo_red_dark"
                     android:textSize="22sp" />
 
             </LinearLayout>
@@ -127,6 +135,7 @@
 
                     android:gravity="center_vertical"
                     android:text="@string/due_date"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -139,6 +148,8 @@
                     android:hint="@string/empty_text"
                     android:importantForAutofill="no"
                     android:inputType="date"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textColorHint="@android:color/white"
                     android:textSize="22sp" />
 
                 <ImageButton
@@ -164,6 +175,7 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="10dp"
                 android:text="@string/description"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -171,8 +183,8 @@
                 android:id="@+id/descriptionDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/empty_text"
 
+                android:hint="@string/empty_text"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:paddingStart="15dp"
@@ -181,6 +193,7 @@
                 android:paddingEnd="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="10dp"
+                android:textColor="@android:color/holo_red_dark"
                 android:textSize="22sp" />
 
             <TextView
@@ -195,7 +208,8 @@
                 android:paddingBottom="10dp"
                 android:text="@string/products_list"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
 
             <ListView
                 android:id="@+id/productsList"
@@ -219,53 +233,69 @@
                 android:paddingLeft="0dp"
                 android:paddingTop="20dp"
                 android:paddingEnd="10dp"
-                android:paddingRight="10dp"
+                android:paddingRight="0dp"
                 android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-
-                    />
 
                 <Button
                     android:id="@+id/editButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="0dp"
                     android:layout_weight="1"
                     android:background="#005B9F"
                     android:text="@string/edit"
                     android:textColor="@android:color/white" />
 
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-
-                    />
-
                 <Button
                     android:id="@+id/deleteButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="0dp"
                     android:layout_weight="1"
                     android:background="#005B9F"
                     android:text="@string/delete"
                     android:textColor="@android:color/white" />
 
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-
-                    />
-
                 <Button
                     android:id="@+id/printButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="0dp"
                     android:layout_weight="1"
                     android:background="#005B9F"
                     android:text="@string/print"
                     android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_orange_dark"
+                    android:text="@string/save"
+                    android:textColor="@android:color/white"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
