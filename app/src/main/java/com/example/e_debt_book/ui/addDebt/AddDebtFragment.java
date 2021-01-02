@@ -104,6 +104,18 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
         Market market = (Market) getActivity().getIntent().getSerializableExtra("Market");
         customerReference = FirebaseDatabase.getInstance().getReference().child("Customers");
 
+
+        customerNameInput.setClickable(false);
+        customerNameInput.setFocusable(false);
+        customerNameInput.setFocusableInTouchMode(false);
+        customerEmailInput.setClickable(false);
+        customerEmailInput.setFocusable(false);
+        customerEmailInput.setFocusableInTouchMode(false);
+        customerPhoneInput.setClickable(false);
+        customerPhoneInput.setFocusable(false);
+        customerPhoneInput.setFocusableInTouchMode(false);
+
+
         customerSelectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
