@@ -183,7 +183,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                     return;
                 }
                 item.setName(itemName);
-                item.setPrice(itemPrice1);
+                item.setPrice(itemPrice);
                 Toast.makeText(addNewDebt.this, itemName + " " + itemPrice + " is added!",Toast.LENGTH_LONG).show();
                 itemList.add(item);
                 displayProductsList.add(itemName+", Price: "+itemPrice);

@@ -63,6 +63,7 @@ public class MarketHomeFragment extends Fragment {
         listView.setAdapter(arrayAdapter);
 
 
+
         conditionRef = mRootRef.child("Debts");
         Query query = conditionRef.orderByChild("marketPhone").equalTo(market.getPhone());
         query.addListenerForSingleValueEvent(new ValueEventListener() {

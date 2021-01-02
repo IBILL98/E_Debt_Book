@@ -182,7 +182,6 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
         ArrayList<String> displayProductsList = new ArrayList<String>();
         ArrayList<Item> itemList = new ArrayList<>();
         final ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, displayProductsList);
-
         productsList.setAdapter(mAdapter);
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,15 +189,9 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                 Item item = new Item();
                 String itemName = itemNameInput.getText().toString();
                 String itemPrice = itemPriceInput.getText().toString();
-                int itemPrice1 = 0;
-                try {
-                    itemPrice1 = Integer.parseInt(itemPrice);
-                } catch(NumberFormatException nfe) {
-                    Toast.makeText(getActivity(), "Please enter the price with only integer format!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+
                 item.setName(itemName);
-                item.setPrice(itemPrice1);
+                item.setPrice(itemPrice);
                 Toast.makeText(getActivity(), itemName + " " + itemPrice + " is added!",Toast.LENGTH_LONG).show();
                 itemList.add(item);
                 displayProductsList.add(itemName+", Price: "+itemPrice);
@@ -224,7 +217,10 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                 String dateOfLoan = dateOfLoanInput.getText().toString();
                 String dueDate = dueDateInput.getText().toString();
                 List<Item> finalItemList = itemList;
-                if(TextUtils.isEmpty(amount)){
+                if(TextUtils.isEmpty(customerPhone)){
+                    loanAmountInput.setError("customer Phone is Required.");
+                    return;
+                }if(TextUtils.isEmpty(amount)){
                     loanAmountInput.setError("Loan amount is Required.");
                     return;
                 }
