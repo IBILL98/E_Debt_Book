@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add_debt">Add Debt</string>
 </resources>
-=======
-<resources></resources>
->>>>>>> origin/master
+
