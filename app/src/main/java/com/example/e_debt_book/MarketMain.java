@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Market;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.io.Serializable;
 
 public class MarketMain extends AppCompatActivity {
 
@@ -21,12 +24,13 @@ public class MarketMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market_main1);
 
+        Market market = (Market) getIntent().getSerializableExtra("Market");
+
         mainMarketAddCustomertButton = findViewById(R.id.mainMarketAddCustomertButton);
         mainMarketeditinfoButton = findViewById(R.id.mainMarketeditinfoButton);
         mainMarketmyCutomertButton = findViewById(R.id.mainMarketmyCustomertButton);
         mainMarketLogoutButton = findViewById(R.id.mainMarketLogoutButton);
 
-        Market market = (Market) getIntent().getSerializableExtra("Market");
 
 
 

@@ -4,18 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.DialogFragment;
+
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
+
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Debt;
+import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,16 +28,14 @@ import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClic
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
-import java.text.DateFormat;
-import java.util.Calendar;
+import java.util.ArrayList;
 
 public class debtsDetails extends AppCompatActivity {
 
     EditText amountDisplay, descriptionDisplay,dueDateDisplay;
     TextView customerInfoDisplay, dateOFLoanDisplay;
-    Button editButton, deleteButton, printButton, changeDueDateButton;
+    Button editButton, deleteButton, printButton;
+    ImageButton changeDueDateButton;
     ListView listView;
 
     DatabaseReference reference;
@@ -47,7 +49,7 @@ public class debtsDetails extends AppCompatActivity {
         dateOFLoanDisplay = (TextView) findViewById(R.id.dateOFLoanDisplay);
         dueDateDisplay = (EditText) findViewById(R.id.dueDateDisplay);
         descriptionDisplay = (EditText)findViewById(R.id.descriptionDisplay);
-        changeDueDateButton = (Button) findViewById(R.id.changeDueDateButton);
+        changeDueDateButton =  findViewById(R.id.changeDueDateButton);
         editButton = (Button)findViewById(R.id.editButton);
         deleteButton = (Button)findViewById(R.id.deleteButton);
         printButton = (Button)findViewById(R.id.printButton);
@@ -58,6 +60,17 @@ public class debtsDetails extends AppCompatActivity {
         Customer customer = (Customer) getIntent().getSerializableExtra("Customer");
 
         reference = FirebaseDatabase.getInstance().getReference().child("Debts");
+
+
+        ArrayList<String> displayarray = new ArrayList<>();
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(debtsDetails.this,android.R.layout.simple_list_item_1,displayarray);
+        for (int i = 0; i<debt.getItemList().size();i++){
+            Item item = debt.getItemList().get(i);
+            displayarray.add(i,item.toString());
+            listView.setAdapter(arrayAdapter);
+            arrayAdapter.notifyDataSetChanged();
+
+        }
 
         customerInfoDisplay.setText(customer.getName()+" "+customer.getLastname()+", "+customer.getPhone());
         amountDisplay.setText(debt.getAmount());
@@ -85,6 +98,7 @@ public class debtsDetails extends AppCompatActivity {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String debtAmount = amountDisplay.getText().toString();
                 String dueDate = dueDateDisplay.getText().toString();
                 String description = descriptionDisplay.getText().toString();

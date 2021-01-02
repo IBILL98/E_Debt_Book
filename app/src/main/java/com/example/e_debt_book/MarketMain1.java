@@ -1,7 +1,10 @@
 package com.example.e_debt_book;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,12 +18,15 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.preference.PreferenceFragmentCompat;
 
+import com.example.e_debt_book.model.Market;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MarketMain1 extends AppCompatActivity {
 
+    TextView market_name;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -30,6 +36,8 @@ public class MarketMain1 extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
+        Market market = (Market) getIntent().getSerializableExtra("Market");
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,6 +56,18 @@ public class MarketMain1 extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_market_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        navigationView.getMenu().findItem(R.id.nav_signout).setOnMenuItemClickListener(menuItem -> {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            finish();
+            return true;
+        });
+
+        View header = navigationView.getHeaderView(0);
+        market_name = header.findViewById(R.id.nav_header_title_market_name);
+
+        market_name.setText(market.getName());
+        System.out.println(market_name.getText());
     }
 
 //    @Override

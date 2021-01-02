@@ -42,7 +42,6 @@ public class editCustomer extends AppCompatActivity {
         editCostomerDoneButton = findViewById(R.id.editCostomerDoneButton);
         editCostomerEmail = findViewById(R.id.editCostomerEmail);
         editCostomerPhone = findViewById(R.id.editCostomerPhone);
-        editCostomerPassword = findViewById(R.id.editCostomerPassword);
         editCostomerLastName = findViewById(R.id.editCostomerLastName);
         editCostomerName = findViewById(R.id.editCostomerName);
 

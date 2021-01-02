@@ -17,7 +17,7 @@
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_customer_editprofile" />
     <fragment
-        android:id="@+id/nav_settings"
+        android:id="@+id/nav_customer_settings"
         android:name="com.example.e_debt_book.ui.customerSettings.CustomerSettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_setting_customer" />
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/nav_change_language"
-        android:name="com.example.e_debt_book.ui.changeLanguage.ChangeLanguageFragment"
+        android:name="com.example.e_debt_book.ui.changePassword.ChangePasswordFragment"
         android:label="@string/menu_change_language"
-        tools:layout="@layout/fragment_change_language" />
+        tools:layout="@layout/fragment_change_password" />
 </navigation>
