@@ -70,4 +70,12 @@
     <string name="add_customer">Add Customer</string>
 
 
+    <string name="empty_text"> </string>
+    <string name="old_phone_number">Old Phone Number</string>
+    <string name="new_phone_number">New Phone Number</string>
+    <string name="new_phone">New Phone</string>
+    <string name="current_phone">Current Phone</string>
+    <string name="sign_out">Sign Out</string>
+
+
 </resources>
