@@ -62,23 +62,7 @@
     <string name="email">Email</string>
     <string name="payment_due_date">Son Ödeme Tarihi</string>
     <string name="save">Kaydet</string>
-    <string name="product_name">Ürün Adı</string>
-    <string name="last_name">Soyad</string>
     <string name="name">Ad</string>
-    <string name="my_debts">Borçlarım</string>
-    <string name="password">Şifre</string>
-    <string name="old_phone_number">Eski Telefon Numarası</string>
-    <string name="new_phone_number">Yeni Telefon Numarası</string>
-    <string name="iban_number">İban Numarası</string>
-    <string name="address">Adres</string>
-    <string name="login">Giriş</string>
-    <string name="who">kim</string>
-    <string name="the_smartest_one_is">en zeki olan :</string>
-    <string name="market">Market</string>
-    <string name="log_in">Giriş Yap</string>
-    <string name="confirm_your_password">Şifreyi Doğrula</string>
     <string name="add_customer">Müşteri Ekle</string>
-    <string name="edit_my_info">Bilgilerimi Düzenle</string>
-    <string name="log_out">Çıkış Yap</string>
-    <string name="date">Tarih</string>
+
 </resources>
