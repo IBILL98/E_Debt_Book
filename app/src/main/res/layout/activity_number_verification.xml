@@ -7,6 +7,7 @@
     android:background="@drawable/lol"
     tools:context=".NumberVerification">
     <!--Koro took every viewable String here to .valuse/strings-->
+    <!--Koro is monster-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/numberVerificiation"
