@@ -81,4 +81,5 @@
     <string name="edit_my_info">Bilgilerimi Düzenle</string>
     <string name="log_out">Çıkış Yap</string>
     <string name="date">Tarih</string>
+    <string name="sign_out">Çıkış Yap</string>
 </resources>

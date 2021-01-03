@@ -83,4 +83,5 @@
     <string name="edit_my_info">EDIT MY INFO</string>
     <string name="log_out">LOG OUT</string>
     <string name="date">Date</string>
+    <string name="sign_out">Sign Out</string>
 </resources>
