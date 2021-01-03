@@ -38,6 +38,11 @@
             app:destination="@id/fragment_change_password"
             app:popUpTo="@id/fragment_change_password"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_nav_market_settings_to_fragment_change_phone_market"
+            app:destination="@id/fragment_change_phone_market"
+            app:popUpTo="@id/fragment_change_password"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -59,6 +64,8 @@
         tools:layout="@layout/fragment_change_password" >
         <action
             android:id="@+id/action_fragment_change_password_to_nav_market_settings"
+            app:popUpTo="@id/fragment_change_password"
+            app:popUpToInclusive="true"
             app:destination="@id/nav_market_settings" />
     </fragment>
 
@@ -82,4 +89,15 @@
             app:destination="@id/nav_market_home" />
     </fragment>
 
+    <fragment
+        android:id="@+id/fragment_change_phone_market"
+        android:name="com.example.e_debt_book.ui.changePhoneMarket.ChangePhoneMarketFragment"
+        android:label="Change Phone"
+        tools:layout="@layout/fragment_change_phone_market">
+    <action
+        android:id="@+id/action_fragment_change_phone_market_to_nav_market_settings"
+        app:popUpTo="@id/fragment_change_password"
+        app:popUpToInclusive="true"
+        app:destination="@id/nav_market_settings" />
+</fragment>
 </navigation>
