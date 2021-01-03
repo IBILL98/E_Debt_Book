@@ -53,6 +53,10 @@ public class MarketHomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
         //setContentView(R.layout.activity_my_customers);
+
+        arrayList.clear();
+        totallend = 0;
+
         mRootRef = FirebaseDatabase.getInstance().getReference();
         listView = getActivity().findViewById(R.id.debtsList);
         textView2 = getActivity().findViewById(R.id.textView2);
@@ -77,11 +81,9 @@ public class MarketHomeFragment extends Fragment {
                             debt.setItemList(itemArrayList);
                             debt.setDebtID(debtId);
                             arrayList.add(debt);
-                            arrayList.add(debt);
                             arrayAdapter.notifyDataSetChanged();
                         }
                     });
-
                 }
                 textView2.setText(textView2.getText().toString() + " " + totallend);
             }

@@ -132,6 +132,7 @@ public class DebtInfoFragment extends Fragment {
                 setuneditable();
             }
         });
+
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

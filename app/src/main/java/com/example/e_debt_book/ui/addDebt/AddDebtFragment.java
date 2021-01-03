@@ -24,6 +24,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 
 import com.example.e_debt_book.R;
@@ -34,6 +35,7 @@ import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
 import com.example.e_debt_book.myCustomers;
 
+import com.example.e_debt_book.ui.marketHome.MarketHomeFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -255,20 +257,16 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                 debt.setDueDate(dueDate);
                 debt.setDebtID(id);
                 assert id != null;
+                debt.setItemList(itemList);
                 reference.child(id).setValue(debt);
-
-                for (int i=0; i<itemList.size(); i++){
-                    Item item = itemList.get(i);
-                    String itemkey = "item" + i;
-                    DatabaseReference itemsref = reference.child(id).child("itemList").child(itemkey);
-                    itemsref.setValue(item);
-
-                }
 
                 Intent intent =  getActivity().getIntent();
                 Bundle b = new Bundle();
                 b.putSerializable("Market",market);
                 intent.putExtras(b);
+
+                NavHostFragment.findNavController(AddDebtFragment.this).navigate(R.id.action_add_debt_to_nav_market_home);
+
 
             }
         });

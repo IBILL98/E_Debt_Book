@@ -254,7 +254,7 @@ public class NumberVerification extends AppCompatActivity {
 
                                 FirebaseUser user = task.getResult().getUser();Toast.makeText(NumberVerification.this, "Done", Toast.LENGTH_SHORT).show();
 
-                                Intent i = new Intent(NumberVerification.this, MarketMain.class);
+                                Intent i = new Intent(NumberVerification.this, MarketMain1.class);
                                 Bundle b = new Bundle();
                                 b.putSerializable("Market",market);
                                 i.putExtras(b);
@@ -263,13 +263,11 @@ public class NumberVerification extends AppCompatActivity {
                                 System.out.println("///////////////////////////////////////////////////////////////////");
                                 startActivity(i);
                                 finish();
-
                                 // ...
                             } else {
                                 // Sign in failed, display a message and update the UI
                                 if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                     // The verification code entered was invalid
-
                                     String message = task.getException().toString();
                                     Toast.makeText(NumberVerification.this, "Error : " + message, Toast.LENGTH_SHORT).show();
                                 }
