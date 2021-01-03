@@ -231,17 +231,18 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                 debt.setDescription(description);
                 debt.setDueDate(dueDate);
                 debt.setDebtID(id);
+                debt.setItemList(finalItemList);
                 assert id != null;
+
+//                for (int i=0; i<itemList.size(); i++){
+//                    Item item = itemList.get(i);
+//                    String itemkey = "item" + i;
+//                    DatabaseReference itemsref = reference.child(id).child("items").child(itemkey);
+//                    itemsref.setValue(item);
+//
+//                }
+
                 reference.child(id).setValue(debt);
-
-                for (int i=0; i<itemList.size(); i++){
-                    Item item = itemList.get(i);
-                    String itemkey = "item" + i;
-                    DatabaseReference itemsref = reference.child(id).child("items").child(itemkey);
-                    itemsref.setValue(item);
-
-                }
-
                 Intent intent = new Intent(addNewDebt.this,myCustomers.class);
                 Bundle b = new Bundle();
                 b.putSerializable("Market",market);
