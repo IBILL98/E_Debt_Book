@@ -189,6 +189,16 @@ public class MarketSettingsFragment extends Fragment {
 
         });
 
+        market_settings_change_Phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                NavHostFragment.findNavController(MarketSettingsFragment.this).navigate(R.id.action_nav_market_settings_to_fragment_change_phone_market);
+
+            }
+
+        });
+
 
     }
 }
