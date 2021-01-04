@@ -46,7 +46,7 @@ public class CustomerMain extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_customer_home, R.id.nav_customer_profile,R.id.nav_customer_settings,R.id.nav_change_language, R.id.nav_aboutus)
+                R.id.nav_customer_home, R.id.nav_customer_profile,R.id.nav_customer_settings, R.id.nav_aboutus)
                 .setDrawerLayout(drawer)
                 .build();
 

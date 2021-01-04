@@ -20,7 +20,19 @@
         android:id="@+id/nav_customer_settings"
         android:name="com.example.e_debt_book.ui.customerSettings.CustomerSettingsFragment"
         android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_setting_customer" />
+        tools:layout="@layout/fragment_setting_customer" >
+        <action
+            android:id="@+id/action_nav_customer_settings_to_nav_change_password"
+            app:destination="@id/fragment_change_customer_password"
+            app:popUpTo="@id/fragment_change_password"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_nav_customer_settings_to_fragment_change_phone_customer"
+            app:destination="@id/fragment_change_phone_customer"
+            app:popUpTo="@id/fragment_change_phone_customer"
+            app:popUpToInclusive="true" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_aboutus"
@@ -29,8 +41,27 @@
         tools:layout="@layout/fragment_aboutus" />
 
     <fragment
-        android:id="@+id/nav_change_language"
+        android:id="@+id/fragment_change_customer_password"
         android:name="com.example.e_debt_book.ui.changePassword.ChangePasswordFragment"
-        android:label="@string/menu_change_language"
-        tools:layout="@layout/fragment_change_password" />
+        android:label="@string/menu_change_password"
+        tools:layout="@layout/fragment_change_customer_password" >
+        <action
+            android:id="@+id/action_nav_change_password_to_nav_customer_settings"
+            app:popUpTo="@id/fragment_change_customer_password"
+            app:popUpToInclusive="true"
+            app:destination="@id/nav_customer_settings"  />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_change_phone_customer"
+        android:name="com.example.e_debt_book.ui.changePhoneCustomer.ChangePhoneCustomerFragment"
+        android:label="Change Phone"
+        tools:layout="@layout/fragment_change_phone_customer">
+        <action
+            android:id="@+id/action_fragment_change_phone_customer_to_nav_customer_settings"
+            app:popUpTo="@id/fragment_change_password"
+            app:popUpToInclusive="true"
+            app:destination="@id/nav_customer_settings" />
+    </fragment>
+
 </navigation>

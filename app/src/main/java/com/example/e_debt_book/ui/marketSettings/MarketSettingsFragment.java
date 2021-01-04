@@ -1,4 +1,4 @@
-package com.example.e_debt_book.ui.marketSettings;
+package com.example.e_debt_book.ui.MarketSettings;
 
 import android.app.Activity;
 import android.content.Context;

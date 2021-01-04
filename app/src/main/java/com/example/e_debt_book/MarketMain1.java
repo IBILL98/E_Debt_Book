@@ -50,7 +50,7 @@ public class MarketMain1 extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_market_home,R.id.nav_market_profile,R.id.nav_add_customer,R.id.nav_market_settings,R.id.nav_change_language ,R.id.nav_aboutus)
+                R.id.nav_market_home,R.id.nav_market_profile,R.id.nav_add_customer,R.id.nav_market_settings,R.id.nav_aboutus)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_market_fragment);
