@@ -1,4 +1,4 @@
-package com.example.e_debt_book.ui.MarketSettings;
+package com.example.e_debt_book.ui.marketSettings;
 
 import android.app.Activity;
 import android.content.Context;
@@ -22,6 +22,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.e_debt_book.MarketMain1;
+import com.example.e_debt_book.NumberVerification;
 import com.example.e_debt_book.R;
 import com.example.e_debt_book.model.Market;
 import com.example.e_debt_book.ui.changePassword.ChangePasswordFragment;
@@ -96,6 +98,12 @@ public class MarketSettingsFragment extends Fragment {
                             setLocale("tr");
                         }
                         dialogInterface.dismiss();
+                        Intent intent = new Intent(getActivity(), MarketMain1.class);
+                        Bundle b = new Bundle();
+                        b.putSerializable("Market",market);
+                        intent.putExtras(b);
+                        startActivity(intent);
+                        getActivity().finish();
                     }
                 });
                 mbuilder.setNeutralButton("Cancle", new DialogInterface.OnClickListener() {

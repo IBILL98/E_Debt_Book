@@ -69,7 +69,7 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
 
 
     FirebaseDatabase database;
-    DatabaseReference reference, customerReference,mReference;
+    DatabaseReference reference, customerReference,unregisteredRef;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -105,7 +105,7 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
 
         Market market = (Market) getActivity().getIntent().getSerializableExtra("Market");
         customerReference = FirebaseDatabase.getInstance().getReference().child("Customers");
-
+        unregisteredRef = FirebaseDatabase.getInstance().getReference().child("Unregisterd_Customers");
 
         customerNameInput.setClickable(false);
         customerNameInput.setFocusable(false);
@@ -135,7 +135,27 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                                 customerEmailInput.setText(selectedCustomer.getEmail());
                                 customerPhoneInput.setText(selectedCustomer.getPhone());
                             } else {
-                                Toast.makeText(getActivity(), "User not found!", Toast.LENGTH_LONG).show();
+                                unregisteredRef.child(phoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @SuppressLint("SetTextI18n")
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if (snapshot.getValue() != null) {
+                                            selectedCustomer = snapshot.getValue(Customer.class);
+                                            assert selectedCustomer != null;
+                                            selectedCustomer.setPhone(snapshot.getKey());
+                                            customerNameInput.setText(selectedCustomer.getName()+" "+selectedCustomer.getLastname());
+                                            customerEmailInput.setText(selectedCustomer.getEmail());
+                                            customerPhoneInput.setText(selectedCustomer.getPhone());
+                                        } else {
+                                            Toast.makeText(getActivity(), "User not found!", Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
                             }
                         }
                         @Override
