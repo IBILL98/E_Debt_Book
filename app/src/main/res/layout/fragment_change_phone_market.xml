@@ -28,7 +28,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/account_icon" />
+            app:srcCompat="@drawable/lock_icon" />
 
         <EditText
             android:id="@+id/EditMarketPhoneNewPhone"
@@ -90,9 +90,9 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+90"
+            android:text="@string/_90"
             android:textColor="@android:color/black"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/EditMarketPhoneNewPhone"
             app:layout_constraintEnd_toStartOf="@+id/EditMarketPhoneOldPhone"
             app:layout_constraintStart_toStartOf="parent"
@@ -102,9 +102,9 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+90"
+            android:text="@string/_90"
             android:textColor="@android:color/black"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/EditMarketPhoneDoneButton"
             app:layout_constraintEnd_toStartOf="@+id/EditMarketPhoneNewPhone"
             app:layout_constraintStart_toStartOf="parent"
@@ -120,6 +120,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:background="#005B9F"
+            android:gravity="center"
             android:text="@string/done"
             android:textAllCaps="false"
             android:textColor="@color/mycolor"
@@ -139,6 +140,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:background="#005B9F"
+            android:gravity="center"
             android:text="@string/back"
             android:textAllCaps="false"
             android:textColor="@color/mycolor"
