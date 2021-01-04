@@ -30,6 +30,7 @@
                                     android:layout_height="56dp"
                                     android:layout_margin="0dp"
                                     android:fontFamily="@font/merienda"
+                                    android:gravity="center_vertical"
                                     android:paddingStart="40dp"
                                     android:paddingLeft="40dp"
                                     android:paddingTop="10dp"
@@ -39,6 +40,14 @@
                                     android:text="@string/action_settings"
                                     android:textColor="#03DAC5"
                                     android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/textView20"
+                                    android:layout_width="350dp"
+                                    android:layout_height="1dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:background="@android:color/holo_orange_dark" />
 
                                 <LinearLayout
                                     android:id="@+id/customer_settings_change_name"
@@ -80,6 +89,12 @@
                                             android:text="@string/actual_name"
                                             android:textColor="@android:color/black"
                                             android:textSize="16sp" />
+
+                                        <TextView
+                                            android:id="@+id/textView22"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="1dp"
+                                            android:background="@color/colorPrimary" />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -122,8 +137,15 @@
                                             android:text="@string/english"
                                             android:textColor="@android:color/black"
                                             android:textSize="16sp" />
-                                </LinearLayout>
 
+                                        <TextView
+                                            android:id="@+id/textView24"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="1dp"
+                                            android:layout_marginStart="20dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:background="@android:color/holo_orange_dark" />
+                                </LinearLayout>
 
 
                                 <TextView
@@ -141,6 +163,14 @@
                                     android:text="@string/security_and_login_information"
                                     android:textColor="#03DAC5"
                                     android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/textView25"
+                                    android:layout_width="350dp"
+                                    android:layout_height="1dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:background="@android:color/holo_orange_dark" />
 
                                 <LinearLayout
                                     android:id="@+id/customer_settings_change_email"
@@ -182,6 +212,12 @@
                                             android:text="@string/actual_email"
                                             android:textColor="@android:color/black"
                                             android:textSize="16sp" />
+
+                                        <TextView
+                                            android:id="@+id/textView26"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="1dp"
+                                            android:background="@color/colorPrimary" />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -209,21 +245,11 @@
                                             android:textSize="20sp" />
 
                                         <TextView
-                                            android:id="@+id/customer_actual_language"
+                                            android:id="@+id/textView27"
                                             android:layout_width="match_parent"
-                                            android:layout_height="65dp"
-                                            android:layout_margin="0dp"
-                                            android:focusable="true"
-                                            android:fontFamily="@font/merienda"
-                                            android:paddingStart="40dp"
-                                            android:paddingLeft="40dp"
-                                            android:paddingTop="5dp"
-                                            android:paddingEnd="0dp"
-                                            android:paddingRight="0dp"
-                                            android:paddingBottom="0dp"
-                                            android:text="@string/english"
-                                            android:textColor="@android:color/black"
-                                            android:textSize="16sp" />
+                                            android:layout_height="1dp"
+                                            android:background="@color/colorPrimary" />
+
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -266,6 +292,12 @@
                                             android:text="@string/actual_phone"
                                             android:textColor="@android:color/black"
                                             android:textSize="16sp" />
+
+                                        <TextView
+                                            android:id="@+id/textView29"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="1dp"
+                                            android:background="@color/colorPrimary" />
 
                                 </LinearLayout>
 

@@ -30,6 +30,7 @@
                     android:layout_height="56dp"
                     android:layout_margin="0dp"
                     android:fontFamily="@font/merienda"
+                    android:gravity="center_vertical"
                     android:paddingStart="40dp"
                     android:paddingLeft="40dp"
                     android:paddingTop="10dp"
@@ -40,13 +41,22 @@
                     android:textColor="#03DAC5"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="350dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@android:color/holo_orange_dark" />
+
                 <LinearLayout
                     android:id="@+id/market_settings_change_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/mycolor"
                     android:clickable="true"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:focusable="true">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -80,6 +90,12 @@
                         android:text="@string/actual_name"
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -88,7 +104,8 @@
                     android:layout_height="match_parent"
                     android:background="@color/mycolor"
                     android:clickable="true"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:focusable="true">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -122,6 +139,12 @@
                         android:text="@string/english"
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -130,7 +153,8 @@
                     android:layout_height="match_parent"
                     android:background="@color/mycolor"
                     android:clickable="true"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:focusable="true">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -165,6 +189,15 @@
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="350dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@android:color/holo_orange_dark" />
+
                 </LinearLayout>
 
                 <TextView
@@ -173,6 +206,7 @@
                     android:layout_height="56dp"
                     android:layout_margin="0dp"
                     android:fontFamily="@font/merienda"
+                    android:gravity="center_vertical"
                     android:paddingStart="40dp"
                     android:paddingLeft="40dp"
                     android:paddingTop="10dp"
@@ -189,7 +223,17 @@
                     android:layout_height="match_parent"
                     android:background="@color/mycolor"
                     android:clickable="true"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="350dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@android:color/holo_orange_dark" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -223,6 +267,12 @@
                         android:text="@string/actual_email"
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -231,7 +281,8 @@
                     android:layout_height="match_parent"
                     android:background="@color/mycolor"
                     android:clickable="true"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:focusable="true">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -250,21 +301,11 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/actual_language"
+                        android:id="@+id/textView19"
                         android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_margin="0dp"
-                        android:focusable="true"
-                        android:fontFamily="@font/merienda"
-                        android:paddingStart="40dp"
-                        android:paddingLeft="40dp"
-                        android:paddingTop="5dp"
-                        android:paddingEnd="0dp"
-                        android:paddingRight="0dp"
-                        android:paddingBottom="0dp"
-                        android:text="@string/english"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -273,7 +314,8 @@
                     android:layout_height="match_parent"
                     android:background="@color/mycolor"
                     android:clickable="true"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:focusable="true">
 
                     <TextView
                         android:layout_width="match_parent"

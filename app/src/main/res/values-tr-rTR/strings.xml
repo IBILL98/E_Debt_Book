@@ -11,7 +11,7 @@
     <string name="nav_header_desc">Navigasyon başlığı</string>
     <string name="action_settings">Ayarlar</string>
     <string name="enter_customer_phone_to_search">Telefon numarasını girin</string>
-    <string name="total_lend_amount">Toplam verilen borç:</string>
+    <string name="total_lend_amount">Toplam verilen borç :</string>
     <string name="collected">Toplanan miktar</string>
     <string name="remaining">Kalan miktar</string>
     <string name="english">İngilizce</string>
@@ -30,13 +30,13 @@
     <string name="title_activity_cotumer_main">Müşterinin Ana Ekranı</string>
     <string name="title_activity_customer_main2">Müşterinin Ana Ekranı</string>
     <string name="emaill">Email simgesi</string>
-    <string name="user_infos">Kullanıcının Bilgileri:</string>
-    <string name="total_debts">Toplam Borç:</string>
-    <string name="number_of_customers">Müşteri sayısı:</string>
-    <string name="list_of_debts">Borç Listesi:</string>
-    <string name="add_debt">Borç Ekle:</string>
+    <string name="user_infos">Kullanıcının Bilgileri :</string>
+    <string name="total_debts">Toplam Borç :</string>
+    <string name="number_of_customers">Müşteri sayısı :</string>
+    <string name="list_of_debts">Borç Listesi :</string>
+    <string name="add_debt">Borç Ekle :</string>
     <string name="debts_details">Borç Detayları</string>
-    <string name="date_of_loan">Borç Tarihi:</string>
+    <string name="date_of_loan">Borç Tarihi :</string>
     <string name="add_new_debt">Yeni Borç Ekle</string>
     <string name="loan_amount">Borç Miktarı</string>
     <string name="my_customers">Müşterilerim</string>
@@ -45,14 +45,14 @@
     <string name="new_password">Yeni Şifre</string>
     <string name="account_icon">hesap_simgesi</string>
     <string name="done">Tamam</string>
-    <string name="description">Açıklama:</string>
+    <string name="description">Açıklama :</string>
     <string name="print">Yazdır</string>
-    <string name="customer">Müşteri:</string>
-    <string name="due_date">Bitiş Tarihi:</string>
+    <string name="customer">Müşteri :</string>
+    <string name="due_date">Bitiş Tarihi :</string>
     <string name="todo">TODO</string>
-    <string name="products_list">Ürün Lİstesi:</string>
+    <string name="products_list">Ürün Lİstesi :</string>
     <string name="edit">Düzenle</string>
-    <string name="amount">Miktar:</string>
+    <string name="amount">Miktar :</string>
     <string name="delete">Sil</string>
     <string name="price">Fiyat</string>
     <string name="full_name">Ad Soyad</string>
@@ -105,4 +105,6 @@
     <string name="gallery">Galeri</string>
     <string name="_90">+90</string>
     <string name="menu_change_password">Dili Değiştir</string>
+    <string name="customer_no_points">Müşteri</string>
+
 </resources>
