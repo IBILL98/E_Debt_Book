@@ -9,7 +9,18 @@
         android:id="@+id/nav_market_home"
         android:name="com.example.e_debt_book.ui.marketHome.MarketHomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_market_home" />
+        tools:layout="@layout/fragment_market_home" >
+        <action
+            android:id="@+id/action_nav_market_home_to_add_debt"
+            app:destination="@id/add_debt"
+            app:popUpTo="@id/add_debt"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_nav_market_home_to_debt_info"
+            app:destination="@id/debt_info"
+            app:popUpTo="@id/debt_info"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_market_profile"
@@ -27,6 +38,11 @@
             app:destination="@id/fragment_change_password"
             app:popUpTo="@id/fragment_change_password"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_nav_market_settings_to_fragment_change_phone_market"
+            app:destination="@id/fragment_change_phone_market"
+            app:popUpTo="@id/fragment_change_password"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -36,14 +52,52 @@
         tools:layout="@layout/fragment_aboutus" />
 
     <fragment
+        android:id="@+id/nav_add_customer"
+        android:name="com.example.e_debt_book.ui.add_customer.AddCustomerFragment"
+        android:label="@string/add_customer"
+        tools:layout="@layout/fragment_add_customer" />
+
+    <fragment
         android:id="@+id/fragment_change_password"
         android:name="com.example.e_debt_book.ui.changePassword.ChangePasswordFragment"
         android:label="@string/menu_change_language"
         tools:layout="@layout/fragment_change_password" >
         <action
             android:id="@+id/action_fragment_change_password_to_nav_market_settings"
+            app:popUpTo="@id/fragment_change_password"
+            app:popUpToInclusive="true"
             app:destination="@id/nav_market_settings" />
     </fragment>
 
+    <fragment
+        android:id="@+id/add_debt"
+        android:name="com.example.e_debt_book.ui.addDebt.AddDebtFragment"
+        android:label="@string/add_new_debt"
+        tools:layout="@layout/fragment_add_debt" >
+        <action
+            android:id="@+id/action_add_debt_to_nav_market_home"
+            app:destination="@id/nav_market_home" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/debt_info"
+        android:name="com.example.e_debt_book.ui.debtInfo.DebtInfoFragment"
+        android:label="@string/debts_details"
+        tools:layout="@layout/fragment_debt_info" >
+        <action
+            android:id="@+id/action_debt_info_to_nav_market_home"
+            app:destination="@id/nav_market_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_change_phone_market"
+        android:name="com.example.e_debt_book.ui.changePhoneMarket.ChangePhoneMarketFragment"
+        android:label="Change Phone"
+        tools:layout="@layout/fragment_change_phone_market">
+    <action
+        android:id="@+id/action_fragment_change_phone_market_to_nav_market_settings"
+        app:popUpTo="@id/fragment_change_password"
+        app:popUpToInclusive="true"
+        app:destination="@id/nav_market_settings" />
+</fragment>
 </navigation>

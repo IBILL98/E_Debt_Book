@@ -1,7 +1,12 @@
 package com.example.e_debt_book.ui.MarketSettings;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
@@ -23,11 +28,22 @@ import com.example.e_debt_book.ui.changePassword.ChangePasswordFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Locale;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+
+
 public class MarketSettingsFragment extends Fragment {
 
     LinearLayout market_settings_change_language, market_settings_change_Adress, market_settings_change_name, market_settings_change_password, market_settings_change_email, market_settings_change_Phone;
     TextView choosed_language, actual_adress, actual_name, actual_email, actual_Phone;
     DatabaseReference mRootRef, conditionRef;
+
+    Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,7 +82,7 @@ public class MarketSettingsFragment extends Fragment {
         market_settings_change_language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] listitem = new String[]{"English", "Arabic"};
+                String[] listitem = new String[]{"English", "Turkish"};
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
@@ -74,6 +90,11 @@ public class MarketSettingsFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         choosed_language.setText(listitem[i]);
+                        if (i==0) {
+                            setLocale("en");
+                        } else {
+                            setLocale("tr");
+                        }
                         dialogInterface.dismiss();
                     }
                 });
@@ -85,7 +106,6 @@ public class MarketSettingsFragment extends Fragment {
                 });
                 AlertDialog mdialog = mbuilder.create();
                 mdialog.show();
-
             }
         });
 
@@ -162,46 +182,36 @@ public class MarketSettingsFragment extends Fragment {
                         dialog.cancel();
                     }
                 });
-
                 builder.show();
             }
         });
-
-        market_settings_change_password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_market_fragment, new ChangePasswordFragment());
-                fragmentTransaction.commit();
-
-            }
-
-        });
-
-
         market_settings_change_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_market_fragment, new ChangePasswordFragment());
                 fragmentTransaction.commit();
-
             }
-
         });
-
         market_settings_change_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 NavHostFragment.findNavController(MarketSettingsFragment.this).navigate(R.id.action_nav_market_settings_to_fragment_change_password);
-
             }
-
         });
+    }
 
-
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        SharedPreferences.Editor editor = context.getSharedPreferences("Settings", Activity.MODE_PRIVATE).edit();
+        editor.putString("My_Lang",lang);
+        editor.apply();
     }
 }
 

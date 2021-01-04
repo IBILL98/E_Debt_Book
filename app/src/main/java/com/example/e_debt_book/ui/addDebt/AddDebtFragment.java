@@ -1,7 +1,4 @@
-package com.example.e_debt_book;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.e_debt_book.ui.addDebt;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -10,7 +7,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,10 +21,21 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+
+
+import com.example.e_debt_book.R;
+
 import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Debt;
 import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
+import com.example.e_debt_book.myCustomers;
+
+import com.example.e_debt_book.ui.marketHome.MarketHomeFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +46,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelectedListener{
+
     EditText customerNameInput, customerEmailInput, customerPhoneInput;
     ImageButton customerSelectButton;
     TextView selectedCustomerPhone;
@@ -60,34 +71,52 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
     FirebaseDatabase database;
     DatabaseReference reference, customerReference,mReference;
 
-    @SuppressLint("ResourceType")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_debt);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_add_debt, container, false);
+    }
 
-        customerNameInput = findViewById(R.id.customerNameInput);
-        customerEmailInput = findViewById(R.id.customerEmailInput);
-        customerPhoneInput = findViewById(R.id.customerPhoneInput);
-        loanAmountInput = findViewById(R.id.loanAmountInput);
-        descriptionInput = findViewById(R.id.descriptionInput);
-        dateOfLoanInput = findViewById(R.id.dateOfLoanInput);
-        dueDateInput = findViewById(R.id.dueDateInput);
-        dateOfLoanSelect = findViewById(R.id.dateOfLoanSelect);
-        dueDateSelect = findViewById(R.id.dueDateSelect);
-        itemNameInput = findViewById(R.id.itemNameInput);
-        itemPriceInput = findViewById(R.id.itemPriceInput);
-        addProductButton = findViewById(R.id.addProductButton);
-        productsList = findViewById(R.id.productsList);
-        customerSelectButton = findViewById(R.id.customerSelectButton);
-        selectedCustomerPhone = findViewById(R.id.selectedCustomerPhone);
-        addDebtButton = findViewById(R.id.addDebtButton);
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
+
+        customerNameInput = getActivity().findViewById(R.id.customerNameInput);
+        customerEmailInput = getActivity().findViewById(R.id.customerEmailInput);
+        customerPhoneInput = getActivity().findViewById(R.id.customerPhoneInput);
+        loanAmountInput = getActivity().findViewById(R.id.loanAmountInput);
+        descriptionInput = getActivity().findViewById(R.id.descriptionInput);
+        dateOfLoanInput = getActivity().findViewById(R.id.dateOfLoanInput);
+        dueDateInput = getActivity().findViewById(R.id.dueDateInput);
+        dateOfLoanSelect = getActivity().findViewById(R.id.dateOfLoanSelect);
+        dueDateSelect = getActivity().findViewById(R.id.dueDateSelect);
+        itemNameInput = getActivity().findViewById(R.id.itemNameInput);
+        itemPriceInput = getActivity().findViewById(R.id.itemPriceInput);
+        addProductButton = getActivity().findViewById(R.id.addProductButton);
+        productsList = getActivity().findViewById(R.id.productsList);
+        customerSelectButton = getActivity().findViewById(R.id.customerSelectButton);
+        selectedCustomerPhone = getActivity().findViewById(R.id.selectedCustomerPhone);
+        addDebtButton = getActivity().findViewById(R.id.addDebtButton);
 
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Debts");
 
-        Market market = (Market) getIntent().getSerializableExtra("Market");
+        Market market = (Market) getActivity().getIntent().getSerializableExtra("Market");
         customerReference = FirebaseDatabase.getInstance().getReference().child("Customers");
+
+
+        customerNameInput.setClickable(false);
+        customerNameInput.setFocusable(false);
+        customerNameInput.setFocusableInTouchMode(false);
+        customerEmailInput.setClickable(false);
+        customerEmailInput.setFocusable(false);
+        customerEmailInput.setFocusableInTouchMode(false);
+        customerPhoneInput.setClickable(false);
+        customerPhoneInput.setFocusable(false);
+        customerPhoneInput.setFocusableInTouchMode(false);
+
 
         customerSelectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +135,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                                 customerEmailInput.setText(selectedCustomer.getEmail());
                                 customerPhoneInput.setText(selectedCustomer.getPhone());
                             } else {
-                                Toast.makeText(addNewDebt.this, "User not found!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(), "User not found!", Toast.LENGTH_LONG).show();
                             }
                         }
                         @Override
@@ -115,7 +144,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                         }
                     });
                 }else {
-                    Toast.makeText(addNewDebt.this, "Phone number must consist of 10 digits!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Phone number must consist of 10 digits!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -127,7 +156,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
         dateOfLoanSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(addNewDebt.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
             }
@@ -148,7 +177,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
         dueDateSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(addNewDebt.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener2, year2, month2, day2);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener2, year2, month2, day2);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
             }
@@ -166,8 +195,7 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
 
         ArrayList<String> displayProductsList = new ArrayList<String>();
         ArrayList<Item> itemList = new ArrayList<>();
-        final ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(addNewDebt.this, android.R.layout.simple_list_item_1, displayProductsList);
-
+        final ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, displayProductsList);
         productsList.setAdapter(mAdapter);
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,16 +203,10 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                 Item item = new Item();
                 String itemName = itemNameInput.getText().toString();
                 String itemPrice = itemPriceInput.getText().toString();
-                int itemPrice1 = 0;
-                try {
-                    itemPrice1 = Integer.parseInt(itemPrice);
-                } catch(NumberFormatException nfe) {
-                    Toast.makeText(addNewDebt.this, "Please enter the price with only integer format!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+
                 item.setName(itemName);
                 item.setPrice(itemPrice);
-                Toast.makeText(addNewDebt.this, itemName + " " + itemPrice + " is added!",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), itemName + " " + itemPrice + " is added!",Toast.LENGTH_LONG).show();
                 itemList.add(item);
                 displayProductsList.add(itemName+", Price: "+itemPrice);
                 LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) productsList.getLayoutParams();
@@ -209,7 +231,10 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                 String dateOfLoan = dateOfLoanInput.getText().toString();
                 String dueDate = dueDateInput.getText().toString();
                 List<Item> finalItemList = itemList;
-                if(TextUtils.isEmpty(amount)){
+                if(TextUtils.isEmpty(customerPhone)){
+                    loanAmountInput.setError("customer Phone is Required.");
+                    return;
+                }if(TextUtils.isEmpty(amount)){
                     loanAmountInput.setError("Loan amount is Required.");
                     return;
                 }
@@ -231,24 +256,17 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
                 debt.setDescription(description);
                 debt.setDueDate(dueDate);
                 debt.setDebtID(id);
-                debt.setItemList(finalItemList);
                 assert id != null;
-
-//                for (int i=0; i<itemList.size(); i++){
-//                    Item item = itemList.get(i);
-//                    String itemkey = "item" + i;
-//                    DatabaseReference itemsref = reference.child(id).child("items").child(itemkey);
-//                    itemsref.setValue(item);
-//
-//                }
-
+                debt.setItemList(itemList);
                 reference.child(id).setValue(debt);
-                Intent intent = new Intent(addNewDebt.this,myCustomers.class);
+
+                Intent intent =  getActivity().getIntent();
                 Bundle b = new Bundle();
                 b.putSerializable("Market",market);
                 intent.putExtras(b);
-                startActivity(intent);
-                finish();
+
+                NavHostFragment.findNavController(AddDebtFragment.this).navigate(R.id.action_add_debt_to_nav_market_home);
+
 
             }
         });
@@ -261,8 +279,5 @@ public class addNewDebt extends AppCompatActivity implements AdapterView.OnItemS
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
 
-    }
 }

@@ -2,7 +2,7 @@
     <string name="app_name">E_Debt_Book</string>
     <string name="sign_up">Sign Up</string>
     <string name="back">Back</string>
-    <string name="title_activity_customer_main">CustomerMain</string>
+    <string name="title_activity_customer_main">Customer Main</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -10,15 +10,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="enter_customer_phone_to_search">Phone to search</string>
-
-    <string name="total_lend_amount">Total Lend Amount</string>
+    <string name="total_lend_amount">Total Lend Amount :</string>
     <string name="collected">Collected</string>
     <string name="remaining">Remaining</string>
-
     <string name="english">English</string>
-
-    <string name="change_adress">Change Adress</string>
-
+    <string name="change_adress">Change Address</string>
     <string name="createCustomerFromMarketSelectDone">Done</string>
     <string name="menu_home">Home</string>
     <string name="menu_profile">Profile</string>
@@ -30,26 +26,16 @@
     <string name="number_verification_verify_button">Verify</string>
     <string name="number_verification_later_button">Later</string>
     <string name="number_verification_hint_code_textview">Code</string>
-    <string name="title_activity_cotumer_main">CutomerMain</string>
-    <string name="title_activity_customer_main2">CustomerMain</string>
+    <string name="title_activity_cotumer_main">Cutomer Main</string>
+    <string name="title_activity_customer_main2">Customer Main</string>
     <string name="emaill">Email icon</string>
     <string name="user_infos">User Infos:</string>
     <string name="total_debts">Total Debts:</string>
     <string name="number_of_customers">Number of customers:</string>
     <string name="list_of_debts">List of Debts:</string>
-    <string name="todo">TODO</string>
-
-    <string name="customer">Customer:</string>
     <string name="add_debt">Add Debt:</string>
     <string name="debts_details">Debts Details</string>
-    <string name="description">Description:</string>
-    <string name="due_date">Due Date:</string>
     <string name="date_of_loan">Date of loan:</string>
-    <string name="amount">Amount:</string>
-    <string name="edit">Edit</string>
-    <string name="print">Print</string>
-    <string name="delete">Delete</string>
-    <string name="products_list">Products List:</string>
     <string name="add_new_debt">Add New Debt</string>
     <string name="loan_amount">Loan amount</string>
     <string name="my_customers">My Customers</string>
@@ -58,6 +44,65 @@
     <string name="new_password">New Password</string>
     <string name="account_icon">account_icon</string>
     <string name="done">Done</string>
+    <string name="description">Description:</string>
+    <string name="print">Print</string>
+    <string name="customer">Customer:</string>
+    <string name="due_date">Due Date:</string>
+    <string name="todo">TODO</string>
+    <string name="products_list">Products List:</string>
+    <string name="edit">Edit</string>
+    <string name="amount">Amount:</string>
+    <string name="delete">Delete</string>
+    <string name="empty_text" translatable="false" />
+    <string name="price">Price</string>
+    <string name="full_name">Full Name</string>
+    <string name="add_product">Add Product</string>
+    <string name="produce_name">Produce Name</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="payment_due_date">Payment Due Date :</string>
+    <string name="save">Save</string>
 
 
+    <string name="product_name">Product Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="my_debts">My Debts</string>
+    <string name="password">Password</string>
+    <string name="old_phone_number">Old Phone Number</string>
+    <string name="new_phone_number">New Phone Number</string>
+    <string name="iban_number">Iban Number</string>
+    <string name="address">Address</string>
+    <string name="login">Login</string>
+    <string name="who">who</string>
+    <string name="the_smartest_one_is">the smartest one is :</string>
+    <string name="market">Market</string>
+    <string name="log_in">LOG IN</string>
+    <string name="confirm_your_password">Confirm your Password</string>
+    <string name="add_customer">ADD CUSTOMER</string>
+    <string name="edit_my_info">EDIT MY INFO</string>
+    <string name="log_out">LOG OUT</string>
+    <string name="date">Date</string>
+    <string name="current_phone">Current Phone</string>
+    <string name="new_phone">New Phone</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="add_customer_name">Name</string>
+    <string name="add_customer_last_name">Last Name</string>
+    <string name="add_customer_phone">Phone</string>
+    <string name="add_customer_email">Email</string>
+    <string name="market_profile_name">Name</string>
+    <string name="market_profile_email">Email</string>
+    <string name="market_profile_password">Password</string>
+    <string name="market_profile_iban_number">Iban Number</string>
+    <string name="market_profile_address">Address</string>
+    <string name="change_name">Change Name</string>
+    <string name="actual_name">Actual Name</string>
+    <string name="actual_address">Actual Address</string>
+    <string name="security_and_login_information">Security and Login Information</string>
+    <string name="change_email">Change Email</string>
+    <string name="actual_email">Actual Email</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_phone">Change Phone</string>
+    <string name="actual_phone">Actual Phone</string>
+    <string name="gallery">Gallery</string>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -81,7 +82,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/toolbar"
-                tools:srcCompat="@drawable/home_icon" />
+                tools:srcCompat="@drawable/market_icon" />
 
             <View
                 android:id="@+id/view6"
@@ -116,7 +117,7 @@
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
@@ -134,7 +135,7 @@
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
@@ -150,7 +151,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="36dp"
                 android:background="#005B9F"
-                android:text="Login"
+                android:text="@string/login"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -167,7 +168,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="@string/app_name"
-        android:text="who"
+        android:text="@string/who"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -180,7 +181,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="the smartest one is :"
+        android:text="@string/the_smartest_one_is"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -218,24 +219,25 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp" />
 
+
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="68dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/toolbar1"
                 app:srcCompat="@drawable/logo_main" />
 
-
             <Button
                 android:id="@+id/mainCustomertButton"
-                android:layout_width="157dp"
-                android:layout_height="63dp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
                 android:layout_marginTop="44dp"
                 android:background="#005B9F"
-                android:text="Customer"
+                android:text="@string/customer"
                 android:textColor="@android:color/white"
                 android:textStyle="normal|bold|italic"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -244,11 +246,11 @@
 
             <Button
                 android:id="@+id/mainMarketButton"
-                android:layout_width="159dp"
-                android:layout_height="64dp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
                 android:layout_marginTop="44dp"
                 android:background="#005B9F"
-                android:text="Market"
+                android:text="@string/market"
                 android:textColor="@android:color/white"
                 android:textStyle="normal|bold|italic"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -293,10 +295,9 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="74dp"
-                android:layout_height="73dp"
-                android:layout_marginTop="44dp"
-                android:contentDescription="TODO"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="60dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/toolbar77"
@@ -335,7 +336,7 @@
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
@@ -353,7 +354,7 @@
                 android:background="#F3F3F3"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black"
@@ -369,7 +370,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="36dp"
                 android:background="#005B9F"
-                android:text="Login"
+                android:text="@string/login"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -387,7 +388,7 @@
             android:layout_marginLeft="175dp"
             android:layout_marginTop="24dp"
             android:background="#005B9F"
-            android:text="Sign Up"
+            android:text="@string/sign_up"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -402,7 +403,7 @@
             android:layout_marginEnd="175dp"
             android:layout_marginRight="175dp"
             android:background="#005B9F"
-            android:text="Back"
+            android:text="@string/back"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"

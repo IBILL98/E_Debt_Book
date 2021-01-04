@@ -26,6 +26,9 @@ public class Debt  implements Serializable {
         this.itemList = itemList;
     }
 
+    public Debt(String toString, String toString1, String toString2, String toString3, String toString4, String toString5) {
+    }
+
     public String getCustomerPhone() {
         return customerPhone;
     }
@@ -84,5 +87,20 @@ public class Debt  implements Serializable {
 
     public void setItemList(List<Item> itemList) {
         this.itemList = itemList;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Debt{" +
+                "debtID='" + debtID + '\'' +
+                ", customerPhone='" + customerPhone + '\'' +
+                ", marketPhone='" + marketPhone + '\'' +
+                ", amount='" + amount + '\'' +
+                ", description='" + description + '\'' +
+                ", dateOfLoan='" + dateOfLoan + '\'' +
+                ", dueDate='" + dueDate + '\'' +
+                ", itemList=" + itemList +
+                '}';
     }
 }
