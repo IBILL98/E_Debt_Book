@@ -1,6 +1,7 @@
 package com.example.e_debt_book;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -52,6 +53,13 @@ public class CustomerMain extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        navigationView.getMenu().findItem(R.id.nav_signout).setOnMenuItemClickListener(menuItem -> {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            finish();
+            return true;
+        });
+
 
         //////Check the User availability
         mAuth = FirebaseAuth.getInstance();
