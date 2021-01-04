@@ -429,14 +429,14 @@ public class MainActivity extends AppCompatActivity {
         return marketlogin;
     }
 
-
+    private interface MyCallbackMarket {
+        void onCallback(Market market);
+    }
     private interface MyCallback {
         void onCallback(Customer customer);
     }
 
-    private interface MyCallbackMarket {
-        void onCallback(Market market);
-    }
+
 
 
 

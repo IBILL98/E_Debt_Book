@@ -83,5 +83,26 @@
     <string name="edit_my_info">EDIT MY INFO</string>
     <string name="log_out">LOG OUT</string>
     <string name="date">Date</string>
+    <string name="current_phone">Current Phone</string>
+    <string name="new_phone">New Phone</string>
     <string name="sign_out">Sign Out</string>
+    <string name="add_customer_name">Name</string>
+    <string name="add_customer_last_name">Last Name</string>
+    <string name="add_customer_phone">Phone</string>
+    <string name="add_customer_email">Email</string>
+    <string name="market_profile_name">Name</string>
+    <string name="market_profile_email">Email</string>
+    <string name="market_profile_password">Password</string>
+    <string name="market_profile_iban_number">Iban Number</string>
+    <string name="market_profile_address">Address</string>
+    <string name="change_name">Change Name</string>
+    <string name="actual_name">Actual Name</string>
+    <string name="actual_address">Actual Address</string>
+    <string name="security_and_login_information">Security and Login Information</string>
+    <string name="change_email">Change Email</string>
+    <string name="actual_email">Actual Email</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_phone">Change Phone</string>
+    <string name="actual_phone">Actual Phone</string>
+    <string name="gallery">Gallery</string>
 </resources>

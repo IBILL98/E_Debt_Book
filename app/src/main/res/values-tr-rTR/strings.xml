@@ -81,5 +81,26 @@
     <string name="edit_my_info">Bilgilerimi Düzenle</string>
     <string name="log_out">Çıkış Yap</string>
     <string name="date">Tarih</string>
+    <string name="current_phone">Kullanılan Telefon</string>
+    <string name="new_phone">Yeni Telefon</string>
     <string name="sign_out">Çıkış Yap</string>
+    <string name="add_customer_name">Ad</string>
+    <string name="add_customer_last_name">Soyad</string>
+    <string name="add_customer_phone">Telefon</string>
+    <string name="add_customer_email">Email</string>
+    <string name="market_profile_name">Ad Soyad</string>
+    <string name="market_profile_email">Email</string>
+    <string name="market_profile_password">Şifre</string>
+    <string name="market_profile_iban_number">İban Numarası</string>
+    <string name="market_profile_address">Adres</string>
+    <string name="change_name">Adı Güncelle</string>
+    <string name="actual_name">Asıl Ad Soyad</string>
+    <string name="actual_address">Asıl Adres</string>
+    <string name="security_and_login_information">Güvenlik ve Giriş Bilgileri</string>
+    <string name="change_email">Emaili güncelle</string>
+    <string name="actual_email">Asıl Email</string>
+    <string name="change_password">Şifre Değiştir</string>
+    <string name="change_phone">Telefon numarasını güncelle</string>
+    <string name="actual_phone">Asıl telefon numarası</string>
+    <string name="gallery">Galeri</string>
 </resources>
