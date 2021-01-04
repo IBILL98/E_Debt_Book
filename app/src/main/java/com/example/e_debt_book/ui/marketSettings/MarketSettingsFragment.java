@@ -199,8 +199,13 @@ public class MarketSettingsFragment extends Fragment {
                 NavHostFragment.findNavController(MarketSettingsFragment.this).navigate(R.id.action_nav_market_settings_to_fragment_change_password);
             }
         });
+        market_settings_change_Phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(MarketSettingsFragment.this).navigate(R.id.action_nav_market_settings_to_fragment_change_phone_market);
+            }
+        });
     }
-
     public void setLocale(String lang) {
         Locale myLocale = new Locale(lang);
         Locale.setDefault(myLocale);
@@ -209,9 +214,6 @@ public class MarketSettingsFragment extends Fragment {
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
-        SharedPreferences.Editor editor = context.getSharedPreferences("Settings", Activity.MODE_PRIVATE).edit();
-        editor.putString("My_Lang",lang);
-        editor.apply();
     }
 }
 
