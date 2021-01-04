@@ -68,9 +68,6 @@ public class ChangePasswordCustomerFragment extends Fragment {
                 }
             }
         });
-
-
-
         EditCustomerPassBackButton = getActivity().findViewById(R.id.EditCustomerPassBackButton);
         EditCustomerPassBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
