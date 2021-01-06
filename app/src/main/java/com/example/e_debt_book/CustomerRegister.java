@@ -70,7 +70,9 @@ public class CustomerRegister extends AppCompatActivity {
         customerRegisterBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(CustomerRegister.this,MainActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 

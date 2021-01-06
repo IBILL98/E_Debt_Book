@@ -27,16 +27,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    sourceSets {
-        main {
-            res.srcDirs = [
-                    'src/main/res',
-                    'src/main/res/layout',
-                    'src/main/res/layout/MainCustomer',
-                    'src/main/res/layout/MainCustomer/layout',
-            ]
-        }
-    }
+
 
     buildTypes {
         release {

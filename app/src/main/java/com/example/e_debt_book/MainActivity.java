@@ -297,7 +297,7 @@ public class MainActivity extends AppCompatActivity {
                                                 startActivity(i);
                                                 finish();
                                             } else {
-                                                Intent i = new Intent(MainActivity.this, MarketMain.class);
+                                                Intent i = new Intent(MainActivity.this, MarketMain1.class);
                                                 Bundle b = new Bundle();
                                                 b.putSerializable("Market", loginUser);
                                                 i.putExtras(b);
