@@ -106,5 +106,7 @@
     <string name="_90">+90</string>
     <string name="menu_change_password">Dili Değiştir</string>
     <string name="customer_no_points">Müşteri</string>
+    <string name="new_email">Yeni Email</string>
+
 
 </resources>

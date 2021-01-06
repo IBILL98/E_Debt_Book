@@ -24,6 +24,7 @@ import static android.content.ContentValues.TAG;
 public class ChangePasswordCustomerFragment extends Fragment {
     Button EditCustomerPassBackButton,EditCustomerPassDoneButton;
     EditText EditCustomerPassNewPassword,EditCustomerPassNewPasswordConfirmation;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_change_customer_password, container, false);

@@ -21,12 +21,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.e_debt_book.CustomerMain;
-import com.example.e_debt_book.MarketMain1;
 import com.example.e_debt_book.R;
 import com.example.e_debt_book.model.Customer;
-import com.example.e_debt_book.model.Market;
-import com.example.e_debt_book.ui.MarketSettings.MarketSettingsFragment;
-import com.example.e_debt_book.ui.changePassword.ChangePasswordFragment;
+import com.example.e_debt_book.ui.changePassword.ChangePasswordMarketFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -148,7 +145,7 @@ public class CustomerSettingsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_market_fragment, new ChangePasswordFragment());
+                fragmentTransaction.replace(R.id.nav_host_market_fragment, new ChangePasswordMarketFragment());
                 fragmentTransaction.commit();
             }
         });

@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/nav_market_settings"
-        android:name="com.example.e_debt_book.ui.MarketSettings.MarketSettingsFragment"
+        android:name="com.example.e_debt_book.ui.marketSettings.MarketSettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_market_setting" >
         <action
@@ -42,6 +42,12 @@
             android:id="@+id/action_nav_market_settings_to_fragment_change_phone_market"
             app:destination="@id/fragment_change_phone_market"
             app:popUpTo="@id/fragment_change_password"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_nav_market_settings_to_fragment_change_email_market"
+            app:destination="@id/fragment_change_email_market"
+            app:popUpTo="@id/fragment_change_email_market"
             app:popUpToInclusive="true" />
     </fragment>
 
@@ -59,14 +65,14 @@
 
     <fragment
         android:id="@+id/fragment_change_password"
-        android:name="com.example.e_debt_book.ui.changePassword.ChangePasswordFragment"
-        android:label="@string/menu_change_language"
-        tools:layout="@layout/fragment_change_password" >
+        android:name="com.example.e_debt_book.ui.changePassword.ChangePasswordMarketFragment"
+        android:label="Change Password"
+        tools:layout="@layout/fragment_change_password_market" >
         <action
             android:id="@+id/action_fragment_change_password_to_nav_market_settings"
-            app:popUpTo="@id/fragment_change_password"
-            app:popUpToInclusive="true"
-            app:destination="@id/nav_market_settings" />
+            app:destination="@id/nav_market_settings"
+            app:popUpTo="@id/nav_market_settings"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -96,9 +102,21 @@
         tools:layout="@layout/fragment_change_phone_market">
     <action
         android:id="@+id/action_fragment_change_phone_market_to_nav_market_settings"
-        app:popUpTo="@id/fragment_change_password"
+        app:popUpTo="@id/nav_market_settings"
         app:popUpToInclusive="true"
-        app:destination="@id/nav_market_settings" />
+        app:destination="@id/nav_market_settings"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_change_email_market"
+        android:name="com.example.e_debt_book.ui.changeEmailMarket.ChangeEmailMarketFragment"
+        android:label="Change Email"
+        tools:layout="@layout/fragment_change_email_market">
+        <action
+            android:id="@+id/action_fragment_change_email_market_to_nav_market_settings"
+            app:popUpTo="@id/nav_market_settings"
+            app:popUpToInclusive="true"
+            app:destination="@id/nav_market_settings" />
 </fragment>
 
 </navigation>

@@ -1,12 +1,9 @@
-package com.example.e_debt_book.ui.MarketSettings;
+package com.example.e_debt_book.ui.marketSettings;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
@@ -23,19 +20,15 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.e_debt_book.MarketMain1;
-import com.example.e_debt_book.NumberVerification;
 import com.example.e_debt_book.R;
 import com.example.e_debt_book.model.Market;
-import com.example.e_debt_book.ui.changePassword.ChangePasswordFragment;
+import com.example.e_debt_book.ui.changePassword.ChangePasswordMarketFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Locale;
-import android.os.Bundle;
-import android.app.Activity;
+
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
 
@@ -196,9 +189,8 @@ public class MarketSettingsFragment extends Fragment {
         market_settings_change_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_market_fragment, new ChangePasswordFragment());
-                fragmentTransaction.commit();
+                NavHostFragment.findNavController(MarketSettingsFragment.this).navigate(R.id.action_nav_market_settings_to_fragment_change_email_market);
+
             }
         });
         market_settings_change_password.setOnClickListener(new View.OnClickListener() {

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.e_debt_book.MainActivity;
 import com.example.e_debt_book.MarketMain;
@@ -19,6 +20,7 @@ import com.example.e_debt_book.R;
 import com.example.e_debt_book.addCustomerFromMarket;
 import com.example.e_debt_book.debtsDetails;
 import com.example.e_debt_book.model.Market;
+import com.example.e_debt_book.ui.changePassword.ChangePasswordMarketFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -103,7 +105,13 @@ public class ChangePhoneMarketFragment extends Fragment {
             }
         });
 
+        EditMarketPhoneBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(ChangePhoneMarketFragment.this).navigate(R.id.action_fragment_change_phone_market_to_nav_market_settings);
 
+            }
+        });
 
 
 
