@@ -32,18 +32,15 @@ public class MarketRegister extends AppCompatActivity {
     Button marketRegisterBackButton,marketRegisterSignUpButtom;
     ProgressBar marketRegisterProgressBar;
 
-
     //Firebase attributes
     FirebaseAuth fAuth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference mRootRef,conditionRef;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market_register);
-
 
         marketRegisterName = findViewById(R.id.marketRegisterName);
         marketRegisterEmail = findViewById(R.id.marketRegisterEmail);

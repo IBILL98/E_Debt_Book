@@ -6,20 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".ui.customerHome.CustomerHomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/merienda"
-        android:gravity="center_horizontal"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewUpCustomerDebtsList"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/holo_orange_dark"
+                android:fontFamily="@font/merienda"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                android:text="@string/debts_of_a_customer"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp" />
+
+            <ListView
+                android:id="@+id/debtsListOfaCustomer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="@android:color/black"
+                android:divider="@android:color/black"
+                android:dividerHeight="3dp"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+
+                tools:ignore="RtlSymmetry">
+
+            </ListView>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

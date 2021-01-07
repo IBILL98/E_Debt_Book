@@ -109,4 +109,5 @@
     <string name="menu_change_password">Change Language</string>
     <string name="customer_no_points">Customer</string>
     <string name="new_email">New Email</string>
+    <string name="debts_of_a_customer">list of debts </string>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.e_debt_book;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,11 +20,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class CustomerMain extends AppCompatActivity {
-
     private FirebaseAuth mAuth;
     TextView customer_name;
     private AppBarConfiguration mAppBarConfiguration;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +46,6 @@ public class CustomerMain extends AppCompatActivity {
                 R.id.nav_customer_home, R.id.nav_customer_profile,R.id.nav_customer_settings, R.id.nav_aboutus)
                 .setDrawerLayout(drawer)
                 .build();
-
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
@@ -60,45 +56,20 @@ public class CustomerMain extends AppCompatActivity {
             return true;
         });
 
-
         //////Check the User availability
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-
         //////Channging The Name of the User in the Navigation View
         View header = navigationView.getHeaderView(0);
         customer_name = header.findViewById(R.id.nav_header_title_customer_name);
-
         //customer_name.setText("Customer Name");
         System.out.println(customer_name.getText());
-
-
-        /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // Name, email address, and profile photo Url
-            String name = user.getDisplayName();
-            String email = user.getEmail();
-            String uid = user.getUid();
-            System.out.println("///////////////////////");
-            System.out.println(uid);
-        }*/
-
-
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.customer_main, menu);
-//        return true;
-//    }
-
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
 
 }

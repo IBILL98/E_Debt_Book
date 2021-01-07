@@ -32,7 +32,6 @@ import java.util.ArrayList;
 
 
 
-
 public class MarketHomeFragment extends Fragment {
 
 
@@ -58,13 +57,16 @@ public class MarketHomeFragment extends Fragment {
         totallend = 0;
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
+        //attaching the listView from the fragment
         listView = getActivity().findViewById(R.id.debtsList);
+        //a text view that writes: Market loans
         textView2 = getActivity().findViewById(R.id.textView2);
+
         addNewDebtButton = getActivity().findViewById(R.id.addNewDebtButton2);
+
         Market market = (Market) getActivity().getIntent().getSerializableExtra("Market");
         MyAdapter arrayAdapter = new MyAdapter(getActivity(),arrayList);
         listView.setAdapter(arrayAdapter);
-
 
         conditionRef = mRootRef.child("Debts");
         Query query = conditionRef.orderByChild("marketPhone").equalTo(market.getPhone());
@@ -87,7 +89,6 @@ public class MarketHomeFragment extends Fragment {
                 }
                 textView2.setText(textView2.getText().toString() + " " + totallend);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -110,12 +111,9 @@ public class MarketHomeFragment extends Fragment {
                         bundle.putSerializable("Market", market);
                         bundle.putSerializable("Debt", selectedDebt);
                         intent.putExtras(bundle);
-
                         NavHostFragment.findNavController(MarketHomeFragment.this).navigate(R.id.action_nav_market_home_to_debt_info);
-
                     }
                 });
-
             }
         });
 
@@ -127,11 +125,10 @@ public class MarketHomeFragment extends Fragment {
                 b.putSerializable("Market", market);
                 i.putExtras(b);
                 NavHostFragment.findNavController(MarketHomeFragment.this).navigate(R.id.action_nav_market_home_to_add_debt);
-
             }
         });
     }
-
+//get items to populate the list view
     public ArrayList<Item> getitems(String id, MyCallback myCallback) {
         ArrayList<Item> itemlist = new ArrayList<>();
         DatabaseReference conditionRefitems = mRootRef.child("Debts").child(id).child("itemList");
@@ -153,7 +150,6 @@ public class MarketHomeFragment extends Fragment {
         });
         return itemlist;
     }
-
 
     public void getCustomer(String phone, CustomerCallback customerCallback) {
         DatabaseReference customerRef = mRootRef.child("Customers");
@@ -182,7 +178,6 @@ public class MarketHomeFragment extends Fragment {
 
             }
         });
-
     }
 
     private interface MyCallback {
@@ -192,8 +187,6 @@ public class MarketHomeFragment extends Fragment {
     private interface CustomerCallback {
         void customerOnCallback(Customer customer);
     }
-
-
 
     public class MyAdapter extends ArrayAdapter<Debt> {
 
@@ -227,7 +220,7 @@ public class MarketHomeFragment extends Fragment {
                 }
             });
 
-            // Return the completed view to render on screen
+            // Return the completed view to render on screeng
             return convertView;
         }
     }

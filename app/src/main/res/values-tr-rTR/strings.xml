@@ -107,6 +107,7 @@
     <string name="menu_change_password">Dili Değiştir</string>
     <string name="customer_no_points">Müşteri</string>
     <string name="new_email">Yeni Email</string>
+    <string name="debts_of_a_customer">Borçlar listesi</string>
 
 
 </resources>
