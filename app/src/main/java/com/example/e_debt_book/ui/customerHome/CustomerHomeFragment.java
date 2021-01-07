@@ -157,10 +157,10 @@ public class CustomerHomeFragment extends Fragment {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.my_listview, parent, false);
             }
             // Lookup view for data population
-            TextView name = (TextView) convertView.findViewById(R.id.fullName);
-            TextView amount = (TextView) convertView.findViewById(R.id.amount);
-            TextView phone = (TextView) convertView.findViewById(R.id.phone);
-            TextView date = (TextView) convertView.findViewById(R.id.date);
+            TextView name = convertView.findViewById(R.id.fullName);
+            TextView amount = convertView.findViewById(R.id.amount);
+            TextView phone = convertView.findViewById(R.id.phone);
+            TextView date = convertView.findViewById(R.id.date);
             // Populate the data into the template view using the data object
             phone.setText(debt.getCustomerPhone());
             amount.setText(debt.getAmount());
@@ -170,7 +170,6 @@ public class CustomerHomeFragment extends Fragment {
             return convertView;
         }
     }
-
     //getting the items of a specific debt
     public ArrayList<Item> getitems(String id, CustomerHomeFragment.MyCallback myCallback) {
         ArrayList<Item> itemlist = new ArrayList<>();
