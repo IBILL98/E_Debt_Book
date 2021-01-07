@@ -1,10 +1,7 @@
 package com.example.e_debt_book;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Market;
@@ -29,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-
+    private boolean firstTime;
 
     ////Main screen Choice attributes
     private ConstraintLayout mainChoice;
@@ -60,15 +61,18 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private Button who;
     private String text;
+    private SharedPreferences mPreferences;
+
     DatabaseReference mRootRef, conditionRef;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
 
         ////Main screen Choice attributes
@@ -151,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         customerLoginButton.setOnClickListener(new View.OnClickListener() {
-            Customer customer = new Customer(customerLoginEmail.toString());
+            final Customer customer = new Customer(customerLoginEmail.toString());
 
             @Override
             public void onClick(View v) {

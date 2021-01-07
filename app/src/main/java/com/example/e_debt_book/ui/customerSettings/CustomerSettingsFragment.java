@@ -5,13 +5,10 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -43,6 +40,7 @@ public class CustomerSettingsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_setting_customer, container, false);
     }
 
+
     @Override
     public void onStart() {
         super.onStart();
@@ -65,7 +63,6 @@ public class CustomerSettingsFragment extends Fragment {
         customer_actual_email.setText(customer.getEmail());
         customer_actual_Phone.setText(customer.getPhone());
 
-
         customer_settings_change_language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,11 +70,18 @@ public class CustomerSettingsFragment extends Fragment {
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
-                mbuilder.setSingleChoiceItems(listitem, 0, new DialogInterface.OnClickListener() {
+                int i = 0;
+                TextView t = getActivity().findViewById(R.id.textView77);
+                if (t.getText().equals("Settings")) i = 0;
+                else if (t.getText().equals("Ayarlar")) i = 1;
+                else i = 2;
+                // @+id/textView77
+
+                mbuilder.setSingleChoiceItems(listitem, i, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         customer_choosed_language.setText(listitem[i]);
-                        if (i==0) {
+                        if (i == 0) {
                             setLocale("en");
                         } else {
                             setLocale("tr");
@@ -91,7 +95,7 @@ public class CustomerSettingsFragment extends Fragment {
                         getActivity().finish();
                     }
                 });
-                mbuilder.setNeutralButton("Cancle", new DialogInterface.OnClickListener() {
+                mbuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -102,7 +106,7 @@ public class CustomerSettingsFragment extends Fragment {
             }
         });
 
-        customer_settings_change_name.setOnClickListener(new View.OnClickListener() {
+        /*customer_settings_change_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -139,7 +143,7 @@ public class CustomerSettingsFragment extends Fragment {
                 });
                 builder.show();
             }
-        });
+        });*/
 
         customer_settings_change_email.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,6 +174,6 @@ public class CustomerSettingsFragment extends Fragment {
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
+        Configuration c = res.getConfiguration();
     }
-
 }

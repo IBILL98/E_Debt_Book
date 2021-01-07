@@ -128,13 +128,13 @@
                                             android:layout_margin="0dp"
                                             android:focusable="true"
                                             android:fontFamily="@font/merienda"
+                                            android:text="@string/the_selected_language"
                                             android:paddingStart="40dp"
                                             android:paddingLeft="40dp"
                                             android:paddingTop="5dp"
                                             android:paddingEnd="0dp"
                                             android:paddingRight="0dp"
                                             android:paddingBottom="0dp"
-                                            android:text="@string/english"
                                             android:textColor="@android:color/black"
                                             android:textSize="16sp" />
 
