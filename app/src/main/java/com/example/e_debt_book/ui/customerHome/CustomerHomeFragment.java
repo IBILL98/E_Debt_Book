@@ -1,23 +1,25 @@
 package com.example.e_debt_book.ui.customerHome;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.e_debt_book.R;
 import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Debt;
 import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
-import com.example.e_debt_book.ui.marketHome.MarketHomeFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -83,6 +85,63 @@ public class CustomerHomeFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+        debtsListOfaCustomer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int i = position;
+                Debt selectedDebt = arrayList.get(i);
+                Intent intent = getActivity().getIntent();
+                Bundle bundle = new Bundle();
+
+                getMarket(selectedDebt.getCustomerPhone(), new CustomerHomeFragment.MarketCallback() {
+                    @Override
+                    public void marketOnCallback(Market market) {
+                        bundle.putSerializable("Customer", customer);
+                        bundle.putSerializable("Market", market);
+                        bundle.putSerializable("Debt", selectedDebt);
+                        intent.putExtras(bundle);
+                        NavHostFragment.findNavController(CustomerHomeFragment.this).navigate(R.id.action_nav_market_home_to_debt_info);
+
+                    }
+                });
+            }
+        });
+
+    }
+    private interface MyCallback {
+        void onCallback(ArrayList<Item> arrayList);
+    }
+    private interface MarketCallback {
+        void marketOnCallback(Market market);
+    }
+    public void getMarket(String phone, CustomerHomeFragment.MarketCallback marketCallback) {
+        DatabaseReference customerRef = mRootRef.child("Customers");
+        Market market = new Market();
+        customerRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    Market market1 = ds.getValue(Market.class);
+                    String userId = ds.getKey();
+                    market1.setPhone(userId);
+                    if (market1.getPhone().equals(phone)) {
+                        market.setPhone(market1.getPhone());
+                        market.setEmail(market1.getEmail());
+                        market.setName(market1.getName());
+                        market.setAdress(market1.getAdress());
+                        market.setIban(market1.getIban());
+                        market.setStatus(market1.getStatus());
+                        marketCallback.marketOnCallback(market);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public class MyAdapter extends ArrayAdapter<Debt> {
@@ -110,9 +169,6 @@ public class CustomerHomeFragment extends Fragment {
             // Return the completed view to render on screen
             return convertView;
         }
-    }
-    private interface MyCallback {
-        void onCallback(ArrayList<Item> arrayList);
     }
 
     //getting the items of a specific debt
