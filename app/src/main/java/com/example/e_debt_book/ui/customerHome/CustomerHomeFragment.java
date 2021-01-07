@@ -101,6 +101,8 @@ public class CustomerHomeFragment extends Fragment {
                         bundle.putSerializable("Market", market);
                         bundle.putSerializable("Debt", selectedDebt);
                         intent.putExtras(bundle);
+                        ////////////
+                        //bilal please see this one if it's right or wrong, ok?
                         NavHostFragment.findNavController(CustomerHomeFragment.this).navigate(R.id.action_nav_market_home_to_debt_info);
 
                     }
