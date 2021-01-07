@@ -31,15 +31,4 @@
         layout="@layout/content_customer_main"
         android:background="@android:color/white" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:contentDescription="@string/emaill"
-        app:backgroundTint="#005B9F"
-        app:srcCompat="@drawable/add_icon"
-        tools:ignore="VectorDrawableCompat" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

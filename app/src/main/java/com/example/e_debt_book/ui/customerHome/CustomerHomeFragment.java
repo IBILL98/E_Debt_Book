@@ -94,7 +94,7 @@ public class CustomerHomeFragment extends Fragment {
                 Intent intent = getActivity().getIntent();
                 Bundle bundle = new Bundle();
 
-                getMarket(selectedDebt.getCustomerPhone(), new CustomerHomeFragment.MarketCallback() {
+                getMarket(selectedDebt.getMarketPhone(), new CustomerHomeFragment.MarketCallback() {
                     @Override
                     public void marketOnCallback(Market market) {
                         bundle.putSerializable("Customer", customer);
@@ -103,7 +103,7 @@ public class CustomerHomeFragment extends Fragment {
                         intent.putExtras(bundle);
                         ////////////
                         //bilal please see this one if it's right or wrong, ok?
-                        NavHostFragment.findNavController(CustomerHomeFragment.this).navigate(R.id.action_nav_market_home_to_debt_info);
+                        NavHostFragment.findNavController(CustomerHomeFragment.this).navigate(R.id.action_nav_customer_home_to_debt_info);
 
                     }
                 });
@@ -117,7 +117,7 @@ public class CustomerHomeFragment extends Fragment {
     private interface MarketCallback {
         void marketOnCallback(Market market);
     }
-    public void getMarket(String phone, CustomerHomeFragment.MarketCallback marketCallback) {
+    public void getMarket(String phone, MarketCallback marketCallback) {
         DatabaseReference customerRef = mRootRef.child("Customers");
         Market market = new Market();
         customerRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -146,6 +146,28 @@ public class CustomerHomeFragment extends Fragment {
         });
     }
 
+
+    //getting the items of a specific debt
+    public ArrayList<Item> getitems(String id, MyCallback myCallback) {
+        ArrayList<Item> itemlist = new ArrayList<>();
+        DatabaseReference conditionRefitems = mRootRef.child("Debts").child(id).child("itemList");
+        conditionRefitems.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    Item item = data.getValue(Item.class);
+                    Item item1 = new Item(item.getName(), item.getPrice());
+                    itemlist.add(item1);
+                }
+                myCallback.onCallback(itemlist);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        return itemlist;
+    }
+
     public class MyAdapter extends ArrayAdapter<Debt> {
         public MyAdapter(Context context, ArrayList<Debt> debts){
             super(context, 0, debts);
@@ -165,31 +187,19 @@ public class CustomerHomeFragment extends Fragment {
             TextView date = convertView.findViewById(R.id.date);
             // Populate the data into the template view using the data object
             phone.setText(debt.getCustomerPhone());
-            amount.setText(debt.getAmount());
+            amount.setText("Amount : " +debt.getAmount());
             date.setText(debt.getDateOfLoan());
-            DatabaseReference CustomerHomeFragment = FirebaseDatabase.getInstance().getReference();
+
+            getMarket(debt.getMarketPhone(), new MarketCallback() {
+                @Override
+                public void marketOnCallback(Market market) {
+                    name.setText(market.getName());
+                }
+            });
+
+
             // Return the completed view to render on screen
             return convertView;
         }
-    }
-    //getting the items of a specific debt
-    public ArrayList<Item> getitems(String id, CustomerHomeFragment.MyCallback myCallback) {
-        ArrayList<Item> itemlist = new ArrayList<>();
-        DatabaseReference conditionRefitems = mRootRef.child("Debts").child(id).child("itemList");
-        conditionRefitems.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot data : snapshot.getChildren()) {
-                    Item item = data.getValue(Item.class);
-                    Item item1 = new Item(item.getName(), item.getPrice());
-                    itemlist.add(item1);
-                }
-                myCallback.onCallback(itemlist);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-        return itemlist;
     }
 }
