@@ -76,7 +76,7 @@
                         android:layout_width="120dp"
                         android:layout_height="match_parent"
                         android:contentDescription="@string/todo"
-                        tools:srcCompat="@drawable/account_icon" />
+                        app:srcCompat="@drawable/account_icon" />
                 </LinearLayout>
 
                 <LinearLayout
