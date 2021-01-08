@@ -21,7 +21,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class CustomerMain extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    TextView customer_name;
+    private TextView customer_name;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override

@@ -22,8 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 import static android.content.ContentValues.TAG;
 
 public class ChangePasswordMarketFragment extends Fragment {
-    Button EditMarketPassBackButton,EditMarketPassDoneButton;
-    EditText EditMarketPassNewPassword,EditMarketPassNewPasswordConfirmation;
+    private Button EditMarketPassBackButton,EditMarketPassDoneButton;
+    private EditText EditMarketPassNewPassword,EditMarketPassNewPasswordConfirmation;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_change_password_market, container, false);

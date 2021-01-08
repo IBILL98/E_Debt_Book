@@ -1,5 +1,6 @@
 package com.example.e_debt_book.ui.debtInfo;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,18 +30,20 @@ import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClic
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 public class DebtInfoFragment extends Fragment {
 
 
-    EditText amountDisplay, descriptionDisplay,dueDateDisplay;
-    TextView customerInfoDisplay, dateOFLoanDisplay;
-    Button editButton, deleteButton, printButton,saveButton;
-    ImageButton changeDueDateButton;
-    ListView listView;
+    private EditText amountDisplay, descriptionDisplay,dueDateDisplay;
+    private TextView customerInfoDisplay, dateOFLoanDisplay;
+    private Button editButton, deleteButton, printButton,saveButton;
+    private ImageButton changeDueDateButton;
+    private ListView listView;
 
-    DatabaseReference reference;
+    private DatabaseReference reference;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_debt_info, container, false);
@@ -48,23 +52,25 @@ public class DebtInfoFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        customerInfoDisplay = (TextView) getActivity().findViewById(R.id.customerInfoDisplay);
-        amountDisplay = (EditText)getActivity().findViewById(R.id.amountDisplay);
-        dateOFLoanDisplay = (TextView) getActivity().findViewById(R.id.dateOFLoanDisplay);
-        dueDateDisplay = (EditText) getActivity().findViewById(R.id.dueDateDisplay);
-        descriptionDisplay = (EditText)getActivity().findViewById(R.id.descriptionDisplay);
-        changeDueDateButton =  getActivity().findViewById(R.id.changeDueDateButton);
-        editButton = (Button)getActivity().findViewById(R.id.editButton);
-        deleteButton = (Button)getActivity().findViewById(R.id.deleteButton);
-        printButton = (Button)getActivity().findViewById(R.id.printButton);
-        saveButton = (Button)getActivity().findViewById(R.id.saveButton);
-        listView = (ListView)getActivity().findViewById(R.id.productsList);
+        customerInfoDisplay = getActivity().findViewById(R.id.customerInfoDisplay);
+        amountDisplay = getActivity().findViewById(R.id.amountDisplay);
+        dateOFLoanDisplay = getActivity().findViewById(R.id.dateOFLoanDisplay);
+        dueDateDisplay = getActivity().findViewById(R.id.dueDateDisplay);
+        descriptionDisplay = getActivity().findViewById(R.id.descriptionDisplay);
+        changeDueDateButton = getActivity().findViewById(R.id.changeDueDateButton);
+        editButton = getActivity().findViewById(R.id.editButton);
+        deleteButton = getActivity().findViewById(R.id.deleteButton);
+        printButton = getActivity().findViewById(R.id.printButton);
+        saveButton = getActivity().findViewById(R.id.saveButton);
+        listView = getActivity().findViewById(R.id.productsList);
+        LinearLayout content = getActivity().findViewById(R.id.printedLayout);
+
 
         setuneditable();
 
 
         Debt debt = (Debt) getActivity().getIntent().getSerializableExtra("Debt");
-        Market market = (Market) getActivity().getIntent().getSerializableExtra("Market") ;
+        Market market = (Market) getActivity().getIntent().getSerializableExtra("Market");
         Customer customer = (Customer) getActivity().getIntent().getSerializableExtra("Customer");
 
         reference = FirebaseDatabase.getInstance().getReference().child("Debts");
@@ -146,6 +152,38 @@ public class DebtInfoFragment extends Fragment {
             }
         });
 
+
+        printButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                content.setDrawingCacheEnabled(true);
+                Bitmap bitmap = content.getDrawingCache();
+                File file,f = null;
+
+                    if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
+                {
+                    file =new File(android.os.Environment.getExternalStorageDirectory(),"TTImages_cache");
+                    if(!file.exists())
+                    {
+                        file.mkdirs();
+
+                    }
+                    f = new File(file.getAbsolutePath()+file+ "filename"+".png");
+                }
+                FileOutputStream ostream = new FileOutputStream(f);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 10, ostream);
+                ostream.close();
+
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+
+
+
+            }
+        });
 
 
 

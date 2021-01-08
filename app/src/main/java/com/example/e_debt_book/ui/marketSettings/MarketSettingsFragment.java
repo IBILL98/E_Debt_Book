@@ -2,10 +2,12 @@ package com.example.e_debt_book.ui.marketSettings;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,29 +18,24 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.e_debt_book.MarketMain1;
 import com.example.e_debt_book.R;
 import com.example.e_debt_book.model.Market;
-import com.example.e_debt_book.ui.changePassword.ChangePasswordMarketFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Locale;
 
-import android.content.Intent;
-import android.util.DisplayMetrics;
-
 
 public class MarketSettingsFragment extends Fragment {
 
-    LinearLayout market_settings_change_language, market_settings_change_Adress, market_settings_change_name, market_settings_change_password, market_settings_change_email, market_settings_change_Phone;
-    TextView choosed_language, actual_adress, actual_name, actual_email, actual_Phone;
-    DatabaseReference mRootRef, conditionRef;
+    private LinearLayout market_settings_change_language, market_settings_change_Adress, market_settings_change_name, market_settings_change_password, market_settings_change_email, market_settings_change_Phone;
+    private TextView choosed_language, actual_adress, actual_name, actual_email, actual_Phone;
+    private DatabaseReference mRootRef, conditionRef;
 
-    Context context;
+    private Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -77,23 +74,28 @@ public class MarketSettingsFragment extends Fragment {
         market_settings_change_language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] listitem = new String[]{"English", "Turkish"};
+                String[] listitem = new String[]{"English", "Deutsch", "Türkçe", "العربية"};
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
                 int i = 0;
                 TextView t = getActivity().findViewById(R.id.textView7);
                 if (t.getText().equals("Settings")) i = 0;
-                else if (t.getText().equals("Ayarlar")) i = 1;
-                else i = 2;
-                mbuilder.setSingleChoiceItems(listitem , i, new DialogInterface.OnClickListener() {
+                else if (t.getText().equals("Einstellungen")) i = 1;
+                else if (t.getText().equals("Ayarlar")) i = 2;
+                else if (t.getText().equals("الاعدادات")) i = 3;
+                mbuilder.setSingleChoiceItems(listitem, i, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         choosed_language.setText(listitem[i]);
                         if (i == 0) {
                             setLocale("en");
-                        } else {
+                        } else if (i == 2) {
                             setLocale("tr");
+                        } else if (i == 1) {
+                            setLocale("de");
+                        } else if (i == 3) {
+                            setLocale("ar");
                         }
                         dialogInterface.dismiss();
                         Intent intent = new Intent(getActivity(), MarketMain1.class);
@@ -104,7 +106,7 @@ public class MarketSettingsFragment extends Fragment {
                         getActivity().finish();
                     }
                 });
-                mbuilder.setNeutralButton("Cancle", new DialogInterface.OnClickListener() {
+                mbuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 

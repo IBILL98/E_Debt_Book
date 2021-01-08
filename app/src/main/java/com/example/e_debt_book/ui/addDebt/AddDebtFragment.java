@@ -46,21 +46,21 @@ import java.util.List;
 
 public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelectedListener{
 
-    EditText customerNameInput, customerEmailInput, customerPhoneInput;
-    ImageButton customerSelectButton;
-    TextView selectedCustomerPhone;
-    EditText loanAmountInput;
-    EditText descriptionInput;
-    EditText dateOfLoanInput;
-    EditText dueDateInput;
-    ImageButton dateOfLoanSelect;
-    ImageButton dueDateSelect;
-    EditText itemNameInput;
-    EditText itemPriceInput;
-    Button addProductButton;
-    ListView productsList;
-    Button addDebtButton;
-    Customer selectedCustomer;
+    private EditText customerNameInput, customerEmailInput, customerPhoneInput;
+    private ImageButton customerSelectButton;
+    private TextView selectedCustomerPhone;
+    private EditText loanAmountInput;
+    private EditText descriptionInput;
+    private EditText dateOfLoanInput;
+    private EditText dueDateInput;
+    private ImageButton dateOfLoanSelect;
+    private ImageButton dueDateSelect;
+    private EditText itemNameInput;
+    private EditText itemPriceInput;
+    private Button addProductButton;
+    private ListView productsList;
+    private Button addDebtButton;
+    private Customer selectedCustomer;
 
     DatePickerDialog.OnDateSetListener setListener;
     DatePickerDialog.OnDateSetListener setListener2;

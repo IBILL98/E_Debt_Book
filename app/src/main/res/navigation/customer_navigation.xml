@@ -74,9 +74,9 @@
 
     <fragment
         android:id="@+id/debt_info"
-        android:name="com.example.e_debt_book.ui.debtInfo.DebtInfoFragment"
+        android:name="com.example.e_debt_book.ui.debtInfo.DebtInfoCustomerFragment"
         android:label="@string/debts_details"
-        tools:layout="@layout/fragment_debt_info" >
+        tools:layout="@layout/fragment_debt_info_customer" >
         <action
             android:id="@+id/action_debt_info_to_nav_market_home"
             app:destination="@id/nav_customer_home" />

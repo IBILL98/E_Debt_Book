@@ -28,16 +28,15 @@ import com.google.firebase.database.ValueEventListener;
 public class CustomerRegister extends AppCompatActivity {
 
     //Sign up attributes
-    EditText customerRegisterName, customerRegisterLastName, customerRegisterPassword, customerRegisterPhone, customerRegisterEmail;
-    Button customerRegisterBackButton, customerRegisterSignUpButtom;
-    ProgressBar customerRegisterProgressBar;
-    ConstraintLayout customerRegister;
-
+    private EditText customerRegisterName, customerRegisterLastName, customerRegisterPassword, customerRegisterPhone, customerRegisterEmail;
+    private Button customerRegisterBackButton, customerRegisterSignUpButtom;
+    private ProgressBar customerRegisterProgressBar;
+    private ConstraintLayout customerRegister;
 
     //Firebase attributes
-    FirebaseAuth fAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference mRootRef,conditionRef;
+    private FirebaseAuth fAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference mRootRef,conditionRef;
 
 
     @Override

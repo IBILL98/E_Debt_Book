@@ -18,7 +18,7 @@ import com.example.e_debt_book.model.Market;
 
 public class MarketProfileFragment extends Fragment {
 
-    EditText editInfoName , editInfoEmail  , editInfoPassword, editInfoIban , editInfoAdress;
+    private EditText editInfoName , editInfoEmail  , editInfoPassword, editInfoIban , editInfoAdress;
 
 
     @Override

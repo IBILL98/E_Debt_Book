@@ -2,7 +2,6 @@ package com.example.e_debt_book;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,15 +28,14 @@ public class MarketRegister extends AppCompatActivity {
 
 
     //Sign up attributes
-    EditText marketRegisterName,marketRegisterEmail,marketRegisterPhone,marketRegisterPassword,marketRegisterIban,marketRegisterAdress;
-    Button marketRegisterBackButton,marketRegisterSignUpButtom;
-    ProgressBar marketRegisterProgressBar;
-    ConstraintLayout market_register;
+    private EditText marketRegisterName,marketRegisterEmail,marketRegisterPhone,marketRegisterPassword,marketRegisterIban,marketRegisterAdress;
+    private Button marketRegisterBackButton,marketRegisterSignUpButtom;
+    private ProgressBar marketRegisterProgressBar;
 
-    //Firebase attributes
-    FirebaseAuth fAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference mRootRef,conditionRef;
+     //Firebase attributes
+    private FirebaseAuth fAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference mRootRef,conditionRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +51,6 @@ public class MarketRegister extends AppCompatActivity {
         marketRegisterBackButton = findViewById(R.id.marketRegisterBackButton);
         marketRegisterSignUpButtom = findViewById(R.id.marketRegisterSignUpButtom);
         marketRegisterProgressBar = findViewById(R.id.marketRegisterProgressBar);
-        market_register = findViewById(R.id.market_register);
 
         fAuth = FirebaseAuth.getInstance();
 

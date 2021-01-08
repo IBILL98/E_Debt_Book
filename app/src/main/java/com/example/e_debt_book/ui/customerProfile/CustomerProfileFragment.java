@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 
 public class CustomerProfileFragment extends Fragment {
 
-    EditText editCostomerName, editCostomerLastName, editCostomerPassword, editCostomerPhone, editCostomerEmail;
+    private EditText editCostomerName, editCostomerLastName, editCostomerPassword, editCostomerPhone, editCostomerEmail;
 
 
     @Override

@@ -97,7 +97,7 @@
     <string name="actual_name">Asıl Ad Soyad</string>
     <string name="actual_address">Asıl Adres</string>
     <string name="security_and_login_information">Güvenlik ve Giriş Bilgileri</string>
-    <string name="change_email">Emaili güncelle</string>
+    <string name="change_email">Email\'i güncelle</string>
     <string name="actual_email">Asıl Email</string>
     <string name="change_password">Şifre Değiştir</string>
     <string name="change_phone">Telefon numarasını güncelle</string>
@@ -108,7 +108,9 @@
     <string name="customer_no_points">Müşteri</string>
     <string name="new_email">Yeni Email</string>
     <string name="debts_of_a_customer">Borçlar listesi</string>
-    <string name="the_selected_language">Türkçe</string>>
+    <string name="the_selected_language">Türkçe</string>
+    <string name="Turkish">Türkçe</string>
+    <string name="German">Almanca</string>>
 
 
 </resources>

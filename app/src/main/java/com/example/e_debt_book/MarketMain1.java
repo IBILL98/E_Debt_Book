@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MarketMain1 extends AppCompatActivity {
 
-    TextView market_name;
+    private TextView market_name;
     private AppBarConfiguration mAppBarConfiguration;
     public CoordinatorLayout market_main;
 

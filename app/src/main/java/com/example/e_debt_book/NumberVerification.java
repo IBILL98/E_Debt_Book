@@ -43,7 +43,7 @@ public class NumberVerification extends AppCompatActivity {
     private String mVerificationId;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private ProgressBar verificationProgressBar;
-    DatabaseReference mRootRef,conditionRef;
+    private DatabaseReference mRootRef,conditionRef;
 
 
 

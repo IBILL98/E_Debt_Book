@@ -35,12 +35,12 @@ public class CustomerHomeFragment extends Fragment {
 
     private CustomerHomeViewModel customerHomeViewModel;
 
-    FloatingActionButton addNewDebtButton;
-    DatabaseReference mRootRef, conditionRef;
-    ListView debtsListOfaCustomer;
-    ArrayList<Debt> arrayList = new ArrayList<>();
-    float totaldebts;
-    TextView TitleTextView;
+    private FloatingActionButton addNewDebtButton;
+    private DatabaseReference mRootRef, conditionRef;
+    private ListView debtsListOfaCustomer;
+    private ArrayList<Debt> arrayList = new ArrayList<>();
+    private float totaldebts;
+    private TextView TitleTextView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

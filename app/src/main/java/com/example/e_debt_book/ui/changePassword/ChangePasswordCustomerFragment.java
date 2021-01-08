@@ -22,8 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 import static android.content.ContentValues.TAG;
 
 public class ChangePasswordCustomerFragment extends Fragment {
-    Button EditCustomerPassBackButton,EditCustomerPassDoneButton;
-    EditText EditCustomerPassNewPassword,EditCustomerPassNewPasswordConfirmation;
+    private Button EditCustomerPassBackButton,EditCustomerPassDoneButton;
+    private EditText EditCustomerPassNewPassword,EditCustomerPassNewPasswordConfirmation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

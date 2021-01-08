@@ -57,7 +57,7 @@
     <string name="price">Price</string>
     <string name="full_name">Full Name</string>
     <string name="add_product">Add Product</string>
-    <string name="produce_name">Produce Name</string>
+    <string name="produce_name">Product Name</string>
     <string name="name">Name</string>
     <string name="phone">Phone</string>
     <string name="email">Email</string>
@@ -83,7 +83,7 @@
     <string name="edit_my_info">EDIT MY INFO</string>
     <string name="log_out">LOG OUT</string>
     <string name="date">Date</string>
-    <string name="current_phone">Current Phone</string>
+    <string name="current_phone">Current Phone number</string>
     <string name="new_phone">New Phone</string>
     <string name="sign_out">Sign Out</string>
     <string name="add_customer_name">Name</string>
@@ -102,7 +102,7 @@
     <string name="change_email">Change Email</string>
     <string name="actual_email">Actual Email</string>
     <string name="change_password">Change Password</string>
-    <string name="change_phone">Change Phone</string>
+    <string name="change_phone">Change Phone number</string>
     <string name="actual_phone">Actual Phone</string>
     <string name="gallery">Gallery</string>
     <string name="_90">+90</string>
@@ -110,6 +110,8 @@
     <string name="customer_no_points">Customer</string>
     <string name="new_email">New Email</string>
     <string name="debts_of_a_customer">list of debts </string>
-    <string name="the_selected_language">English</string>>
+    <string name="the_selected_language">English</string>
+    <string name="Turkish">Turkish</string>
+    <string name="German">German</string>>
 
 </resources>
