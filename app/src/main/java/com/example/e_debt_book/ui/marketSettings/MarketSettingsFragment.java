@@ -74,7 +74,7 @@ public class MarketSettingsFragment extends Fragment {
         market_settings_change_language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] listitem = new String[]{"English", "Deutsch", "Türkçe"};
+                String[] listitem = new String[]{"English", "Deutsch", "Türkçe", "العربية"};
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
@@ -82,17 +82,20 @@ public class MarketSettingsFragment extends Fragment {
                 TextView t = getActivity().findViewById(R.id.textView7);
                 if (t.getText().equals("Settings")) i = 0;
                 else if (t.getText().equals("Einstellungen")) i = 1;
-                else i = 2;
-                mbuilder.setSingleChoiceItems(listitem , i, new DialogInterface.OnClickListener() {
+                else if (t.getText().equals("Ayarlar")) i = 2;
+                else if (t.getText().equals("الاعدادات")) i = 3;
+                mbuilder.setSingleChoiceItems(listitem, i, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         choosed_language.setText(listitem[i]);
                         if (i == 0) {
                             setLocale("en");
-                        } else if (i == 1) {
+                        } else if (i == 2) {
                             setLocale("tr");
-                        } else {
+                        } else if (i == 1) {
                             setLocale("de");
+                        } else if (i == 3) {
+                            setLocale("ar");
                         }
                         dialogInterface.dismiss();
                         Intent intent = new Intent(getActivity(), MarketMain1.class);
