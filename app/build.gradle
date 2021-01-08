@@ -92,10 +92,16 @@ dependencies {
 
 
 
-    implementation 'androidx.core:core:1.3.2'
-    androidTestImplementation 'androidx.test.core:app:1.3.0'
 
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
+    implementation 'androidx.core:core:1.3.2'
+
+
+    //commented By Bilal
+    //androidTestImplementation 'androidx.test.core:app:1.3.0'
+
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test:runner:1.3.0'
     androidTestImplementation 'androidx.test:rules:1.3.0'
 
