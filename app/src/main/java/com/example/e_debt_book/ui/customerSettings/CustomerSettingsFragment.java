@@ -75,8 +75,6 @@ public class CustomerSettingsFragment extends Fragment {
                 if (t.getText().equals("Settings")) i = 0;
                 else if (t.getText().equals("Ayarlar")) i = 1;
                 else i = 2;
-                // @+id/textView77
-
                 mbuilder.setSingleChoiceItems(listitem, i, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

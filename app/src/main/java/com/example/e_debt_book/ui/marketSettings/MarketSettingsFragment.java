@@ -81,11 +81,16 @@ public class MarketSettingsFragment extends Fragment {
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
-                mbuilder.setSingleChoiceItems(listitem, 0, new DialogInterface.OnClickListener() {
+                int i = 0;
+                TextView t = getActivity().findViewById(R.id.textView7);
+                if (t.getText().equals("Settings")) i = 0;
+                else if (t.getText().equals("Ayarlar")) i = 1;
+                else i = 2;
+                mbuilder.setSingleChoiceItems(listitem , i, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         choosed_language.setText(listitem[i]);
-                        if (i==0) {
+                        if (i == 0) {
                             setLocale("en");
                         } else {
                             setLocale("tr");
@@ -214,6 +219,7 @@ public class MarketSettingsFragment extends Fragment {
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
+        Configuration c = res.getConfiguration();
     }
 }
 
