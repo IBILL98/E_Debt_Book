@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        requestForSpecificPermission();
+        FirebaseAuth.getInstance().signOut();
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -445,10 +446,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    private void requestForSpecificPermission() {
-        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.GET_ACCOUNTS, Manifest.permission.RECEIVE_SMS, Manifest.permission.READ_SMS, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.INTERNET}, 101);
-    }
 
 
 }

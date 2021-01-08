@@ -1,7 +1,13 @@
 package com.example.e_debt_book.ui.debtInfo;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +17,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -23,6 +33,10 @@ import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Debt;
 import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
+import com.gkemon.XMLtoPDF.PdfGenerator;
+import com.gkemon.XMLtoPDF.PdfGeneratorListener;
+import com.gkemon.XMLtoPDF.model.FailureResponse;
+import com.gkemon.XMLtoPDF.model.SuccessResponse;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -31,12 +45,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 public class DebtInfoFragment extends Fragment {
 
-
+    private static final int PERMISSION_REQUEST_CODE = 1;
     private EditText amountDisplay, descriptionDisplay,dueDateDisplay;
     private TextView customerInfoDisplay, dateOFLoanDisplay;
     private Button editButton, deleteButton, printButton,saveButton;
@@ -52,6 +67,10 @@ public class DebtInfoFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        requestForSpecificPermission();
+
+
         customerInfoDisplay = getActivity().findViewById(R.id.customerInfoDisplay);
         amountDisplay = getActivity().findViewById(R.id.amountDisplay);
         dateOFLoanDisplay = getActivity().findViewById(R.id.dateOFLoanDisplay);
@@ -63,7 +82,8 @@ public class DebtInfoFragment extends Fragment {
         printButton = getActivity().findViewById(R.id.printButton);
         saveButton = getActivity().findViewById(R.id.saveButton);
         listView = getActivity().findViewById(R.id.productsList);
-        LinearLayout content = getActivity().findViewById(R.id.printedLayout);
+        //LinearLayout content = getActivity().findViewById(R.id.printedLayout);
+        ScrollView content = getActivity().findViewById(R.id.scrollViewmarkettoprint);
 
 
         setuneditable();
@@ -156,32 +176,72 @@ public class DebtInfoFragment extends Fragment {
         printButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                content.setDrawingCacheEnabled(true);
-                Bitmap bitmap = content.getDrawingCache();
-                File file,f = null;
 
-                    if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
-                {
-                    file =new File(android.os.Environment.getExternalStorageDirectory(),"TTImages_cache");
-                    if(!file.exists())
-                    {
-                        file.mkdirs();
+                printButton.setVisibility(View.INVISIBLE);
+                editButton.setVisibility(View.INVISIBLE);
+                deleteButton.setVisibility(View.INVISIBLE);
 
-                    }
-                    f = new File(file.getAbsolutePath()+file+ "filename"+".png");
-                }
-                FileOutputStream ostream = new FileOutputStream(f);
-                bitmap.compress(Bitmap.CompressFormat.PNG, 10, ostream);
-                ostream.close();
+//
+//                try {
+//                    content.setDrawingCacheEnabled(true);
+//                    Bitmap bitmap = content.getDrawingCache();
+//                    File file,f = null;
+//
+//
+//                if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
+//
+//                    file  = new File(android.os.Environment.getExternalStorageDirectory(),"E-DebtBook");
+//                    if(!file.exists()) {
+//                        file.mkdirs();
+//                    }
+//
+//                    f = new File(file.getAbsolutePath()+file+ "filename"+".png");
+//
+//                }
+//                FileOutputStream ostream = new FileOutputStream(f);
+//                bitmap.compress(Bitmap.CompressFormat.PNG, 10, ostream);
+//                ostream.close();
+//
+//                }
+//                catch (Exception e){
+//                    e.printStackTrace();
+//
+//                }
+//
+                PdfGenerator.getBuilder()
+                        .setContext(getContext())
+                        .fromViewIDSource()
+                        .fromViewID(getActivity(),R.id.scrollViewmarkettoprint)
+                        /* "fromViewID()" takes array of view ids those MUST BE and MUST BE contained in the inserted "activity" .
+                         * You can also invoke "fromViewIDList()" method here which takes list of view ids instead of array. */
+                        .setCustomPageSize(2000,3000)
+                        /* Here I used ".setCustomPageSize(3000,3000)" to set custom page size.*/
+                        .setFileName(debt.getDebtID())
+                        .setFolderName("E-DebtBook/Market Reports")
+                        .openPDFafterGeneration(false)
+                        .build(new PdfGeneratorListener() {
+                            @Override
+                            public void onFailure(FailureResponse failureResponse) {
+                                super.onFailure(failureResponse);
+                            }
 
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
+                            @Override
+                            public void showLog(String log) {
+                                super.showLog(log);
+                            }
+
+                            @Override
+                            public void onSuccess(SuccessResponse response) {
+                                super.onSuccess(response);
+                                Toast.makeText(getActivity(), "Debt PDF Saved in your Files successfully!", Toast.LENGTH_LONG).show();
+
+                            }
+                        });
 
 
-
+                printButton.setVisibility(View.VISIBLE);
+                editButton.setVisibility(View.VISIBLE);
+                deleteButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -220,5 +280,9 @@ public class DebtInfoFragment extends Fragment {
     }
 
 
+
+    private void requestForSpecificPermission() {
+        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.GET_ACCOUNTS, Manifest.permission.RECEIVE_SMS, Manifest.permission.READ_SMS, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.INTERNET}, 101);
+    }
 
 }
