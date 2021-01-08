@@ -45,6 +45,7 @@ public class CustomerSettingsFragment extends Fragment {
     public void onStart() {
         TextView t = getActivity().findViewById(R.id.textView77);
         System.out.println("TTTTTTTTTEEEEEEEEEEEEXXXXXXXXXXXXXTTTTTTTTTTTT" + t.getText());
+
         super.onStart();
 
         Customer customer = (Customer) getActivity().getIntent().getSerializableExtra("Customer");
