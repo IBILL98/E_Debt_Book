@@ -36,12 +36,12 @@ import java.util.ArrayList;
 public class MarketHomeFragment extends Fragment {
 
 
-    FloatingActionButton addNewDebtButton;
-    DatabaseReference mRootRef, conditionRef;
-    ListView listView;
-    ArrayList<Debt> arrayList = new ArrayList<>();
-    float totallend;
-    TextView textView2;
+    private FloatingActionButton addNewDebtButton;
+    private DatabaseReference mRootRef, conditionRef;
+    private ListView listView;
+    private ArrayList<Debt> arrayList = new ArrayList<>();
+    private float totallend;
+    private TextView textView2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

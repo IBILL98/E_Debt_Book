@@ -31,11 +31,11 @@ import java.util.Locale;
 
 public class MarketSettingsFragment extends Fragment {
 
-    LinearLayout market_settings_change_language, market_settings_change_Adress, market_settings_change_name, market_settings_change_password, market_settings_change_email, market_settings_change_Phone;
-    TextView choosed_language, actual_adress, actual_name, actual_email, actual_Phone;
-    DatabaseReference mRootRef, conditionRef;
+    private LinearLayout market_settings_change_language, market_settings_change_Adress, market_settings_change_name, market_settings_change_password, market_settings_change_email, market_settings_change_Phone;
+    private TextView choosed_language, actual_adress, actual_name, actual_email, actual_Phone;
+    private DatabaseReference mRootRef, conditionRef;
 
-    Context context;
+    private Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

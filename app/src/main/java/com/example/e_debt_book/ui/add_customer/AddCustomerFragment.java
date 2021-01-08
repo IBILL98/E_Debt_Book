@@ -29,16 +29,16 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AddCustomerFragment extends Fragment {
     //Sign up attributes
-    EditText customerRegisterNamefromMarket, customerRegisterLastNamefromMarket, customerRegisterPhonefromMarket, customerRegisterEmailfromMarket;
-    Button customerRegisterBackButtonfromMarket, customerRegisterSignUpButtomfromMarket;
-    ProgressBar customerRegisterProgressBarfromMarket;// not functional
-    ConstraintLayout customerRegisterfromMarket;
+    private EditText customerRegisterNamefromMarket, customerRegisterLastNamefromMarket, customerRegisterPhonefromMarket, customerRegisterEmailfromMarket;
+    private Button customerRegisterBackButtonfromMarket, customerRegisterSignUpButtomfromMarket;
+    private ProgressBar customerRegisterProgressBarfromMarket;// not functional
+    private ConstraintLayout customerRegisterfromMarket;
 
 
     //Firebase attributes
-    FirebaseAuth fAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference mRootRef,conditionRef;
+    private FirebaseAuth fAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference mRootRef,conditionRef;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

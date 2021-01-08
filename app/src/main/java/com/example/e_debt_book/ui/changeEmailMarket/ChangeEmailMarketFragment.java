@@ -40,8 +40,8 @@ import static android.content.ContentValues.TAG;
 
 
 public class ChangeEmailMarketFragment extends Fragment {
-    Button EditMarketEmailDoneButton,EditMarketEmailBackButton;
-    EditText EditMarketEmailNewEmail;
+    private Button EditMarketEmailDoneButton,EditMarketEmailBackButton;
+    private EditText EditMarketEmailNewEmail;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_change_email_market, container, false);

@@ -28,9 +28,9 @@ import java.util.Locale;
 
 public class CustomerSettingsFragment extends Fragment {
 
-    LinearLayout customer_settings_change_language, customer_settings_change_name, customer_settings_change_password, customer_settings_change_email, customer_settings_change_Phone;
-    TextView customer_choosed_language, customer_actual_name, customer_actual_email, customer_actual_Phone;
-    DatabaseReference mRootRef, conditionRef;
+    private LinearLayout customer_settings_change_language, customer_settings_change_name, customer_settings_change_password, customer_settings_change_email, customer_settings_change_Phone;
+    private TextView customer_choosed_language, customer_actual_name, customer_actual_email, customer_actual_Phone;
+    private DatabaseReference mRootRef, conditionRef;
 
 
     @Override

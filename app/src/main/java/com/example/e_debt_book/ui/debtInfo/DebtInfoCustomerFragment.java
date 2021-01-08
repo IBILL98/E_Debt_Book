@@ -1,66 +1,54 @@
 package com.example.e_debt_book.ui.debtInfo;
 
-import android.content.Context;
-import android.graphics.Bitmap;
+import android.Manifest;
+
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.pdf.PdfDocument;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.print.PrintAttributes;
-import android.print.PrintDocumentAdapter;
-import android.print.PrintJob;
-import android.print.PrintManager;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.util.Printer;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ScrollView;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+
 import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.e_debt_book.R;
 import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Debt;
 import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+
 import java.util.ArrayList;
 
 public class DebtInfoCustomerFragment extends Fragment {
 
 
-    EditText amountDisplay, descriptionDisplay,dueDateDisplay;
-    TextView customerInfoDisplay, dateOFLoanDisplay;
-    Button  printButton;
-    ImageButton changeDueDateButton;
-    ListView listView;
-    DatabaseReference reference;
+    private EditText amountDisplay, descriptionDisplay,dueDateDisplay;
+    private TextView customerInfoDisplay, dateOFLoanDisplay;
+    private Button  printButton;
+    private ImageButton changeDueDateButton;
+    private ListView listView;
+    private DatabaseReference reference;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_debt_info_customer, container, false);
@@ -69,6 +57,7 @@ public class DebtInfoCustomerFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        requestForSpecificPermission();
         customerInfoDisplay = (TextView) getActivity().findViewById(R.id.customerInfoDisplay);
         amountDisplay = (EditText) getActivity().findViewById(R.id.amountDisplay);
         dateOFLoanDisplay = (TextView) getActivity().findViewById(R.id.dateOFLoanDisplay);
@@ -137,7 +126,7 @@ public class DebtInfoCustomerFragment extends Fragment {
                     printedLayout.draw(canvas);
                     document.finishPage(page);
 
-                    String path = "/sdcard/"+debt.getDebtID()+".pdf";
+                    String path = "/sdcard/E-DebtBook/"+debt.getDebtID()+".pdf";
 
                     java.io.File myFile = new java.io.File(path);
 
@@ -205,5 +194,8 @@ public class DebtInfoCustomerFragment extends Fragment {
         changeDueDateButton.setFocusableInTouchMode(false);
     }
 
+    private void requestForSpecificPermission() {
+        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.GET_ACCOUNTS, Manifest.permission.RECEIVE_SMS, Manifest.permission.READ_SMS, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.INTERNET}, 101);
+    }
 
 }

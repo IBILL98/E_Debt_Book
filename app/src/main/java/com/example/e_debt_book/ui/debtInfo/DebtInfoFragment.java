@@ -37,13 +37,13 @@ import java.util.ArrayList;
 public class DebtInfoFragment extends Fragment {
 
 
-    EditText amountDisplay, descriptionDisplay,dueDateDisplay;
-    TextView customerInfoDisplay, dateOFLoanDisplay;
-    Button editButton, deleteButton, printButton,saveButton;
-    ImageButton changeDueDateButton;
-    ListView listView;
+    private EditText amountDisplay, descriptionDisplay,dueDateDisplay;
+    private TextView customerInfoDisplay, dateOFLoanDisplay;
+    private Button editButton, deleteButton, printButton,saveButton;
+    private ImageButton changeDueDateButton;
+    private ListView listView;
 
-    DatabaseReference reference;
+    private DatabaseReference reference;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_debt_info, container, false);

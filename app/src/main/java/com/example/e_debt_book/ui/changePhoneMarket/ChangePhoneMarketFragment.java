@@ -25,9 +25,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ChangePhoneMarketFragment extends Fragment {
-    Button EditMarketPhoneDoneButton,EditMarketPhoneBackButton;
-    EditText EditMarketPhoneOldPhone,EditMarketPhoneNewPhone;
-    DatabaseReference mRootRef, conditionRef;
+    private Button EditMarketPhoneDoneButton,EditMarketPhoneBackButton;
+    private EditText EditMarketPhoneOldPhone,EditMarketPhoneNewPhone;
+    private DatabaseReference mRootRef, conditionRef;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_change_phone_market, container, false);

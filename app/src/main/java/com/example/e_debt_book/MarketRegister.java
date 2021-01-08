@@ -28,14 +28,14 @@ public class MarketRegister extends AppCompatActivity {
 
 
     //Sign up attributes
-    EditText marketRegisterName,marketRegisterEmail,marketRegisterPhone,marketRegisterPassword,marketRegisterIban,marketRegisterAdress;
-    Button marketRegisterBackButton,marketRegisterSignUpButtom;
-    ProgressBar marketRegisterProgressBar;
+    private EditText marketRegisterName,marketRegisterEmail,marketRegisterPhone,marketRegisterPassword,marketRegisterIban,marketRegisterAdress;
+    private Button marketRegisterBackButton,marketRegisterSignUpButtom;
+    private ProgressBar marketRegisterProgressBar;
 
-    //Firebase attributes
-    FirebaseAuth fAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference mRootRef,conditionRef;
+     //Firebase attributes
+    private FirebaseAuth fAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference mRootRef,conditionRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
