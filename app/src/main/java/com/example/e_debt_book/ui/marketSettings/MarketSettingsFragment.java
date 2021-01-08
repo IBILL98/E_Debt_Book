@@ -74,14 +74,14 @@ public class MarketSettingsFragment extends Fragment {
         market_settings_change_language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] listitem = new String[]{"English", "Turkish", "German"};
+                String[] listitem = new String[]{"English", "Deutsch", "Türkçe"};
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
                 int i = 0;
                 TextView t = getActivity().findViewById(R.id.textView7);
                 if (t.getText().equals("Settings")) i = 0;
-                else if (t.getText().equals("Ayarlar")) i = 1;
+                else if (t.getText().equals("Einstellungen")) i = 1;
                 else i = 2;
                 mbuilder.setSingleChoiceItems(listitem , i, new DialogInterface.OnClickListener() {
                     @Override
