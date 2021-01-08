@@ -20,7 +20,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_change_language">Sprache ändern</string>
-    <string name="menu_settings">die Einstellungen</string>
+    <string name="menu_settings">Einstellungen</string>
     <string name="menu_aboutus">Über uns</string>
     <string name="number_verification_enter_your_number_text_view">Geben Sie bitte Ihren Bestätigungscode ein</string>
     <string name="number_verification_send_code_button">Code senden</string>
@@ -68,7 +68,7 @@
     <string name="my_debts">Meine Schulden</string>
     <string name="password">Passwort</string>
     <string name="old_phone_number">Alte Telefonnummer</string>
-    <string name="new_phone_number">New Phone Number</string>
+    <string name="new_phone_number">Neue Telefonnummer</string>
     <string name="iban_number">Iban-Nummer</string>
     <string name="address">Address</string>
     <string name="login">Einloggen</string>
@@ -82,7 +82,7 @@
     <string name="log_out">LOG OUT</string>
     <string name="date">Datum</string>
     <string name="current_phone">Vorhandenes Telefonnummer</string>
-    <string name="new_phone">New Phone</string>
+    <string name="new_phone">Neue Telefonnummer</string>
     <string name="sign_out">Sign Out</string>
     <string name="market_profile_name">Name</string>
     <string name="add_customer_email">Email</string>
