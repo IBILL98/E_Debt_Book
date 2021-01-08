@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -27,6 +28,7 @@ public class MarketMain1 extends AppCompatActivity {
 
     TextView market_name;
     private AppBarConfiguration mAppBarConfiguration;
+    public CoordinatorLayout market_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class MarketMain1 extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view1);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+        market_main = findViewById(R.id.market_main);
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_market_home,R.id.nav_market_profile,R.id.nav_add_customer,R.id.nav_market_settings,R.id.nav_aboutus)
                 .setDrawerLayout(drawer)
