@@ -52,17 +52,17 @@ public class DebtInfoFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        customerInfoDisplay = (TextView) getActivity().findViewById(R.id.customerInfoDisplay);
-        amountDisplay = (EditText)getActivity().findViewById(R.id.amountDisplay);
-        dateOFLoanDisplay = (TextView) getActivity().findViewById(R.id.dateOFLoanDisplay);
-        dueDateDisplay = (EditText) getActivity().findViewById(R.id.dueDateDisplay);
-        descriptionDisplay = (EditText)getActivity().findViewById(R.id.descriptionDisplay);
-        changeDueDateButton =  getActivity().findViewById(R.id.changeDueDateButton);
-        editButton = (Button)getActivity().findViewById(R.id.editButton);
-        deleteButton = (Button)getActivity().findViewById(R.id.deleteButton);
-        printButton = (Button)getActivity().findViewById(R.id.printButton);
-        saveButton = (Button)getActivity().findViewById(R.id.saveButton);
-        listView = (ListView)getActivity().findViewById(R.id.productsList);
+        customerInfoDisplay = getActivity().findViewById(R.id.customerInfoDisplay);
+        amountDisplay = getActivity().findViewById(R.id.amountDisplay);
+        dateOFLoanDisplay = getActivity().findViewById(R.id.dateOFLoanDisplay);
+        dueDateDisplay = getActivity().findViewById(R.id.dueDateDisplay);
+        descriptionDisplay = getActivity().findViewById(R.id.descriptionDisplay);
+        changeDueDateButton = getActivity().findViewById(R.id.changeDueDateButton);
+        editButton = getActivity().findViewById(R.id.editButton);
+        deleteButton = getActivity().findViewById(R.id.deleteButton);
+        printButton = getActivity().findViewById(R.id.printButton);
+        saveButton = getActivity().findViewById(R.id.saveButton);
+        listView = getActivity().findViewById(R.id.productsList);
         LinearLayout content = getActivity().findViewById(R.id.printedLayout);
 
 
@@ -70,7 +70,7 @@ public class DebtInfoFragment extends Fragment {
 
 
         Debt debt = (Debt) getActivity().getIntent().getSerializableExtra("Debt");
-        Market market = (Market) getActivity().getIntent().getSerializableExtra("Market") ;
+        Market market = (Market) getActivity().getIntent().getSerializableExtra("Market");
         Customer customer = (Customer) getActivity().getIntent().getSerializableExtra("Customer");
 
         reference = FirebaseDatabase.getInstance().getReference().child("Debts");

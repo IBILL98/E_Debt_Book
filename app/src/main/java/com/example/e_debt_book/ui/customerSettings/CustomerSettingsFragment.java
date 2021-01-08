@@ -43,6 +43,8 @@ public class CustomerSettingsFragment extends Fragment {
 
     @Override
     public void onStart() {
+        TextView t = getActivity().findViewById(R.id.textView77);
+        System.out.println("TTTTTTTTTEEEEEEEEEEEEXXXXXXXXXXXXXTTTTTTTTTTTT" + t.getText());
         super.onStart();
 
         Customer customer = (Customer) getActivity().getIntent().getSerializableExtra("Customer");
@@ -66,15 +68,16 @@ public class CustomerSettingsFragment extends Fragment {
         customer_settings_change_language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] listitem = new String[]{"English", "Turkish", "German"};
+                String[] listitem = new String[]{"English", "German", "Turkish"};
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
                 int i = 0;
                 TextView t = getActivity().findViewById(R.id.textView77);
+                System.out.println(t.getText());
                 if (t.getText().equals("Settings")) i = 0;
-                else if (t.getText().equals("Ayarlar")) i = 1;
-                else i = 2;
+                else if (t.getText().equals("Einstellungen")) i = 2;
+                else i = 3;
                 mbuilder.setSingleChoiceItems(listitem, i, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

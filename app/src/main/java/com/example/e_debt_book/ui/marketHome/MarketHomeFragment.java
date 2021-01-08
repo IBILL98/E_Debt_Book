@@ -210,13 +210,13 @@ public class MarketHomeFragment extends Fragment {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.my_listview, parent, false);
             }
             // Lookup view for data population
-            TextView fullname = (TextView) convertView.findViewById(R.id.fullName);
-            TextView amount = (TextView) convertView.findViewById(R.id.amount);
-            TextView phone = (TextView) convertView.findViewById(R.id.phone);
-            TextView date = (TextView) convertView.findViewById(R.id.date);
+            TextView fullname = convertView.findViewById(R.id.fullName);
+            TextView amount = convertView.findViewById(R.id.amount);
+            TextView phone = convertView.findViewById(R.id.phone);
+            TextView date = convertView.findViewById(R.id.date);
             // Populate the data into the template view using the data object
             phone.setText(debt.getCustomerPhone());
-            amount.setText("Amount : "+debt.getAmount());
+            amount.setText("Amount : " + debt.getAmount());
             date.setText(debt.getDateOfLoan());
             DatabaseReference databaseReferenc = FirebaseDatabase.getInstance().getReference();
 

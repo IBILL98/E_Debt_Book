@@ -79,7 +79,7 @@ public class MarketSettingsFragment extends Fragment {
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
                 int i = 0;
-                TextView t = getActivity().findViewById(R.id.choosed_language);
+                TextView t = getActivity().findViewById(R.id.textView7);
                 if (t.getText().equals("Settings")) i = 0;
                 else if (t.getText().equals("Ayarlar")) i = 1;
                 else i = 2;

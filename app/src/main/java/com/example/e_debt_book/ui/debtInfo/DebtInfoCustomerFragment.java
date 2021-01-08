@@ -1,6 +1,5 @@
 package com.example.e_debt_book.ui.debtInfo;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,26 +11,19 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.e_debt_book.R;
 import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Debt;
 import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 public class DebtInfoCustomerFragment extends Fragment {
@@ -52,14 +44,14 @@ public class DebtInfoCustomerFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        customerInfoDisplay = (TextView) getActivity().findViewById(R.id.customerInfoDisplay);
-        amountDisplay = (EditText)getActivity().findViewById(R.id.amountDisplay);
-        dateOFLoanDisplay = (TextView) getActivity().findViewById(R.id.dateOFLoanDisplay);
-        dueDateDisplay = (EditText) getActivity().findViewById(R.id.dueDateDisplay);
-        descriptionDisplay = (EditText)getActivity().findViewById(R.id.descriptionDisplay);
-        changeDueDateButton =  getActivity().findViewById(R.id.changeDueDateButton);
-        printButton = (Button)getActivity().findViewById(R.id.printButton);
-        listView = (ListView)getActivity().findViewById(R.id.productsList);
+        customerInfoDisplay = getActivity().findViewById(R.id.customerInfoDisplay);
+        amountDisplay = getActivity().findViewById(R.id.amountDisplay);
+        dateOFLoanDisplay = getActivity().findViewById(R.id.dateOFLoanDisplay);
+        dueDateDisplay = getActivity().findViewById(R.id.dueDateDisplay);
+        descriptionDisplay = getActivity().findViewById(R.id.descriptionDisplay);
+        changeDueDateButton = getActivity().findViewById(R.id.changeDueDateButton);
+        printButton = getActivity().findViewById(R.id.printButton);
+        listView = getActivity().findViewById(R.id.productsList);
         LinearLayout content = getActivity().findViewById(R.id.printedLayout);
 
 
@@ -67,7 +59,7 @@ public class DebtInfoCustomerFragment extends Fragment {
 
 
         Debt debt = (Debt) getActivity().getIntent().getSerializableExtra("Debt");
-        Market market = (Market) getActivity().getIntent().getSerializableExtra("Market") ;
+        Market market = (Market) getActivity().getIntent().getSerializableExtra("Market");
         Customer customer = (Customer) getActivity().getIntent().getSerializableExtra("Customer");
 
         reference = FirebaseDatabase.getInstance().getReference().child("Debts");
