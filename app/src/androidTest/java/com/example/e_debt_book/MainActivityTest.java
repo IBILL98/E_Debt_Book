@@ -43,12 +43,16 @@ public class MainActivityTest extends TestCase {
         onView(withId(R.id.marketLoginPassword)).perform(typeText("kkkllooo"));
         onView(withId(R.id.marketLoginButton)).check(matches(isDisplayed()));
         onView(withId(R.id.marketLoginButton)).perform(click());
-        //onView(withId(R.id.drawer_layout)).check(matches(isDisplayed()));
         //ActivityScenario<NumberVerification> activityScenario1 = ActivityScenario.launch(NumberVerification.class);
         //onView(withId(R.id.verificationLaterButton)).check(matches(isDisplayed()));
         //onView(withId(R.id.verificationLaterButton)).perform(click());
         ActivityScenario<MarketMain1> marketMain1ActivityScenario = ActivityScenario.launch(MarketMain1.class);
         onView(withId(R.id.addNewDebtButton2)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void test_addNewDebt() {
+
     }
 
     @Test
