@@ -34,19 +34,19 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-public class DebtInfoFragment extends Fragment {
+public class DebtInfoCustomerFragment extends Fragment {
 
 
     EditText amountDisplay, descriptionDisplay,dueDateDisplay;
     TextView customerInfoDisplay, dateOFLoanDisplay;
-    Button editButton, deleteButton, printButton,saveButton;
+    Button  printButton;
     ImageButton changeDueDateButton;
     ListView listView;
 
     DatabaseReference reference;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_debt_info, container, false);
+        return inflater.inflate(R.layout.fragment_debt_info_customer, container, false);
     }
 
     @Override
@@ -58,10 +58,7 @@ public class DebtInfoFragment extends Fragment {
         dueDateDisplay = (EditText) getActivity().findViewById(R.id.dueDateDisplay);
         descriptionDisplay = (EditText)getActivity().findViewById(R.id.descriptionDisplay);
         changeDueDateButton =  getActivity().findViewById(R.id.changeDueDateButton);
-        editButton = (Button)getActivity().findViewById(R.id.editButton);
-        deleteButton = (Button)getActivity().findViewById(R.id.deleteButton);
         printButton = (Button)getActivity().findViewById(R.id.printButton);
-        saveButton = (Button)getActivity().findViewById(R.id.saveButton);
         listView = (ListView)getActivity().findViewById(R.id.productsList);
         LinearLayout content = getActivity().findViewById(R.id.printedLayout);
 
@@ -95,17 +92,7 @@ public class DebtInfoFragment extends Fragment {
         builder.setTitleText("Select A Date");
         MaterialDatePicker materialDatePicker = builder.build();
 
-        changeDueDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (saveButton.getVisibility() == View.VISIBLE){
-                    materialDatePicker.show(getActivity().getSupportFragmentManager(),"Date_Picker");
-                }else {
-                    Toast.makeText(getActivity(), "Press on edit Button to enable editing", Toast.LENGTH_LONG).show();
 
-                }
-            }
-        });
 
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
@@ -114,71 +101,13 @@ public class DebtInfoFragment extends Fragment {
             }
         });
 
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                seteditable();
-            }
-        });
-
-
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String debtAmount = amountDisplay.getText().toString();
-                String dueDate = dueDateDisplay.getText().toString();
-                String description = descriptionDisplay.getText().toString();
-                debt.setDueDate(dueDate);
-                debt.setAmount(debtAmount);
-                debt.setDescription(description);
-                reference.child(debt.getDebtID()).setValue(debt);
-                Toast.makeText(getActivity(), "Debt has been Updated", Toast.LENGTH_LONG).show();
-                setuneditable();
-            }
-        });
-
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                reference.child(debt.getDebtID()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getActivity(), "Debt removed successfully!", Toast.LENGTH_LONG).show();
-                            NavHostFragment.findNavController(DebtInfoFragment.this).navigate(R.id.action_debt_info_to_nav_market_home);
-                        }
-                    }
-                });
-            }
-        });
 
 
         printButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                content.setDrawingCacheEnabled(true);
-                Bitmap bitmap = content.getDrawingCache();
-                File file,f = null;
 
-                    if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
-                {
-                    file =new File(android.os.Environment.getExternalStorageDirectory(),"TTImages_cache");
-                    if(!file.exists())
-                    {
-                        file.mkdirs();
 
-                    }
-                    f = new File(file.getAbsolutePath()+file+ "filename"+".png");
-                }
-                FileOutputStream ostream = new FileOutputStream(f);
-                bitmap.compress(Bitmap.CompressFormat.PNG, 10, ostream);
-                ostream.close();
-
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
 
 
 
@@ -193,7 +122,6 @@ public class DebtInfoFragment extends Fragment {
 
     public void seteditable(){
         printButton.setVisibility(View.GONE);
-        saveButton.setVisibility(View.VISIBLE);
         amountDisplay.setClickable(true);
         amountDisplay.setFocusable(true);
         amountDisplay.setFocusableInTouchMode(true);
@@ -203,10 +131,12 @@ public class DebtInfoFragment extends Fragment {
         descriptionDisplay.setClickable(true);
         descriptionDisplay.setFocusable(true);
         descriptionDisplay.setFocusableInTouchMode(true);
+        changeDueDateButton.setClickable(true);
+        changeDueDateButton.setFocusable(true);
+        changeDueDateButton.setFocusableInTouchMode(true);
     }
 
     public void setuneditable(){
-        saveButton.setVisibility(View.GONE);
         printButton.setVisibility(View.VISIBLE);
         amountDisplay.setClickable(false);
         amountDisplay.setFocusable(false);
@@ -217,6 +147,9 @@ public class DebtInfoFragment extends Fragment {
         descriptionDisplay.setClickable(false);
         descriptionDisplay.setFocusable(false);
         descriptionDisplay.setFocusableInTouchMode(false);
+        changeDueDateButton.setClickable(false);
+        changeDueDateButton.setFocusable(false);
+        changeDueDateButton.setFocusableInTouchMode(false);
     }
 
 

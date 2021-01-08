@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/printedLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
@@ -207,9 +208,9 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="10dp"
                 android:text="@string/products_list"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black" />
+                android:textStyle="bold" />
 
             <ListView
                 android:id="@+id/productsList"
@@ -235,36 +236,6 @@
                 android:paddingEnd="10dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="10dp">
-
-                <Button
-                    android:id="@+id/editButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginBottom="0dp"
-                    android:layout_weight="1"
-                    android:background="#005B9F"
-                    android:text="@string/edit"
-                    android:textColor="@android:color/white" />
-
-                <Button
-                    android:id="@+id/deleteButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginBottom="0dp"
-                    android:layout_weight="1"
-                    android:background="#005B9F"
-                    android:text="@string/delete"
-                    android:textColor="@android:color/white" />
 
                 <Button
                     android:id="@+id/printButton"

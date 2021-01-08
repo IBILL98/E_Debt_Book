@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".addNewDebt" />
         <activity android:name=".NumberVerification" />
         <activity android:name=".MarketRegister" />
         <activity android:name=".CustomerRegister" />
@@ -30,5 +29,7 @@
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
 </manifest>
