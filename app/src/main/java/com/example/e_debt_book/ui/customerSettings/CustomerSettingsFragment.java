@@ -66,7 +66,7 @@ public class CustomerSettingsFragment extends Fragment {
         customer_settings_change_language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] listitem = new String[]{"English", "Turkish"};
+                String[] listitem = new String[]{"English", "Turkish", "German"};
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
@@ -81,8 +81,10 @@ public class CustomerSettingsFragment extends Fragment {
                         customer_choosed_language.setText(listitem[i]);
                         if (i == 0) {
                             setLocale("en");
-                        } else {
+                        } else if (i == 1) {
                             setLocale("tr");
+                        } else {
+                            setLocale("de");
                         }
                         dialogInterface.dismiss();
                         Intent intent = new Intent(getActivity(), CustomerMain.class);

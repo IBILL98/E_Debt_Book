@@ -108,7 +108,9 @@
     <string name="customer_no_points">Müşteri</string>
     <string name="new_email">Yeni Email</string>
     <string name="debts_of_a_customer">Borçlar listesi</string>
-    <string name="the_selected_language">Türkçe</string>>
+    <string name="the_selected_language">Türkçe</string>
+    <string name="Turkish">Türkçe</string>
+    <string name="German">Almanca</string>>
 
 
 </resources>
