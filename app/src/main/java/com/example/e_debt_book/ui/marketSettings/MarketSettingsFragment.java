@@ -74,7 +74,7 @@ public class MarketSettingsFragment extends Fragment {
         market_settings_change_language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] listitem = new String[]{"English", "Deutsch", "Türkçe"};
+                String[] listitem = new String[]{"English", "Deutsch", "Türkçe", "العربية"};
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
