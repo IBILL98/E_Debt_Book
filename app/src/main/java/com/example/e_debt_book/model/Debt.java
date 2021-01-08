@@ -1,5 +1,7 @@
 package com.example.e_debt_book.model;
 
+import android.widget.EditText;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -27,6 +29,17 @@ public class Debt  implements Serializable {
     }
 
     public Debt(String toString, String toString1, String toString2, String toString3, String toString4, String toString5) {
+    }
+
+    public Debt(String description, String amount) {
+        this.amount = amount;
+        this.description = description;
+
+    }
+
+    public Debt(EditText descriptionInput, EditText loanAmountInput) {
+        this.amount = amount;
+        this.description = description;
     }
 
     public String getCustomerPhone() {
