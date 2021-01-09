@@ -35,7 +35,6 @@ public class CustomerHomeFragment extends Fragment {
 
     private CustomerHomeViewModel customerHomeViewModel;
 
-    private FloatingActionButton addNewDebtButton;
     private DatabaseReference mRootRef, conditionRef;
     private ListView debtsListOfaCustomer;
     private ArrayList<Debt> arrayList = new ArrayList<>();
@@ -58,10 +57,12 @@ public class CustomerHomeFragment extends Fragment {
         //a text view that writes: debts of a customer
         TitleTextView = getActivity().findViewById(R.id.textViewUpCustomerDebtsList);
         Customer customer = (Customer) getActivity().getIntent().getSerializableExtra("Customer");
-        CustomerHomeFragment.MyAdapter arrayAdapter = new CustomerHomeFragment.MyAdapter(getActivity(),arrayList);
+
+        MyAdapter arrayAdapter = new CustomerHomeFragment.MyAdapter(getActivity(),arrayList);
+
         debtsListOfaCustomer.setAdapter(arrayAdapter);
         conditionRef = mRootRef.child("Debts");
-        Query query = conditionRef.orderByChild("marketPhone").equalTo(customer.getPhone());
+        Query query = conditionRef.orderByChild("customerPhone").equalTo(customer.getPhone());
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -117,6 +118,7 @@ public class CustomerHomeFragment extends Fragment {
     private interface MarketCallback {
         void marketOnCallback(Market market);
     }
+
     public void getMarket(String phone, MarketCallback marketCallback) {
         DatabaseReference customerRef = mRootRef.child("Customers");
         Market market = new Market();
@@ -168,10 +170,12 @@ public class CustomerHomeFragment extends Fragment {
         return itemlist;
     }
 
-    public class MyAdapter extends ArrayAdapter<Debt> {
+    private class MyAdapter extends ArrayAdapter<Debt> {
+
         public MyAdapter(Context context, ArrayList<Debt> debts){
             super(context, 0, debts);
         }
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             // Get the data item for this position
