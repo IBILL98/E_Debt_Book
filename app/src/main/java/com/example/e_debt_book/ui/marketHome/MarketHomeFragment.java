@@ -39,7 +39,7 @@ public class MarketHomeFragment extends Fragment {
     private FloatingActionButton addNewDebtButton;
     private DatabaseReference mRootRef, conditionRef;
     private ListView listView;
-    private final ArrayList<Debt> arrayList = new ArrayList<>();
+    private ArrayList<Debt> arrayList = new ArrayList<>();
     private float totallend;
     private TextView textView2;
 
