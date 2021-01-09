@@ -76,7 +76,7 @@
                 android:id="@+id/imageView97"
                 android:layout_width="74dp"
                 android:layout_height="73dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="60dp"
                 android:contentDescription="TODO"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
