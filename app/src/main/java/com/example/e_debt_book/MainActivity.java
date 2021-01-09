@@ -1,21 +1,16 @@
 package com.example.e_debt_book;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.UserHandle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
 
 import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Market;
@@ -33,7 +28,6 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private boolean firstTime;
 
     ////Main screen Choice attributes
     private ConstraintLayout mainChoice;
@@ -61,10 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    private TextView textView;
-    private Button who;
-    private String text;
-    private SharedPreferences mPreferences;
 
     DatabaseReference mRootRef, conditionRef;
 
@@ -103,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         marketLoginPassword = findViewById(R.id.marketLoginPassword);
 
 
+        ///when the user clicks on the customer button to pick his usertype
         mainCustomertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        ///when the user clicks on the market button to pick his usertype
         mainMarketButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+//clicking on the back button in market login screen
         marketBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//clicking on the back button in customer login screen
         customerBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+///when clicking on the signup button as a customer
         customertSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+///when clicking on the signup button as a market
         marketSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,14 +152,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+///Customer Log in Function
         customerLoginButton.setOnClickListener(new View.OnClickListener() {
-            final Customer customer = new Customer(customerLoginEmail.toString());
 
             @Override
             public void onClick(View v) {
                 String email = customerLoginEmail.getText().toString().trim().toLowerCase();
                 String password = customerLoginPassword.getText().toString().trim();
+
+                //checking if the login infos arent empty and they apply all the conditions
                 if (TextUtils.isEmpty(email)) {
                     customerLoginEmail.setError("Email is Required.");
                     return;
@@ -181,22 +176,25 @@ public class MainActivity extends AppCompatActivity {
 
                 mRootRef = FirebaseDatabase.getInstance().getReference();
 
-
+/////Authentication with Firebase to login with email and password
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Customer loginUser = new Customer();
+                            ///getting the customer information from the database
                             getCustomer(email,new MyCallback() {
                                 @Override
                                 public void onCallback(Customer customer) {
+                                    //creating the Customer
                                     loginUser.setStatus(customer.getStatus());
                                     loginUser.setLastname(customer.getLastname());
                                     loginUser.setName(customer.getName());
                                     loginUser.setEmail(customer.getEmail());
                                     loginUser.setPhone(customer.getPhone());
 
+                                    //checking if the phone number is verified 0 for false and 1 for true
                                     if (loginUser.getStatus() == 0) {
                                         Intent i = new Intent(MainActivity.this, NumberVerification.class);
                                         Bundle b = new Bundle();
@@ -217,17 +215,19 @@ public class MainActivity extends AppCompatActivity {
                             });
 
 
+                                //if the user isnt a customer we will check if he is a market user
                             if (loginUser.getEmail() == null){
                                 getMarket(email, new MyCallbackMarket() {
                                     @Override
                                     public void onCallback(Market market) {
+                                        //if the user is a market
                                         if (market.getEmail() != null){
-                                            System.out.println("///////////////////////////////////////////////////////////////////////\n///////////////////////////////////////////////////////");
-                                            System.out.println(market.getEmail());
                                             Toast.makeText(MainActivity.this, "Please Make Sure Of Your User Type",
                                                     Toast.LENGTH_SHORT).show();
                                             updateUI(null);
                                         }else{
+                                            //if the user isnt available at all a market
+
                                             Toast.makeText(MainActivity.this, "Authentication failed.",
                                                     Toast.LENGTH_SHORT).show();
                                             updateUI(null);
@@ -266,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = marketLoginEmail.getText().toString().trim().toLowerCase();
                 String password = marketLoginPassword.getText().toString().trim();
+                //checking if the login infos arent empty and they apply all the conditions
                 if (TextUtils.isEmpty(email)) {
                     customerLoginEmail.setError("Email is Required.");
                     return;
@@ -281,12 +282,15 @@ public class MainActivity extends AppCompatActivity {
 
                 mRootRef = FirebaseDatabase.getInstance().getReference();
 
+/////Authentication with Firebase to login with email and password
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Market loginUser = new Market();
+                                    ///getting the market information from the database
+
                                     getMarket(email,new MyCallbackMarket() {
                                         @Override
                                         public void onCallback(Market market) {
@@ -297,6 +301,8 @@ public class MainActivity extends AppCompatActivity {
                                             loginUser.setAdress(market.getAdress());
                                             loginUser.setStatus(market.getStatus());
 
+
+                                            //checking if the phone number is verified 0 for false and 1 for true
                                             if (loginUser.getStatus() == 0) {
                                                 Intent i = new Intent(MainActivity.this, NumberVerification.class);
                                                 Bundle b = new Bundle();
@@ -316,17 +322,19 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                     });
 
-
+                                    //if the user is a customer
                                     if (loginUser.getEmail() == null){
                                         getCustomer(email, new MyCallback() {
                                             @Override
                                             public void onCallback(Customer customer) {
+                                                //if the user is a customer
                                                 if (customer.getEmail() != null){
                                                     System.out.println("///////////////////////////////////////////////////////////////////////\n///////////////////////////////////////////////////////");
                                                     System.out.println(customer.getEmail());
                                                     Toast.makeText(MainActivity.this, "Please Make Sure Of Your User Type",
                                                             Toast.LENGTH_SHORT).show();
                                                     updateUI(null);
+                                                    //if the user isnt available at all a Customer
                                                 }else{
                                                     Toast.makeText(MainActivity.this, "Authentication failed.",
                                                             Toast.LENGTH_SHORT).show();
@@ -376,6 +384,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    ///getting customer from the database and give it back to call back interface
     public void getCustomer(String email,MyCallback myCallback) {
 
         Customer loginUser1 = new Customer();
@@ -404,6 +413,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    ///getting Market from the database and give it back to call back interface
     public Market getMarket(String email, MyCallbackMarket myCallbackMarket) {
         Market marketlogin = new Market();
 
@@ -436,9 +446,13 @@ public class MainActivity extends AppCompatActivity {
         return marketlogin;
     }
 
+    //the Market interface
     private interface MyCallbackMarket {
         void onCallback(Market market);
     }
+
+
+    //the Customer interface
     private interface MyCallback {
         void onCallback(Customer customer);
     }
