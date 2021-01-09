@@ -113,6 +113,9 @@
     <string name="the_selected_language">English</string>
     <string name="Turkish">Turkish</string>
     <string name="German">German</string>
-    <string name="text_of_about_us">text of about us</string>>
-
+    <string name="text_of_about_us_1">Not everywhere in the world people have access to proper banking services, not all stores and companies can afford the bank quotes for commissions-especially small and local companies, for using the POS machines, etc., and banks do not give everyone credit cards that easily! But fortunately, the internet service is spreading very exponentially, so instead of using the old-style debt books; a note book that contains details of the debts of a person to the store, manually, where a small flaw, a little dot could make a huge difference and even possibly open a way for mistrust and problems in local societies.
+    </string>>
+    <string name="text_of_about_us_2"> And from this approach came our inspiration; to provide a digitalized, easy-to-use platform "application" that helps both market owners to organize the debt within a digital platform in a modern way in which, all the records are kept and available at the same time for both the costumer and the market owners -from anywhere and at any time!- , ease the process, save time and resources. Simply organize and manage everything with transparency and efficiency, since the phone is a device that almost everyone has, and you do not have to have many books! It also allows costumers of a store "users" to access the details of their debts to each store, and choose a method to pay, notify them for upcoming paying dates, and also make them able to pay them via some defined easier and cheaper methods.  </string>
+    >
+</string>
 </resources>

@@ -188,6 +188,7 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
         final int year2 = calendar.get(Calendar.YEAR);
         final int month2 = calendar.get(Calendar.MONTH);
         final int day2 = calendar.get(Calendar.DAY_OF_MONTH);
+
         dueDateSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -211,6 +212,7 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
         ArrayList<Item> itemList = new ArrayList<>();
         final ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, displayProductsList);
         productsList.setAdapter(mAdapter);
+        //adding a product's name and price to the loan's details
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -234,7 +236,7 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                 itemPriceInput.setText("");
             }
         });
-
+        //adding the debt in the database and saving
         addDebtButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -245,18 +247,23 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                 String dateOfLoan = dateOfLoanInput.getText().toString();
                 String dueDate = dueDateInput.getText().toString();
                 List<Item> finalItemList = itemList;
+                //the customer Phone is important
+
                 if (TextUtils.isEmpty(customerPhone)) {
                     loanAmountInput.setError("customer Phone is Required.");
                     return;
                 }
+                //the amount is important
                 if (TextUtils.isEmpty(amount)) {
                     loanAmountInput.setError("Loan amount is Required.");
                     return;
                 }
+                //the date Of Loan is important
                 if (TextUtils.isEmpty(dateOfLoan)) {
                     dateOfLoanInput.setError("Date Of Loan is Required.");
                     return;
                 }
+                //the due date is important
                 if (TextUtils.isEmpty(dueDate)) {
                     dueDateInput.setError("Due date is Required.");
                     return;
