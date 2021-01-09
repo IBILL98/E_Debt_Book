@@ -79,7 +79,7 @@ public class CustomerRegister extends AppCompatActivity {
         customerRegisterSignUpButtom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = customerRegisterEmail.getText().toString().trim();
+                String email = customerRegisterEmail.getText().toString().trim().toLowerCase();
                 String password = customerRegisterPassword.getText().toString().trim();
                 String phone = customerRegisterPhone.getText().toString().trim();
 

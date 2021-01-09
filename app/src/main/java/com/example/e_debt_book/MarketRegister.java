@@ -75,7 +75,7 @@ public class MarketRegister extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = marketRegisterName.getText().toString().trim();
-                String email = marketRegisterEmail.getText().toString().trim();
+                String email = marketRegisterEmail.getText().toString().trim().toLowerCase();
                 String phone = marketRegisterPhone.getText().toString().trim();
                 String password = marketRegisterPassword.getText().toString().trim();
                 String iban = marketRegisterIban.getText().toString().trim();

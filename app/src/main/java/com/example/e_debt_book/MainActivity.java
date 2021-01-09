@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                String email = customerLoginEmail.getText().toString().trim();
+                String email = customerLoginEmail.getText().toString().trim().toLowerCase();
                 String password = customerLoginPassword.getText().toString().trim();
                 if (TextUtils.isEmpty(email)) {
                     customerLoginEmail.setError("Email is Required.");
@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
         marketLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = marketLoginEmail.getText().toString().trim();
+                String email = marketLoginEmail.getText().toString().trim().toLowerCase();
                 String password = marketLoginPassword.getText().toString().trim();
                 if (TextUtils.isEmpty(email)) {
                     customerLoginEmail.setError("Email is Required.");
