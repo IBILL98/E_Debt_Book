@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">E_Debt_Book</string>
+    <string name="app_name">دفتر الديون الالكتروني</string>
     <string name="sign_up">حساب جديد</string>
     <string name="back">رجوع</string>
     <string name="title_activity_customer_main">الصفحة الرئيسية للزبون</string>
@@ -111,4 +111,5 @@
     <string name="Turkish">التركية</string>
     <string name="user_infos">معلومات المستخدم</string>
     <string name="who">من</string>
+    <string name="text_of_about_us">text of about us</string>
 </resources>

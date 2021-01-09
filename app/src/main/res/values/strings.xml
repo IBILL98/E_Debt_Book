@@ -112,6 +112,7 @@
     <string name="debts_of_a_customer">list of debts </string>
     <string name="the_selected_language">English</string>
     <string name="Turkish">Turkish</string>
-    <string name="German">German</string>>
+    <string name="German">German</string>
+    <string name="text_of_about_us">text of about us</string>>
 
 </resources>

@@ -22,18 +22,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-
 import com.example.e_debt_book.R;
-
 import com.example.e_debt_book.model.Customer;
 import com.example.e_debt_book.model.Debt;
 import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -249,24 +245,29 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                 String dateOfLoan = dateOfLoanInput.getText().toString();
                 String dueDate = dueDateInput.getText().toString();
                 List<Item> finalItemList = itemList;
-                if(TextUtils.isEmpty(customerPhone)){
+                if (TextUtils.isEmpty(customerPhone)) {
                     loanAmountInput.setError("customer Phone is Required.");
                     return;
-                }if(TextUtils.isEmpty(amount)){
+                }
+                if (TextUtils.isEmpty(amount)) {
                     loanAmountInput.setError("Loan amount is Required.");
                     return;
                 }
-                if(TextUtils.isEmpty(dateOfLoan)){
+                if (TextUtils.isEmpty(dateOfLoan)) {
                     dateOfLoanInput.setError("Date Of Loan is Required.");
                     return;
                 }
-                if(TextUtils.isEmpty(dueDate)){
+                if (TextUtils.isEmpty(dueDate)) {
                     dueDateInput.setError("Due date is Required.");
                     return;
                 }
+                //the amount needs to be as much as the total value of the listed item's value
+                float total = 0;
+                for (Item i : itemList) total = total + Float.parseFloat(i.getPrice());
+                if (total != Float.parseFloat(amount)) return;
 
                 String id = reference.push().getKey();
-                Debt debt = new Debt ();
+                Debt debt = new Debt();
                 debt.setCustomerPhone(customerPhone);
                 debt.setMarketPhone(marketPhone);
                 debt.setAmount(amount);
