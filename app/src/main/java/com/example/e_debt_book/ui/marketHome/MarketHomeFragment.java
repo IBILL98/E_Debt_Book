@@ -39,7 +39,7 @@ public class MarketHomeFragment extends Fragment {
     private FloatingActionButton addNewDebtButton;
     private DatabaseReference mRootRef, conditionRef;
     private ListView listView;
-    private ArrayList<Debt> arrayList = new ArrayList<>();
+    private final ArrayList<Debt> arrayList = new ArrayList<>();
     private float totallend;
     private TextView textView2;
 
@@ -112,10 +112,8 @@ public class MarketHomeFragment extends Fragment {
                         intent.putExtras(bundle);
 
                         NavHostFragment.findNavController(MarketHomeFragment.this).navigate(R.id.action_nav_market_home_to_debt_info);
-
                     }
                 });
-
             }
         });
 
