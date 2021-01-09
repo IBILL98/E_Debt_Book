@@ -153,7 +153,6 @@ public class MarketSettingsFragment extends Fragment {
                         dialog.cancel();
                     }
                 });
-
                 builder.show();
             }
         });
@@ -165,8 +164,6 @@ public class MarketSettingsFragment extends Fragment {
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 layoutParams.gravity = Gravity.CENTER;
                 LinearLayout linearLayout = new LinearLayout(getActivity());
-
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Change Name");
                 builder.setIcon(R.drawable.account_icon1);
@@ -175,7 +172,6 @@ public class MarketSettingsFragment extends Fragment {
                 builder.setMessage(" Your Actuall Name is " + actual_name.getText() + "\n\n Please Entre Your New Name");
                 new_Name.setHint("New Adress");
                 builder.setView(linearLayout);
-
                 new_Name.setLayoutParams(layoutParams);
                 linearLayout.addView(new_Name);
                 linearLayout.setPadding(60, 10, 60, 0);
@@ -235,12 +231,12 @@ public class MarketSettingsFragment extends Fragment {
 
     // detecting which language is set currently
     private int whichLanguageIsRunning() {
+        // it works through looking which is the word that's shown at the "Settings" Text view
         TextView t = getActivity().findViewById(R.id.textView7);
         if (t.getText().equals("Settings")) return 0;
         else if (t.getText().equals("Einstellungen")) return 1;
         else if (t.getText().equals("Ayarlar")) return 2;
         else return 3;
-
     }
 
 }

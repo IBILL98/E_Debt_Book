@@ -34,7 +34,7 @@ import java.util.ArrayList;
 
 
 public class MarketHomeFragment extends Fragment {
-
+    // declaring the necessary attributes
 
     private FloatingActionButton addNewDebtButton;
     private DatabaseReference mRootRef, conditionRef;
@@ -53,10 +53,9 @@ public class MarketHomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
         //setContentView(R.layout.activity_my_customers);
-
         arrayList.clear();
+        //amount of the total lends
         totallend = 0;
-
         mRootRef = FirebaseDatabase.getInstance().getReference();
         listView = getActivity().findViewById(R.id.debtsList);
         textView2 = getActivity().findViewById(R.id.textView2);
@@ -85,8 +84,6 @@ public class MarketHomeFragment extends Fragment {
                         }
                     });
                 }
-                TextView loanAmountInput = getActivity().findViewById(R.id.loanAmountInput);
-                //loanAmountInput.setText(totallend);
                 textView2.setText(textView2.getText().toString() + " " + totallend);
             }
 
@@ -137,17 +134,13 @@ public class MarketHomeFragment extends Fragment {
         conditionRefitems.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 for (DataSnapshot data : snapshot.getChildren()) {
                     Item item = data.getValue(Item.class);
                     Item item1 = new Item(item.getName(), item.getPrice());
-                    TextView loanAmountInput = getActivity().findViewById(R.id.loanAmountInput);
-
                     itemlist.add(item1);
                 }
                 myCallback.onCallback(itemlist);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
