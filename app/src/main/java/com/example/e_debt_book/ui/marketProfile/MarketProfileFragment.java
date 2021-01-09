@@ -30,6 +30,7 @@ public class MarketProfileFragment extends Fragment {
     public void onStart() {
         super.onStart();
         Market market = (Market) getActivity().getIntent().getSerializableExtra("Market");
+////Just getting the Market INfrometion from the previous activity and show it in the profile
 
 
         editInfoName = getActivity().findViewById(R.id.editInfoName);
@@ -41,9 +42,31 @@ public class MarketProfileFragment extends Fragment {
 
         editInfoName.setText(market.getName());
         editInfoEmail.setText(market.getEmail());
-        editInfoPassword.setText(market.getPassword());
         editInfoIban.setText(market.getIban());
         editInfoAdress.setText(market.getAdress());
+
+
+
+        ///make them uneditable as well
+        editInfoName.setClickable(false);
+        editInfoName.setFocusable(false);
+        editInfoName.setFocusableInTouchMode(false);
+
+        editInfoEmail.setClickable(false);
+        editInfoEmail.setFocusable(false);
+        editInfoEmail.setFocusableInTouchMode(false);
+
+        editInfoPassword.setClickable(false);
+        editInfoPassword.setFocusable(false);
+        editInfoPassword.setFocusableInTouchMode(false);
+
+        editInfoIban.setClickable(false);
+        editInfoIban.setFocusable(false);
+        editInfoIban.setFocusableInTouchMode(false);
+
+        editInfoAdress.setClickable(false);
+        editInfoAdress.setFocusable(false);
+        editInfoAdress.setFocusableInTouchMode(false);
 
 
     }

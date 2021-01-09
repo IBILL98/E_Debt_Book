@@ -35,7 +35,7 @@ import java.util.ArrayList;
 
 public class MarketHomeFragment extends Fragment {
 
-
+///setting the attributes
     private FloatingActionButton addNewDebtButton;
     private DatabaseReference mRootRef, conditionRef;
     private ListView listView;
@@ -66,6 +66,7 @@ public class MarketHomeFragment extends Fragment {
         listView.setAdapter(arrayAdapter);
 
 
+        //getting the debts infromations from the database to fill it in the home screen
         conditionRef = mRootRef.child("Debts");
         Query query = conditionRef.orderByChild("marketPhone").equalTo(market.getPhone());
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -85,6 +86,7 @@ public class MarketHomeFragment extends Fragment {
                         }
                     });
                 }
+                //calculating the full amount of debts and put it int the textview
                 textView2.setText(textView2.getText().toString() + " " + totallend);
             }
 
@@ -95,6 +97,7 @@ public class MarketHomeFragment extends Fragment {
         });
 
 
+        //when clicking on an item from the debtslistView we will move to its information
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -112,13 +115,13 @@ public class MarketHomeFragment extends Fragment {
                         intent.putExtras(bundle);
 
                         NavHostFragment.findNavController(MarketHomeFragment.this).navigate(R.id.action_nav_market_home_to_debt_info);
-
                     }
                 });
-
             }
         });
 
+
+//add new Debt Button
         addNewDebtButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,6 +135,7 @@ public class MarketHomeFragment extends Fragment {
         });
     }
 
+    //getting the itemList of specific Debt from the database and give it back to the interface
     public ArrayList<Item> getitems(String id, MyCallback myCallback) {
         ArrayList<Item> itemlist = new ArrayList<>();
         DatabaseReference conditionRefitems = mRootRef.child("Debts").child(id).child("itemList");
@@ -155,6 +159,7 @@ public class MarketHomeFragment extends Fragment {
     }
 
 
+    //getting the customer from the database from its number and give it back to the interface
     public void getCustomer(String phone, CustomerCallback customerCallback) {
         DatabaseReference customerRef = mRootRef.child("Customers");
         Customer customer = new Customer();
@@ -194,8 +199,8 @@ public class MarketHomeFragment extends Fragment {
     }
 
 
-
-    public class MyAdapter extends ArrayAdapter<Debt> {
+//a function to create custom ListView for Debts
+    private class MyAdapter extends ArrayAdapter<Debt> {
 
         public MyAdapter(Context context, ArrayList<Debt> debts){
             super(context, 0, debts);

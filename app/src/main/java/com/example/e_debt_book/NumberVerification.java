@@ -34,6 +34,7 @@ import java.util.concurrent.TimeUnit;
 public class NumberVerification extends AppCompatActivity {
 
 
+    ///Getting all XML attributes
     private TextView textView,verificationPhone;
     private EditText verificationNumber;
     private Button verificationLaterButton,verificationButtom,sendCodeButton;
@@ -68,9 +69,11 @@ public class NumberVerification extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mAuth.useAppLanguage();
 
+        //when the user clicks on later verify button
         verificationLaterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //the usertype specifie if the user is customer for 0 or market for 1
                 if(MainActivity.usertype == 0){
                     Customer customer = (Customer) getIntent().getSerializableExtra("Customer");
                     Intent i = new Intent(NumberVerification.this, CustomerMain.class);
@@ -80,6 +83,7 @@ public class NumberVerification extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }else{
+                    //the usertype specifie if the user is customer for 0 or market for 1
                     Market market = (Market) getIntent().getSerializableExtra("Market");
                     System.out.println(market.getEmail());
                     Intent i = new Intent(NumberVerification.this, MarketMain1.class);
@@ -92,6 +96,7 @@ public class NumberVerification extends AppCompatActivity {
             }
         });
 
+//if the user is Customer we will move all customer data to the next activity and then make him verify his number
         if(MainActivity.usertype == 0){
             conditionRef = mRootRef.child("Customers");
             Customer customer = (Customer) getIntent().getSerializableExtra("Customer");
@@ -113,7 +118,7 @@ public class NumberVerification extends AppCompatActivity {
                 }
             });
 
-
+//after clicking on  this button the verification code will be sent
             sendCodeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -154,12 +159,14 @@ public class NumberVerification extends AppCompatActivity {
 
         }else{
 
+//if the user is Market we will move all customer data to the next activity and then make him verify his number
+
             conditionRef = mRootRef.child("Markets");
             Market market = (Market) getIntent().getSerializableExtra("Market");
             String phone = "+90" + market.getPhone();
             verificationPhone.setText(phone);
 
-
+///when clicking on the verify button the  firebase will check the the code and verify the account
             verificationButtom.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -174,6 +181,7 @@ public class NumberVerification extends AppCompatActivity {
                 }
             });
 
+//after clicking on  this button the verification code will be sent
 
             sendCodeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -216,12 +224,13 @@ public class NumberVerification extends AppCompatActivity {
 
     }
 
-
+////after the user verify his number he will be signed in
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential, Customer customer,Market market,int type) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        ///if the user is customer
                         if (type == 0){
                             if (task.isSuccessful()) {
                                 customer.setStatus(1);
@@ -235,8 +244,6 @@ public class NumberVerification extends AppCompatActivity {
                                 i.putExtras(b);
                                 startActivity(i);
                                 finish();
-
-
                                 // ...
                             } else {
                                 // Sign in failed, display a message and update the UI
@@ -247,6 +254,8 @@ public class NumberVerification extends AppCompatActivity {
                                     Toast.makeText(NumberVerification.this, "Error : " + message, Toast.LENGTH_SHORT).show();
                                 }
                             }
+                            ///if the user is Market
+
                         }else{
                             if (task.isSuccessful()) {
                                 market.setStatus(1);
@@ -258,9 +267,6 @@ public class NumberVerification extends AppCompatActivity {
                                 Bundle b = new Bundle();
                                 b.putSerializable("Market",market);
                                 i.putExtras(b);
-                                System.out.println("///////////////////////////////////////////////////////////////////");
-                                System.out.println(market.getAdress()+market.getEmail());
-                                System.out.println("///////////////////////////////////////////////////////////////////");
                                 startActivity(i);
                                 finish();
                                 // ...

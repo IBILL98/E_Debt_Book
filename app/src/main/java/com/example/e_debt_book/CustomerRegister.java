@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,13 +60,17 @@ public class CustomerRegister extends AppCompatActivity {
 
         customerRegisterProgressBar = findViewById(R.id.customerRegisterProgressBar);
 
+
+        //making sure that the user isnt signed in while registering
         if(fAuth.getCurrentUser() != null){
+            FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
             finish();
         }
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
+        //
         customerRegisterBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,13 +81,15 @@ public class CustomerRegister extends AppCompatActivity {
         });
 
 
+        ///when the customer wanna register
         customerRegisterSignUpButtom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = customerRegisterEmail.getText().toString().trim();
+                String email = customerRegisterEmail.getText().toString().trim().toLowerCase();
                 String password = customerRegisterPassword.getText().toString().trim();
                 String phone = customerRegisterPhone.getText().toString().trim();
 
+                ///checking if the log in attributtes aren't empty
                 if(TextUtils.isEmpty(email)){
                     customerRegisterEmail.setError("Email is Required.");
                     return;
