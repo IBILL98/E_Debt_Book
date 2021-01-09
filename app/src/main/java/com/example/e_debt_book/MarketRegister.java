@@ -117,7 +117,7 @@ public class MarketRegister extends AppCompatActivity {
 
                 //Creating the Market
                 conditionRef = mRootRef.child("Markets");
-                Market market = new Market(name,password,phone,email,iban,adress,0);
+                Market market = new Market(name,phone,email,iban,adress,0);
 
                 ///First checking if the phone is used
                 conditionRef.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {

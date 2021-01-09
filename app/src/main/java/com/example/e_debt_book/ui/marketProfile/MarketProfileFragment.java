@@ -41,7 +41,6 @@ public class MarketProfileFragment extends Fragment {
 
         editInfoName.setText(market.getName());
         editInfoEmail.setText(market.getEmail());
-        editInfoPassword.setText(market.getPassword());
         editInfoIban.setText(market.getIban());
         editInfoAdress.setText(market.getAdress());
 

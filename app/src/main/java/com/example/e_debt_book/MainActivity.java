@@ -295,7 +295,6 @@ public class MainActivity extends AppCompatActivity {
                                             loginUser.setIban(market.getIban());
                                             loginUser.setName(market.getName());
                                             loginUser.setAdress(market.getAdress());
-                                            loginUser.setPassword(market.getPassword());
                                             loginUser.setStatus(market.getStatus());
 
                                             if (loginUser.getStatus() == 0) {
@@ -422,7 +421,6 @@ public class MainActivity extends AppCompatActivity {
                         marketlogin.setIban(loginUser.getIban());
                         marketlogin.setName(loginUser.getName());
                         marketlogin.setAdress(loginUser.getAdress());
-                        marketlogin.setPassword(loginUser.getPassword());
                         marketlogin.setStatus(loginUser.getStatus());
                         myCallbackMarket.onCallback(marketlogin);
                     }
