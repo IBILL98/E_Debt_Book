@@ -17,7 +17,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
 
         <Button
             android:id="@+id/marketSignUpButton"
@@ -52,7 +53,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/loginwindow"
-            android:layout_width="372dp"
+            android:layout_width="375dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@android:color/white"
@@ -77,7 +78,7 @@
                 android:id="@+id/imageView1"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="60dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/toolbar"
@@ -111,7 +112,7 @@
                 android:id="@+id/marketLoginEmail"
                 style="cent"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:layout_marginTop="60dp"
                 android:background="#F3F3F3"
                 android:ems="10"
@@ -129,7 +130,7 @@
             <EditText
                 android:id="@+id/marketLoginPassword"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:layout_marginTop="44dp"
                 android:background="#F3F3F3"
                 android:ems="10"
@@ -268,7 +269,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/loginwindow3"
@@ -331,7 +333,7 @@
                 android:id="@+id/customerLoginEmail"
                 style="cent"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:layout_marginTop="60dp"
                 android:background="#F3F3F3"
                 android:ems="10"
@@ -349,7 +351,7 @@
             <EditText
                 android:id="@+id/customerLoginPassword"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:layout_marginTop="44dp"
                 android:background="#F3F3F3"
                 android:ems="10"
