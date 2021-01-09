@@ -111,8 +111,9 @@
     <string name="the_selected_language">Türkçe</string>
     <string name="Turkish">Türkçe</string>
     <string name="German">Almanca</string>
-    <string name="text_of_about_us_1">text of about us</string>
-    <string name="text_of_about_us_2">text of about us</string>>
+    <string name="text_of_about_us_1">Dünyanın her yerinde insanlar uygun bankacılık hizmetlerine erişemez, tüm mağazalar ve şirketler, özellikle küçük ve yerel şirketler, POS makinelerini kullanmak için vb. kolayca! Ama neyse ki, internet hizmeti çok katlanarak yayılıyor, bu yüzden eski tarz borç defterlerini kullanmak yerine; Bir kişinin mağazaya olan borçlarının ayrıntılarını manuel olarak içeren, küçük bir kusurun, küçük bir noktanın büyük bir fark yaratabileceği ve hatta muhtemelen yerel toplumlarda güvensizlik ve sorunlara yol açabileceği bir not defteri, yeni teknolojiler sağlamalıdır bu sorun için yeni bir çözüm.</string>
+    <string name="text_of_about_us_2">Ve bu yaklaşımdan ilham kaynağımız geldi; Her iki piyasa sahibinin borcu dijital bir platformda düzenlemesine yardımcı olan, tüm kayıtların aynı anda hem müşteri hem de piyasa için aynı anda tutulduğu ve erişilebilir olduğu dijitalleştirilmiş, kullanımı kolay bir platform uygulaması sağlamak sahipler - her yerden ve her zaman! - süreci kolaylaştırın, zamandan ve kaynaklardan tasarruf edin. Her şeyi şeffaf ve verimli bir şekilde düzenleyin ve yönetin, çünkü telefon hemen hemen herkesin sahip olduğu bir cihazdır ve çok sayıda kitaba sahip olmanız gerekmez! Ayrıca, bir mağaza kullanıcılarının müşterilerinin her mağazaya olan borçlarının ayrıntılarına erişmelerine, ödeme için bir yöntem seçmelerine, gelecek ödeme tarihlerini bildirmelerine ve ayrıca bazı tanımlanmış daha kolay ve daha ucuz yöntemlerle ödeme yapmalarına olanak tanır.</string>
+    >
 
 
 </resources>
