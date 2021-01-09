@@ -32,6 +32,10 @@ import com.example.e_debt_book.model.Debt;
 import com.example.e_debt_book.model.Item;
 import com.example.e_debt_book.model.Market;
 
+import com.gkemon.XMLtoPDF.PdfGenerator;
+import com.gkemon.XMLtoPDF.PdfGeneratorListener;
+import com.gkemon.XMLtoPDF.model.FailureResponse;
+import com.gkemon.XMLtoPDF.model.SuccessResponse;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.firebase.database.DatabaseReference;
@@ -112,43 +116,37 @@ public class DebtInfoCustomerFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                try{
-                    printButton.setVisibility(View.INVISIBLE);
-                    android.graphics.pdf.PdfDocument document = new android.graphics.pdf.PdfDocument();
+                printButton.setVisibility(View.INVISIBLE);
+                PdfGenerator.getBuilder()
+                        .setContext(getContext())
+                        .fromViewIDSource()
+                        .fromViewID(getActivity(),R.id.scrollViewcustomertoprint)
+                        /* "fromViewID()" takes array of view ids those MUST BE and MUST BE contained in the inserted "activity" .
+                         * You can also invoke "fromViewIDList()" method here which takes list of view ids instead of array. */
+                        .setCustomPageSize(3000,3000)
+                        /* Here I used ".setCustomPageSize(3000,3000)" to set custom page size.*/
+                        .setFileName(debt.getDebtID())
+                        .setFolderName("E-DebtBook/Customer Reports")
+                        .openPDFafterGeneration(false)
+                        .build(new PdfGeneratorListener() {
+                            @Override
+                            public void onFailure(FailureResponse failureResponse) {
+                                super.onFailure(failureResponse);
+                            }
 
-                    android.graphics.pdf.PdfDocument.PageInfo pageInfo = new android.graphics.pdf.PdfDocument.PageInfo.Builder(printedLayout.getWidth(), printedLayout.getHeight(), 1).create();
+                            @Override
+                            public void showLog(String log) {
+                                super.showLog(log);
+                            }
 
-                    android.graphics.pdf.PdfDocument.Page page = document.startPage(pageInfo);
+                            @Override
+                            public void onSuccess(SuccessResponse response) {
+                                super.onSuccess(response);
+                                Toast.makeText(getActivity(), "Debt PDF Saved in your Files successfully!", Toast.LENGTH_LONG).show();
+                            }
+                        });
 
-                    Canvas canvas = page.getCanvas();
-                    Paint paint = new Paint();
-                    canvas.drawPaint(paint);
-                    printedLayout.draw(canvas);
-                    document.finishPage(page);
-
-                    String path = "/sdcard/E-DebtBook/"+debt.getDebtID()+".pdf";
-
-                    java.io.File myFile = new java.io.File(path);
-
-                    java.io.FileOutputStream fOut = new java.io.FileOutputStream(myFile);
-
-                    java.io.OutputStreamWriter myOutWriter = new java.io.OutputStreamWriter(fOut);
-
-                    document.writeTo(fOut);
-
-                    document.close();
-                    myOutWriter.close();
-                    fOut.close();
-
-                    Toast.makeText(getActivity(), "File Saved", Toast.LENGTH_LONG).show();
-
-                } catch (Exception e) {
-                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-
-
-
-
+                printButton.setVisibility(View.VISIBLE);
 
             }
         });

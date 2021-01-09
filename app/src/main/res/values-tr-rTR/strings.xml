@@ -110,7 +110,9 @@
     <string name="debts_of_a_customer">Borçlar listesi</string>
     <string name="the_selected_language">Türkçe</string>
     <string name="Turkish">Türkçe</string>
-    <string name="German">Almanca</string>>
+    <string name="German">Almanca</string>
+    <string name="text_of_about_us_1">text of about us</string>
+    <string name="text_of_about_us_2">text of about us</string>>
 
 
 </resources>
