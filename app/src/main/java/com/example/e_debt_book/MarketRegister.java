@@ -42,6 +42,7 @@ public class MarketRegister extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market_register);
 
+        ///finding the xml attributes by its ID
         marketRegisterName = findViewById(R.id.marketRegisterName);
         marketRegisterEmail = findViewById(R.id.marketRegisterEmail);
         marketRegisterPhone = findViewById(R.id.marketRegisterPhone);
@@ -54,14 +55,16 @@ public class MarketRegister extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
 
+        //making sure that the user isnt signed in while registering
         if(fAuth.getCurrentUser() != null){
+            FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
             finish();
         }
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
-
+//when click on back button to switch the user type
         marketRegisterBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,9 +74,11 @@ public class MarketRegister extends AppCompatActivity {
             }
         });
 
+        ///when the market wanna register
         marketRegisterSignUpButtom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //getting all market attributes from Text Fields
                 String name = marketRegisterName.getText().toString().trim();
                 String email = marketRegisterEmail.getText().toString().trim().toLowerCase();
                 String phone = marketRegisterPhone.getText().toString().trim();
@@ -82,7 +87,6 @@ public class MarketRegister extends AppCompatActivity {
                 String adress = marketRegisterAdress.getText().toString().trim();
 
 
-                System.out.println(phone);
                 /////Check if the Attributes are Empty
                 if(TextUtils.isEmpty(email)){
                     marketRegisterEmail.setError("Email is Required.");
@@ -119,7 +123,7 @@ public class MarketRegister extends AppCompatActivity {
                 conditionRef = mRootRef.child("Markets");
                 Market market = new Market(name,phone,email,iban,adress,0);
 
-                ///First checking if the phone is used
+                ///First checking if the phone is used as a market before
                 conditionRef.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
