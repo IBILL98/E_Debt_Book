@@ -195,7 +195,7 @@ public class MarketHomeFragment extends Fragment {
 
 
 
-    public class MyAdapter extends ArrayAdapter<Debt> {
+    private class MyAdapter extends ArrayAdapter<Debt> {
 
         public MyAdapter(Context context, ArrayList<Debt> debts){
             super(context, 0, debts);
