@@ -51,11 +51,6 @@ public class MainActivityTest extends TestCase {
     }
 
     @Test
-    public void test_addNewDebt() {
-
-    }
-
-    @Test
     public void test_marketRegister () {
         ActivityScenario<MainActivity> activityScenario = ActivityScenario.launch(MainActivity.class);
         onView(withId(R.id.mainCustomertButton)).perform(click());
