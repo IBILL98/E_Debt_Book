@@ -68,6 +68,8 @@ public class MainActivityTest extends TestCase {
         Espresso.onView(withId(R.id.marketRegisterSignUpButtom)).check(matches(isDisplayed()));
         Espresso.onView(withId(R.id.marketRegisterSignUpButtom)).perform(click());
         Espresso.onView(withId(R.id.verificationLaterButton)).check(matches(isDisplayed())); //problem with number verification class
+        Espresso.onView(withId(R.id.verificationLaterButton)).perform(click());
+        onView(withId(R.id.market_home_constraint_layout)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -87,6 +89,8 @@ public class MainActivityTest extends TestCase {
         Espresso.closeSoftKeyboard();
         Espresso.onView(withId(R.id.customerRegisterSignUpButtom)).perform(click());
         Espresso.onView(withId(R.id.verificationLaterButton)).perform(click()); //problem with number verification class
+        onView(withId(R.id.debtsListOfaCustomer)).check(matches(isDisplayed()));
+
     }
 
     @Test
@@ -99,7 +103,7 @@ public class MainActivityTest extends TestCase {
         onView(withId(R.id.customerLoginEmail)).perform(typeText("hellothere@gmail.com"));
         onView(withId(R.id.customerLoginPassword)).perform(typeText("hellothere11"));
         onView(withId(R.id.verificationLaterButton)).perform(click()); //problem with number verification class
-        onView(withId(R.id.nav_customer_home)).check(matches(isDisplayed()));
+        onView(withId(R.id.debtsListOfaCustomer)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -151,8 +155,53 @@ public class MainActivityTest extends TestCase {
         onView(withId(R.id.marketLoginButton)).check(matches(isDisplayed()));
         onView(withId(R.id.marketLoginButton)).perform(click());
         onView(withId(R.id.toolbar)).perform(click());
-
+        onView(withId(R.id.nav_add_customer)).perform(click());
+        onView(withId(R.id.customerRegisterNamefromMarket)).perform(typeText("Nare"));
+        onView(withId(R.id.customerRegisterLastNamefromMarket)).perform(typeText("shelebi"));
+        onView(withId(R.id.customerRegisterPhonefromMarket)).perform(typeText("569328741"));
+        onView(withId(R.id.customerRegisterEmailfromMarket)).perform(typeText("nareshelebi@gmail.com"));
+        onView(withId(R.id.customerRegisterSignUpButtomfromMarket)).perform(click());
     }
+
+    @Test
+    public void test_changeEmailMarket() {
+        ActivityScenario<MainActivity> activityScenario = ActivityScenario.launch(MainActivity.class);
+        onView(withId(R.id.mainChoicewindow)).check(matches(isDisplayed()));
+        //check if main market button is visible
+        onView(withId(R.id.mainMarketButton)).check(matches(isDisplayed()));
+        onView(withId(R.id.mainMarketButton)).perform(click());
+        onView(withId(R.id.marketLoginEmail)).perform(typeText("abo@amo.com"));
+        onView(withId(R.id.marketLoginPassword)).perform(typeText("kkkllooo"));
+        onView(withId(R.id.marketLoginButton)).check(matches(isDisplayed()));
+        onView(withId(R.id.marketLoginButton)).perform(click());
+        onView(withId(R.id.market_home_constraint_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.toolbar)).perform(click());
+        onView(withId(R.id.nav_market_settings)).perform(click());
+        onView(withId(R.id.market_settings_change_email)).perform(click());
+        //onView(withId(R.id.EditMarketEmailNewEmail)).perform(typeText("abo@ato.com")); //this will change our email
+        onView(withId(R.id.EditMarketEmailDoneButton)).perform(click());
+    }
+
+    @Test
+    public void test_changePasswordMarket() {
+        ActivityScenario<MainActivity> activityScenario = ActivityScenario.launch(MainActivity.class);
+        onView(withId(R.id.mainChoicewindow)).check(matches(isDisplayed()));
+        //check if main market button is visible
+        onView(withId(R.id.mainMarketButton)).check(matches(isDisplayed()));
+        onView(withId(R.id.mainMarketButton)).perform(click());
+        onView(withId(R.id.marketLoginEmail)).perform(typeText("abo@amo.com"));
+        onView(withId(R.id.marketLoginPassword)).perform(typeText("kkkllooo"));
+        onView(withId(R.id.marketLoginButton)).check(matches(isDisplayed()));
+        onView(withId(R.id.marketLoginButton)).perform(click());
+        onView(withId(R.id.market_home_constraint_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.toolbar)).perform(click());
+        onView(withId(R.id.nav_market_settings)).perform(click());
+        onView(withId(R.id.market_settings_change_password)).perform(click());
+        //onView(withId(R.id.EditMarketPassNewPassword)).perform(typeText("kkklllooo")); //this will change our password
+        //onView(withId(R.id.EditMarketPassNewPasswordConfirmation)).perform(typeText("kkklllooo"));
+        onView(withId(R.id.EditMarketPassDoneButton)).perform(click());
+    }
+
 
 
 
