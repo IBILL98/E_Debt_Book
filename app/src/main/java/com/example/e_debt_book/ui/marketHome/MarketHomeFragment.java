@@ -40,7 +40,7 @@ public class MarketHomeFragment extends Fragment {
     private DatabaseReference mRootRef, conditionRef;
     private ListView listView;
     private final ArrayList<Debt> arrayList = new ArrayList<>();
-    private float totallend;
+    private int totallend;
     private TextView textView2;
 
     @Override
@@ -74,7 +74,7 @@ public class MarketHomeFragment extends Fragment {
                 for (DataSnapshot data : snapshot.getChildren()) {
                     String debtId = data.getKey();
                     Debt debt = data.getValue(Debt.class);
-                    totallend = Float.parseFloat(debt.getAmount()) + totallend;
+                    totallend = Integer.parseInt(debt.getAmount()) + totallend;
                     getitems(debtId, new MyCallback() {
                         @Override
                         public void onCallback(ArrayList<Item> itemArrayList) {
@@ -85,6 +85,8 @@ public class MarketHomeFragment extends Fragment {
                         }
                     });
                 }
+                TextView loanAmountInput = getActivity().findViewById(R.id.loanAmountInput);
+                //loanAmountInput.setText(totallend);
                 textView2.setText(textView2.getText().toString() + " " + totallend);
             }
 
@@ -93,7 +95,6 @@ public class MarketHomeFragment extends Fragment {
 
             }
         });
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -136,9 +137,12 @@ public class MarketHomeFragment extends Fragment {
         conditionRefitems.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 for (DataSnapshot data : snapshot.getChildren()) {
                     Item item = data.getValue(Item.class);
                     Item item1 = new Item(item.getName(), item.getPrice());
+                    TextView loanAmountInput = getActivity().findViewById(R.id.loanAmountInput);
+
                     itemlist.add(item1);
                 }
                 myCallback.onCallback(itemlist);
@@ -169,7 +173,6 @@ public class MarketHomeFragment extends Fragment {
                         customer.setEmail(customer1.getEmail());
                         customer.setName(customer1.getName());
                         customer.setLastname(customer1.getLastname());
-
                         customerCallback.customerOnCallback(customer);
                     }
                 }
@@ -192,10 +195,9 @@ public class MarketHomeFragment extends Fragment {
     }
 
 
+    public class MyAdapter extends ArrayAdapter<Debt> {
 
-    private class MyAdapter extends ArrayAdapter<Debt> {
-
-        public MyAdapter(Context context, ArrayList<Debt> debts){
+        public MyAdapter(Context context, ArrayList<Debt> debts) {
             super(context, 0, debts);
         }
 

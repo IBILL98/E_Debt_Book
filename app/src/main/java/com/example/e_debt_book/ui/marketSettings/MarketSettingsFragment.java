@@ -69,6 +69,9 @@ public class MarketSettingsFragment extends Fragment {
         actual_email.setText(market.getEmail());
         actual_Phone.setText(market.getPhone());
 
+        int w = whichLanguageIsRunning();
+        String[] listitem = new String[]{"English", "Deutsch", "Türkçe", "العربية"};
+        choosed_language.setText(listitem[w]);
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
         market_settings_change_language.setOnClickListener(new View.OnClickListener() {
@@ -78,13 +81,7 @@ public class MarketSettingsFragment extends Fragment {
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
-                int i = 0;
-                TextView t = getActivity().findViewById(R.id.textView7);
-                if (t.getText().equals("Settings")) i = 0;
-                else if (t.getText().equals("Einstellungen")) i = 1;
-                else if (t.getText().equals("Ayarlar")) i = 2;
-                else if (t.getText().equals("الاعدادات")) i = 3;
-                mbuilder.setSingleChoiceItems(listitem, i, new DialogInterface.OnClickListener() {
+                mbuilder.setSingleChoiceItems(listitem, whichLanguageIsRunning(), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         choosed_language.setText(listitem[i]);
@@ -213,6 +210,7 @@ public class MarketSettingsFragment extends Fragment {
             }
         });
     }
+
     public void setLocale(String lang) {
         Locale myLocale = new Locale(lang);
         Locale.setDefault(myLocale);
@@ -223,6 +221,16 @@ public class MarketSettingsFragment extends Fragment {
         res.updateConfiguration(conf, dm);
         Configuration c = res.getConfiguration();
     }
+
+    private int whichLanguageIsRunning() {
+        TextView t = getActivity().findViewById(R.id.textView7);
+        if (t.getText().equals("Settings")) return 0;
+        else if (t.getText().equals("Einstellungen")) return 1;
+        else if (t.getText().equals("Ayarlar")) return 2;
+        else return 3;
+
+    }
+
 }
 
 
