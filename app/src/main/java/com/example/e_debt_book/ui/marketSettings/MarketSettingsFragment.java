@@ -30,6 +30,7 @@ import java.util.Locale;
 
 
 public class MarketSettingsFragment extends Fragment {
+    //setting the attributes for the settings screen
 
     private LinearLayout market_settings_change_language, market_settings_change_Adress, market_settings_change_name, market_settings_change_password, market_settings_change_email, market_settings_change_Phone;
     private TextView choosed_language, actual_adress, actual_name, actual_email, actual_Phone;
@@ -49,8 +50,7 @@ public class MarketSettingsFragment extends Fragment {
     public void onStart() {
         super.onStart();
         Market market = (Market) getActivity().getIntent().getSerializableExtra("Market");
-
-
+        //finding the Ids of the xml file
         market_settings_change_language = getActivity().findViewById(R.id.market_settings_change_language);
         market_settings_change_Adress = getActivity().findViewById(R.id.market_settings_change_Adress);
         market_settings_change_name = getActivity().findViewById(R.id.market_settings_change_name);
@@ -63,17 +63,18 @@ public class MarketSettingsFragment extends Fragment {
         actual_name = getActivity().findViewById(R.id.actual_name);
         actual_email = getActivity().findViewById(R.id.actual_email);
         actual_Phone = getActivity().findViewById(R.id.actual_Phone);
-
+        //setting the setting profile texts depending on the market values
         actual_adress.setText(market.getAdress());
         actual_name.setText(market.getName());
         actual_email.setText(market.getEmail());
         actual_Phone.setText(market.getPhone());
 
         int w = whichLanguageIsRunning();
+        //changing the language list
         String[] listitem = new String[]{"English", "Deutsch", "Türkçe", "العربية"};
         choosed_language.setText(listitem[w]);
         mRootRef = FirebaseDatabase.getInstance().getReference();
-
+        //creting a dialoge to change the language
         market_settings_change_language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +82,9 @@ public class MarketSettingsFragment extends Fragment {
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle("Choose Your Language");
                 mbuilder.setIcon(R.drawable.language_icon);
+                // the dialog is shown with the selected language
+                // the first parameter is the list of the available langs, the second is the function
+                //that returnes a number of the language
                 mbuilder.setSingleChoiceItems(listitem, whichLanguageIsRunning(), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -94,6 +98,7 @@ public class MarketSettingsFragment extends Fragment {
                         } else if (i == 3) {
                             setLocale("ar");
                         }
+                        //reload the whole activity after changing the language
                         dialogInterface.dismiss();
                         Intent intent = new Intent(getActivity(), MarketMain1.class);
                         Bundle b = new Bundle();
@@ -117,10 +122,11 @@ public class MarketSettingsFragment extends Fragment {
         market_settings_change_Adress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //creting a dialoge to change the adress
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 layoutParams.gravity = Gravity.CENTER;
                 LinearLayout linearLayout = new LinearLayout(getActivity());
-
+                //showing the dialog with the old values and textfield for the new input values
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Change Adress");
                 builder.setIcon(R.drawable.place_icon);
@@ -151,7 +157,8 @@ public class MarketSettingsFragment extends Fragment {
                 builder.show();
             }
         });
-
+        //changing the name window
+        //creting a dialoge to change the name
         market_settings_change_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,6 +197,7 @@ public class MarketSettingsFragment extends Fragment {
                 builder.show();
             }
         });
+        //Move to change email fragment after clicking on the market_settings_change_email
         market_settings_change_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -197,12 +205,14 @@ public class MarketSettingsFragment extends Fragment {
 
             }
         });
+        //Move to change password fragment after clicking on the market_settings_change_password
         market_settings_change_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavHostFragment.findNavController(MarketSettingsFragment.this).navigate(R.id.action_nav_market_settings_to_fragment_change_password);
             }
         });
+        //Move to change phone fragment after clicking on the market_settings_change_Phone
         market_settings_change_Phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -211,6 +221,7 @@ public class MarketSettingsFragment extends Fragment {
         });
     }
 
+    //change language function
     public void setLocale(String lang) {
         Locale myLocale = new Locale(lang);
         Locale.setDefault(myLocale);
@@ -222,6 +233,7 @@ public class MarketSettingsFragment extends Fragment {
         Configuration c = res.getConfiguration();
     }
 
+    // detecting which language is set currently
     private int whichLanguageIsRunning() {
         TextView t = getActivity().findViewById(R.id.textView7);
         if (t.getText().equals("Settings")) return 0;
