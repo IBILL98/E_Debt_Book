@@ -2,10 +2,14 @@ package com.example.e_debt_book.ui.addDebt;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.ContentUris;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -36,9 +41,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     // declaring listeners for the date selector
@@ -290,6 +299,51 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                 float total = 0;
                 for (Item i : itemList) total = total + Float.parseFloat(i.getPrice());
                 if (total != Float.parseFloat(amount)) return;
+
+                // if the user /market/ wishes to add a calender reminder...
+                /*Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
+                builder.appendPath("time");
+                ContentUris.appendId(builder, Calendar.getInstance().getTimeInMillis());
+                Intent intent1 = new Intent(Intent.ACTION_VIEW)
+                        .setData(builder.build());
+                startActivity(intent1);*/
+                //
+                AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
+                mbuilder.setTitle(R.string.ask_to_add_loan_to_calendar);
+                mbuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ///
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+
+                        try {
+                            Date date = formatter.parse(dueDateInput.getText().toString());
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.setTime(date);
+                            System.out.println(calendar.getTime());////
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        Calendar endTime = Calendar.getInstance();
+                        endTime.set(2012, 0, 19, 8, 30);
+                        Intent intent3 = new Intent(Intent.ACTION_INSERT)
+                                .setData(CalendarContract.Events.CONTENT_URI)
+                                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+                                .putExtra(CalendarContract.Events.TITLE, "Loan recieving time!")
+                                .putExtra(CalendarContract.Events.DESCRIPTION, "you have a loan from:" + customerNameInput.getText().toString()+" "+" that has the phone number: "+customerPhone+" of : "+loanAmountInput.getText().toString())
+                                .putExtra(Intent.EXTRA_EMAIL, customerEmailInput.getText().toString());
+                        startActivity(intent3);
+                    }
+                });
+                mbuilder.setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog mdialog = mbuilder.create();
+                mdialog.show();
 
                 String id = reference.push().getKey();
                 Debt debt = new Debt();
