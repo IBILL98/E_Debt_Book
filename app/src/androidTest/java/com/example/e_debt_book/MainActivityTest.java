@@ -202,8 +202,40 @@ public class MainActivityTest extends TestCase {
         onView(withId(R.id.EditMarketPassDoneButton)).perform(click());
     }
 
+    @Test
+    public void test_changeCustomerPhone() {
+        ActivityScenario<MainActivity> activityScenario = ActivityScenario.launch(MainActivity.class);
+        onView(withId(R.id.mainCustomertButton)).perform(click());
+        onView(withId(R.id.customerLoginEmail)).perform(typeText("hellothere@gmail.com"));
+        onView(withId(R.id.customerLoginPassword)).perform(typeText("hellothere11"));
+        onView(withId(R.id.verificationLaterButton)).perform(click()); //problem with number verification class
+        onView(withId(R.id.toolbar)).perform(click());
+        onView(withId(R.id.nav_customer_settings)).perform(click());
+        onView(withId(R.id.customer_settings_change_Phone)).perform(click());
+        onView(withId(R.id.EditMarketPhoneOldPhone)).perform(typeText("5963265114"));
+        onView(withId(R.id.EditMarketPhoneNewPhone)).perform(typeText("563214987"));
+        onView(withId(R.id.EditMarketPhoneDoneButton)).perform(click());
+    }
 
-
+    @Test
+    public void test_changeMarketPhone() {
+        ActivityScenario<MainActivity> activityScenario = ActivityScenario.launch(MainActivity.class);
+        onView(withId(R.id.mainChoicewindow)).check(matches(isDisplayed()));
+        //check if main market button is visible
+        onView(withId(R.id.mainMarketButton)).check(matches(isDisplayed()));
+        onView(withId(R.id.mainMarketButton)).perform(click());
+        onView(withId(R.id.marketLoginEmail)).perform(typeText("abo@amo.com"));
+        onView(withId(R.id.marketLoginPassword)).perform(typeText("kkkllooo"));
+        onView(withId(R.id.marketLoginButton)).check(matches(isDisplayed()));
+        onView(withId(R.id.marketLoginButton)).perform(click());
+        onView(withId(R.id.market_home_constraint_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.toolbar)).perform(click());
+        onView(withId(R.id.nav_market_settings)).perform(click());
+        onView(withId(R.id.market_settings_change_Phone)).perform(click());
+        onView(withId(R.id.EditMarketPhoneOldPhone)).perform(typeText("5309783364"));
+        onView(withId(R.id.EditMarketPhoneNewPhone)).perform(typeText("5231649874"));
+        onView(withId(R.id.EditMarketPhoneDoneButton)).perform(click());
+    }
 
     public void setUp() throws Exception {
         super.setUp();
