@@ -120,7 +120,7 @@ public class CustomerHomeFragment extends Fragment {
     }
 
     public void getMarket(String phone, MarketCallback marketCallback) {
-        DatabaseReference customerRef = mRootRef.child("Customers");
+        DatabaseReference customerRef = mRootRef.child("Markets");
         Market market = new Market();
         customerRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

@@ -77,7 +77,6 @@ public class ChangeEmailMarketFragment extends Fragment {
                             Toast.makeText(getActivity(), "User Email Didn't Change..", Toast.LENGTH_SHORT).show();
 
                         }
-
                     }
                 });
             }
