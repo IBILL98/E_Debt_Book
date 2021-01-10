@@ -224,25 +224,31 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
         // the amount is an addittion of the prices of the products...
         // sooo...
         loanAmountInput.setText("0");
+        loanAmountInput.setOnClickListener(new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View v) {
+                                                   Toast.makeText(getActivity(), " Please Enter the items of the debt and the prices", Toast.LENGTH_SHORT).show();
+                                               }
+                                           }
+        );
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Item item = new Item();
                 String itemName = itemNameInput.getText().toString();
                 String itemPrice = itemPriceInput.getText().toString();
-                int i = Integer.valueOf(itemPrice) + Integer.parseInt(String.valueOf(loanAmountInput.getText()));
-                loanAmountInput.setText(String.valueOf(i));
+                //updating the value in the field of the total amount of debt = old value + the new item's price
+                loanAmountInput.setText(String.valueOf(Integer.valueOf(itemPrice) + Integer.parseInt(String.valueOf(loanAmountInput.getText()))));
                 item.setName(itemName);
                 item.setPrice(itemPrice);
                 Toast.makeText(getActivity(), itemName + " " + itemPrice + " is added!", Toast.LENGTH_LONG).show();
                 itemList.add(item);
+                // desplaying the new item in the list
                 displayProductsList.add(itemName + ", Price: " + itemPrice);
                 LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) productsList.getLayoutParams();
                 int old_height = productsList.getHeight();
                 lp.height = (old_height + 135);
                 productsList.setLayoutParams(lp);
-                System.out.println("////////////////////////////////////////////////////");
-                System.out.println(productsList.getHeight());
                 mAdapter.notifyDataSetChanged();
                 itemNameInput.setText("");
                 itemPriceInput.setText("");
