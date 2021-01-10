@@ -20,10 +20,10 @@ public class MainActivityTest extends TestCase {
 
 
     String mahoMarket = "Mahasin Elderviş";
-    String mahoMarketEmail = "mahaassssin@gmail.com";
-    String mahoMarketPhone = "0237714789";
+    String mahoMarketEmail = "mahaassssssin@gmail.com";
+    String mahoMarketPhone = "0237715779";
     String mahoMarketPassword = "mahomaho";
-    String mahoMarketIban = "5555 8888 9999 6666";
+    String mahoMarketIban = "5555888899996666";
     String mahoMarketAddress = "kavacık mahallesi";
 
     //Check if MainActivity is in view
@@ -62,6 +62,7 @@ public class MainActivityTest extends TestCase {
         Espresso.onView(withId(R.id.marketRegisterEmail)).perform(typeText(mahoMarketEmail));
         Espresso.onView(withId(R.id.marketRegisterPhone)).perform(typeText(mahoMarketPhone));
         Espresso.onView(withId(R.id.marketRegisterPassword)).perform(typeText(mahoMarketPassword));
+        Espresso.closeSoftKeyboard();
         Espresso.onView(withId(R.id.marketRegisterIban)).perform(typeText(mahoMarketIban));
         Espresso.onView(withId(R.id.marketRegisterAdress)).perform(replaceText(mahoMarketAddress));
         Espresso.closeSoftKeyboard();
