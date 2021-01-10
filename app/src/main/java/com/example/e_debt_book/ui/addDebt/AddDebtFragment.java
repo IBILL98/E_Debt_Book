@@ -308,6 +308,7 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                         .setData(builder.build());
                 startActivity(intent1);*/
                 //
+                // asking if the market wants to add a reminder to the calendar.
                 AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
                 mbuilder.setTitle(R.string.ask_to_add_loan_to_calendar);
                 mbuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
