@@ -2,10 +2,14 @@ package com.example.e_debt_book.ui.addDebt;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.ContentUris;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -36,16 +41,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
-public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelectedListener{
-
-    private EditText customerNameInput, customerEmailInput, customerPhoneInput;
+public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+    // declaring listeners for the date selector
+    DatePickerDialog.OnDateSetListener setListener;
     private ImageButton customerSelectButton;
     private TextView selectedCustomerPhone;
-    private EditText loanAmountInput;
+    //declating the necessary attributes
+    private EditText customerNameInput, customerEmailInput, customerPhoneInput;
     private EditText descriptionInput;
     private EditText dateOfLoanInput;
     private EditText dueDateInput;
@@ -57,10 +67,9 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
     private ListView productsList;
     private Button addDebtButton;
     private Customer selectedCustomer;
-
-    DatePickerDialog.OnDateSetListener setListener;
+    private TextView loanAmountInput;
     DatePickerDialog.OnDateSetListener setListener2;
-
+    //firebase attributes
 
     FirebaseDatabase database;
     DatabaseReference reference, customerReference,unregisteredRef;
@@ -70,13 +79,11 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
         return inflater.inflate(R.layout.fragment_add_debt, container, false);
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
 
-
-
+        //
         customerNameInput = getActivity().findViewById(R.id.customerNameInput);
         customerEmailInput = getActivity().findViewById(R.id.customerEmailInput);
         customerPhoneInput = getActivity().findViewById(R.id.customerPhoneInput);
@@ -93,14 +100,16 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
         customerSelectButton = getActivity().findViewById(R.id.customerSelectButton);
         selectedCustomerPhone = getActivity().findViewById(R.id.selectedCustomerPhone);
         addDebtButton = getActivity().findViewById(R.id.addDebtButton);
-
+        // setting the reference node at the database
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Debts");
 
         Market market = (Market) getActivity().getIntent().getSerializableExtra("Market");
         customerReference = FirebaseDatabase.getInstance().getReference().child("Customers");
         unregisteredRef = FirebaseDatabase.getInstance().getReference().child("Unregisterd_Customers");
-
+        // since the Market must know the phone number of the customer, the data of the customer is only called via
+        // entering the phone number of the customer.
+        // so the personal information of the customer is uneditable by the Market.
         customerNameInput.setClickable(false);
         customerNameInput.setFocusable(false);
         customerNameInput.setFocusableInTouchMode(false);
@@ -110,25 +119,29 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
         customerPhoneInput.setClickable(false);
         customerPhoneInput.setFocusable(false);
         customerPhoneInput.setFocusableInTouchMode(false);
-
-
+        //Market entering the information of the customer...
         customerSelectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String phoneNumber = selectedCustomerPhone.getText().toString();
+                //checking if the number is valid, means it's not an arbitrary number
                 if (phoneNumber.length()==10) {
                     customerReference.child(phoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
                         @SuppressLint("SetTextI18n")
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            //checking if the number belongs to a customer or not
+                            //if yes, then call the info's of the customer with this number.
                             if (snapshot.getValue() != null) {
                                 selectedCustomer = snapshot.getValue(Customer.class);
                                 assert selectedCustomer != null;
                                 selectedCustomer.setPhone(snapshot.getKey());
-                                customerNameInput.setText(selectedCustomer.getName()+" "+selectedCustomer.getLastname());
+                                customerNameInput.setText(selectedCustomer.getName() + " " + selectedCustomer.getLastname());
                                 customerEmailInput.setText(selectedCustomer.getEmail());
                                 customerPhoneInput.setText(selectedCustomer.getPhone());
                             } else {
+                                //if the person with this number still hasn't registered... save his info, and the debt, and he'll
+                                //create an account later, and the debt will show in his account.
                                 unregisteredRef.child(phoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @SuppressLint("SetTextI18n")
                                     @Override
@@ -137,13 +150,15 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                                             selectedCustomer = snapshot.getValue(Customer.class);
                                             assert selectedCustomer != null;
                                             selectedCustomer.setPhone(snapshot.getKey());
-                                            customerNameInput.setText(selectedCustomer.getName()+" "+selectedCustomer.getLastname());
+                                            customerNameInput.setText(selectedCustomer.getName() + " " + selectedCustomer.getLastname());
                                             customerEmailInput.setText(selectedCustomer.getEmail());
                                             customerPhoneInput.setText(selectedCustomer.getPhone());
                                         } else {
                                             Toast.makeText(getActivity(), "User not found!", Toast.LENGTH_LONG).show();
                                         }
                                     }
+
+                                    //if canceled
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
 
@@ -158,11 +173,12 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                         }
                     });
                 }else {
+                    //if the number isn't a valid phone number.
                     Toast.makeText(getActivity(), "Phone number must consist of 10 digits!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
+        // selecting the date of the loan.
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
@@ -184,7 +200,7 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                 dateOfLoanInput.setText(date);
             }
         };
-
+        // selecting the due date
         final int year2 = calendar.get(Calendar.YEAR);
         final int month2 = calendar.get(Calendar.MONTH);
         final int day2 = calendar.get(Calendar.DAY_OF_MONTH);
@@ -202,35 +218,46 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month+1;
-                String date = dayOfMonth + "/" + month + "/"+ year;
+                String date = dayOfMonth + "/" + month + "/" + year;
                 dueDateInput.setText(date);
             }
         };
-
 
         ArrayList<String> displayProductsList = new ArrayList<String>();
         ArrayList<Item> itemList = new ArrayList<>();
         final ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, displayProductsList);
         productsList.setAdapter(mAdapter);
         //adding a product's name and price to the loan's details
+
+
+        // the amount is an addittion of the prices of the products...
+        // sooo...
+        loanAmountInput.setText("0");
+        loanAmountInput.setOnClickListener(new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View v) {
+                                                   Toast.makeText(getActivity(), " Please Enter the items of the debt and the prices", Toast.LENGTH_SHORT).show();
+                                               }
+                                           }
+        );
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Item item = new Item();
                 String itemName = itemNameInput.getText().toString();
                 String itemPrice = itemPriceInput.getText().toString();
-
+                //updating the value in the field of the total amount of debt = old value + the new item's price
+                loanAmountInput.setText(String.valueOf(Integer.valueOf(itemPrice) + Integer.parseInt(String.valueOf(loanAmountInput.getText()))));
                 item.setName(itemName);
                 item.setPrice(itemPrice);
-                Toast.makeText(getActivity(), itemName + " " + itemPrice + " is added!",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), itemName + " " + itemPrice + " is added!", Toast.LENGTH_LONG).show();
                 itemList.add(item);
-                displayProductsList.add(itemName+", Price: "+itemPrice);
+                // desplaying the new item in the list
+                displayProductsList.add(itemName + ", Price: " + itemPrice);
                 LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) productsList.getLayoutParams();
                 int old_height = productsList.getHeight();
-                lp.height =  (old_height + 135);
+                lp.height = (old_height + 135);
                 productsList.setLayoutParams(lp);
-                System.out.println("////////////////////////////////////////////////////");
-                System.out.println(productsList.getHeight());
                 mAdapter.notifyDataSetChanged();
                 itemNameInput.setText("");
                 itemPriceInput.setText("");
@@ -273,6 +300,53 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                 for (Item i : itemList) total = total + Float.parseFloat(i.getPrice());
                 if (total != Float.parseFloat(amount)) return;
 
+                // if the user /market/ wishes to add a calender reminder...
+                /*Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
+                builder.appendPath("time");
+                ContentUris.appendId(builder, Calendar.getInstance().getTimeInMillis());
+                Intent intent1 = new Intent(Intent.ACTION_VIEW)
+                        .setData(builder.build());
+                startActivity(intent1);*/
+                //
+                // asking if the market wants to add a reminder to the calendar.
+                AlertDialog.Builder mbuilder = new AlertDialog.Builder(getActivity());
+                mbuilder.setTitle(R.string.ask_to_add_loan_to_calendar);
+                mbuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ///
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+
+                        try {
+                            Date date = formatter.parse(dueDateInput.getText().toString());
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.setTime(date);
+                            System.out.println(calendar.getTime());////
+                            Intent intent3 = new Intent(Intent.ACTION_INSERT)
+                                    .setData(CalendarContract.Events.CONTENT_URI)
+                                    .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, calendar.getTime())
+                                    .putExtra(CalendarContract.Events.TITLE, R.string.Loan_recieving_time)
+                                    .putExtra(CalendarContract.Events.DESCRIPTION, R.string.you_have_lend_money_to + customerNameInput.getText().toString()+", "+customerPhone+"  : "+loanAmountInput.getText().toString()+" TL")
+                                    .putExtra(Intent.EXTRA_EMAIL, customerEmailInput.getText().toString());
+                            startActivity(intent3);
+                        } catch (ParseException e) {
+                            Toast.makeText(getActivity(), R.string.Error, Toast.LENGTH_LONG).show();
+
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                });
+                mbuilder.setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog mdialog = mbuilder.create();
+                mdialog.show();
+
                 String id = reference.push().getKey();
                 Debt debt = new Debt();
                 debt.setCustomerPhone(customerPhone);
@@ -290,10 +364,7 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                 Bundle b = new Bundle();
                 b.putSerializable("Market",market);
                 intent.putExtras(b);
-
                 NavHostFragment.findNavController(AddDebtFragment.this).navigate(R.id.action_add_debt_to_nav_market_home);
-
-
             }
         });
     }

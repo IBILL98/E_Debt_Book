@@ -34,13 +34,13 @@ import java.util.ArrayList;
 
 
 public class MarketHomeFragment extends Fragment {
+    // declaring the necessary attributes
 
-///setting the attributes
     private FloatingActionButton addNewDebtButton;
     private DatabaseReference mRootRef, conditionRef;
     private ListView listView;
-    private ArrayList<Debt> arrayList = new ArrayList<>();
-    private float totallend;
+    private final ArrayList<Debt> arrayList = new ArrayList<>();
+    private int totallend;
     private TextView textView2;
 
     @Override
@@ -53,10 +53,9 @@ public class MarketHomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
         //setContentView(R.layout.activity_my_customers);
-
         arrayList.clear();
+        //amount of the total lends
         totallend = 0;
-
         mRootRef = FirebaseDatabase.getInstance().getReference();
         listView = getActivity().findViewById(R.id.debtsList);
         textView2 = getActivity().findViewById(R.id.textView2);
@@ -66,7 +65,6 @@ public class MarketHomeFragment extends Fragment {
         listView.setAdapter(arrayAdapter);
 
 
-        //getting the debts infromations from the database to fill it in the home screen
         conditionRef = mRootRef.child("Debts");
         Query query = conditionRef.orderByChild("marketPhone").equalTo(market.getPhone());
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -75,7 +73,7 @@ public class MarketHomeFragment extends Fragment {
                 for (DataSnapshot data : snapshot.getChildren()) {
                     String debtId = data.getKey();
                     Debt debt = data.getValue(Debt.class);
-                    totallend = Float.parseFloat(debt.getAmount()) + totallend;
+                    totallend = Integer.parseInt(debt.getAmount()) + totallend;
                     getitems(debtId, new MyCallback() {
                         @Override
                         public void onCallback(ArrayList<Item> itemArrayList) {
@@ -86,7 +84,6 @@ public class MarketHomeFragment extends Fragment {
                         }
                     });
                 }
-                //calculating the full amount of debts and put it int the textview
                 textView2.setText(textView2.getText().toString() + " " + totallend);
             }
 
@@ -96,8 +93,6 @@ public class MarketHomeFragment extends Fragment {
             }
         });
 
-
-        //when clicking on an item from the debtslistView we will move to its information
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -120,8 +115,6 @@ public class MarketHomeFragment extends Fragment {
             }
         });
 
-
-//add new Debt Button
         addNewDebtButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,7 +128,6 @@ public class MarketHomeFragment extends Fragment {
         });
     }
 
-    //getting the itemList of specific Debt from the database and give it back to the interface
     public ArrayList<Item> getitems(String id, MyCallback myCallback) {
         ArrayList<Item> itemlist = new ArrayList<>();
         DatabaseReference conditionRefitems = mRootRef.child("Debts").child(id).child("itemList");
@@ -149,7 +141,6 @@ public class MarketHomeFragment extends Fragment {
                 }
                 myCallback.onCallback(itemlist);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -159,7 +150,6 @@ public class MarketHomeFragment extends Fragment {
     }
 
 
-    //getting the customer from the database from its number and give it back to the interface
     public void getCustomer(String phone, CustomerCallback customerCallback) {
         DatabaseReference customerRef = mRootRef.child("Customers");
         Customer customer = new Customer();
@@ -176,7 +166,6 @@ public class MarketHomeFragment extends Fragment {
                         customer.setEmail(customer1.getEmail());
                         customer.setName(customer1.getName());
                         customer.setLastname(customer1.getLastname());
-
                         customerCallback.customerOnCallback(customer);
                     }
                 }
@@ -199,10 +188,9 @@ public class MarketHomeFragment extends Fragment {
     }
 
 
-//a function to create custom ListView for Debts
-    private class MyAdapter extends ArrayAdapter<Debt> {
+    public class MyAdapter extends ArrayAdapter<Debt> {
 
-        public MyAdapter(Context context, ArrayList<Debt> debts){
+        public MyAdapter(Context context, ArrayList<Debt> debts) {
             super(context, 0, debts);
         }
 
