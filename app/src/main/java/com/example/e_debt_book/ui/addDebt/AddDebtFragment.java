@@ -321,19 +321,20 @@ public class AddDebtFragment extends Fragment implements AdapterView.OnItemSelec
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(date);
                             System.out.println(calendar.getTime());////
+                            Intent intent3 = new Intent(Intent.ACTION_INSERT)
+                                    .setData(CalendarContract.Events.CONTENT_URI)
+                                    .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, calendar.getTime())
+                                    .putExtra(CalendarContract.Events.TITLE, R.string.Loan_recieving_time)
+                                    .putExtra(CalendarContract.Events.DESCRIPTION, R.string.you_have_lend_money_to + customerNameInput.getText().toString()+", "+customerPhone+"  : "+loanAmountInput.getText().toString()+" TL")
+                                    .putExtra(Intent.EXTRA_EMAIL, customerEmailInput.getText().toString());
+                            startActivity(intent3);
                         } catch (ParseException e) {
+                            Toast.makeText(getActivity(), R.string.Error, Toast.LENGTH_LONG).show();
+
                             e.printStackTrace();
                         }
 
-                        Calendar endTime = Calendar.getInstance();
-                        endTime.set(2012, 0, 19, 8, 30);
-                        Intent intent3 = new Intent(Intent.ACTION_INSERT)
-                                .setData(CalendarContract.Events.CONTENT_URI)
-                                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
-                                .putExtra(CalendarContract.Events.TITLE, "Loan recieving time!")
-                                .putExtra(CalendarContract.Events.DESCRIPTION, "you have a loan from:" + customerNameInput.getText().toString()+" "+" that has the phone number: "+customerPhone+" of : "+loanAmountInput.getText().toString())
-                                .putExtra(Intent.EXTRA_EMAIL, customerEmailInput.getText().toString());
-                        startActivity(intent3);
+
                     }
                 });
                 mbuilder.setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {

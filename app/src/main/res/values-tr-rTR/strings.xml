@@ -116,7 +116,17 @@
     <string name="yes">Evet</string>
     <string name="No">Hayır</string>
     <string name="ask_to_add_loan_to_calendar">Takviminize on ödeme tarihi Hatırlatacak bir Alarm kurmak ister misiniz?</string>
+    <string name="Loan_recieving_time">Borç parası edinme zamanı!</string>
+    <string name="you_have_lend_money_to">Şu kişiye para borç olarak vermiştiniz</string>
+    <string name="Error">Bir Hata oluştu</string><![CDATA[
+
+
+
     >
 
 
+
+
+
+]]>
 </resources>

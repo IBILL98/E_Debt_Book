@@ -116,4 +116,7 @@
     <string name="yes">Ja</string>
     <string name="No">Nein</string>
     <string name="ask_to_add_loan_to_calendar">Möchten Sie eine Erinnerung zur Fälligkeitsdatum in Ihre Kalendar hinzufügen?</string>
+    <string name="Loan_recieving_time">Zeiit zu ihre Geld zu bekommen!</string>
+    <string name="you_have_lend_money_to">Sie hatten eure geld zu diesem Person belohnen;</string>
+    <string name="Error">Fehler</string>
 </resources>
